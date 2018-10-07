@@ -1,0 +1,9 @@
+prerequistics:
+installed visual studio
+installed CMake
+------------
+$cd project
+$cd build
+$cmake -G "Visual Studio 15 2017" ..
+$
+built project now is in build folder, you can run .sln file and debug or release it in visual studio
