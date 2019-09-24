@@ -1,0 +1,7 @@
+Laptop issue for breaking display:
+Solution:
+- connect to linux from windows
+
+- uninstall/install gpu driver
+
+- restore/backup

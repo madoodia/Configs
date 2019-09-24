@@ -7,3 +7,15 @@ $cd build
 $cmake -G "Visual Studio 15 2017" ..
 $
 built project now is in build folder, you can run .sln file and debug or release it in visual studio
+
+# ------------------
+for building a project that has CMakeList.txt
+and want to build it with Makefile (nmake in windows and make in linux)
+- clone the repo
+- mkdir build
+- cd build
+$ cmake -G "NMake Makefiles" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Debug -DGLFW_BUILD_TESTS=ON -DGLFW_BUILD_EXAMPLES=ON ..
+$nmake
+
+# run a project with cl.exe
+$ cl /EHsc main.cpp /main.exe /I /path/to/include / link /LIBPATH:/path/to/lib glfw.lib
