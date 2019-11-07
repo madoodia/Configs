@@ -17,6 +17,7 @@ and want to build it with Makefile (nmake in windows and make in linux)
 $ cmake -G "NMake Makefiles" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Debug -DGLFW_BUILD_TESTS=ON -DGLFW_BUILD_EXAMPLES=ON ..
 or
 $ cmake -G "NMake Makefiles" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_TESTS=ON -DGLFW_BUILD_EXAMPLES=ON ..
+$ cmake -G "NMake Makefiles" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Debug -DGLFW_BUILD_TESTS=ON -DGLFW_BUILD_EXAMPLES=ON ..
 $nmake
 
 # run a project with cl.exe
