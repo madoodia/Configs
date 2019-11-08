@@ -37,5 +37,11 @@
             "command": "${workspaceFolder}\\build_release.bat",
             "problemMatcher": []
         }
+        {
+            "type": "shell",
+            "label": "run",
+            "command": "${workspaceFolder}\\${workspaceFolderBasename}.exe",
+            "problemMatcher": []
+        }
     ]
 }

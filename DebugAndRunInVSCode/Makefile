@@ -43,7 +43,8 @@ CC_FLAGS     = -EHsc -Zi -Fe:$(TARGET) $(DEFINES) # debug
 
 # ------------------------------------------------
 
-all: run #cleanup
+all: run
+# all: run cleanup
 run:
     $(CC) $(INCLUDES) $(CC_FLAGS) $(OBJECTS_SRC) -$(LINKER) $(LINKER_FLAGS) -OUT:$(TARGET) $(LIBS)
 
