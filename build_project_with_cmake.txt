@@ -8,6 +8,14 @@ $cmake -G "Visual Studio 15 2017" ..
 $
 built project now is in build folder, you can run .sln file and debug or release it in visual studio
 
+for x64 building:
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+mkdir build64
+cd build64
+cmake -G "NMake Makefiles" ..
+
+
+
 # ------------------
 for building a project that has CMakeList.txt
 and want to build it with Makefile (nmake in windows and make in linux)
