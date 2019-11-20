@@ -4,15 +4,10 @@ installed CMake
 ------------
 $cd project
 $cd build
-$cmake -G "Visual Studio 15 2017" ..
+$cmake -G "Visual Studio 15 2017" -DCMAKE_BUILD_TYPE=Release ..
 $
 built project now is in build folder, you can run .sln file and debug or release it in visual studio
 
-for x64 building:
-call "%VCVARS_LOCATION%/vcvarsall.bat" x64
-mkdir build64
-cd build64
-cmake -G "NMake Makefiles" ..
 
 
 
@@ -30,3 +25,16 @@ $nmake
 
 # run a project with cl.exe
 $ cl /EHsc main.cpp /main.exe /I /path/to/include / link /LIBPATH:/path/to/lib glfw.lib
+
+
+
+or
+for x64 building:
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+mkdir build64
+cd build64
+# -DCMAKE_BUILD_TYPE + can be Release or Debug
+cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+
+nmake -f Makefile CLEAN
+nmake
