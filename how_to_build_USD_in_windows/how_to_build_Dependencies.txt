@@ -63,10 +63,9 @@ ALEMBIC_URL = "https://github.com/alembic/alembic/archive/1.7.1.zip"
 
 
 ------------------------------
-
+all commands should be run in Developer Command Prompt
+===========
 building zlib:
-
-
 
 cmake -DCMAKE_INSTALL_PREFIX=D:/_madoodia_/pixar_usd/zlib-1.2.11/deploy -G "Visual Studio 15 2017 Win64" ../zlib-1.2.11
 
@@ -76,14 +75,38 @@ cmake --build . --config Release
 cmake --build . --config RelWithDebInfo
 cmake --build . --target INSTALL
 
------------------------
-building IlmBase: ===========
+or ---------
+#cd zlib diretory
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_BUILD_TYPE=Release ..
+
+nmake
+---------
+
+===========
+building IlmBase:
 D:/_madoodia_/pixar_usd/openexr/IlmBase
 
 cmake D:/_madoodia_/pixar_usd/openexr/IlmBase -G "Visual Studio 15 Win64" -DCMAKE_INSTALL_PREFIX=D:/_madoodia_/pixar_usd/openexr/IlmBase/deploy -T host=x64
 
 cmake --build . --target INSTALL
 
+or ---------
+#cd IlmBase diretory
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -DCMAKE_INSTALL_PREFIX=deploy -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+
+nmake
+---------
+===========
 
 building OpenEXR:
 D:/_madoodia_/pixar_usd/openexr/OpenEXR
@@ -92,8 +115,67 @@ cmake D:/_madoodia_/pixar_usd/openexr/OpenEXR -G "Visual Studio 15 Win64" -DCMAK
 
 cmake --build . --target INSTALL
 
+or ---------
+#cd OpenEXR diretory
+# download OpenEXR from https://github.com/openexr/openexr/archive/v2.2.0.zip
+mkdir deploy
+cd deploy
 
-Building PyIlmBase: ===========
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+1.
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/openexr-2.2.0/IlmBase;D:/madoodia/sdks/openexr-2.2.0/IlmBase/deploy;D:/madoodia/sdks/zlib/deploy; -DILMBASE_PACKAGE_PREFIX=D:/madoodia/sdks/openexr-2.2.0/IlmBase -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib -DCMAKE_BUILD_TYPE=Release ..
+
+
+
+
+nmake
+---------
+
+
+==========================================
+==========================================
+# building USD (latest try)
+
+cd D:\madoodia\sdks\USD
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+python build_scripts\build_usd.py --generator "Visual Studio 16 2019" --opencolorio build
+
+
+==========================================
+==========================================
+
+++++++++++++++++++++++++++++++++++++++++++++
+Bulding Whole OpenEXR (the main directory contains OpenEXR, IlmBase, ...)
+#cd openexr diretory
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+
+
+# install boost with python and file system
+- in boost directory run bootstrap.bat
+
+b2.exe install --prefix="finalBuild" --with-python --with-filesystem  --with-thread --build-type=complete architecture="x86" address-model="64" runtime-link=static,shared toolset=msvc variant=release,debug link=static,shared threading=single,multi
+
+# if we want to build PyIlmBase (error on detecting python)(not built)
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy  -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib/deploy;D:/madoodia/sdks/boost/finalBuild;D:/madoodia/sdks/fltk/deploy; -DBOOST_ROOT=D:/madoodia/sdks/boost -DBOOST_INCLUDEDIR=D:/madoodia/sdks/boost/finalBuild/include -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib -DFLTK_LIBRARIES=D:/madoodia/sdks/fltk/deploy/lib -DFLTK_INCLUDE_DIR=D:/madoodia/sdks/fltk/src-DCMAKE_BUILD_TYPE=Release ..
+
+# if not 
+# first comment lines related to PyIlmBase in CmakeList.txt of main OpenExr then run:
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy  -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib/deploy;D:/madoodia/sdks/boost/finalBuild;D:/madoodia/sdks/fltk/deploy; -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib;D:/madoodia/sdks/zlib/deploy -DFLTK_LIBRARIES=D:/madoodia/sdks/fltk/deploy/lib -DFLTK_INCLUDE_DIR=D:/madoodia/sdks/fltk/src-DCMAKE_BUILD_TYPE=Release ..
+
+nmake
+++++++++++++++++++++++++++++++++++++++++++++
+
+
+===========
+Building PyIlmBase:
+
 
 D:/_madoodia_/pixar_usd/openexr/PyIlmBase
 
@@ -113,12 +195,32 @@ cmake --build . --target INSTALL
 Building OpenEXR_Viewer: ===========
 D:/_madoodia_/pixar_usd/openexr/OpenEXR_Viewers
 
-cmake D:/_madoodia_/pixar_usd/openexr/OpenEXR_Viewers -G "Visual Studio 15 Win64" -DCMAKE_INSTALL_PREFIX=D:/_madoodia_/pixar_usd/openexr/OpenEXR_Viewers/deploy -DOPENEXR_PACKAGE_PREFIX=D:/_madoodia_/pixar_usd/openexr/OpenEXR/deploy -DCMAKE_PREFIX_PATH=D:/_madoodia_/pixar_usd/zlib-1.2.11/deploy; -T host=x64
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/fltk;D:/madoodia/sdks/OpenEXR -DOPENEXR_PACKAGE_PREFIX=D:/madoodia/sdks/OpenEXR -DCMAKE_LIBRARY_PATH=D:/madoodia/sdks/OpenEXR/lib -DFLTK_LIBRARIES=D:/madoodia/sdks/fltk/lib -DFLTK_INCLUDE_DIR=D:/madoodia/sdks/fltk/include -DCMAKE_BUILD_TYPE=Release ..
 
-cmake --build . --target INSTALL
+nmake
 
+---
+FLTK is requirement for OpenEXR_Viewer
 
+#cd FLTK diretory
+mkdir deploy
+cd deploy
 
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_BUILD_TYPE=Release ..
+
+nmake
+---
+# building exrdisplay
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH="D:/madoodia/sdks/fltk" -DCMAKE_BUILD_TYPE=Release ..
+
+nmake
 -------------------------------------
 
 Building OpenSubdiv:
