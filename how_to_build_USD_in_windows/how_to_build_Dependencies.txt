@@ -268,7 +268,37 @@ cmake --build . --config Debug
 cmake --build . --config Release
 cmake --build . --target INSTALL
 
+---
+# building OpenImageIO (oiio)
+mkdir deploy
+cd deploy
 
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DILMBASE_INCLUDE_PATH=D:/madoodia/sdks/USD/build/include -DOPENEXR_INCLUDE_PATH=D:/madoodia/sdks/USD/build/include -DBOOST_ROOT=D:/madoodia/sdks/boost/finalBuild -DBOOST_LIBRARY_DIRS=D:/madoodia/sdks/boost/finalBuild/lib -DBOOST_INCLUDE_DIR=D:/madoodia/sdks/boost/finalBuild/include/boost-1_70 -DBOOST_LIBRARYDIR=D:/madoodia/sdks/boost/finalBuild/lib -DBOOST_INCLUDEDIR=D:/madoodia/sdks/boost/finalBuild/include/boost-1_70 -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/USD/build/include;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/libpng16; -DOPENGL_INCLUDE_DIR=D:/madoodia/sdks/OpenGL/GLEW/include -DOPENGL_LIBRARIES=D:/madoodia/sdks/OpenGL/GLEW/lib -DPACKAGE_ROOT=D:/madoodia/sdks/oiio -DTIFF_LIBRARY=D:/madoodia/sdks/tiff/lib; -DTIFF_INCLUDE_DIR=D:/madoodia/sdks/tiff/include -DCMAKE_BUILD_TYPE=Release ..
+
+
+
+
+
+
+nmake
+
+
+
+=============
+USD USD USD
+
+cd D:\madoodia\sdks\USD
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+C:/Python27/python.exe build_scripts\build_usd.py --generator "Visual Studio 16 2019"  --python --alembic --hdf5 --openimageio --houdini --houdini-location "D:/Program Files/Side Effects Software/Houdini 17.5.425" --maya --maya-location "D:/Program Files/Autodesk/Maya2018" build2
+
+
+
+==========================================
+==========================================
 related to python27_d.lib problem:
 download python27_d.lib from:
 https://github.com/austinsc/python/blob/master/lib/Windows/x64/python27_d.lib
