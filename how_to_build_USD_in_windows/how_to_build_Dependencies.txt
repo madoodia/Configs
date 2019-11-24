@@ -76,7 +76,7 @@ cmake --build . --config RelWithDebInfo
 cmake --build . --target INSTALL
 
 or ---------
-#cd zlib diretory
+#cd zlib diretory (successfull)
 mkdir deploy
 cd deploy
 
@@ -89,14 +89,7 @@ nmake
 
 ===========
 building IlmBase:
-D:/_madoodia_/pixar_usd/openexr/IlmBase
-
-cmake D:/_madoodia_/pixar_usd/openexr/IlmBase -G "Visual Studio 15 Win64" -DCMAKE_INSTALL_PREFIX=D:/_madoodia_/pixar_usd/openexr/IlmBase/deploy -T host=x64
-
-cmake --build . --target INSTALL
-
-or ---------
-#cd IlmBase diretory
+#cd IlmBase diretory (successfull)
 mkdir deploy
 cd deploy
 
@@ -109,11 +102,6 @@ nmake
 ===========
 
 building OpenEXR:
-D:/_madoodia_/pixar_usd/openexr/OpenEXR
-
-cmake D:/_madoodia_/pixar_usd/openexr/OpenEXR -G "Visual Studio 15 Win64" -DCMAKE_INSTALL_PREFIX=D:/_madoodia_/pixar_usd/openexr/OpenEXR/deploy -DILMBASE_PACKAGE_PREFIX=D:/_madoodia_/pixar_usd/openexr/IlmBase/deploy -DCMAKE_PREFIX_PATH=D:/_madoodia_/pixar_usd/zlib-1.2.11/deploy; -T host=x64
-
-cmake --build . --target INSTALL
 
 or ---------
 #cd OpenEXR diretory
@@ -123,10 +111,12 @@ cd deploy
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-1.
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/openexr-2.2.0/IlmBase;D:/madoodia/sdks/openexr-2.2.0/IlmBase/deploy;D:/madoodia/sdks/zlib/deploy; -DILMBASE_PACKAGE_PREFIX=D:/madoodia/sdks/openexr-2.2.0/IlmBase -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib -DCMAKE_BUILD_TYPE=Release ..
 
+D:\madoodia\sdks\__repos\ASWF\openexr-2.4.0\IlmBase\deploy
 
+del /f CMakeCache.txt
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/__repos/ASWF/openexr-2.4.0/IlmBase/deploy/bin -DZLIB_LIBRARY=D:/madoodia/sdks/zlib/lib -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib/include -DIlmBase_DIR=D:/madoodia/sdks/__repos/ASWF/openexr-2.4.0/IlmBase -DCMAKE_BUILD_TYPE=Release ..
 
 
 nmake
@@ -135,15 +125,6 @@ nmake
 
 ==========================================
 ==========================================
-# building USD (latest try)
-
-cd D:\madoodia\sdks\USD
-
-call "%VCVARS_LOCATION%/vcvarsall.bat" x64
-
-python build_scripts\build_usd.py --generator "Visual Studio 16 2019" --opencolorio build
-
-
 ==========================================
 ==========================================
 
@@ -200,7 +181,7 @@ cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/
 nmake
 
 ---
-FLTK is requirement for OpenEXR_Viewer
+FLTK is requirement for OpenEXR_Viewer (successfull)
 
 #cd FLTK diretory
 mkdir deploy
@@ -275,9 +256,8 @@ cd deploy
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DILMBASE_INCLUDE_PATH=D:/madoodia/sdks/USD/build/include -DOPENEXR_INCLUDE_PATH=D:/madoodia/sdks/USD/build/include -DBOOST_ROOT=D:/madoodia/sdks/boost/finalBuild -DBOOST_LIBRARY_DIRS=D:/madoodia/sdks/boost/finalBuild/lib -DBOOST_INCLUDE_DIR=D:/madoodia/sdks/boost/finalBuild/include/boost-1_70 -DBOOST_LIBRARYDIR=D:/madoodia/sdks/boost/finalBuild/lib -DBOOST_INCLUDEDIR=D:/madoodia/sdks/boost/finalBuild/include/boost-1_70 -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/USD/build/include;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/libpng16; -DOPENGL_INCLUDE_DIR=D:/madoodia/sdks/OpenGL/GLEW/include -DOPENGL_LIBRARIES=D:/madoodia/sdks/OpenGL/GLEW/lib -DPACKAGE_ROOT=D:/madoodia/sdks/oiio -DTIFF_LIBRARY=D:/madoodia/sdks/tiff/lib; -DTIFF_INCLUDE_DIR=D:/madoodia/sdks/tiff/include -DCMAKE_BUILD_TYPE=Release ..
 
-
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/OpenEXR/bin -DTIFF_LIBRARY=D:/madoodia/sdks/tiff/lib; -DTIFF_INCLUDE_DIR=D:/madoodia/sdks/tiff/include -DZLIB_LIBRARY=D:/madoodia/sdks/zlib/lib -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib/include -DPNG_PNG_INCLUDE_DIR=D:/madoodia/sdks/libpng16/include -DPNG_LIBRARY=D:/madoodia/sdks/libpng16/lib -DILMBASE_INCLUDE_PATH=D:\madoodia\sdks\__repos\USD\build\include\OpenEXR -DCMAKE_BUILD_TYPE=Release ..
 
 
 
@@ -293,10 +273,67 @@ cd D:\madoodia\sdks\USD
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-C:/Python27/python.exe build_scripts\build_usd.py --generator "Visual Studio 16 2019"  --python --alembic --hdf5 --openimageio --houdini --houdini-location "D:/Program Files/Side Effects Software/Houdini 17.5.425" --maya --maya-location "D:/Program Files/Autodesk/Maya2018" build2
+C:/Python27/python.exe build_scripts\build_usd.py --generator "Visual Studio 16 2019" --no-python --openimageio --opencolorio  deploy
+
+
+#code for building oiio
+cmake -DCMAKE_INSTALL_PREFIX="D:/madoodia/sdks/__repos/USD/deploy" -DCMAKE_PREFIX_PATH="D:/madoodia/sdks/__repos/USD/deploy" -DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT=D:/madoodia/sdks/__repos/USD -DBOOST_INCLUDEDIR=D:/madoodia/sdks/__repos/USD/deploy/include/boost-1_65_1 -DBOOST_LIBRARYDIR=D:/madoodia/sdks/__repos/USD/deploy/build/boost -G "Visual Studio 16 2019" -DOIIO_BUILD_TOOLS=OFF -DOIIO_BUILD_TESTS=OFF -DUSE_PYTHON=OFF -DSTOP_ON_WARNING=OFF -DOPENEXR_HOME="D:/madoodia/sdks/__repos/USD/deploy" -DUSE_PTEX=OFF "D:/madoodia/sdks/__repos/USD/deploy/src/oiio-Release-2.0.12"
 
 
 
+
+
+--------------------
+
+# Building embree (Renderer + Intel® Threading Building Blocks) (failed)
+# need ISPC
+#cd embree repo
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DEMBREE_ISPC_SUPPORT=0 -DTBB_INCLUDE_DIR=D:/madoodia/sdks/tbb/include -DTBB_LIBRARY=D:/madoodia/sdks/tbb/lib -DTBB_LIBRARY_MALLOC=D:/madoodia/sdks/tbb/lib -DJPEG_LIBRARY=D:/madoodia/sdks/libjpeg_turbo/lib -DJPEG_INCLUDE_DIR=D:/madoodia/sdks/libjpeg_turbo/include -DPNG_INCLUDE_DIR=D:/madoodia/sdks/libpng16/include -DPNG_LIBRARIES=D:/madoodia/sdks/libpng16/lib -DCMAKE_BUILD_TYPE=Release ..
+
+
+OPENIMAGEIO_ROOT 
+
+nmake
+---
+# Building ISPC (intel compiler) (faild in nmake)
+
+# cygwin should be installed and M4 Bison and Flex should be install on it
+# libclang should be installed and build
+# add D:/madoodia/sdks/libclang to PATH
+
+#cd ISPC repo
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/__repos/llvm-project/llvm/deploy;D:/madoodia/sdks/libclang; -DCLANG_EXECUTABLE=D:/madoodia/sdks/libclang/bin/clang.exe -DM4_EXECUTABLE=C:/cygwin64/bin/m4.exe -DBISON_EXECUTABLE=C:/cygwin64/bin/bison.exe -DFLEX_EXECUTABLE=C:/cygwin64/bin/flex.exe -DCMAKE_BUILD_TYPE=Release ..
+
+
+nmake
+---
+
+---
+# Building LLVM (compiler infrustructure) (Successfull)
+https://github.com/llvm/llvm-project/
+#cd LLVM repo
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy  -DCMAKE_BUILD_TYPE=Release ..
+
+nmake
+
+
+==========================================
 ==========================================
 ==========================================
 related to python27_d.lib problem:
