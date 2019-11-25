@@ -543,9 +543,7 @@ SET XBMLANGPATH=C:/USD/third_party/maya/share/usd/plugins/usdMaya/resources
 
 
 -------------------------------------------
-Building googletest:
 
-TIP: googletest should be build as MD with visual studio (msvc/gtest-md.sln)
 
 
 ----------------------------------------
@@ -708,3 +706,21 @@ Building MaterialX:
 cmake -DCMAKE_INSTALL_PREFIX=D:/_madoodia_/pixar_usd/MaterialX/deploy -G "Visual Studio 15 2017 Win64" .
 
 cmake --build . --config Release --target install
+===========================
+building googletest
+
+method1:
+TIP: googletest should be build as MD with visual studio (msvc/gtest-md.sln)
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "Visual Studio 16 2019" -DCMAKE_INSTALL_PREFIX=deploy  ..
+
+
+method2:
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy  -DCMAKE_BUILD_TYPE=Release ..
