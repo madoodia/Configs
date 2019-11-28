@@ -1,5 +1,0 @@
-clang-format -style=llvm -dump-config > D:\madoodia\dev\RayTracer\.clang-format
-
-
-main settings.json file is in this address in windows:
-C:\Users\madoodia\AppData\Roaming\Code\User\settings.json
