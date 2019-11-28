@@ -1,1 +1,1 @@
-C:\Users\madoodia\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions
+C:\Users\<USER>\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions

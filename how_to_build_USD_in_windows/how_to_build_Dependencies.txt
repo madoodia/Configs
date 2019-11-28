@@ -112,7 +112,7 @@ cd deploy
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 
-D:\madoodia\sdks\__repos\ASWF\openexr-2.4.0\IlmBase\deploy
+%SDKS_LOCATION%\__repos\ASWF\openexr-2.4.0\IlmBase\deploy
 
 del /f CMakeCache.txt
 
@@ -257,7 +257,7 @@ cd deploy
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/OpenEXR/bin -DTIFF_LIBRARY=D:/madoodia/sdks/tiff/lib; -DTIFF_INCLUDE_DIR=D:/madoodia/sdks/tiff/include -DZLIB_LIBRARY=D:/madoodia/sdks/zlib/lib -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib/include -DPNG_PNG_INCLUDE_DIR=D:/madoodia/sdks/libpng16/include -DPNG_LIBRARY=D:/madoodia/sdks/libpng16/lib -DILMBASE_INCLUDE_PATH=D:\madoodia\sdks\__repos\USD\build\include\OpenEXR -DCMAKE_BUILD_TYPE=Release ..
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/OpenEXR/bin -DTIFF_LIBRARY=D:/madoodia/sdks/tiff/lib; -DTIFF_INCLUDE_DIR=D:/madoodia/sdks/tiff/include -DZLIB_LIBRARY=D:/madoodia/sdks/zlib/lib -DZLIB_INCLUDE_DIR=D:/madoodia/sdks/zlib/include -DPNG_PNG_INCLUDE_DIR=D:/madoodia/sdks/libpng16/include -DPNG_LIBRARY=D:/madoodia/sdks/libpng16/lib -DILMBASE_INCLUDE_PATH=%SDKS_LOCATION%\__repos\USD\build\include\OpenEXR -DCMAKE_BUILD_TYPE=Release ..
 
 
 
@@ -269,7 +269,7 @@ nmake
 =============
 USD USD USD
 
-cd D:\madoodia\sdks\USD
+cd %SDKS_LOCATION%\USD
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 

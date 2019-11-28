@@ -4,7 +4,7 @@
 
 - For building maya plugins in Visual Studio you should create a new project
 - Add all sources and header files to the project and set some configurations based on needs, default config is in the
-needed_config.txt file in this path: D:\Madoodia\_gitlab\codelab\maya_api\_building_qt_maya_plugins_qith_qmake_nmake
+needed_config.txt file in this path: D:\_gitlab\codelab\maya_api\_building_qt_maya_plugins_qith_qmake_nmake
 
 TIP: Based on version of Visual Studio you are using for build, you have to shipp VCRedist related to that Visual Studio with the plugin
 
@@ -24,12 +24,12 @@ You should run setup.bat file and use nmake in VisualStudio Command Prompt
 
 2. Maya Plugins with Qt UI created by codes:
 - This project is a sample file for plugins that use Qt with code not with QtDesigner
-D:\Madoodia\_gitlab\codelab\maya_api\_building_qt_maya_plugins_qith_qmake_nmake\helixQtCmd_qmake_nmake
+D:\_gitlab\codelab\maya_api\_building_qt_maya_plugins_qith_qmake_nmake\helixQtCmd_qmake_nmake
 you can use its Makefile as template
 
 3. Maya Plugins with Qt UI created by QtDesigner:
 - Under investigation (Does not work yet)
 - This project uses QtDesigner for designing UIs and you can use its Makefile as template
-D:\Madoodia\_gitlab\codelab\maya_api\_building_qt_maya_plugins_qith_qmake_nmake\qform
+D:\_gitlab\codelab\maya_api\_building_qt_maya_plugins_qith_qmake_nmake\qform
 
 
