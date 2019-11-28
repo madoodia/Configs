@@ -724,3 +724,13 @@ cd deploy
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy  -DCMAKE_BUILD_TYPE=Release ..
+
+===========================
+building glog
+
+mkdir deploy
+cd deploy
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DWITH_GFLAGS=0 -DBUILD_SHARED_LIBS=0 -DCMAKE_BUILD_TYPE=Release ..
