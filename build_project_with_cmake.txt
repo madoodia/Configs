@@ -3,8 +3,11 @@ installed visual studio
 installed CMake
 ------------
 $cd project
+$mkdir build
 $cd build
-$cmake -G "Visual Studio 15 2017" -DCMAKE_BUILD_TYPE=Release ..
+#for x64 building:
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+$cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ..
 $
 built project now is in build folder, you can run .sln file and debug or release it in visual studio
 
@@ -38,3 +41,20 @@ cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release ..
 
 nmake -f Makefile CLEAN
 nmake
+
+====================
+Building and Running And Debugging PBRT-V3 (https://github.com/mmp/pbrt-v3/)
+
+in Visual Studio (x64)
+$cd pbrt-v3
+$mkdir build
+$cd build
+$call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+$cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ..
+
+- Open PBRT-V3.sln
+- Build ALL_BUILD in Debug Mode
+- Set pbrt_exe project as Default project
+- Set Debugging Arguments in pbrt_exe project's properties as: --nthread 1 D:\path\to\scenes\scene.pbrt
+- Set breakpoint on SamplerIntegrator::Render()
+- Run the project
