@@ -1,0 +1,9 @@
+Learning Git
+============
+
+finding git repo URL:
+$ git config --get remote.origin.url
+or
+$ git remote show origin
+
+-------------------------------
