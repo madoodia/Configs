@@ -8,7 +8,9 @@
         "*.nmake": "makefile",
         "*.gnu": "makefile",
         "*.win": "makefile",
-        "*.inc": "makefile"
+        "*.inc": "makefile",
+        "*.qml": "qml",
+        "*.cu": "cpp"
     },
     "explorer.confirmDelete": false,
     "terminal.integrated.shellArgs.windows": [
@@ -33,4 +35,11 @@
     "C_Cpp.clang_format_path": "${SDKS_LOCATION}/libclang/bin/clang-format.exe",
     "C_Cpp.dimInactiveRegions": true,
     "explorer.confirmDragAndDrop": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    }
 }

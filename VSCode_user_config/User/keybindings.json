@@ -1,19 +1,24 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "ctrl+shift+q",
+        "key": "ctrl+alt+q",
         "command": "workbench.action.tasks.runTask",
         "args": "qmlscene"
     },
     {
-        "key": "ctrl+shift+r",
+        "key": "ctrl+alt+r",
         "command": "workbench.action.tasks.runTask",
         "args": "run"
     },
     {
-        "key": "ctrl+shift+b",
+        "key": "ctrl+alt+b",
         "command": "workbench.action.tasks.runTask",
         "args": "build"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "workbench.action.tasks.runTask",
+        "args": "python"
     },
     {
         "key": "ctrl+u",
