@@ -1,0 +1,9 @@
+# Create VSCode Extension
+
+# Create Snippets for it
+
+# Create Syntax Highlight for QML codes
+
+# Create Auto-Formatter for VSCode Extension
+
+# Publish The Extension

@@ -1,0 +1,2 @@
+Finding Duplicate lines in a text:
+^(.*\n)(?=(?:.*\n)*?\1)
