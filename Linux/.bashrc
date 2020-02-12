@@ -19,6 +19,17 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # PS1='\[\033[01;34m\]\u@\h\[\033[01;33m\] \W \[\033[00m\] $'
 # PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] $PWD \$\[\033[00m\] '
 
+# =---------------- PATH & LIBS --------------= #
+# QT
+export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
+export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
+# export LD_LIBRARY_PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
+# QT_INSTALLATION_LOCATION = /mnt/hdd/Qt5.14.1/5.14.1/gcc_64
+# QT_SDK_LOCATION = /mnt/hdd/madoodia/sdks/Qt5 -> /mnt/hdd/Qt5.14.1/5.14.1/gcc_64
+
+# CUDA
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE

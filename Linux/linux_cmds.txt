@@ -192,15 +192,35 @@ Install qt on centos7
 $ sudo chmod +x qt-opensource-linux-x64-5.14.1.run
 $ sudo ./qt-opensource-linux-x64-5.14.1.run
 
-
+- add theses lines to .bashrc:
+export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
+export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
+export LD_LIBRARY_PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
 # =========================
 CUDA Toolkit 10.1 original for Lenovo Laptop
-- Download from : https://developer.nvidia.com/cuda-10.1-download-archive-base?target_os=Linux&target_arch=x86_64&target_distro=CentOS&target_version=7&target_type=rpmlocal
-Installation Instructions:
-`sudo rpm -i cuda-repo-rhel7-10-1-local-10.1.105-418.39-1.0-1.x86_64.rpm`
-`sudo yum clean all`
-`sudo yum install cuda`
+$ cd ~/Downloads
+$ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-rhel7-10-1-local-10.1.243-418.87.00-1.0-1.x86_64.rpm
+$ sudo rpm -i cuda-repo-rhel7-10-1-local-10.1.243-418.87.00-1.0-1.x86_64.rpm
+$ sudo yum clean all
+$ sudo yum -y install nvidia-driver-latest-dkms cuda
+
+After installation
+- add theses lines to .bashrc:
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+run:
+$ source /root/.bashrc
+$ nvcc --version
+
+- Install CUDA samples and further tests by compiling CUDA programs in the 'cuda-samples'
+cd cuda-samples/NVIDIA_CUDA-10.0_Samples/0_Simple/simpleCallback
+make
 # =========================
+For creating SDKS_LOCATION:
+First install your libraries or softwares like Qt5 or cuda
+then create symlink from them in your sdks path
+then use you sdks path in your build system
+
 # =========================
 
 
