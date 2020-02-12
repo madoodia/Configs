@@ -1,0 +1,12 @@
+Some useful command in Microsoft windows
+----------------
+
+- cmd < run as admin
+# get windows activation ID
+$ slmgr /dlv
+# deactive current licence of windows
+$ slmgr /upl ABCDEF...
+# active product key
+$ slmgr /ipk ABCDE-FGHIJ-...
+
+----------------

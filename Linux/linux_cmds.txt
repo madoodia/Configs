@@ -18,7 +18,7 @@ $
 
 # =========================
 - Create ssh keygen: (/home/[USER]/.ssh/id_rsa.pub)
-$ ssh-keygen
+$ ssh-keygen -o
 then copy it in github.com and create new ssh key
 
 # =========================
@@ -39,14 +39,17 @@ $ ./Install -c -i -s
 installed in /home/[USER]/.themes
 
 # =========================
-- install skype
+- install skype (or use flatpak/flathub)
 $ wget https://go.skype.com/skypeforlinux-64.rpm
 $ sudo yum install skypeforlinux-64.rpm 
 $ skypeforlinux
 $   
 
+Insatall extensions in centos7, 8
+https://www.2daygeek.com/how-to-install-and-configure-gnome-shell-extensions-in-linux/
+
 # =========================
-- install extension
+- install extension (https://micheleg.github.io/dash-to-dock/download.html)
 -   Dash to Dock
 -   GNOME Shell Extension
 $ download latest zip file
@@ -126,6 +129,60 @@ $ sudo poweroff
 $ chmod u+x <AppImage File>
 3. run to install
 
+# =========================
+$ lspci -v
+$ lspci -vnn
+$ lspci -vnn | grep VGA
+
+remove an rpm package
+$ sudo rpm -e <package name>
+
+Download a package
+$ wget http://....zip
+
+unpack a tar.gz file
+$ tar -xvf file.tar.gz
+
+$ sudo yum install unzip
+$ sudo yum install zip
+$ sudo yum install unar (for rar files it is unar not unrar :) )
+
+$ unzip /path/to/file.zip -d /destination
+
+Disable/enable gnome gui
+$ systemctl disable gdm
+$ systemctl enable gdm
+
+using root user:
+$ sudo su
+or
+$ su -
+
+# =========================
+Create symlink from a file in current directory
+$ ln -sf /path/to/a/file
+
+Finding count of file in a directory$ find . -type f -print | wc -l
+
+Finding a string in all files of a path
+$ grep "redeem reward" /home/tom/*.txt
+$ $ grep -r "redeem reward" /home/tom/
+
+CPU Usage:
+$ htop
+
+remove files
+$ sudo rm -rf /path/file
+
+
+
+
+
+# =========================
+# =========================
+# =========================
+# =========================
+# =========================
 # =========================
 
 

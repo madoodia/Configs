@@ -23,7 +23,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
 alias ..='cd ..'
-alias ho='cd ~'
+alias home='cd ~'
 alias clr='clear'
 alias grep='grep --color=auto'
 alias ll='ls -lh'
@@ -35,6 +35,11 @@ alias hg='history|grep' # hg bash
 alias count='find . -type f | wc -l'
 alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
+
+# alias unzip='unzip /path/to/file.zip -d /destination'
+
+alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
+alias vse='cd /home/reza/.vscode/extensions' # contains extension
 
 alias rc='code ~/.bashrc'
 # alias rcc='cp -r ~/.bashrc ~/dev/linux/.bashrc && code ~/dev/linux/.bashrc'
