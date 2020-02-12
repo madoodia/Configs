@@ -187,7 +187,19 @@ Getting size of each folder
 $ sudo du -shc /var/*
 
 # =========================
+Install qt on centos7
+- Download qt from https://download.qt.io or https://www.qt.io/download-open-source
+$ sudo chmod +x qt-opensource-linux-x64-5.14.1.run
+$ sudo ./qt-opensource-linux-x64-5.14.1.run
+
+
 # =========================
+CUDA Toolkit 10.1 original for Lenovo Laptop
+- Download from : https://developer.nvidia.com/cuda-10.1-download-archive-base?target_os=Linux&target_arch=x86_64&target_distro=CentOS&target_version=7&target_type=rpmlocal
+Installation Instructions:
+`sudo rpm -i cuda-repo-rhel7-10-1-local-10.1.105-418.39-1.0-1.x86_64.rpm`
+`sudo yum clean all`
+`sudo yum install cuda`
 # =========================
 # =========================
 

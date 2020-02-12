@@ -71,3 +71,5 @@ alias tmp='cd ~ && rm -rf ~/tmp && mkdir -p ~/tmp && cd ~/tmp'
 # alias maya='/mnt/applications/apps/Autodesk/Maya_2017_201706020738/bin/maya'
 # alias houdini='/opt/hfs17.0.459/bin/houdini'
 # alias skype='/usr/bin/skypeforlinux'
+
+alias qt='./Qt5.14.1/Tools/QtCreator/bin/qtcreator'
