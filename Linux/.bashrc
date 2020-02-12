@@ -26,6 +26,8 @@ export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
 # export LD_LIBRARY_PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
 # QT_INSTALLATION_LOCATION = /mnt/hdd/Qt5.14.1/5.14.1/gcc_64
 # QT_SDK_LOCATION = /mnt/hdd/madoodia/sdks/Qt5 -> /mnt/hdd/Qt5.14.1/5.14.1/gcc_64
+# Create symlink
+# ln -sf /mnt/hdd/Qt5.14.1/5.14.1/gcc_64 Qt5
 
 # CUDA
 export PATH=/usr/local/cuda/bin:$PATH
@@ -83,4 +85,5 @@ alias tmp='cd ~ && rm -rf ~/tmp && mkdir -p ~/tmp && cd ~/tmp'
 # alias houdini='/opt/hfs17.0.459/bin/houdini'
 # alias skype='/usr/bin/skypeforlinux'
 
-alias qt='./Qt5.14.1/Tools/QtCreator/bin/qtcreator'
+alias qt='sdks; cd Qt5'
+alias cuda='sdks; cd CUDA'

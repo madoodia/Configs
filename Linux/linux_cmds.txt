@@ -196,6 +196,9 @@ $ sudo ./qt-opensource-linux-x64-5.14.1.run
 export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
 export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
 export LD_LIBRARY_PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
+
+Run this: (for fixing qtcreator bug)
+$ ldd /mnt/hdd/Qt5.14.1/5.14.1/gcc_64/plugins/platforms/libqxcb.so
 # =========================
 CUDA Toolkit 10.1 original for Lenovo Laptop
 $ cd ~/Downloads
