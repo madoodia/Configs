@@ -213,8 +213,19 @@ $ source /root/.bashrc
 $ nvcc --version
 
 - Install CUDA samples and further tests by compiling CUDA programs in the 'cuda-samples'
-cd cuda-samples/NVIDIA_CUDA-10.0_Samples/0_Simple/simpleCallback
-make
+$ cd samples/0_Simple/simpleCallback
+$ make
+$cd ../../bin/x86_64/linux/release
+$ ./simpleCallback 
+Starting simpleCallback
+Found 1 CUDA capable GPUs
+GPU[0] GeForce GTX 660M supports SM 3.0, capable GPU Callback Functions
+1 GPUs available to run Callback Functions
+Starting 8 heterogeneous computing workloads
+Total of 8 workloads finished:
+Success
+
+
 # =========================
 For creating SDKS_LOCATION:
 First install your libraries or softwares like Qt5 or cuda
