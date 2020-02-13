@@ -236,6 +236,21 @@ then create symlink from them in your sdks path
 then use you sdks path in your build system
 
 # =========================
+Install Houdini
+- Download houdini: https://www.sidefx.com/download/
+
+$ tar xvf houdini...tar.gz
+
+- Setup Environment Variables
+$ cd /opt/hfs18.0
+$ source houdini_setup
+
+To get Server Information: https://www.sidefx.com/services/non-commercial-license/
+$ sesictrl -n
+
+Run License Administrator to enter licenses
+Manually enter keys
+# =========================
 
 
 
