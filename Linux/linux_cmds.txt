@@ -159,8 +159,11 @@ or
 $ su -
 
 # =========================
-Create symlink from a file in current directory
+- Create symlink from a file in current directory
 $ ln -sf /path/to/a/file
+
+- Remove a symlink
+$ unlink /path/to/symlink_name
 
 Finding count of file in a directory$ find . -type f -print | wc -l
 
