@@ -208,20 +208,20 @@ $ cd ~/Downloads
 $ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-rhel7-10-1-local-10.1.243-418.87.00-1.0-1.x86_64.rpm
 $ sudo rpm -i cuda-repo-rhel7-10-1-local-10.1.243-418.87.00-1.0-1.x86_64.rpm
 $ sudo yum clean all
-$ sudo yum -y install nvidia-driver-latest-dkms cuda
+$ sudo yum -y install cuda
 
 After installation
 - add theses lines to .bashrc:
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 run:
-$ source /root/.bashrc
+$ source ~/.bashrc
 $ nvcc --version
 
 - Install CUDA samples and further tests by compiling CUDA programs in the 'cuda-samples'
 $ cd samples/0_Simple/simpleCallback
 $ make
-$cd ../../bin/x86_64/linux/release
+$ cd ../../bin/x86_64/linux/release
 $ ./simpleCallback 
 Starting simpleCallback
 Found 1 CUDA capable GPUs
