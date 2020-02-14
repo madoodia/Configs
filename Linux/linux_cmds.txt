@@ -255,5 +255,18 @@ Manually enter keys
 # =========================
 
 
+# VSCode Installation 
+https://code.visualstudio.com/docs/setup/linux
+$ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+$ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+$sudo yum check-update
+$ sudo yum install code
+
+# Maya Instalation
+- Maya needs some dependencies
+- https://knowledge.autodesk.com/support/maya/troubleshooting/caas/CloudHelp/cloudhelp/2019/ENU/Installation-Maya/files/GUID-D2B5433C-E0D2-421B-9BD8-24FED217FD7F-htm.html
+then install maya
+
+
 
 
