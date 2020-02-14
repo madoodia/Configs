@@ -4,12 +4,19 @@ https://www.centos.org/
 2. If you want to just have Linux not two os on your system it is better to disable UEFI from BIOS Setup
 3. Start installation (boot from USB)
 4. In Installation create custom partitions for your SSD (or HDD):
-    - partition 1: / ext4    54 GiB (or whatever)
-    - partition 2: swap      6 GiB  (or whatever)
+    - partition 1: / ext4    54 GiB     (or whatever)
+    - partition 2: /boot     500 MiB    (or whatever)
+    - partition 3: swap      6 GiB      (or whatever)
 5. Will mount other hard disks later in /mnt
 6. Set user as admin , ...
 7. After Installation: 
     - Update system: $ sudo yum -y update
+
+# Install Timeshift
+- install epel
+- $ sudo yum install epel-release
+- $yum install timeshift
+- 
 
 # nvidia GPU installation
 - Install NVIDIA GPU Driver: (https://www.server-world.info/en/note?os=CentOS_7&p=nvidia)
