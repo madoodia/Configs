@@ -267,6 +267,7 @@ $ sudo yum install code
 - https://knowledge.autodesk.com/support/maya/troubleshooting/caas/CloudHelp/cloudhelp/2019/ENU/Installation-Maya/files/GUID-D2B5433C-E0D2-421B-9BD8-24FED217FD7F-htm.html
 then install maya
 
-
-
+# =========================
+Get Machine's IP:
+$ curl ifconfig.me
 
