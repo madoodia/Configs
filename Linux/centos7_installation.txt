@@ -14,7 +14,7 @@ https://www.centos.org/
 # Install Timeshift
 - install epel
 - $ sudo yum install epel-release
-- $yum install timeshift
+- $ yum install timeshift
 - 
 
 # nvidia GPU installation
@@ -32,6 +32,7 @@ https://www.centos.org/
     - $ reboot
     - After reboot it will go to non-gui mode (as root user)
     - $ sudo yum -y install kernel-devel-$(uname -r) kernel-header-$(uname -r) gcc make
+    - $ sudo yum -y install elfutils-libelf-devel
     - $ sudo yum -y groupinstall "Development Tools"
     - $ lspci | grep VGA
     - $ bash NVIDIA-Linux-x86_64-418.88.run (or any version you downloaded)
