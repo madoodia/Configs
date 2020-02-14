@@ -48,6 +48,7 @@ alias hg='history|grep' # hg bash
 alias count='find . -type f | wc -l'
 alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
+alias loc='cd /usr/local/'
 
 # alias unzip='unzip /path/to/file.zip -d /destination'
 

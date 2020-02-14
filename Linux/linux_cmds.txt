@@ -269,7 +269,7 @@ then install maya
 
 # =========================
 Install CMake
--> Build from source
+-> Build from source (needs to have mesa-libGLU.x86_64 mesa-libGL.x86_64 mesa-libGLU-devel.x86_64 )
 Download Latest version of CMake from : https://cmake.org/download/
 $ tar -zxvf cmake-*.tar.gz
 $ cd cmake-*
@@ -286,3 +286,15 @@ copy all files in bin and put in /usr/local/bin
 Get Machine's IP:
 $ curl ifconfig.me
 
+==================================================
+CMake in Linux
+Example:
+Building googleTest:
+$ git clone clone googletest:
+$ cd googletest
+$ mkdir build
+$ cd build
+$ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+$ sudo make
+copy include sample src scripts build/lib of googletest and googlemock to sdks folder
+==================================================
