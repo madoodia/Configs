@@ -6,14 +6,14 @@ $ cp -r <folder> <destination>
 # =========================
 
 intall git 2.x
-$ yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
-$ sudo yum install git
+install from this:
+https://gist.github.com/samrocketman/8671036
+
 $ git --version
 
 # (/home/[USER]/.gitconfig)
 $ git config --global user.name "Your Name"
 $ git config --global user.email "user@domain.com"
-$ git config list
 $ 
 
 # =========================
