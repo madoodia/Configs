@@ -268,6 +268,21 @@ $ sudo yum install code
 then install maya
 
 # =========================
+Install CMake
+-> Build from source
+Download Latest version of CMake from : https://cmake.org/download/
+$ tar -zxvf cmake-*.tar.gz
+$ cd cmake-*
+$ ./bootstrap
+$ sudo make
+$ sudo make install
+
+-> install binary
+Download Latest version of CMake from : https://cmake.org/download/
+$ tar -zxvf cmake-*.tar.gz
+$ cd cmake-*
+copy all files in bin and put in /usr/local/bin
+# =========================
 Get Machine's IP:
 $ curl ifconfig.me
 
