@@ -190,6 +190,6 @@ https://www.centos.org/
     Name[pl]=Ustawienia serwera X NVIDIA
     Comment[pl]=Narzędzie konfiguracyjne dla ustawień serwera X NVIDIA
     ```
-
-
----
+==========================================
+Install wacom tablet
+yum install libwacom-devel

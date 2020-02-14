@@ -30,8 +30,8 @@ export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
 # ln -sf /mnt/hdd/Qt5.14.1/5.14.1/gcc_64 Qt5
 
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+# export PATH=/usr/local/cuda/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
