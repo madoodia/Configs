@@ -7,7 +7,15 @@ $ cp -r <folder> <destination>
 
 intall git 2.x
 install from this:
-https://gist.github.com/samrocketman/8671036
+
+$ sudo yum remove git*
+$ sudo wget https://github.com/git/git/archive/v2.25.0.tar.gz
+$ cd git
+$ autoconf
+$ ./configure
+$ sudo make
+$ sudo make install
+
 
 $ git --version
 
@@ -40,10 +48,6 @@ installed in /home/[USER]/.themes
 
 # =========================
 - install skype (or use flatpak/flathub)
-$ wget https://go.skype.com/skypeforlinux-64.rpm
-$ sudo yum install skypeforlinux-64.rpm 
-$ skypeforlinux
-$   
 
 Insatall extensions in centos7, 8
 https://www.2daygeek.com/how-to-install-and-configure-gnome-shell-extensions-in-linux/
@@ -145,7 +149,6 @@ $ tar -xvf file.tar.gz
 
 $ sudo yum install unzip
 $ sudo yum install zip
-$ sudo yum install unar (for rar files it is unar not unrar :) )
 
 $ unzip /path/to/file.zip -d /destination
 
@@ -180,8 +183,8 @@ $ sudo rm -rf /path/file
 # =========================
 - Update GCC
 $ sudo yum install centos-release-scl
-$ sudo yum install devtoolset-7-gcc*
-$ scl enable devtoolset-7 bash
+$ sudo yum install devtoolset-8-gcc*
+$ scl enable devtoolset-8 bash
 $ which gcc
 $ gcc --version
 
@@ -265,7 +268,26 @@ $ sudo yum install code
 # Maya Instalation
 - Maya needs some dependencies
 - https://knowledge.autodesk.com/support/maya/troubleshooting/caas/CloudHelp/cloudhelp/2019/ENU/Installation-Maya/files/GUID-D2B5433C-E0D2-421B-9BD8-24FED217FD7F-htm.html
-then install maya
+
+# My way on centos8
+$ sudo yum install mesa-libGLw
+$ sudo yum install mesa-libGLU
+$ sudo yum install libXp
+$ sudo yum install gamin audiofile audiofile-devel e2fsprogs-libs
+
+$ sudo yum install audiofile audiofile-devel libtiff e2fsprogs-libs gamin liberation-fonts-common liberation-mono-fonts liberation-sans-fonts liberation-serif-fonts libICE libSM libvdpau libXau libxcb libX11 libXinerama libXinerama-devel libXext libXi libXmu libXcursor libXcursor-devel libXmu-devel libXp libXpm libXt libXv mesa-libGLw SDL tcsh xorg-x11-fonts-ISO8859-1-100dpi xorg-x11-fonts-ISO8859-1-75dpi zlib
+
+unzip maya2019.2.zip
+unzip maya2019.C.zip
+
+$ sudo yum install libpng12.x86_64
+
+$ cd maya2019.2
+
+$ sudo ./setup
+
+after installation Follow maya2019.C_d
+
 
 # =========================
 Install CMake
@@ -304,9 +326,7 @@ $ tar zxvf hdf5*.tar.gz
 $ cd hdf5*
 $ ./configure --prefix=/mnt/hdd/madoodia/sdks/HDF5
 $ make
-$ make check                # run test suite.
 $ make install
-$ make check-install        # verify installation.
 ==================================================
 install OpenEXR
 git clone git@github.com:AcademySoftwareFoundation/openexr.git

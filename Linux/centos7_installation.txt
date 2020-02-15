@@ -11,9 +11,13 @@ https://www.centos.org/
 7. After Installation: 
     - Update system: $ sudo yum -y update
 
-# Install Timeshift
+$ sudo yum install gcc curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
+$ sudo yum install wget perl-CPAN perl-devel
+$ sudo yum install asciidoc xmlto
 - install epel
 - $ sudo yum install epel-release
+
+# Install Timeshift
 - $ yum install timeshift
 - 
 

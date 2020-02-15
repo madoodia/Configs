@@ -20,6 +20,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] $PWD \$\[\033[00m\] '
 
 # =---------------- PATH & LIBS --------------= #
+# GIT
 # QT
 export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
 export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
