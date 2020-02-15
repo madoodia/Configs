@@ -298,3 +298,64 @@ $ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
 $ sudo make
 copy include sample src scripts build/lib of googletest and googlemock to sdks folder
 ==================================================
+Install HDF5:
+Download from: https://www.hdfgroup.org/downloads/hdf5/source-code/
+$ tar zxvf hdf5*.tar.gz
+$ cd hdf5*
+$ ./configure --prefix=/mnt/hdd/madoodia/sdks/HDF5
+$ make
+$ make check                # run test suite.
+$ make install
+$ make check-install        # verify installation.
+==================================================
+install OpenEXR
+git clone git@github.com:AcademySoftwareFoundation/openexr.git
+
+$ cd $source_directory/IlmBase
+$ ./bootstrap
+$ ./configure --prefix=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase
+$ make
+$ make install
+
+$ cd $source_directory/OpenEXR
+$ ./bootstrap
+$ ./configure --prefix=/mnt/hdd/madoodia/sdks/OpenEXR/OpenEXR --with-ilmbase-prefix=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase
+$ make 
+$ make install
+
+$ cd $source_directory/PyIlmBase
+$ ./bootstrap
+$ ./configure --prefix=/mnt/hdd/madoodia/sdks/OpenEXR/PyIlmBase --with-ilmbase-prefix=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase --disable-ilmbasetest --disable-boostpythontest
+$ make 
+$ make install
+- Run ./configure --help for a complete set of configuration options.
+==================================================
+install doxygen:
+$ git clone https://github.com/doxygen/doxygen.git
+$ cd doxygen
+$ mkdir build
+$ cd build
+$ cmake -G "Unix Makefiles" ..
+$ sudo make
+$ sudo make install
+==================================================
+install boost
+download : https://www.boost.org/users/download/
+$ cd path/to/boost_1_61_0
+$ ./bootstrap.sh --help
+$ ./bootstrap.sh --prefix=path/to/installation/prefix
+$ ./b2 install
+==================================================
+install Alembic
+git clone git@github.com:alembic/alembic.git
+==================================================
+IMPORTANT NOTES:
+Default include path in linux:
+/usr/include
+Default lib path (32bit)
+/usr/lib
+Default lib64 path (64bit)
+/usr/lib64
+Default bin path
+/usr/bin
+==================================================

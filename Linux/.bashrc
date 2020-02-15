@@ -33,6 +33,10 @@ export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
 # export PATH=/usr/local/cuda/bin:$PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
+# Extending C/C++ include path (used for building PyIlmBase)
+# export C_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/boost1.72/include;
+# export CPLUS_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/boost1.72/include;$CPLUS_INCLUDE_PATH
+
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
 alias ..='cd ..'
