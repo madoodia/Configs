@@ -182,10 +182,15 @@ $ sudo rm -rf /path/file
 
 # =========================
 - Update GCC
-$ sudo yum install centos-release-scl
-$ sudo yum install devtoolset-8-gcc*
-$ scl enable devtoolset-8 bash
-$ which gcc
+$ sudo yum -y update
+$ sudo yum -y install bzip2 wget gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel make
+$ sudo git clone git://gcc.gnu.org/git/gcc.git 
+$ cd gcc
+$ sudo mkdir build
+$ sudo cd build
+$ sudo ../configure --enable-languages=c,c++ --disable-multilib
+$ sudo make -j$(nproc)
+$ sudo make install
 $ gcc --version
 
 # =========================
