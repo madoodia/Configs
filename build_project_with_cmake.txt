@@ -58,3 +58,15 @@ $cmake -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release ..
 - Set Debugging Arguments in pbrt_exe project's properties as: --nthread 1 D:\path\to\scenes\scene.pbrt
 - Set breakpoint on SamplerIntegrator::Render()
 - Run the project
+
+
+==================================================
+==================================================
+CMake in Linux
+Example:
+Building googleTest:
+$ git clone clone googletest:
+$ cd googletest
+$ mkdir build
+$ cd build
+$ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..

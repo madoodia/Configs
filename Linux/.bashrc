@@ -20,6 +20,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] $PWD \$\[\033[00m\] '
 
 # =---------------- PATH & LIBS --------------= #
+# GIT
 # QT
 export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
 export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
@@ -30,8 +31,12 @@ export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
 # ln -sf /mnt/hdd/Qt5.14.1/5.14.1/gcc_64 Qt5
 
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+# export PATH=/usr/local/cuda/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+# Extending C/C++ include path (used for building PyIlmBase)
+# export C_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/boost1.72/include;
+# export CPLUS_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/boost1.72/include;$CPLUS_INCLUDE_PATH
 
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
@@ -48,6 +53,7 @@ alias hg='history|grep' # hg bash
 alias count='find . -type f | wc -l'
 alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
+alias loc='cd /usr/local/'
 
 # alias unzip='unzip /path/to/file.zip -d /destination'
 
