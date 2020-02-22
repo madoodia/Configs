@@ -1,0 +1,28 @@
+
+#  ---------------------------------
+
+# Running on Windows:
+# open Visual Studio Developer Command Propmt
+$ cd to build path
+$ cmake -G "NMake Makefiles" ..
+$ nmake
+#  you can see Tutorial.exe in the build path
+
+
+# Running on Linux:
+$ cd to build path
+$ cmake -G "Unix Makefiles" ..
+$ make
+#  you can see Tutorial in the build path
+
+
+
+#  ---------------------------------
+# for installing in a custom dir
+$ cmake -DCMAKE_INSTALL_PREFIX=D:/Tutorial -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles" ..
+$ cmake --build . --target INSTALL
+
+
+# --------------------------------
+# if you have test:
+$ ctest -C Release -VV
