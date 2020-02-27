@@ -193,6 +193,10 @@ $ sudo make -j$(nproc)
 $ sudo make install
 $ gcc --version
 
+For uninstall
+$ cd build/gcc
+$ sudo make uninstall
+
 # =========================
 Getting size of each folder
 $ sudo du -shc /var/*
