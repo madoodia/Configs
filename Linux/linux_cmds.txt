@@ -198,6 +198,15 @@ $ cd build/gcc
 $ sudo make uninstall
 
 # =========================
+Install make
+download make from http://ftp.gnu.org/gnu/make/
+$ cd make*
+$ ./configure
+$ make
+$ sudo make install
+
+add /usr/local/bin to $PATH
+# =========================
 Getting size of each folder
 $ sudo du -shc /var/*
 
