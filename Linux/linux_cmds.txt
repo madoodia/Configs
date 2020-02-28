@@ -197,6 +197,10 @@ For uninstall
 $ cd build/gcc
 $ sudo make uninstall
 
+# or install gcc version 6 or 7 by devtoolset
+$ sudo yum -y install centos-release-scl
+$ sudo yum -y install devtoolset-6
+
 # =========================
 Install make
 download make from http://ftp.gnu.org/gnu/make/
