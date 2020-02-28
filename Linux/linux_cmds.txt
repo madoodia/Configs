@@ -401,3 +401,6 @@ Default lib64 path (64bit)
 Default bin path
 /usr/bin
 ==================================================
+find a folder in root:
+$ cd /
+$ sudo find -type d -name '*devtoolset-6*'
