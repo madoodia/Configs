@@ -202,6 +202,9 @@ $ sudo yum -y install centos-release-scl
 $ sudo yum -y install devtoolset-6
 
 # =========================
+install llvm/clang
+https://clang.llvm.org/get_started.html
+# =========================
 Install make
 download make from http://ftp.gnu.org/gnu/make/
 $ cd make*

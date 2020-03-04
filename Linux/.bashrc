@@ -23,10 +23,11 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # make
 export PATH=/usr/local/bin:$PATH
 # gcc
-export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
+# export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
 export SDKS_LOCATION=/mnt/hdd/madoodia/sdks
 export DEV_LOCATION=/mnt/hdd/madoodia/dev
+export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # GIT
 # QT
 # export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
@@ -63,6 +64,13 @@ alias va='source ./venv/bin/activate'
 alias loc='cd /usr/local/'
 
 # alias unzip='unzip /path/to/file.zip -d /destination'
+
+
+# Setup Env for GCC
+alias gcc6='export PATH=/opt/rh/devtoolset-6/root/bin:$PATH'
+alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
+
+alias code='gcc6;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
 alias vse='cd /home/reza/.vscode/extensions' # contains extension
@@ -102,7 +110,3 @@ alias tmp='cd ~ && rm -rf ~/tmp && mkdir -p ~/tmp && cd ~/tmp'
 
 alias qt='sdks; cd Qt5'
 alias cuda='sdks; cd CUDA'
-
-# Setup Env for GCC
-alias gcc6='export PATH=/opt/rh/devtoolset-6/root/bin:$PATH'
-alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
