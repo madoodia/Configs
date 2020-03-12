@@ -7,3 +7,26 @@ or
 $ git remote show origin
 
 -------------------------------
+Creating git repo from commandline
+$ mkdire test
+$ cd test
+$ git init
+$ git push
+
+copy history of one repo to another
+$ mkdir destination
+$ cd destination
+$ git init
+$ git pull git@github.com:madoodia/target
+$ git log
+
+Clearing some folders from the repo
+$ git rm -r folder1 folder2
+
+Adding commits description
+$ git add src/README.md
+$ git commit
+write whatever you want in the editor
+$ git commit --amend
+$ git tag Ep_1
+

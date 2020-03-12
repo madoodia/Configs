@@ -46,6 +46,10 @@ export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # export C_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/boost1.72/include;
 # export CPLUS_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/boost1.72/include;$CPLUS_INCLUDE_PATH
 
+# nodejs
+export PATH=/mnt/hdd/madoodia/sdks/nodejs-v12:$PATH
+
+
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
 alias ..='cd ..'
