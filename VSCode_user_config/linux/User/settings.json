@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "explorer.confirmDelete": false,
+    "files.associations": {
+        "*.linux": "makefile"
+    },
+    "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+    "explorer.confirmDragAndDrop": false
+}
