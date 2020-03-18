@@ -121,4 +121,5 @@ alias qt='sdks; cd Qt5'
 alias cuda='sdks; cd CUDA'
 
 alias qt1='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH'
-alias qtcreator='qt1;qtcreator'
+alias qt2='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/bin:$PATH'
+alias qtset='qt1;qt2'
