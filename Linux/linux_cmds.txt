@@ -30,90 +30,17 @@ $ ssh-keygen -o
 then copy it in github.com and create new ssh key
 
 # =========================
-# installing a theme
-- go to https://www.gnome-look.org
-- download a them like Qogir theme
-$ git clone https://github.com/vinceliuice/Qogir-theme
-
-- install Obsidian theme and icon pack
-$ git clone https://github.com/madmaxms/theme-obsidian-2
-$ cp -rf Obsidian-2/ ~/.theme
-
-$ git clone https://github.com/madmaxms/iconpack-obsidian/
-$ cp -rf iconpack-obsidian/ ~/.icons
-
-install it:
-$ ./Install -c -i -s
-installed in /home/[USER]/.themes
-
 # =========================
 - install skype (or use flatpak/flathub)
 
 Insatall extensions in centos7, 8
 https://www.2daygeek.com/how-to-install-and-configure-gnome-shell-extensions-in-linux/
 
-# =========================
-- install extension (https://micheleg.github.io/dash-to-dock/download.html)
--   Dash to Dock
--   GNOME Shell Extension
-$ download latest zip file
-$ unzip dash-to-dock@micxgx.gmail.com.zip -d ~/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
-- to install the extension in your home directory. A Shell reload is required Alt+F2 r Enter and the extension has to be enabled with gnome-tweak-tool or with dconf.
+$ sudo flatpak install -y --from https://flathub.org/repo/appstream/com.skype.Client.flatpakref
+$ flatpak run com.skype.Client
+
 
 # =========================
-- How to remove the bottom panel in gnome 3 classic?
-$ rm -r /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
-If you want it back later, you may re-install that plugin’s package.
-$ yum reinstall gnome-shell-extension-window-list
-
-# =========================
-METHOD 1
-- install wifi driver (https://www.youtube.com/watch?v=TG_EHEWHQuM)
-$ lspci | grep -i broadcom
-- Linux Find Wireless Wifi Driver Chipset Information
-# Broadcom Inc. and subsidiaries BCM43142 802.11b/g/n (rev 01)
-# getting RPM Fusion
-https://rpmfusion.org/Configuration/
-- manual installation:
-$ sudo yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
-
-Tainted repos
-
-$ sudo yum install rpmfusion-free-release-tainted
-$ sudo yum install libdvdcss
-$ sudo yum install rpmfusion-nonfree-release-tainted
-
-- install kernel-devel
-$ sudo yum install kernel-devel
-Installed:
-  kernel-devel.x86_64 0:3.10.0-957.5.1.el7 
-
-$ sudo yum install kernel-headers
-
-Download driver (https://rpmfind.net)
-google: BCM43142 Broadcom wl download rpm
-
-- i downloaded verion of fedora 29 
-( RpmFusion Non-Free for Fedora 29 for x86_64 >>> broadcom-wl-6.30.223.271-8.fc29.noarch.rpm)
-$ sudo rpm -ivh broadcom-wl-6.30.223.271-8.fc29.noarch.rpm 
-
-
-- install akmods
-$ sudo yum install akmods
-
-- run akmods
-$ akmods
-
-$ sudo modprobe wl
-
-# --------------------
-METHOD 2
-
-first:
-Build and install kmod-wl for EL6/7 (http://elrepo.org/tiki/wl-kmod)
-
-second:
-https://wiki.centos.org/HowTos/Laptops/Wireless/Broadcom
 
 # =========================
 - find and install all updates for softwares
@@ -283,6 +210,7 @@ Manually enter keys
 # =========================
 
 
+# =========================
 # VSCode Installation 
 https://code.visualstudio.com/docs/setup/linux
 $ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc

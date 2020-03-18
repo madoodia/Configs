@@ -96,7 +96,7 @@ alias pkgs='mad;cd pkgs'
 alias sdks='mad;cd sdks'
 alias sfw='mad;cd softwares'
 alias dl='cd ~/Downloads'
-alias mdl='cd /mnt/hdd/madoodia/_downloads_archive'
+alias mdl='cd /mnt/hdd/madoodia/_downloads'
 
 alias paths='ls -l `pwd`/*'
 alias clr='clear'
