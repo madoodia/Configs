@@ -151,11 +151,12 @@ $ sudo chmod +x qt-opensource-linux-x64-5.14.1.run
 $ sudo ./qt-opensource-linux-x64-5.14.1.run
 
 - add theses lines to .bashrc:
-export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
-export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
+export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH
+export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
 
-Run this: (for fixing qtcreator bug)
-$ ldd /mnt/hdd/Qt5.14.1/5.14.1/gcc_64/plugins/platforms/libqxcb.so
+# Run this: (for fixing qtcreator bug)
+# Warning: Unable to determine gdb target ABI
+$ ldd /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/plugins/platforms/libqxcb.so
 # =========================
 CUDA Toolkit 10.1 original for Lenovo Laptop
 $ cd ~/Downloads

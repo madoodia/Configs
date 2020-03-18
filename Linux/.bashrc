@@ -34,13 +34,14 @@ export DEV_LOCATION=/mnt/hdd/madoodia/dev
 export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # GIT
 # QT
-# export PATH=/mnt/hdd/Qt5.14.1/Tools/QtCreator/bin:$PATH
-# export PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
-# export LD_LIBRARY_PATH=/mnt/hdd/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
-# QT_INSTALLATION_LOCATION = /mnt/hdd/Qt5.14.1/5.14.1/gcc_64
-# QT_SDK_LOCATION = /mnt/hdd/madoodia/sdks/Qt5 -> /mnt/hdd/Qt5.14.1/5.14.1/gcc_64
-# Create symlink
-# ln -sf /mnt/hdd/Qt5.14.1/5.14.1/gcc_64 Qt5
+# export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH
+# export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
+# export LD_LIBRARY_PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
+# QT_INSTALLATION_LOCATION = /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64
+# QT_SDK_LOCATION = /mnt/hdd/madoodia/softwares/madoodia/sdks/Qt5 -> /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64
+
+# Create symlink inside SDKS
+# ln -sf /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64 Qt5
 
 # CUDA
 # export PATH=/usr/local/cuda/bin:$PATH
@@ -118,3 +119,6 @@ alias tmp='cd ~ && rm -rf ~/tmp && mkdir -p ~/tmp && cd ~/tmp'
 
 alias qt='sdks; cd Qt5'
 alias cuda='sdks; cd CUDA'
+
+alias qt1='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH'
+alias qtcreator='qt1;qtcreator'
