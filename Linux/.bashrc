@@ -97,6 +97,7 @@ alias bbbb='cd ../../../..'
 
 alias mad='cd /mnt/hdd/madoodia'
 alias dev='mad;cd dev'
+alias sfw='mad;cd softwares'
 alias pkgs='mad;cd pkgs'
 alias sdks='mad;cd sdks'
 alias sfw='mad;cd softwares'
