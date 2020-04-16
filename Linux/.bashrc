@@ -54,6 +54,8 @@ export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # nodejs
 export PATH=/mnt/hdd/madoodia/sdks/nodejs-v12/bin:$PATH
 
+# GammaRay
+export PATH=/mnt/hdd/madoodia/softwares/GammaRay/bin:$PATH
 
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE

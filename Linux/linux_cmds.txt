@@ -336,3 +336,13 @@ Default bin path
 find a folder in root:
 $ cd /
 $ sudo find -type d -name '*devtoolset-6*'
+==================================================
+install KDAB GammaRay
+$ git clone git@github.com:KDAB/GammaRay.git
+$ cd GammaRay
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_PREFIX=/your/path/softwares -DCMAKE_PREFIX_PATH=/your/sdks/Qt5 ..
+$ make
+$ make install
+$ ./path/to/GammaRay/bin/gammaray
