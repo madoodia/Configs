@@ -21,7 +21,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 
 # =---------------- PATH & LIBS --------------= #
 # make
-export PATH=/usr/local/bin:$PATH
+# export PATH=/usr/local/bin:$PATH
 
 # CMake
 export PATH=/mnt/hdd/madoodia/softwares/cmake-3.17/bin:$PATH
@@ -57,6 +57,9 @@ export PATH=/mnt/hdd/madoodia/sdks/nodejs-v12/bin:$PATH
 # GammaRay
 export PATH=/mnt/hdd/madoodia/softwares/GammaRay/bin:$PATH
 
+# Houdini
+export PATH=/mnt/hdd/madoodia/softwares/hfs18.0.416/bin:$PATH
+
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
 alias ..='cd ..'
@@ -78,10 +81,9 @@ alias loc='cd /usr/local/'
 
 
 # Setup Env for GCC
-alias gcc6='export PATH=/opt/rh/devtoolset-6/root/bin:$PATH'
 alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
 
-alias code='gcc6;code'
+alias code='gcc9;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
 alias vse='cd /home/reza/.vscode/extensions' # contains extension
@@ -126,3 +128,4 @@ alias cuda='sdks; cd CUDA'
 alias qt1='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH'
 alias qt2='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/bin:$PATH'
 alias qtset='qt1;qt2'
+

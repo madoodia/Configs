@@ -99,7 +99,7 @@ Finding count of file in a directory$ find . -type f -print | wc -l
 
 Finding a string in all files of a path
 $ grep "redeem reward" /home/tom/*.txt
-$ $ grep -r "redeem reward" /home/tom/
+$ grep -r "redeem reward" /home/tom/
 
 CPU Usage:
 $ htop

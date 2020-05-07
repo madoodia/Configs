@@ -35,7 +35,7 @@ $ sudo yum install asciidoc xmlto
     - $ dracut --force
     - $ reboot
     - After reboot it will go to non-gui mode (as root user)
-    - $ sudo yum -y install kernel-devel-$(uname -r) kernel-header-$(uname -r) gcc make
+    - $ sudo yum -y install kernel-devel-$(uname -r) kernel-headers-$(uname -r) gcc make
     - $ sudo yum -y install elfutils-libelf-devel
     - $ sudo yum -y groupinstall "Development Tools"
     - $ lspci | grep VGA
