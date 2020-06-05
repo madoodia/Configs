@@ -59,6 +59,7 @@ export PATH=/mnt/hdd/madoodia/softwares/GammaRay/bin:$PATH
 
 # Houdini
 export PATH=/mnt/hdd/madoodia/softwares/hfs18.0.416/bin:$PATH
+export HFS=/mnt/hdd/madoodia/softwares/hfs18.0.416
 
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE

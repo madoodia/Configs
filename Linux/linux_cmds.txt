@@ -320,8 +320,22 @@ $ ./bootstrap.sh --help
 $ ./bootstrap.sh --prefix=path/to/installation/prefix
 $ ./b2 install
 ==================================================
+install zlib
+
+- download from https://zlib.net/
+$ ./configure --prefix=/mnt/.../zlib
+$ make
+$ make install
+
+==================================================
 install Alembic
 git clone git@github.com:alembic/alembic.git
+
+
+cmake -G "Unix Makefiles" -DUSE_PYALEMBIC=ON -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/alembic -DILMBASE_ROOT=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase ..
+
+cmake -G "Unix Makefiles" -DUSE_EXAMPLES=ON -DUSE_PYALEMBIC=ON -DUSE_HDF5=ON -DHDF_ROOT=/mnt/hdd/madoodia/sdks/HDF5 -DALEMBIC_LIB_USES_BOOST=ON -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/alembic -DILMBASE_ROOT=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase -DBOOST_ROOT=/mnt/hdd/madoodia/sdks/boost -DBoost_INCLUDE_DIR=/mnt/hdd/madoodia/sdks/boost/include -DBoost_LIBRARY_DIRS=/mnt/hdd/madoodia/sdks/boost/lib -DZLIB_INCLUDE_DIR=/mnt/hdd/madoodia/sdks/zlib/include -DZLIB_LIBRARY=/mnt/hdd/madoodia/sdks/zlib/lib ..
+
 ==================================================
 IMPORTANT NOTES:
 Default include path in linux:
