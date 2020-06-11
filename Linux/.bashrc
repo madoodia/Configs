@@ -82,9 +82,10 @@ alias loc='cd /usr/local/'
 
 
 # Setup Env for GCC
-alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
+alias g++9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
+alias g++6='export PATH=/usr/local/bin:$PATH'
 
-alias code='gcc9;code'
+alias code='g++6;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
 alias vse='cd /home/reza/.vscode/extensions' # contains extension
