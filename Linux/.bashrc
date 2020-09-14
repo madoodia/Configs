@@ -20,6 +20,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] $PWD \$\[\033[00m\] '
 
 # =---------------- PATH & LIBS --------------= #
+
 # make
 # export PATH=/usr/local/bin:$PATH
 
@@ -29,19 +30,20 @@ export PATH=/mnt/hdd/madoodia/softwares/cmake-3.17/bin:$PATH
 # gcc
 # export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
+export SFW_LOCATION=/mnt/hdd/madoodia/softwares
 export SDKS_LOCATION=/mnt/hdd/madoodia/sdks
 export DEV_LOCATION=/mnt/hdd/madoodia/dev
 export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # GIT
 # QT
-# export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH
-# export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/bin:$PATH
-# export LD_LIBRARY_PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/lib:$LD_LIBRARY_PATH
-# QT_INSTALLATION_LOCATION = /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64
-# QT_SDK_LOCATION = /mnt/hdd/madoodia/softwares/madoodia/sdks/Qt5 -> /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64
+export PATH=/mnt/hdd/madoodia/softwares/Qt/Tools/QtCreator/bin:$PATH
+export PATH=/mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64/bin:$PATH
+export LD_LIBRARY_PATH=/mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64/lib:/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64:$LD_LIBRARY_PATH
+# QT_INSTALLATION_LOCATION = /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64
+# QT_SDK_LOCATION = /mnt/hdd/madoodia/softwares/madoodia/sdks/Qt5 -> /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64
 
 # Create symlink inside SDKS
-# ln -sf /mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64 Qt5
+# ln -sf /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64 Qt5
 
 # CUDA
 # export PATH=/usr/local/cuda/bin:$PATH
@@ -82,10 +84,9 @@ alias loc='cd /usr/local/'
 
 
 # Setup Env for GCC
-alias g++9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
-alias g++6='export PATH=/usr/local/bin:$PATH'
+alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
 
-alias code='g++6;code'
+alias code='gcc9;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
 alias vse='cd /home/reza/.vscode/extensions' # contains extension
@@ -127,7 +128,9 @@ alias tmp='cd ~ && rm -rf ~/tmp && mkdir -p ~/tmp && cd ~/tmp'
 alias qt='sdks; cd Qt5'
 alias cuda='sdks; cd CUDA'
 
-alias qt1='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/Tools/QtCreator/bin:$PATH'
-alias qt2='export PATH=/mnt/hdd/madoodia/softwares/Qt5.14.1/5.14.1/gcc_64/bin:$PATH'
+alias qt1='export PATH=/mnt/hdd/madoodia/softwares/Qt/Tools/QtCreator/bin:$PATH'
+alias qt2='export PATH=/mnt/hdd/madoodia/softwares/Qt/5.15.1/gcc_64/bin:$PATH'
 alias qtset='qt1;qt2'
 
+# alias ocl='dev;code OpenCL;pkgs;code HandOnOpenCL/Exercises-Solutions;code opencl-book-samples;code CL-image-GL;sdks;code OpenCL/Samples/NVIDIAGPUComputingSDK'
+# alias aby='dev;code Abyssal;code RebuildCurves;code Zolf;sfw;code Qt5.14.1/Examples/Qt-5.14.1/widgets/mainwindows;code Qt5.14.1/Examples/Qt-5.14.1/widgets/graphicsview;swf;cd /mnt/hdd/madoodia/softwares/Qt5.14.1/Examples/Qt-5.14.1/widgets/widgets;code .;dev;code codelab;'
