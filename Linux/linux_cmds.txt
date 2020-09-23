@@ -368,3 +368,17 @@ Error: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found
 $ strings /lib64/libstdc++.so.6 | grep GLIBCXX
 Solution:
 export LD_LIBRARY_PATH=/mnt/hdd/madoodia/softwares/Qt/5.15.1/gcc_64/lib:/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64:$LD_LIBRARY_PATH
+
+======
+Export/Import QtCreator Settings:
+QtCreator Configs are in this path:
+/home/<USER>/.config/QtProject
+
+so for keeping Settings in some place copy it to your custom path
+$ cp -r /home/<USER>/.config/QtProject /your/path
+
+Coding Style is in:
+/home/<USER>/.config/QtProject/styles
+
+
+---------------------------------------------
