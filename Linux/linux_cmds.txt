@@ -378,7 +378,40 @@ so for keeping Settings in some place copy it to your custom path
 $ cp -r /home/<USER>/.config/QtProject /your/path
 
 Coding Style is in:
-/home/<USER>/.config/QtProject/styles
+/home/<USER>/.config/QtProject/styles/creator-FILENAME.XML
+
+And Shortcuts are here:
+/home/<USER>/.config/QtProject/QtCreator.ini
+
+Add .clang-format to QtCreator (https://www.vikingsoftware.com/using-clang-format-with-qtcreator/)
+1. Help > About Plugin > Enable Beautifier
+2. Restart QtCreator
+3. Tools > Options > Beautifier > Clang Format:
+    - Set Clang Format Command to your clang-format executable file
+    - I personally used my VSCODE's C++ extensions' clang-format bundled in this path:
+        /home/reza/.vscode/extensions/ms-vscode.cpptools-1.0.1/LLVM/bin/clang-format
+4. Tools > Options > Beautifier > Clang Format:
+    - put "Use Predefined Style" on File
+5. Tools > Options > Beautifier > General:
+    - Enable Auto Format on file save
+    - Tool: ClangFormat
+6. Create this file inside project
+.clang-format
+
+with this content for start: (you can change it based on clang-format features in its website)
+BasedOnStyle: LLVM
+UseTab: Never
+IndentWidth: 2
+TabWidth: 4
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+ColumnLimit: 0
+AccessModifierOffset: -2
+
+7. Tools > Options > Environment > Keyboard:
+    - search for FormatAtCursor
+    - set Ctrl+Alt+F (or whatever you like) for apply formatting with keyboard
 
 
 ---------------------------------------------
