@@ -3,8 +3,12 @@
     "files.autoSave": "onFocusChange",
     "explorer.confirmDelete": false,
     "files.associations": {
-        "*.linux": "makefile"
+        "*.linux": "makefile",
+        "*.cl": "cpp",
+        "*.qml": "qml",
     },
     "workbench.colorTheme": "madoodia (Visual Studio Dark)",
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "extensions.ignoreRecommendations": true,
+    "editor.tabSize": 2
 }
