@@ -361,6 +361,8 @@ $ make
 $ make install
 $ ./path/to/GammaRay/bin/gammaray
 
+or build in QtCreator
+
 
 -----------------------------------------------
 Qt Tips
