@@ -12,5 +12,5 @@ $ slmgr /ipk ABCDE-FGHIJ-...
 ----------------
 
 Create Symlink in windows:
-$ mlink /D destination/path target/path
+$ mklink /D /path/of/link /path/to/target
 ---------------------------------------------
