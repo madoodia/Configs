@@ -1,0 +1,271 @@
+
+D:\madoodia\pkgs\oiio\build>cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/oiio -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/tiff;D:/madoodia/sdks/zlib;D:/madoodia/sdks/libpng16;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/boost;C:/Python39/Lib/site-packages; -DCMAKE_BUILD_TYPE=Release ..
+-- The CXX compiler identification is MSVC 19.27.29112.0
+-- The C compiler identification is MSVC 19.27.29112.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Building OpenImageIO 2.3.0.1
+-- CMake version is 3.18.4
+-- Configuring OpenImageIO 2.3.0.1
+-- CMake 3.18.4
+-- CMake system           = Windows-10.0.19041
+-- CMake system name      = Windows
+-- Project source dir     = D:/madoodia/pkgs/oiio
+-- Project build dir      = D:/madoodia/pkgs/oiio/build
+-- Project install prefix = D:/madoodia/sdks/oiio
+-- Configuration types    =
+-- Build type             = Release
+-- Setting Namespace to: OpenImageIO_v2_3
+-- CMAKE_CXX_COMPILER     = C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe
+-- CMAKE_CXX_COMPILER_ID  = MSVC
+-- Building for C++11
+-- clang-format found: C:/Program Files/LLVM/bin/clang-format.exe
+-- ←[1;37m
+-- * Checking for dependencies...
+-- *   - Missing a dependency 'Package'?
+-- *     Try cmake -DPackage_ROOT=path or set environment var Package_ROOT=path
+-- *     For many dependencies, we supply src/build-scripts/build_Package.bash
+-- *   - To exclude an optional dependency (even if found),
+-- *     -DUSE_Package=OFF or set environment var USE_Package=OFF
+-- ←[m
+-- ←[32mFound Boost 106100 ←[m
+-- ←[32mFound ZLIB 1.2.11 ←[m
+-- ←[32mFound TIFF 4.0.7 ←[m
+-- ←[32mFound OpenEXR 2.2.0 ←[m
+CMake Warning (dev) at C:/Program Files/CMake/share/cmake-3.18/Modules/FindPackageHandleStandardArgs.cmake:273 (message):
+  The package name passed to `find_package_handle_standard_args` (JPEG) does
+  not match the name of the calling package (JPEGTurbo).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  src/cmake/modules/FindJPEGTurbo.cmake:36 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  src/cmake/checked_find_package.cmake:81 (find_package)
+  src/cmake/externalpackages.cmake:105 (checked_find_package)
+  CMakeLists.txt:120 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found JPEG: D:/madoodia/sdks/libjpeg_turbo/lib/jpeg.lib
+-- ←[32mFound JPEGTurbo  ←[m
+-- Using internal PugiXML
+-- ←[32mFound Python 3.9.0 ←[m
+-- ←[32mFound PNG 1.6.29 ←[m
+-- ←[31mBZip2 library not found ←[m
+-- ←[31m    Try setting BZip2_ROOT ? ←[m
+-- ←[31mFreetype library not found ←[m
+-- ←[31m    Try setting Freetype_ROOT ? ←[m
+-- ←[31mHDF5 library not found ←[m
+-- ←[31m    Try setting HDF5_ROOT ? ←[m
+-- ←[31mOpenColorIO library not found ←[m
+-- ←[31m    Try setting OpenColorIO_ROOT ? ←[m
+-- ←[31m    Maybe this will help:  src/build-scripts/build_OpenColorIO.bash ←[m
+-- ←[31mOpenCV library not found ←[m
+-- ←[31m    Try setting OpenCV_ROOT ? ←[m
+-- ←[31mTBB library not found ←[m
+-- ←[31m    Try setting TBB_ROOT ? ←[m
+-- ←[31mDCMTK library not found ←[m
+-- ←[31m    Try setting DCMTK_ROOT ? ←[m
+-- ←[31mFFmpeg library not found ←[m
+-- ←[31m    Try setting FFmpeg_ROOT ? ←[m
+CMake Warning (dev) at src/cmake/checked_find_package.cmake:69 (set):
+  Cannot set "ENABLE_Field3D": current scope has no parent.
+Call Stack (most recent call first):
+  src/cmake/externalpackages.cmake:156 (checked_find_package)
+  CMakeLists.txt:120 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- ←[31mNot using Field3D -- disabled (because HDF5 was not found) ←[m
+-- ←[31mGIF library not found ←[m
+-- ←[31m    Try setting GIF_ROOT ? ←[m
+-- ←[31mLibheif library not found ←[m
+-- ←[31m    Try setting Libheif_ROOT ? ←[m
+-- ←[31mLibRaw library not found ←[m
+-- ←[31m    Try setting LibRaw_ROOT ? ←[m
+-- ←[31m    Maybe this will help:  src/build-scripts/build_LibRaw.bash ←[m
+-- ←[31mOpenJpeg library not found ←[m
+-- ←[31m    Try setting OpenJpeg_ROOT ? ←[m
+CMake Warning (dev) at src/cmake/checked_find_package.cmake:69 (set):
+  Cannot set "ENABLE_OpenVDB": current scope has no parent.
+Call Stack (most recent call first):
+  src/cmake/externalpackages.cmake:168 (checked_find_package)
+  CMakeLists.txt:120 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- ←[31mNot using OpenVDB -- disabled (because TBB was not found) ←[m
+-- ←[31mPTex library not found ←[m
+-- ←[31m    Try setting PTex_ROOT ? ←[m
+-- ←[31mWebP library not found ←[m
+-- ←[31m    Try setting WebP_ROOT ? ←[m
+-- ←[31m    Maybe this will help:  src/build-scripts/build_WebP.bash ←[m
+-- ←[31mNot using R3DSDK -- disabled  ←[m
+-- ←[31mNuke library not found ←[m
+-- ←[31m    Try setting Nuke_ROOT ? ←[m
+-- ←[32mFound OpenGL  ←[m
+-- ←[32mFound Qt5 5.15.0 ←[m
+-- ←[31mLibsquish library not found ←[m
+-- ←[31m    Try setting Libsquish_ROOT ? ←[m
+-- Downloading local fmtlib/fmt
+-- ←[32mFound fmt 60102 ←[m
+-- Downloading local Tessil/robin-map
+-- ←[32mFound Robinmap  ←[m
+CMake Warning at src/dicom.imageio/CMakeLists.txt:11 (message):
+  DICOM plugin will not be built, no DCMTK
+
+
+-- FFmpeg not found: ffmpeg plugin will not be built
+CMake Warning at src/gif.imageio/CMakeLists.txt:11 (message):
+  GIF plugin will not be built
+
+
+CMake Warning at src/heif.imageio/CMakeLists.txt:10 (message):
+  heif plugin will not be built
+
+
+CMake Warning at src/jpeg2000.imageio/CMakeLists.txt:11 (message):
+  Jpeg-2000 plugin will not be built
+
+
+CMake Warning at src/raw.imageio/CMakeLists.txt:11 (message):
+  Raw plugin will not be built
+
+
+-- WebP plugin will not be built
+-- ←[32mFound pybind11 2.6.0 ←[m
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests gpsread;oiiotool;oiiotool-attribs;oiiotool-copy;oiiotool-readerror;oiiotool-xform;oiiotool-fixnan;maketx;oiiotool-maketx;misnamed-file;missingcolor;texture-interp-bicubic;texture-blurtube;texture-crop;texture-cropover;texture-derivs;texture-fill;texture-filtersize;texture-flipt;texture-gettexels;texture-gray;texture-mip-nomip;texture-mip-trilinear;texture-overscan;texture-pointsample;texture-uint8;texture-width0blur;texture-fat;texture-skinny;texture-wrapfill;texture-missing;texture-res;texture-maxres;texture-udim;texture-udim2
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests python-typedesc;python-paramlist;python-imagespec;python-roi;python-deep;python-colorconfig;python-imageinput;python-imageoutput;python-imagebuf;python-imagebufalgo
+--   -> You can find it at
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../bmpsuite
+--   -> Will not run tests bmp
+--   -> You can find it at http://entropymine.com/jason/bmpsuite/bmpsuite.zip
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests dpx
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../fits-images
+--   -> Will not run tests fits
+--   -> You can find it at http://www.cv.nrao.edu/fits/data/tests/
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests gif
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests ico
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests iff
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../j2kp4files_v1_5
+--   -> Will not run tests jpeg2000
+--   -> You can find it at http://www.itu.int/net/ITU-T/sigdb/speimage/ImageForm-s.aspx?val=10100803
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../openexr-images
+--   -> Will not run tests openexr-suite;openexr-multires;openexr-chroma;openexr-v2;openexr-window;perchannel;oiiotool-deep
+--   -> You can find it at http://www.openexr.com/downloads.html
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../openexr-images
+--   -> Will not run tests openexr-damaged
+--   -> You can find it at http://www.openexr.com/downloads.html
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests png
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests pnm
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests psd;psd-colormodes
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images/raw
+--   -> Will not run tests raw
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests rla
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests sgi
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests targa-tgautils
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../libtiffpic
+--   -> Will not run tests tiff-suite;tiff-depths;tiff-misc
+--   -> You can find it at http://www.simplesystems.org/libtiff/images.html
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images/webp
+--   -> Will not run tests webp
+--   -> You can find it at Recent checkout of oiio-images
+
+--
+
+Did not find D:/madoodia/pkgs/oiio/../oiio-images
+--   -> Will not run tests zfile
+--   -> You can find it at Recent checkout of oiio-images
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/madoodia/pkgs/oiio/build
+
+D:\madoodia\pkgs\oiio\build>
