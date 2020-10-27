@@ -828,7 +828,7 @@ cmake --build . --target INSTALL
 
 ------------------------
 
-# building OpenImageIO (oiio) new 2020 (------ failed -------)
+# building OpenImageIO (oiio) new 2020
 
 mkdir build
 cd build

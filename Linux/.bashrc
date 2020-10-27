@@ -25,7 +25,6 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # export PATH=/usr/local/bin:$PATH
 
 # CMake
-export PATH=/mnt/hdd/madoodia/softwares/cmake-3.17/bin:$PATH
 
 # gcc
 # export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
@@ -35,10 +34,12 @@ export SDKS_LOCATION=/mnt/hdd/madoodia/sdks
 export DEV_LOCATION=/mnt/hdd/madoodia/dev
 export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # GIT
-# QT
-export PATH=/mnt/hdd/madoodia/softwares/Qt/Tools/QtCreator/bin:$PATH
-export PATH=/mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64/bin:$PATH
-export LD_LIBRARY_PATH=/mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64/lib:/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64:$LD_LIBRARY_PATH
+# QT (enable these three line when you want to run the built program, not for building software)
+export PATH=$SFW_LOCATION/Qt/Tools/QtCreator/bin:$PATH
+export PATH=$SFW_LOCATION/Qt/Tools/QtDesignStudio/bin:$PATH
+export PATH=$SFW_LOCATION/Qt/5.15.0/gcc_64/bin:$PATH
+export LD_LIBRARY_PATH=$SFW_LOCATION/Qt/5.15.0/gcc_64/lib:/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH
+
 # QT_INSTALLATION_LOCATION = /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64
 # QT_SDK_LOCATION = /mnt/hdd/madoodia/softwares/madoodia/sdks/Qt5 -> /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64
 
@@ -62,6 +63,24 @@ export PATH=/mnt/hdd/madoodia/softwares/GammaRay/bin:$PATH
 # Houdini
 export PATH=/mnt/hdd/madoodia/softwares/hfs18.0.416/bin:$PATH
 export HFS=/mnt/hdd/madoodia/softwares/hfs18.0.416
+
+# OSL related libraries
+# boost
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/boost/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/pugixml:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/libjpeg-turbo:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/zlib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/IlmBase:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/OpenEXR/IlmBase/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SDKS_LOCATION/pybind11:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/libjpeg-turbo/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/bin:$PATH
+
+
+
+
 
 # =---------------- aliases --------------= #
 # CREATE ALIASES HERE
@@ -126,6 +145,7 @@ alias tmp='cd ~ && rm -rf ~/tmp && mkdir -p ~/tmp && cd ~/tmp'
 # alias skype='/usr/bin/skypeforlinux'
 
 alias qt='sdks; cd Qt5'
+alias qtsrc='code /mnt/hdd/madoodia/softwares/Qt/5.15.0; code ../Examples;'
 alias cuda='sdks; cd CUDA'
 
 alias qt1='export PATH=/mnt/hdd/madoodia/softwares/Qt/Tools/QtCreator/bin:$PATH'
@@ -134,3 +154,6 @@ alias qtset='qt1;qt2'
 
 # alias ocl='dev;code OpenCL;pkgs;code HandOnOpenCL/Exercises-Solutions;code opencl-book-samples;code CL-image-GL;sdks;code OpenCL/Samples/NVIDIAGPUComputingSDK'
 # alias aby='dev;code Abyssal;code RebuildCurves;code Zolf;sfw;code Qt5.14.1/Examples/Qt-5.14.1/widgets/mainwindows;code Qt5.14.1/Examples/Qt-5.14.1/widgets/graphicsview;swf;cd /mnt/hdd/madoodia/softwares/Qt5.14.1/Examples/Qt-5.14.1/widgets/widgets;code .;dev;code codelab;'
+
+alias python="python3.7"
+alias cmake="cmake3"

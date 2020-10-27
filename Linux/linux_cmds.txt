@@ -282,43 +282,22 @@ $ ./configure --prefix=/mnt/hdd/madoodia/sdks/HDF5
 $ make
 $ make install
 ==================================================
-install OpenEXR
-git clone git@github.com:AcademySoftwareFoundation/openexr.git
-
-$ cd $source_directory/IlmBase
-$ ./bootstrap
-$ ./configure --prefix=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase
-$ make
-$ make install
-
-$ cd $source_directory/OpenEXR
-$ ./bootstrap
-$ ./configure --prefix=/mnt/hdd/madoodia/sdks/OpenEXR/OpenEXR --with-ilmbase-prefix=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase
-$ make 
-$ make install
-
-$ cd $source_directory/PyIlmBase
-$ ./bootstrap
-$ ./configure --prefix=/mnt/hdd/madoodia/sdks/OpenEXR/PyIlmBase --with-ilmbase-prefix=/mnt/hdd/madoodia/sdks/OpenEXR/IlmBase --disable-ilmbasetest --disable-boostpythontest
-$ make 
-$ make install
-- Run ./configure --help for a complete set of configuration options.
 ==================================================
 install doxygen:
-$ git clone https://github.com/doxygen/doxygen.git
-$ cd doxygen
-$ mkdir build
-$ cd build
-$ cmake -G "Unix Makefiles" ..
-$ sudo make
-$ sudo make install
+git clone https://github.com/doxygen/doxygen.git
+cd doxygen
+mkdir build
+cd build
+cmake -G "Unix Makefiles" ..
+sudo make
+sudo make install
 ==================================================
 install boost
 download : https://www.boost.org/users/download/
-$ cd path/to/boost_1_61_0
-$ ./bootstrap.sh --help
-$ ./bootstrap.sh --prefix=path/to/installation/prefix
-$ ./b2 install
+cd path/to/boost_1_61_0
+./bootstrap.sh --help
+./bootstrap.sh --prefix=path/to/installation/prefix
+./b2 install
 ==================================================
 install zlib
 
@@ -417,3 +396,182 @@ AccessModifierOffset: -2
 
 
 ---------------------------------------------
+=================================================================
+=================================================================
+=================================================================
+=================================================================
+=================================================================
+=================================================================
+BUILDING OpenShadingLanguage (OSL)
+
+
+
+# BOOST -----------------------------------------------------------
+wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
+tar -xzf boost_1_*
+cd boost_1_*
+./bootstrap.sh 
+./b2 install --with-atomic --with-chrono --with-container --with-context --with-contract --with-coroutine --with-date_time --with-exception --with-fiber --with-filesystem --with-graph --with-graph_parallel --with-iostreams --with-locale --with-log --with-math --with-mpi --with-program_options --with-python --with-random --with-regex --with-serialization --with-stacktrace --with-system --with-test --with-thread --with-timer --with-type_erasure --with-wave
+
+
+# libtiff -----------------------------------------------------------
+git clone git@gitlab.com:libtiff/libtiff.git
+cd libtiff
+./configure
+make
+su
+make install
+
+# python37 -----------------------------------------------------------
+wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
+tar xzf Python-3.7.9.tgz
+cd Python-3.7.9
+./configure --enable-optimizations
+make altinstall
+
+# libraw -----------------------------------------------------------
+wget https://www.libraw.org/data/LibRaw-0.20.2.tar.gz
+tar xzvf LibRaw-0.20.2.tar.gz
+cd LibRaw-0.20.2
+autoreconf --install
+./configure
+make
+sudo make install
+
+# pugixml -----------------------------------------------------------
+git clone git@github.com:zeux/pugixml.git
+cd pugixml
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/pugixml -DCMAKE_BUILD_TYPE=Release ..
+make
+sudo make install
+
+
+# libjpeg -----------------------------------------------------------
+git clone git@github.com:libjpeg-turbo/libjpeg-turbo.git
+cd libjpeg-turbo
+mkdir build
+cd build
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/libjpeg-turbo -DCMAKE_BUILD_TYPE=Release ..
+make
+sudo make install
+
+
+# NASM -----------------------------------------------------------
+wget https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.gz
+tar xzvf nasm-2.15.05.tar.gz
+./configure
+make
+sudo make install
+
+# libpng -----------------------------------------------------------
+wget https://download.sourceforge.net/libpng/libpng-1.6.37.tar.gz
+tar xzvf libpng-1.6.37.tar.gz
+cd libpng-1.6.37
+./configure
+make
+sudo make install
+
+# OpenEXR - IlmBase - PyIlmBase -----------------------------------------------------------
+git clone git@github.com:AcademySoftwareFoundation/openexr.git
+
+cd openexr/IlmBase
+./bootstrap
+./configure
+make
+sudo make install
+
+cd openexr/OpenEXR
+./bootstrap
+./configure
+make 
+sudo make install
+
+cd openexr/PyIlmBase
+./bootstrap
+./configure --disable-ilmbasetest --disable-boostpythontest
+make 
+sudo make install
+
+
+# zlib -----------------------------------------------------------
+git clone git@github.com:madler/zlib.git
+cd zlib
+./configure --prefix=$SDKS_LOCATION/zlib
+make
+sudo make install
+
+
+
+
+
+# PyBind11 -----------------------------------------------------------
+git clone git@github.com:pybind/pybind11.git
+cd pybind11
+mkdir build
+cd build
+
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/pybind11 -DCMAKE_BUILD_TYPE=Release -DBoost_ROOT=$SDKS_LOCATION/boost ..
+
+make
+
+sudo make install
+
+# OIIO -----------------------------------------------------------
+git clone git@github.com:madoodia/oiio.git
+cd oiio
+
+mkdir build
+cd build
+
+clear
+sudo rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio  -DHDF5_ROOT=$SDKS_LOCATION/HDF5/lib -DJPEGTurbo_ROOT=$SDKS_LOCATION/libjpeg-turbo -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -Dpybind11_ROOT=$SDKS_LOCATION/pybind11 -j 16 ..
+
+
+
+
+make
+
+sudo make install
+
+# robin-map ---------------------------------------
+git clone git@github.com:Tessil/robin-map.git
+cd robin-map/tests
+mkdir build
+cd build
+cmake ..
+cmake --build .
+
+
+
+# flex -----------------------------------------------------------
+git clone git@github.com:westes/flex.git
+cd flex
+
+./autogen.sh
+
+./configure 
+make
+sudo make install
+
+or install by yum
+
+# bison -----------------------------------------------------------
+wget http://ftp.gnu.org/gnu/bison/bison-3.7.tar.gz
+tar zxvf bison-3.7.tar.gz
+cd bison-3.7
+
+./configure 
+make
+
+sudo make install
+
+
+# OSL -----------------------------------------------------------
+git clone git@github.com:imageworks/OpenShadingLanguage.git
+cd oiio
+
+using src/build_scripts/...
+=================================================================
+=================================================================
+=================================================================
