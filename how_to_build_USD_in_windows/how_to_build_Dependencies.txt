@@ -862,14 +862,38 @@ copy related files to sdks
 nmake
 cmake --build . --target INSTALL
 ===========================
-building osl
+building zlib (new build 2020)
 
 mkdir build
 cd build
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm;D:/madoodia/sdks/zlib/lib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOpenImageIO_ROOT=D:/madoodia/sdks/oiio -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/zlib -DCMAKE_BUILD_TYPE=Release ..
+
+nmake
+
+cmake --build . --target INSTALL
+
+# build with visual studio
+
+cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/zlib -j 16 ..
+
+# install from visual studio
+===========================
+building osl
+
+mkdir build
+cd build
+
+cls
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm;D:/madoodia/sdks/zlib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -DZLIB_ROOT=D:/madoodia/sdks/zlib -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOpenImageIO_ROOT=D:/madoodia/sdks/oiio  -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+
+
+
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
@@ -881,13 +905,10 @@ cmake --build . --target INSTALL
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/libclang;D:/madoodia/sdks/zlib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -j 16 ..
+cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm;D:/madoodia/sdks/zlib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
 
-call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-nmake
-
-cmake --build . --target INSTALL
+# install from visual studio
 
 
 
