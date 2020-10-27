@@ -258,7 +258,7 @@ sudo make install
 cd /etc/ld.so.conf.d/
 sudo nano openssl-1.1.1c.conf
 
-copy this into file: 
+copy this into file: (ctrl+o for save / ctrl+x for exit > enter)
 /usr/local/ssl/lib
 
 sudo ldconfig -v
