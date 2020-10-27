@@ -736,7 +736,7 @@ call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=deploy -DWITH_GFLAGS=0 -DBUILD_SHARED_LIBS=0 -DCMAKE_BUILD_TYPE=Release ..
 
 
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++ 2020 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ===========================
 building disney partio (point clouds)
 
@@ -752,23 +752,6 @@ and remove GLU and GLUT from src/tools/CMakeList.txt
 and add freeglut to src/tools/CMakeList.txt
 
 cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/partio -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/OpenGL/freeglut -DGLUT_INCLUDE_DIR=D:/madoodia/sdks/OpenGL/freeglut/include -DGLUT_glut_LIBRARY=D:/madoodia/sdks/OpenGL/freeglut/lib ..
-
-
-nmake
-cmake --build . --target INSTALL
-
-
-------------------------
-
-# building OpenImageIO (oiio) new 2020 (------ failed -------)
-
-mkdir build
-cd build
-
-call "%VCVARS_LOCATION%/vcvarsall.bat" x64
-
-
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/oiio -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/tiff;D:/madoodia/sdks/zlib;D:/madoodia/sdks/libpng16;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/boost;C:/Python39/Lib/site-packages; -DCMAKE_BUILD_TYPE=Release ..
 
 
 nmake
@@ -827,6 +810,58 @@ nmake
 cmake --build . --target INSTALL
 
 ===========================
+building pybind11
+
+mkdir build
+cd build
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/pybind11 -DCMAKE_BUILD_TYPE=Release -DBoost_ROOT=D:/madoodia/sdks/boost ..
+
+
+nmake
+
+cmake --build . --target INSTALL
+
+
+
+------------------------
+
+# building OpenImageIO (oiio) new 2020 (------ failed -------)
+
+mkdir build
+cd build
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/oiio -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/libclang;D:/madoodia/sdks/zlib;D:/madoodia/sdks/tiff;;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake;D:/madoodia/sdks/libraw;D:/madoodia/sdks/libpng16 -DBoost_ROOT=D:/madoodia/sdks/boost ..
+
+
+nmake
+
+cmake --build . --target INSTALL
+
+------------------------
+
+# building LibRAW
+
+mkdir build
+cd build
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+nmake Makefile.msvc
+open libraw.sln in visual studio 2019
+build libraw project
+copy related files to sdks
+
+
+
+nmake
+cmake --build . --target INSTALL
+===========================
 building osl
 
 mkdir build
@@ -834,14 +869,26 @@ cd build
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/USD/lib;D:/madoodia/sdks/USD/include;D:/madoodia/sdks/USD/bin;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/partio;D:/madoodia/sdks/llvm; -DBoost_ROOT=D:/madoodia/sdks/USD/lib -DUSE_PYTHON=0 -DCMAKE_CXX_STANDARD=14 -DBISON_ROOT=D:/madoodia/sdks/winflexbison ..
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm;D:/madoodia/sdks/zlib/lib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOpenImageIO_ROOT=D:/madoodia/sdks/oiio -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/USD/lib;D:/madoodia/sdks/USD/include;D:/madoodia/sdks/USD/bin;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/partio;"C:/Program Files/LLVM"; -DBoost_ROOT=D:/madoodia/sdks/USD/lib -DUSE_PYTHON=0 -DCMAKE_CXX_STANDARD=14 -DBISON_ROOT=D:/madoodia/sdks/winflexbison ..
+cmake --build . --target INSTALL
 
 
-# LLVM 12 did not work with osl building (Failed)
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/USD/lib;D:/madoodia/sdks/USD/include;D:/madoodia/sdks/USD/bin;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/partio;"D:/madoodia/sdks/llvm"; -DBoost_ROOT=D:/madoodia/sdks/USD/lib -DUSE_PYTHON=0 -DCMAKE_CXX_STANDARD=14 -DBISON_ROOT=D:/madoodia/sdks/winflexbison ..
+# or building with Visual Studio  -----------------------------------------
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/libclang;D:/madoodia/sdks/zlib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -j 16 ..
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 nmake
+
 cmake --build . --target INSTALL
+
+
+
+--------------------------
