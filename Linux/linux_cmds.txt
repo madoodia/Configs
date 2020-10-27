@@ -244,6 +244,42 @@ after installation Follow maya2019.C_d
 
 
 # =========================
+# if cmake needs openssl do this
+sudo yum group install 'Development Tools'
+sudo yum install perl-core zlib-devel -y
+cd /usr/local/src/
+sudo wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz
+sudo tar -xf openssl-1.1.1c.tar.gz
+cd openssl-1.1.1c
+sudo ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
+sudo make
+sudo make test
+sudo make install
+cd /etc/ld.so.conf.d/
+sudo nano openssl-1.1.1c.conf
+
+copy this into file: 
+/usr/local/ssl/lib
+
+sudo ldconfig -v
+sudo mv /bin/openssl /bin/openssl.backup
+sudo nano /etc/profile.d/openssl.sh
+
+copy this into file:
+#Set OPENSSL_PATH
+OPENSSL_PATH="/usr/local/ssl/bin"
+export OPENSSL_PATH
+PATH=$PATH:$OPENSSL_PATH
+export PATH
+
+sudo chmod +x /etc/profile.d/openssl.sh
+source /etc/profile.d/openssl.sh
+echo $PATH
+
+which openssl
+openssl version -a
+
+
 Install CMake
 -> Build from source (needs to have mesa-libGLU.x86_64 mesa-libGL.x86_64 mesa-libGLU-devel.x86_64 )
 Download Latest version of CMake from : https://cmake.org/download/
@@ -517,14 +553,14 @@ make
 sudo make install
 
 # OIIO -----------------------------------------------------------
-git clone git@github.com:madoodia/oiio.git
+git clone git@github.com:OpenImageIO/oiio.git
 cd oiio
 
 mkdir build
 cd build
 
 clear
-sudo rm -rf *
+rm -rf *
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio  -DHDF5_ROOT=$SDKS_LOCATION/HDF5/lib -DJPEGTurbo_ROOT=$SDKS_LOCATION/libjpeg-turbo -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -Dpybind11_ROOT=$SDKS_LOCATION/pybind11 -j 16 ..
 
 

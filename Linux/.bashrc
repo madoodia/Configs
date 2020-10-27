@@ -27,7 +27,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # CMake
 
 # gcc
-# export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
+export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
 export SFW_LOCATION=/mnt/hdd/madoodia/softwares
 export SDKS_LOCATION=/mnt/hdd/madoodia/sdks
@@ -104,7 +104,8 @@ alias loc='cd /usr/local/'
 
 # Setup Env for GCC
 alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
-
+alias gcc='/opt/rh/devtoolset-9/root/bin/gcc'
+alias g++='/opt/rh/devtoolset-9/root/bin/g++'
 alias code='gcc9;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
@@ -156,4 +157,4 @@ alias qtset='qt1;qt2'
 # alias aby='dev;code Abyssal;code RebuildCurves;code Zolf;sfw;code Qt5.14.1/Examples/Qt-5.14.1/widgets/mainwindows;code Qt5.14.1/Examples/Qt-5.14.1/widgets/graphicsview;swf;cd /mnt/hdd/madoodia/softwares/Qt5.14.1/Examples/Qt-5.14.1/widgets/widgets;code .;dev;code codelab;'
 
 alias python="python3.7"
-alias cmake="cmake3"
+alias cmake="gcc9;cmake3"
