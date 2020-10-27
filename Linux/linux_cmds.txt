@@ -283,40 +283,41 @@ openssl version -a
 Install CMake
 -> Build from source (needs to have mesa-libGLU.x86_64 mesa-libGL.x86_64 mesa-libGLU-devel.x86_64 )
 Download Latest version of CMake from : https://cmake.org/download/
-$ tar -zxvf cmake-*.tar.gz
-$ cd cmake-*
-$ ./bootstrap
-$ sudo make
-$ sudo make install
+tar -zxvf cmake-*.tar.gz
+cd cmake-*
+# first install cmake3 with yum
+cmake3 -G "Unix Makefiles" -DCMAKE_USE_OPENSSL=OFF ..
+sudo make
+sudo make install
 
 -> install binary
 Download Latest version of CMake from : https://cmake.org/download/
-$ tar -zxvf cmake-*.tar.gz
-$ cd cmake-*
+tar -zxvf cmake-*.tar.gz
+cd cmake-*
 copy all files in bin and put in /usr/local/bin
 # =========================
 Get Machine's IP:
-$ curl ifconfig.me
+curl ifconfig.me
 
 ==================================================
 CMake in Linux
 Example:
 Building googleTest:
-$ git clone clone googletest:
-$ cd googletest
-$ mkdir build
-$ cd build
-$ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
-$ sudo make
+git clone clone googletest:
+cd googletest
+mkdir build
+cd build
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+sudo make
 copy include sample src scripts build/lib of googletest and googlemock to sdks folder
 ==================================================
 Install HDF5:
 Download from: https://www.hdfgroup.org/downloads/hdf5/source-code/
-$ tar zxvf hdf5*.tar.gz
-$ cd hdf5*
-$ ./configure --prefix=/mnt/hdd/madoodia/sdks/HDF5
-$ make
-$ make install
+tar zxvf hdf5*.tar.gz
+cd hdf5*
+./configure
+make
+make install
 ==================================================
 ==================================================
 install doxygen:
@@ -442,6 +443,25 @@ BUILDING OpenShadingLanguage (OSL)
 
 
 
+# llvm -----------------------------------------------------------
+git clone git@github.com:llvm/llvm-project.git
+cd llvm-project
+mkdir build
+cd build
+
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ../llvm
+make
+sudo make install
+
+cd..
+mkdir build_clang
+cd build_clang
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ../clang
+make
+sudo make install
+
+
+
 # BOOST -----------------------------------------------------------
 wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
 tar -xzf boost_1_*
@@ -487,7 +507,14 @@ git clone git@github.com:libjpeg-turbo/libjpeg-turbo.git
 cd libjpeg-turbo
 mkdir build
 cd build
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/libjpeg-turbo -DCMAKE_BUILD_TYPE=Release ..
+
+
+
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+
+
 make
 sudo make install
 
@@ -546,11 +573,51 @@ cd pybind11
 mkdir build
 cd build
 
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/pybind11 -DCMAKE_BUILD_TYPE=Release -DBoost_ROOT=$SDKS_LOCATION/boost ..
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
 
 make
 
 sudo make install
+
+# fmt -----------------------------------------------------------
+git clone git@github.com:fmtlib/fmt.git
+cd fmt
+
+mkdir build
+cd build
+
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ..
+
+make
+sudo make install
+
+
+
+# OpenCV -----------------------------------------------------------
+
+git clone git@github.com:opencv/opencv.git
+
+cd opencv
+
+mkdir build
+cd build
+
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/opencv -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -j 16 ..
+
+
+make
+
+sudo make install
+
+
+
+
 
 # OIIO -----------------------------------------------------------
 git clone git@github.com:OpenImageIO/oiio.git
@@ -561,7 +628,7 @@ cd build
 
 clear
 rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio  -DHDF5_ROOT=$SDKS_LOCATION/HDF5/lib -DJPEGTurbo_ROOT=$SDKS_LOCATION/libjpeg-turbo -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -Dpybind11_ROOT=$SDKS_LOCATION/pybind11 -j 16 ..
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio -DJPEGTurbo_ROOT=/opt/libjpeg-turbo -DOIIO_BUILD_TESTS=0 -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -j 16 ..
 
 
 
@@ -602,12 +669,33 @@ make
 
 sudo make install
 
+# ---------------------------------
+# install extra dependencies
+sudo yum install ninja-build ccache  libboost libboost-thread  libboost-filesystem libboost-regex  libtiff  libilmbase libopenexr  python python-numpy  libgif  libpng  libraw  libwebp  libfreetype6  libavcodec libavformat libswscale libavutil  locales  libopencolorio  wget  libtbb  libopenvdb  libopencv  ptex-base  dcmtk  libsquish libhdf5
+# ---------------------------------
+
+
+
 
 # OSL -----------------------------------------------------------
-git clone git@github.com:imageworks/OpenShadingLanguage.git
-cd oiio
+1. let's using src/build_scripts/...
 
-using src/build_scripts/...
+git clone git@github.com:imageworks/OpenShadingLanguage.git
+cd OpenShadingLanguage
+sudo ./src/build-scripts/build_openexr.bash
+sudo ./src/build-scripts/build_opencolorio.bash
+sudo ./src/build-scripts/build_pugixml.bash
+sudo ./src/build-scripts/build_pybind11.bash
+sudo ./src/build-scripts/build_openimageio.bash
+
+or with cmake
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/osl -DCMAKE_BUILD_TYPE=Release -DUSE_PYTHON=1 -j 16 ..
+
+
+
+
 =================================================================
 =================================================================
 =================================================================
