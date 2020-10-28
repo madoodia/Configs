@@ -780,7 +780,7 @@ cmake --build . --target INSTALL
 
 ===========================
 building llvm & clang
-
+git clone git@github.com:llvm/llvm-project.git
 mkdir build
 cd build
 
@@ -788,8 +788,30 @@ call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 # first should build llvm
 cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/llvm -DCMAKE_BUILD_TYPE=Release -j 16 ../llvm
+
 # then build clang
 cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/llvm/tools/clang -DCMAKE_BUILD_TYPE=Release -j 16 -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm/lib/cmake ../clang
+
+nmake
+cmake --build . --target INSTALL
+
+
+# or ----------------------- for llvm9x
+
+git checkout release/9.x --force
+
+
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/llvm9x -DCMAKE_BUILD_TYPE=Release -j 16 ../llvm
+
+nmake
+cmake --build . --target INSTALL
+
+
+
+# then build clang
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/llvm9x/tools/clang-DCMAKE_BUILD_TYPE=Release -j 16 -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm9x
 
 nmake
 cmake --build . --target INSTALL
@@ -896,7 +918,9 @@ cls
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/llvm;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+set PATH=D:/madoodia/sdks/zlib/bin;D:/madoodia/sdks/zlib/lib;%PATH%
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/llvm;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
 
 
 cmake --build . --config Release --target install
@@ -915,3 +939,90 @@ cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/
 
 
 --------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+D:\madoodia\pkgs\OpenShadingLanguage\build>cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/llvm;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+-- The CXX compiler identification is MSVC 19.27.29112.0
+-- The C compiler identification is MSVC 19.27.29112.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Building OSL 1.12.0.1
+-- CMake version is 3.18.4
+-- Configuring OSL 1.12.0.1
+-- CMake 3.18.4
+-- CMake system           = Windows-10.0.19041
+-- CMake system name      = Windows
+-- Project source dir     = D:/madoodia/pkgs/OpenShadingLanguage
+-- Project build dir      = D:/madoodia/pkgs/OpenShadingLanguage/build
+-- Project install prefix = D:/madoodia/sdks/osl
+-- Configuration types    =
+-- Build type             = Release
+-- Setting Namespace to: OSL_v1_12
+-- CMAKE_CXX_COMPILER     = C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe
+-- CMAKE_CXX_COMPILER_ID  = MSVC
+-- Building for C++14
+-- clang-format found: D:/madoodia/sdks/llvm/bin/clang-format.exe
+--
+-- * Checking for dependencies...
+-- *   - Missing a dependency 'Package'?
+-- *     Try cmake -DPackage_ROOT=path or set environment var Package_ROOT=path
+-- *     For many dependencies, we supply src/build-scripts/build_Package.bash
+-- *   - To exclude an optional dependency (even if found),
+-- *     -DUSE_Package=OFF or set environment var USE_Package=OFF
+--
+-- CMAKE_PREFIX_PATH = D:/madoodia/pkgs/OpenShadingLanguage/ext/dist;D:/madoodia/sdks/zlib;D:/madoodia/sdks/llvm;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11;
+-- Found Boost 107000
+-- Found ZLIB 1.2.11
+-- Found OpenEXR 2.2.0
+-- Found OpenImageIO 2.3.0.1
+-- Found CONFIG for pugixml (>=1.11)
+-- Found pugixml 1.10
+-- Found LLVM 12.0.0git
+-- Could NOT find partio (missing: partio_DIR)
+-- Found partio
+-- Found Python 3.7.8
+-- Found Qt5 5.15.0
+-- Found BISON 3.5.0
+-- Found FLEX 2.6.4
+-- Found pybind11 2.6.1
+-- All docdeep docs = D:/madoodia/pkgs/OpenShadingLanguage/build/src/doc/OSLQuery.md.html;D:/madoodia/pkgs/OpenShadingLanguage/build/src/doc/docdeep.md.html
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/madoodia/pkgs/OpenShadingLanguage/build
