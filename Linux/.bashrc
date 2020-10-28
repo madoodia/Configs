@@ -28,6 +28,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 
 # gcc
 export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
+# export PATH=/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
 export SFW_LOCATION=/mnt/hdd/madoodia/softwares
 export SDKS_LOCATION=/mnt/hdd/madoodia/sdks
@@ -112,7 +113,7 @@ alias loc='cd /usr/local/'
 # alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
 # alias gcc='/opt/rh/devtoolset-9/root/bin/gcc'
 # alias g++='/opt/rh/devtoolset-9/root/bin/g++'
-alias code='gcc9;code'
+# alias code='gcc9;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
 alias vse='cd /home/reza/.vscode/extensions' # contains extension

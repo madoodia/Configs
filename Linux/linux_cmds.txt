@@ -449,12 +449,15 @@ BUILDING OpenShadingLanguage (OSL)
 
 
 # llvm -----------------------------------------------------------
-git clone git@github.com:llvm/llvm-project.git
-cd llvm-project
+git clone git@github.com:llvm/llvm-project.git llvm9.x
+cd llvm9.x
+git checkout release/9.x --force
+
 mkdir build
 cd build
 
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ../llvm
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/llvm9x -DCMAKE_BUILD_TYPE=Release -j 16 ../llvm
+
 make
 
 sudo make install
@@ -463,7 +466,10 @@ cd..
 mkdir build_clang
 cd build_clang
 
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ../clang
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/llvm9x/tools/clang -DCMAKE_PREFIX_PATH=$SDKS_LOCATION/llvm9x -DCMAKE_BUILD_TYPE=Release -j 16 ../clang
+
 
 make
 
@@ -659,7 +665,7 @@ cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio -DCMAKE_PRE
 
 
 
-make
+make (Failed)
 
 sudo make install
 
@@ -728,16 +734,48 @@ sudo make install
 
 git clone git@github.com:imageworks/OpenShadingLanguage.git
 cd /mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/
+./build_pugixml.bash
 
 cd /mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage
 mkdir build
 cd build
 
+# set for llvm9x
+export PATH=/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/bin/:$PATH
 clear
 rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=11 -DLLVM_ROOT=/mnt/hdd/madoodia/sdks/llvm9x -j 16 ..
 
 
+:/mnt/hdd/madoodia/sdks/llvm9x:/mnt/hdd/madoodia/sdks/llvm9x/tools/clang
+
+
+
+sudo yum remove llvm9.0.x86_64 llvm-toolset-7.0-llvm.x86_64 llvm-toolset-7.0-clang-devel.x86_64 llvm-toolset-7.0-clang-analyzer.noarch llvm-toolset-7.0-build.x86_64 llvm-toolset-7.0-llvm.x86_64 llvm-toolset-7.0-git-clang-format.x86_64 llvm-toolset-7.0-cmake.x86_64 llvm-toolset-7.0-runtime.x86_64 llvm-toolset-7.0-llvm-devel.x86_64 llvm-toolset-7.0-clang.x86_64 
+
+
+
+cmake --build . --config Release --target install
+
+
+# set for llvm-devtoolset-7.5
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=11 -DLLVM_ROOT=/opt/rh/llvm-toolset-7.0/ -j 16 ..
+
+
+cmake --build . --config Release --target install
+
+
+
+
+# for llvm 10+ with c++ 14
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD: -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -DLLVM_VERSION=7.0 -j 16 ..
+
+
+cmake --build . --config Release --target install
 
 
 
@@ -757,7 +795,7 @@ cd vcpkg
 =================================================================
 =================================================================
 Install Pixar USD to get OIIO from it for OSL
-
+change OpenImageIO version of build_script to 2.2.7
 sudo yum install python36-devel
 
 
