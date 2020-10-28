@@ -497,7 +497,7 @@ sudo make install
 make clean
 cd ~/workspace/pkgs
 git clone https://github.com/PixarAnimationStudios/USD
-sudo yum install libXmu-devel libXi-devel libGL-devel libXinerama libXinerama-devel libXcursor libXcursor-devel cmake
+sudo yum install libXmu-devel libXi-devel libGL-devel libXinerama libXinerama-devel libXcursor libXcursor-devel
 sudo rm -rf /usr/local/USD
 sudo mkdir /usr/local/USD
 sudo python USD/build_scripts/build_usd.py --generator "Unix Makefiles" --python --alembic --hdf5 --maya --maya-location /mnt/applications/apps/Autodesk/Maya_2018_201711281015/ --materialx --openimageio  /usr/local/USD
