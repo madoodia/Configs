@@ -27,7 +27,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # CMake
 
 # gcc
-export PATH=/opt/rh/devtoolset-6/root/bin/:$PATH
+export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
 export SFW_LOCATION=/mnt/hdd/madoodia/softwares
 export SDKS_LOCATION=/mnt/hdd/madoodia/sdks
@@ -35,10 +35,14 @@ export DEV_LOCATION=/mnt/hdd/madoodia/dev
 export MADAPI_LOCATION=/mnt/hdd/madoodia/dev/madAPI
 # GIT
 # QT (enable these three line when you want to run the built program, not for building software)
+
+# Qt5 should be disable whenever you want to run usdview
 export PATH=$SFW_LOCATION/Qt/Tools/QtCreator/bin:$PATH
 export PATH=$SFW_LOCATION/Qt/Tools/QtDesignStudio/bin:$PATH
 export PATH=$SFW_LOCATION/Qt/5.15.0/gcc_64/bin:$PATH
 export LD_LIBRARY_PATH=$SFW_LOCATION/Qt/5.15.0/gcc_64/lib:/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH
+
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64:/lib:/lib64:$LD_LIBRARY_PATH
 
 # QT_INSTALLATION_LOCATION = /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64
 # QT_SDK_LOCATION = /mnt/hdd/madoodia/softwares/madoodia/sdks/Qt5 -> /mnt/hdd/madoodia/softwares/Qt/5.15.0/gcc_64
@@ -61,24 +65,26 @@ export PATH=/mnt/hdd/madoodia/sdks/nodejs-v12/bin:$PATH
 export PATH=/mnt/hdd/madoodia/softwares/GammaRay/bin:$PATH
 
 # Houdini
-export PATH=/mnt/hdd/madoodia/softwares/hfs18.0.416/bin:$PATH
-export HFS=/mnt/hdd/madoodia/softwares/hfs18.0.416
+# export PATH=/mnt/hdd/madoodia/softwares/hfs18.0.416/bin:$PATH
+# export HFS=/mnt/hdd/madoodia/softwares/hfs18.0.416
 
 # OSL related libraries
 # boost
 # export LD_LIBRARY_PATH=$SDKS_LOCATION/boost/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/pugixml:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/libjpeg-turbo:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/zlib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/IlmBase:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/OpenEXR/IlmBase/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SDKS_LOCATION/pybind11:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/libjpeg-turbo/lib64:$LD_LIBRARY_PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/bin:$PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/pugixml:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/libjpeg-turbo:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/zlib:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/IlmBase:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/lib:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/OpenEXR/IlmBase/lib:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$SDKS_LOCATION/pybind11:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/opt/libjpeg-turbo/lib64:$LD_LIBRARY_PATH
+# export PATH=/usr/local/bin:$PATH
+# export PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/bin:$PATH
 
-
+# USD
+export PYTHONPATH=$SDKS_LOCATION/USD/lib/python:$PYTHONPATH
+export PATH=$SDKS_LOCATION/USD/bin:$SDKS_LOCATION/USD/lib:$PATH
 
 
 
@@ -103,9 +109,9 @@ alias loc='cd /usr/local/'
 
 
 # Setup Env for GCC
-alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
-alias gcc='/opt/rh/devtoolset-9/root/bin/gcc'
-alias g++='/opt/rh/devtoolset-9/root/bin/g++'
+# alias gcc9='export PATH=/opt/rh/devtoolset-9/root/bin:$PATH'
+# alias gcc='/opt/rh/devtoolset-9/root/bin/gcc'
+# alias g++='/opt/rh/devtoolset-9/root/bin/g++'
 alias code='gcc9;code'
 
 alias cset='cd /home/reza/.config/Code/User' # contains settings.json and keybindings.json
@@ -156,5 +162,11 @@ alias qtset='qt1;qt2'
 # alias ocl='dev;code OpenCL;pkgs;code HandOnOpenCL/Exercises-Solutions;code opencl-book-samples;code CL-image-GL;sdks;code OpenCL/Samples/NVIDIAGPUComputingSDK'
 # alias aby='dev;code Abyssal;code RebuildCurves;code Zolf;sfw;code Qt5.14.1/Examples/Qt-5.14.1/widgets/mainwindows;code Qt5.14.1/Examples/Qt-5.14.1/widgets/graphicsview;swf;cd /mnt/hdd/madoodia/softwares/Qt5.14.1/Examples/Qt-5.14.1/widgets/widgets;code .;dev;code codelab;'
 
-alias python="python3.7"
-alias cmake="gcc9;cmake3"
+alias python="python3.6"
+alias pip="pip3.6"
+# alias cmake="gcc9;cmake3"
+# alias git="gcc9;/usr/local/bin/git"
+# alias gcc="/opt/rh/devtoolset-9/root/bin/gcc"
+# alias g++="/opt/rh/devtoolset-9/root/bin/g++"
+
+alias vcp="cd /mnt/hdd/madoodia/sdks/repos/vcpkg"
