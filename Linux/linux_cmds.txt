@@ -1,5 +1,10 @@
 # Usefull commands in CentOS7 learning
 
+
+# update centos without updating kernel
+yum update --exclude=kernel*
+
+
 # =========================
 $ cp -r <folder> <destination>
 
@@ -451,13 +456,17 @@ cd build
 
 cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ../llvm
 make
+
 sudo make install
 
 cd..
 mkdir build_clang
 cd build_clang
+
 cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ../clang
+
 make
+
 sudo make install
 
 
@@ -473,10 +482,15 @@ cd boost_1_*
 # libtiff -----------------------------------------------------------
 git clone git@gitlab.com:libtiff/libtiff.git
 cd libtiff
-./configure
-make
-su
-make install
+git checkout v4.1.0 --force
+
+
+clear
+rm -rf *
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/libtiff -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O3 -Wno-unused-function -Wno-deprecated-declarations -Wno-cast-qual -Wno-write-strings" ..
+
+cmake --build . --config Release --target install
+
 
 # python37 -----------------------------------------------------------
 wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
@@ -623,13 +637,31 @@ sudo make install
 git clone git@github.com:OpenImageIO/oiio.git
 cd oiio
 
+build dependencies through build_script
+cd /mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/
+./build_cmake.bash
+./build_libjpeg-turbo.bash
+./build_libpng.bash
+./build_libraw.bash
+./build_libtiff.bash
+./build_llvm.bash
+./build_opencolorio.bash
+./build_openexr.bash
+./build_pugixml.bash
+./build_pybind11.bash
+./build_webp.bash
+./build_zlib.bash
+
+cd /mnt/hdd/madoodia/sdks/repos/oiio
 mkdir build
 cd build
 
+
+
+
 clear
 rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio -DJPEGTurbo_ROOT=/opt/libjpeg-turbo -DOIIO_BUILD_TESTS=0 -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -j 16 ..
-
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/oiio -DCMAKE_PREFIX_PATH=$SDKS_LOCATION/repos/oiio/src/build-scripts/ext/dist  -DOIIO_BUILD_TESTS=0 -DCMAKE_BUILD_TYPE=Release -DSTOP_ON_WARNING=0 -j 16 ..
 
 
 
@@ -693,6 +725,25 @@ clear
 rm -rf *
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$SDKS_LOCATION/osl -DCMAKE_BUILD_TYPE=Release -DUSE_PYTHON=1 -j 16 ..
 
+
+
+
+
+
+
+
+
+
+
+# ---------- # experimental
+### Install OSL and its dependencies through package managers ###
+# linux (Centos7)
+git clone git@github.com:microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+
+./vcpkg/vcpkg install 
+# ---------- #
 
 
 
