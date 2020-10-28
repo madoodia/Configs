@@ -833,10 +833,12 @@ cmake --build . --target INSTALL
 mkdir build
 cd build
 
+cls
+
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/oiio -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/libclang;D:/madoodia/sdks/zlib;D:/madoodia/sdks/tiff;;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake;D:/madoodia/sdks/libraw;D:/madoodia/sdks/libpng16 -DBoost_ROOT=D:/madoodia/sdks/boost ..
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/oiio -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm;D:/madoodia/sdks/zlib;D:/madoodia/sdks/tiff;;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/libjpeg_turbo;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake;D:/madoodia/sdks/libraw;D:/madoodia/sdks/libpng16 -DUSE_TBB=0 -DUSE_BZip2=0 -DUSE_Freetype=0 -DUSE_FFmpeg=0 -DUSE_GIF=0 -DUSE_FIELD3D=0 -DUSE_OPENVDB=0 -DUSE_OpenJpeg=0 -DUSE_DCMTK=0 -DUSE_Libheif=0 -DUSE_PTex=0 -DUSE_NUKE=0 -DUSE_WebP=0 -DUSE_Libsquish=0 -DOIIO_BUILD_TESTS=0 -DBoost_ROOT=D:/madoodia/sdks/boost ..
 
 
 nmake
@@ -873,9 +875,13 @@ cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/zlib -DCMAKE_
 
 nmake
 
-cmake --build . --target INSTALL
+
+cmake --build . --config Release --target install
 
 # build with visual studio
+
+cls
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
 cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/zlib -j 16 ..
 
@@ -890,15 +896,11 @@ cls
 
 call "%VCVARS_LOCATION%/vcvarsall.bat" x64
 
-cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/llvm;D:/madoodia/sdks/zlib;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio/lib/cmake;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11/share/cmake; -Dpartio_ROOT=D:/madoodia/sdks/partio; -DZLIB_ROOT=D:/madoodia/sdks/zlib -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOpenImageIO_ROOT=D:/madoodia/sdks/oiio  -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:/madoodia/sdks/zlib;D:/madoodia/sdks/llvm;D:/madoodia/sdks/OpenEXR;D:/madoodia/sdks/oiio;D:/madoodia/sdks/pugixml;D:/madoodia/sdks/pybind11; -Dpartio_ROOT=D:/madoodia/sdks/partio; -Dpartio_DIR=D:/madoodia/sdks/partio -DBoost_ROOT=D:/madoodia/sdks/boost -DBISON_ROOT=D:/madoodia/sdks/winflexbison -DFLEX_ROOT=D:/madoodia/sdks/winflexbison -DOSL_BUILD_TESTS=1 -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
 
 
+cmake --build . --config Release --target install
 
-
-call "%VCVARS_LOCATION%/vcvarsall.bat" x64
-
-
-cmake --build . --target INSTALL
 
 
 # or building with Visual Studio  -----------------------------------------
