@@ -27,7 +27,7 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # CMake
 
 # gcc
-export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
+# export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
 # export PATH=/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
 export SFW_LOCATION=/mnt/hdd/madoodia/softwares

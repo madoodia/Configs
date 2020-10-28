@@ -481,7 +481,7 @@ sudo make install
 wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
 tar -xzf boost_1_*
 cd boost_1_*
-./bootstrap.sh 
+./bootstrap.sh --prefix=/mnt/hdd/madoodia/sdks/boost1.73
 ./b2 install --with-atomic --with-chrono --with-container --with-context --with-contract --with-coroutine --with-date_time --with-exception --with-fiber --with-filesystem --with-graph --with-graph_parallel --with-iostreams --with-locale --with-log --with-math --with-mpi --with-program_options --with-python --with-random --with-regex --with-serialization --with-stacktrace --with-system --with-test --with-thread --with-timer --with-type_erasure --with-wave
 
 
@@ -742,19 +742,14 @@ cd build
 
 # set for llvm9x
 export PATH=/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/bin/:$PATH
+export CPLUS_INCLUDE_PATH=/mnt/hdd/madoodia/sdks/llvm9x/include:/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/include 
 clear
 rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=11 -DLLVM_ROOT=/mnt/hdd/madoodia/sdks/llvm9x -j 16 ..
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD:/mnt/hdd/madoodia/sdks/llvm9x:/mnt/hdd/madoodia/sdks/llvm9x/tools/clang:/mnt/hdd/madoodia/sdks/libtiff -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=11 -DLLVM_ROOT=/mnt/hdd/madoodia/sdks/llvm9x -DBOOST_ROOT=/mnt/hdd/madoodia/sdks/boost1.73 -j 16 ..
 
 
-:/mnt/hdd/madoodia/sdks/llvm9x:/mnt/hdd/madoodia/sdks/llvm9x/tools/clang
-
-
-
-sudo yum remove llvm9.0.x86_64 llvm-toolset-7.0-llvm.x86_64 llvm-toolset-7.0-clang-devel.x86_64 llvm-toolset-7.0-clang-analyzer.noarch llvm-toolset-7.0-build.x86_64 llvm-toolset-7.0-llvm.x86_64 llvm-toolset-7.0-git-clang-format.x86_64 llvm-toolset-7.0-cmake.x86_64 llvm-toolset-7.0-runtime.x86_64 llvm-toolset-7.0-llvm-devel.x86_64 llvm-toolset-7.0-clang.x86_64 
-
-
-
+make && sudo make install
+# or
 cmake --build . --config Release --target install
 
 
