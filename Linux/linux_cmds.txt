@@ -699,17 +699,29 @@ sudo make install
 # partio -----------------------------------------------------------
 
 sudo yum install libglvnd-glx.x86_64
+sudo yum install libtool
+# if you get error for /usr/lib/libGLX.so
+# first need to reinstall libglx
+
+git clone git@github.com:NVIDIA/libglvnd.git
+cd libglvnd
+
+./autogen.sh
+./configure
+make
+sudo make install
 
 git clone git@github.com:wdas/partio.git
 cd partio
-
 mkdir build
 cd build
 
 clear
 rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -j 16 ..
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/partio ..
 
+make
+sudo make install
 
 # OSL -----------------------------------------------------------
 1. let's using src/build_scripts/...
@@ -723,7 +735,7 @@ cd build
 
 clear
 rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=14 -j 16 ..
 
 
 
@@ -778,3 +790,8 @@ usdview extras/usd/tutorials/convertingLayerFormats/Sphere.usda
 --------------------------------------
 find python site-packages in centos7
 python -m site
+
+
+
+
+----------------------------
