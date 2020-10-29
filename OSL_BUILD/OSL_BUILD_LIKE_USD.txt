@@ -1,0 +1,21 @@
+# ================================================== #
+# ================================================== #
+#                      Windows                       #
+# ================================================== #
+TIP: Your python37 path should be in PATH env variable
+TIP: Open Visual Studio Developer CMD
+
+Run:
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# OSL (  ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+git clone git@github.com:imageworks/OpenShadingLanguage.git
+
+cd OpenShadingLanguage
+cd build_scripts
+
+python.exe build_osl.py --generator "Visual Studio 16 2019" --osl --python --ptex --openimageio --opencolorio --alembic --hdf5 --imaging -v D:/madoodia/sdks/osl
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

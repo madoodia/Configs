@@ -1,0 +1,169 @@
+# ================================================== #
+# ================================================== #
+#                      Windows                       #
+# ================================================== #
+TIP: Your python37 path should be in PATH env variable
+TIP: Open Visual Studio Developer CMD
+
+Run:
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+TIP: Install Packages from Bottom to top (because of dependencies)
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# OSL (  ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+git clone git@github.com:imageworks/OpenShadingLanguage.git
+
+cd OpenShadingLanguage
+
+mkdir build
+cd build
+
+cls
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=%SDKS_LOCATION%/osl -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=%SDKS_LOCATION%/__all_packages -j 16 ..
+
+cmake --build . --config Release --target install
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# OPENEXR (  ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# OPENEXR (  ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+git clone git@github.com:AcademySoftwareFoundation/openexr.git
+
+cd openexr
+
+mkdir build
+cd build
+
+cls
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=%SDKS_LOCATION%/__all_packages -DCMAKE_BUILD_TYPE=Release  -DIlmBase_DIR=%SDKS_LOCATION%/__all_packages -DCMAKE_PREFIX_PATH=%SDKS_LOCATION%/__all_packages -j 16 ..
+
+cmake --build . --config Release --target install
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# BOOST ( DONE Without ZLIB Support ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+#dwonload https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.zip
+#unpack boost_1_73_0.zip
+
+cd boost_1_73_0
+
+bootstrap.bat
+
+b2.exe install --prefix=%SDKS_LOCATION%/__all_packages --build-dir=build --with-atomic --with-chrono --with-container --with-context --with-contract --with-coroutine --with-date_time --with-exception --with-fiber --with-filesystem --with-graph --with-graph_parallel --with-iostreams --with-locale --with-log --with-math --with-mpi --with-program_options --with-python --with-random --with-regex --with-serialization --with-stacktrace --with-system --with-test --with-thread --with-timer --with-type_erasure --with-wave -sNO_BZIP2=0  -sNO_ZLIB=0 --build-type=complete architecture=x86 address-model="64" runtime-link=shared toolset=msvc-14.2 variant=release,debug link=shared threading=multi
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# ZLIB ( DONE ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+#download https://zlib.net/zlib-1.2.11.tar.gz
+#unpack it
+
+cd zlib-1.2.11
+mkdir build
+cd build
+
+cls
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=%SDKS_LOCATION%/__all_packages -DCMAKE_BUILD_TYPE=Release ..
+
+cmake --build . --config Release --target install
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# BZIP2 ( DONE ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+git clone https://gitlab.com/federicomenaquintero/bzip2
+
+cd bzip2
+mkdir build
+cd build
+
+cls
+call "%VCVARS_LOCATION%/vcvarsall.bat" x64
+
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=%SDKS_LOCATION%/__all_packages -DCMAKE_BUILD_TYPE=Release ..
+
+cmake --build . --config Release --target install
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ================================================== #
+# ================================================== #
+#                       Linux                        #
+# ================================================== #

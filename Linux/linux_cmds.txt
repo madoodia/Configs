@@ -753,16 +753,6 @@ make && sudo make install
 cmake --build . --config Release --target install
 
 
-# set for llvm-devtoolset-7.5
-clear
-rm -rf *
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/mnt/hdd/madoodia/sdks/osl -DCMAKE_PREFIX_PATH=/mnt/hdd/madoodia/sdks/repos/oiio/src/build-scripts/ext/dist:/mnt/hdd/madoodia/sdks/USD -Dpugixml_ROOT=/mnt/hdd/madoodia/sdks/repos/OpenShadingLanguage/src/build-scripts/ext/dist -DCMAKE_BUILD_TYPE=Release -Dpartio_ROOT=/mnt/hdd/madoodia/sdks/partio -DUSE_PYTHON=1 -DCMAKE_CXX_STANDARD=11 -DLLVM_ROOT=/opt/rh/llvm-toolset-7.0/ -j 16 ..
-
-
-cmake --build . --config Release --target install
-
-
-
 
 # for llvm 10+ with c++ 14
 clear
