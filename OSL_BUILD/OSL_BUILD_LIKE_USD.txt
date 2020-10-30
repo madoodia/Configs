@@ -14,8 +14,15 @@ git clone git@github.com:imageworks/OpenShadingLanguage.git
 cd OpenShadingLanguage
 cd build_scripts
 
+
+
+
 python.exe build_osl.py --generator "Visual Studio 16 2019" --osl --python --ptex --openimageio --opencolorio --alembic --hdf5 --imaging -v D:/madoodia/sdks/osl
 
 
+
+
+#osl for debug
+cmake -DCMAKE_INSTALL_PREFIX="D:\madoodia\sdks\osl_debug" -DCMAKE_PREFIX_PATH="D:\madoodia\sdks\osl" -DCMAKE_BUILD_TYPE=Debug  -G "Visual Studio 16 2019" -A x64  -DUSE_PYTHON=ON -DOSL_BUILD_TESTS=1 -DCMAKE_CXX_STANDARD=11 -DCMAKE_CXX_FLAGS="/Zm150" -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True "D:\madoodia\repos\OpenShadingLanguage"
 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
