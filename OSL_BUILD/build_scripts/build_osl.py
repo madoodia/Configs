@@ -783,7 +783,7 @@ def InstallBoost_Helper(context, force, buildArgs):
             b2_settings.append("--with-system")
             b2_settings.append("--with-thread")
         # if Linux():
-        #     b2_settings.append("--with-toolset=gcc")
+        #     b2_settings.append("toolset=gcc")
 
         # if context.enableOpenVDB:
         #     b2_settings.append("--with-iostreams")
@@ -1278,23 +1278,32 @@ def InstallOSL(context, force, buildArgs):
 
         extraArgs.append("-DOSL_BUILD_TESTS=1")
         # if you are using LLVM 10 or higher C++ should be set on 14
-        extraArgs.append("-DCMAKE_CXX_STANDARD=14")
+        # extraArgs.append("-DCMAKE_CXX_STANDARD=14")
 
         # if you are using LLVM 10 or higher C++ should be set on 11
-        # extraArgs.append("-DCMAKE_CXX_STANDARD=11")
+        extraArgs.append("-DCMAKE_CXX_STANDARD=11")
 
         # if you used windows installer for llvm you should add the path like this
-        # delimeter = ":"
+        delimeter = ":"
+        if Windows():
+            delimeter = ";"
         # if Windows():
-        #     delimeter = ";"
+        #     context.instDir += delimeter + "C:/LLVM"
+        # if Linux():
+        #     extraArgs.append(
+        #         '-DLLVM_ROOT="/opt/rh/llvm-toolset-7.0/root/usr"'
+        #     )  # does not work
+        #     context.instDir += delimeter + "/opt/rh/llvm-toolset-7.0/root/usr"
 
-        # context.instDir += delimeter + "C:/LLVM"
+        if Linux():
+            extraArgs.append('-DCMAKE_CXX_FLAGS="-fPIC"')
 
         if Windows():
             # Increase the precompiled header buffer limit.
             extraArgs.append('-DCMAKE_CXX_FLAGS="/Zm150"')
-        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+            extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
+            extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+
         extraArgs += buildArgs
 
         RunCMake(context, force, extraArgs)
@@ -2399,7 +2408,10 @@ if context.buildImaging:
 
     if context.buildOSL:
         # requiredDependencies += [GLUT, WINFLEXBISON, PUGIXML, PYBIND11]
-        requiredDependencies += [GLUT, LLVM, CLANG, PUGIXML, PYBIND11]
+        requiredDependencies += [GLUT, PUGIXML, PYBIND11]
+
+        if Windows():
+            requiredDependencies += [LLVM, CLANG]
         # requiredDependencies += [PARTIO]
 
         if Windows():

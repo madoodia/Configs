@@ -875,8 +875,14 @@ sudo yum install devtoolset-8-binutils.x86_64 devtoolset-8-binutils-devel.x86_64
 
 
 
+------
+yum find out path where is package installed to on CentOS/RHEL
 
-
+example:
+# install htop
+yum install htop
+# find it
+rpm -ql htop > paths
 
 
 
