@@ -686,6 +686,7 @@ cd flex
 ./autogen.sh
 
 ./configure 
+
 make
 sudo make install
 
@@ -818,6 +819,9 @@ python -m site
 
 
 ----------------------------
+
+
+---------
 > issue <
 sudo command running problem
 if your sudo command does not work
@@ -826,6 +830,7 @@ for example with this error
 $ sudo
 [sudo] password for reza: 
 warning: /opt/rh/devtoolset-9//enable scriptlet does not exist!
+warning: /opt/rh/devtoolset-8//enable scriptlet does not exist!
 
 you should reinstall devtoolset-9-runtime with this command
 
@@ -835,20 +840,38 @@ password: type your password
 in root user:
 yum reinstall devtoolset-9-runtime.x86_64
 
+---------
+> issue <
+problem in building flex
+error:
+
+
+> solution <
+sud yum install libtool.x86_64
+sudo yum install gettext-devel
+sudo yum reinstall autoconf.noarch
+autoreconf -i
+
+---------
+> issue <
+configure.ac:33: error: require Automake 1.15, but have 1.13.4
+
+> solution <
+download automake from here
+https://ftp.gnu.org/gnu/automake/automake-1.16.tar.gz
+
+guide: https://noknow.info/it/os/install_automake_from_source?lang=en
 
 
 
 
+---------
+> issue <
+as: error while loading shared libraries: libopcodes-2.32-16.el7.so: cannot open shared object file: No such file or directory
 
 
-
-
-
-
-
-
-
-
+> solution <
+sudo yum install devtoolset-8-binutils.x86_64 devtoolset-8-binutils-devel.x86_64
 
 
 

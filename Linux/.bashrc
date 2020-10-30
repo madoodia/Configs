@@ -27,7 +27,9 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 # CMake
 
 # gcc
-# export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
+export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
+export LD_LIBRARY_PATH=/opt/rh/devtoolset-9/root/usr/lib:/opt/rh/devtoolset-9/root/usr/lib64:$LD_LIBRARY_PATH
+
 # export PATH=/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
 export SFW_LOCATION=/mnt/hdd/madoodia/softwares
@@ -84,8 +86,8 @@ export PATH=/mnt/hdd/madoodia/softwares/GammaRay/bin:$PATH
 # export PATH=$SDKS_LOCATION/OpenEXR/OpenEXR/bin:$PATH
 
 # USD
-export PYTHONPATH=$SDKS_LOCATION/USD/lib/python:$PYTHONPATH
-export PATH=$SDKS_LOCATION/USD/bin:$SDKS_LOCATION/USD/lib:$PATH
+# export PYTHONPATH=$SDKS_LOCATION/USD/lib/python:$PYTHONPATH
+# export PATH=$SDKS_LOCATION/USD/bin:$SDKS_LOCATION/USD/lib:$PATH
 
 
 
