@@ -818,3 +818,44 @@ python -m site
 
 
 ----------------------------
+> issue <
+sudo command running problem
+if your sudo command does not work
+for example with this error
+
+$ sudo
+[sudo] password for reza: 
+warning: /opt/rh/devtoolset-9//enable scriptlet does not exist!
+
+you should reinstall devtoolset-9-runtime with this command
+
+> solution <
+su
+password: type your password
+in root user:
+yum reinstall devtoolset-9-runtime.x86_64
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
