@@ -2,7 +2,7 @@
 
 
 # update centos without updating kernel
-yum update --exclude=kernel*
+sudo yum update --exclude=kernel*
 
 
 # =========================
@@ -114,22 +114,29 @@ $ sudo rm -rf /path/file
 
 # =========================
 - Update GCC
-$ sudo yum -y update
-$ sudo yum -y install bzip2 wget gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel make
-$ sudo git clone git://gcc.gnu.org/git/gcc.git 
-$ cd gcc
-$ sudo mkdir build
-$ sudo cd build
-$ sudo ../configure --enable-languages=c,c++ --disable-multilib
-$ sudo make -j$(nproc)
-$ sudo make install
-$ gcc --version
+
+#add this line to .bashrc to set gcc 4.8.5 as main gcc
+export PATH=/usr/bin:$PATH
+
+gcc --version
+sudo yum -y update
+sudo yum -y install bzip2 wget gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel make
+gcc --version
+wget http://mirrors-usa.go-parts.com/gcc/releases/gcc-9.3.0/gcc-9.3.0.tar.gz
+tar zxf gcc-9.3.0.tar.gz
+cd gcc-9.3.0
+mkdir build
+cd build
+../configure --enable-languages=c,c++ --disable-multilib
+make -j$(nproc)
+sudo make install
+gcc --version
 
 For uninstall
 $ cd build/gcc
 $ sudo make uninstall
 
-# or install gcc version 6 or 7 by devtoolset
+# or install gcc version 6 or 7 or 8 or 9 by devtoolset
 $ sudo yum -y install centos-release-scl
 $ sudo yum -y install devtoolset-6
 
@@ -885,6 +892,90 @@ yum install htop
 rpm -ql htop > paths
 
 
+---------
+> issue <
+in running yum
+  File "/usr/bin/yum", line 30
+    except KeyboardInterrupt, e:
+                            ^
+SyntaxError: invalid syntax
+
+> solution <
+it happens becaus of you should set python2 as main python in your system
+so if you created symlink for python3 you should revert it
+
+cd /usr/bin
+sudo unlink python
+sudo ln -s python2 python
 
 
 
+---------
+> issue <
+./bootstrap.sh --prefix="/mnt/hdd/madoodia/sdks/osl"
+Building Boost.Build engine with toolset gcc... 
+Failed to build Boost.Build build engine
+Consult 'bootstrap.log' for more details
+
+> solution <
+install boost with yum and don't make it manually
+
+---------
+> issue <
+set devtooset gcc as main gcc
+
+> solution <
+# install it with yum
+sudo yum -y install centos-release-scl
+scl enable devtoolset-7 bash
+# then add it to .bachrc
+export PATH=/opt/rh/devtoolset-7/root/bin/:$PATH
+export LD_LIBRARY_PATH=/opt/rh/devtoolset-7/root/usr/lib:/opt/rh/devtoolset-7/root/usr/lib64:$LD_LIBRARY_PATH
+
+---------
+> issue <
+set gnu gcc as main gcc
+
+> solution <
+# build gnu gcc manually
+# in .bashrc
+# add /usr/local/bin to PATH
+# add /usr/local/lib64 to LD_LIBRARY_PATH
+export PATH=/usr/local/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+
+---------
+> issue <
+# in building osl
+gmake: *** [Makefile:182: all] Error 2
+
+> solution <
+
+# need to install MPFR library first then MPC
+wget https://www.mpfr.org/mpfr-current/mpfr-4.1.0.tar.gz
+tar xzvf mpfr-4.1.0.tar.gz
+cd mpc-1.2.1/
+./configure
+make
+sudo make install
+
+
+
+sudo yum install mpc
+wget http://gnu.mirror.iweb.com/mpc/mpc-1.2.1.tar.gz
+tar xzvf mpc-1.2.1.tar.gz
+cd mpc-1.2.1/
+./configure
+make
+sudo make install
+
+
+==================================
+kill process in centos7
+# find the process
+ps aux | grep chrome
+# kill by ID
+kill -9 <ID>
+
+
+===================================

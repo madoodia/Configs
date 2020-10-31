@@ -268,6 +268,7 @@ def Run(cmd, logCommandOutput=True):
             while True:
                 l = p.stdout.readline().decode(GetLocale(), "replace")
                 if l:
+                    print("--=", l)
                     logfile.write(l)
                     PrintCommandOutput(l)
                 elif p.poll() is not None:
@@ -917,42 +918,60 @@ def InstallTBB_LinuxOrMacOS(context, force, buildArgs):
 TBB = Dependency("TBB", InstallTBB, "include/tbb/tbb.h")
 
 ############################################################
-# JPEG
+# JPEGTurbo
 
-if Windows():
-    JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.1.zip"
-else:
-    JPEG_URL = "https://www.ijg.org/files/jpegsrc.v9b.tar.gz"
-
-
-def InstallJPEG(context, force, buildArgs):
-    if Windows():
-        InstallJPEG_Turbo(context, force, buildArgs)
-    else:
-        InstallJPEG_Lib(context, force, buildArgs)
+JPEGTurbo_URL = (
+    "https://github.com/libJPEGTurbo-turbo/libJPEGTurbo-turbo/archive/2.0.5.zip"
+)
 
 
-def InstallJPEG_Turbo(context, force, buildArgs):
-    with CurrentWorkingDirectory(DownloadURL(JPEG_URL, context, force)):
+def InstallJPEGTurbo(context, force, buildArgs):
+    with CurrentWorkingDirectory(DownloadURL(JPEGTurbo_URL, context, force)):
         RunCMake(context, force, buildArgs)
 
 
-def InstallJPEG_Lib(context, force, buildArgs):
-    with CurrentWorkingDirectory(DownloadURL(JPEG_URL, context, force)):
-        Run(
-            './configure --prefix="{instDir}" '
-            "--disable-static --enable-shared "
-            "{buildArgs}".format(instDir=context.instDir, buildArgs=" ".join(buildArgs))
-        )
-        Run("make -j{procs} install".format(procs=context.numJobs))
+JPEGTURBO = Dependency("JPEGTurbo", InstallJPEGTurbo, "include/jpeglib.h")
+
+############################################################
+# JPEG
+
+# if Windows():
+#     # JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.1.zip"
+#     JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
+# else:
+#     # JPEG_URL = "https://www.ijg.org/files/jpegsrc.v9b.tar.gz"
+#     JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
 
 
-JPEG = Dependency("JPEG", InstallJPEG, "include/jpeglib.h")
+# def InstallJPEG(context, force, buildArgs):
+#     if Windows():
+#         InstallJPEG_Turbo(context, force, buildArgs)
+#     else:
+#         InstallJPEG_Lib(context, force, buildArgs)
+
+
+# def InstallJPEG_Turbo(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(JPEG_URL, context, force)):
+#         RunCMake(context, force, buildArgs)
+
+
+# def InstallJPEG_Lib(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(JPEG_URL, context, force)):
+#         Run(
+#             './configure --prefix="{instDir}" '
+#             "--disable-static --enable-shared "
+#             "{buildArgs}".format(instDir=context.instDir, buildArgs=" ".join(buildArgs))
+#         )
+#         Run("make -j{procs} install".format(procs=context.numJobs))
+
+
+# JPEG = Dependency("JPEG", InstallJPEG, "include/jpeglib.h")
 
 ############################################################
 # TIFF
 
-TIFF_URL = "https://download.osgeo.org/libtiff/tiff-4.0.7.zip"
+# TIFF_URL = "https://download.osgeo.org/libtiff/tiff-4.0.7.zip"
+TIFF_URL = "http://download.osgeo.org/libtiff/tiff-4.1.0.zip"
 
 
 def InstallTIFF(context, force, buildArgs):
@@ -990,7 +1009,8 @@ TIFF = Dependency("TIFF", InstallTIFF, "include/tiff.h")
 ############################################################
 # PNG
 
-PNG_URL = "https://downloads.sourceforge.net/project/libpng/libpng16/older-releases/1.6.29/libpng-1.6.29.tar.gz"
+# PNG_URL = "https://downloads.sourceforge.net/project/libpng/libpng16/older-releases/1.6.29/libpng-1.6.29.tar.gz"
+PNG_URL = "https://github.com/glennrp/libpng/archive/v1.6.35.zip"
 
 
 def InstallPNG(context, force, buildArgs):
@@ -1003,7 +1023,8 @@ PNG = Dependency("PNG", InstallPNG, "include/png.h")
 ############################################################
 # IlmBase/OpenEXR
 
-OPENEXR_URL = "https://github.com/openexr/openexr/archive/v2.2.0.zip"
+# OPENEXR_URL = "https://github.com/openexr/openexr/archive/v2.2.0.zip"
+OPENEXR_URL = "https://github.com/AcademySoftwareFoundation/openexr/archive/v2.5.3.zip"
 
 
 def InstallOpenEXR(context, force, buildArgs):
@@ -1202,7 +1223,12 @@ PugiXML_URL = "https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1
 
 def InstallPugiXML(context, force, buildArgs):
     with CurrentWorkingDirectory(DownloadURL(PugiXML_URL, context, force)):
-        RunCMake(context, force, buildArgs)
+        extraArgs = []
+
+        if Linux():
+            extraArgs.append('-DCMAKE_CXX_FLAGS="-fPIC"')
+        extraArgs += buildArgs
+        RunCMake(context, force, extraArgs)
 
 
 PUGIXML = Dependency("PugiXML", InstallPugiXML, "include/pugixml.hpp")
@@ -1263,7 +1289,6 @@ def InstallPyBind11(context, force, buildArgs):
 
 
 PYBIND11 = Dependency("PyBind11", InstallPyBind11, "include/pybind11/pybind11.h")
-
 ############################################################
 # OSL
 
@@ -1295,8 +1320,8 @@ def InstallOSL(context, force, buildArgs):
         #     )  # does not work
         #     context.instDir += delimeter + "/opt/rh/llvm-toolset-7.0/root/usr"
 
-        if Linux():
-            extraArgs.append('-DCMAKE_CXX_FLAGS="-fPIC"')
+        # if Linux():
+        #     extraArgs.append('-DCMAKE_CXX_FLAGS="-fPIC"')
 
         if Windows():
             # Increase the precompiled header buffer limit.
@@ -1304,7 +1329,12 @@ def InstallOSL(context, force, buildArgs):
             extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
             extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
 
+        extraArgs.append("-DENABLE_PRECOMPILED_HEADERS=OFF")
+        extraArgs.append("-DUSE_Package=OFF")
+
         extraArgs += buildArgs
+
+        # Run("gmake --version") # debug
 
         RunCMake(context, force, extraArgs)
 
@@ -1312,20 +1342,24 @@ def InstallOSL(context, force, buildArgs):
 OSL = Dependency("OSL", InstallOSL, "include/OSL/oslversion.h")
 
 # ############################################################
-# # LibRaw (for OpenImageIO)
+# LibRaw (for OpenImageIO)
 
 # LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.tar.gz"
+LibRaw_URL = "https://github.com/LibRaw/LibRaw/archive/0.20.0.zip"
 
-# def InstallLibRaw(context, force, buildArgs):
-#     with CurrentWorkingDirectory(DownloadURL(LibRaw_URL, context, force)):
-#         # RunCMake(context, force, buildArgs)
-#         # need to be installed with
-#         # autoreconf --install
-#         # ./configure
-#         # make
-#         # sudo make install
 
-# LibRaw = Dependency("Blosc", InstallLibRaw, "include/libraw.h")
+def InstallLibRaw(context, force, buildArgs):
+    with CurrentWorkingDirectory(DownloadURL(LibRaw_URL, context, force)):
+        print("--=", os.getcwd())
+        Run("autoreconf --install")
+        Run('./configure --prefix="{instDir}"'.format(instDir=context.instDir))
+        # Run("automake --version > {0}/output.log".format(instDir))
+        Run("make")
+        Run("make install")
+
+
+if Windows():
+    LIBRAW = Dependency("LibRaw", InstallLibRaw, "include/libraw.h")
 
 # ############################################################
 # # BLOSC (Compression used by OpenVDB)
@@ -1379,7 +1413,8 @@ OSL = Dependency("OSL", InstallOSL, "include/OSL/oslversion.h")
 ############################################################
 # OpenImageIO
 
-OIIO_URL = "https://github.com/OpenImageIO/oiio/archive/Release-2.2.7.0.zip"
+# OIIO_URL = "https://github.com/OpenImageIO/oiio/archive/Release-2.2.7.0.zip"
+OIIO_URL = "https://github.com/OpenImageIO/oiio/archive/Release-2.1.20.0.zip"
 
 
 def InstallOpenImageIO(context, force, buildArgs):
@@ -1408,8 +1443,9 @@ def InstallOpenImageIO(context, force, buildArgs):
 
         # Make sure to use boost installed by the build script and not any
         # system installed boost
-        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+        if Windows():
+            extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
+            extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
 
         # Add on any user-specified extra arguments.
         extraArgs += buildArgs
@@ -2382,13 +2418,18 @@ if extraPythonPaths:
     paths = os.environ.get("PYTHONPATH", "").split(os.pathsep) + extraPythonPaths
     os.environ["PYTHONPATH"] = os.pathsep.join(paths)
 
+requiredDependencies = [ZLIB]
+
 # Determine list of dependencies that are required based on options
 # user has selected.
-requiredDependencies = [ZLIB, BOOST, TBB]
+# BOOST is deleted becauseI want to use system installed boost
+if Windows():
+    requiredDependencies = [ZLIB, BOOST, TBB]
 
 if context.buildAlembic:
     if context.enableHDF5:
-        requiredDependencies += [HDF5]
+        if Windows():
+            requiredDependencies += [HDF5]
     requiredDependencies += [OPENEXR, ALEMBIC]
 
 # if context.buildDraco:
@@ -2404,7 +2445,7 @@ if context.buildImaging:
     # requiredDependencies += [GLEW, OPENSUBDIV]
 
     # if context.enableOpenVDB:
-    #     requiredDependencies += [BLOSC, BOOST, OPENEXR, OPENVDB, TBB]
+    #     requiredDependencies += [BLOSC, OPENEXR, OPENVDB, ]
 
     if context.buildOSL:
         # requiredDependencies += [GLUT, WINFLEXBISON, PUGIXML, PYBIND11]
@@ -2412,19 +2453,19 @@ if context.buildImaging:
 
         if Windows():
             requiredDependencies += [LLVM, CLANG]
-        # requiredDependencies += [PARTIO]
+        requiredDependencies += [PARTIO]
 
         if Windows():
             requiredDependencies += [WINFLEXBISON]
 
     if context.buildOIIO:
-        requiredDependencies += [BOOST, JPEG, TIFF, PNG, OPENEXR, OPENIMAGEIO]
+        requiredDependencies += [JPEGTURBO, TIFF, PNG, OPENEXR, OPENIMAGEIO]
 
     if context.buildOCIO:
         requiredDependencies += [OPENCOLORIO]
 
     # if context.buildEmbree:
-    #     requiredDependencies += [TBB, EMBREE]
+    #     requiredDependencies += [EMBREE]
 
 # if context.buildUsdview:
 #     requiredDependencies += [PYOPENGL, PYSIDE]
@@ -2435,6 +2476,11 @@ if context.buildImaging:
 # our libraries against.
 if Linux():
     requiredDependencies.remove(ZLIB)
+
+# commented becasue had problem with manual build
+# prefer to install LibRaw package
+if Windows():
+    requiredDependencies += [LIBRAW]
 
 # Error out if user is building monolithic library on windows with draco plugin
 # enabled. This currently results in missing symbols.
@@ -2564,7 +2610,7 @@ else:
 #                        .format(" or ".join(pyside2Uic)))
 #         sys.exit(1)
 
-if JPEG in requiredDependencies:
+if JPEGTURBO in requiredDependencies:
     # NASM is required to build libjpeg-turbo
     if Windows() and not find_executable("nasm"):
         PrintError("nasm not found -- please install it and adjust your PATH")

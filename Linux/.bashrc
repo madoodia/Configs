@@ -21,14 +21,42 @@ PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[
 
 # =---------------- PATH & LIBS --------------= #
 
+# set LLVM_ROOT for building OSL (gave error on building osl)
+export LLVM_ROOT=/opt/rh/llvm-toolset-7.0/root/usr/lib64/cmake
+export PATH=/opt/rh/llvm-toolset-7.0/root/usr/bin:$PATH
+export LD_LIBRARY_PATH=/opt/rh/llvm-toolset-7.0/root/usr/lib:/opt/rh/llvm-toolset-7.0/root/usr/lib64:$LD_LIBRARY_PATH
+
+# HDF5
+export HDF5_ROOT=/usr/lib64
+export PATH=/usr/bin:$PATH
+
+
+# Boost
+export Boost_ROOT=/usr/lib64/boost169
+export CPLUS_INCLUDE_PATH=/usr/include/boost169;$CPLUS_INCLUDE_PATH
+
+
+# automake
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+export PATH=/usr/local/bin:$PATH
+
+# set gcc 4.8.5 as main gcc
+# export PATH=/usr/bin:$PATH
+
+# set gcc 9.3.0 as main gcc for OSL
+# export PATH=/usr/local/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+
+
 # make
 # export PATH=/usr/local/bin:$PATH
 
 # CMake
 
-# gcc
-export PATH=/opt/rh/devtoolset-9/root/bin/:$PATH
-export LD_LIBRARY_PATH=/opt/rh/devtoolset-9/root/usr/lib:/opt/rh/devtoolset-9/root/usr/lib64:$LD_LIBRARY_PATH
+# set gcc devtoolset-7 as main gcc
+export PATH=/opt/rh/devtoolset-7/root/bin/:$PATH
+export LD_LIBRARY_PATH=/opt/rh/devtoolset-7/root/usr/lib:/opt/rh/devtoolset-7/root/usr/lib64:$LD_LIBRARY_PATH
 
 # export PATH=/mnt/hdd/madoodia/sdks/llvm9x/tools/clang/bin/:$PATH
 # USER ENVIRONMENT VARIABLES
@@ -165,7 +193,19 @@ alias qtset='qt1;qt2'
 # alias ocl='dev;code OpenCL;pkgs;code HandOnOpenCL/Exercises-Solutions;code opencl-book-samples;code CL-image-GL;sdks;code OpenCL/Samples/NVIDIAGPUComputingSDK'
 # alias aby='dev;code Abyssal;code RebuildCurves;code Zolf;sfw;code Qt5.14.1/Examples/Qt-5.14.1/widgets/mainwindows;code Qt5.14.1/Examples/Qt-5.14.1/widgets/graphicsview;swf;cd /mnt/hdd/madoodia/softwares/Qt5.14.1/Examples/Qt-5.14.1/widgets/widgets;code .;dev;code codelab;'
 
-alias python="python3.6"
+
+alias automake="/usr/local/bin/automake-1.15"
+
+alias python="/usr/bin/python3.6"
+# or
+# this may cause problem for yum package installer
+# sudo ln -fs /usr/bin/python3.6 /usr/bin/python
+# ---- and for canceling it ----
+# cd /usr/bin
+# sudo unlink python
+# sudo ln -s python2 python
+# ---- and for canceling it ----
+
 alias pip="pip3.6"
 # alias cmake="gcc9;cmake3"
 # alias git="gcc9;/usr/local/bin/git"
