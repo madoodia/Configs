@@ -1,0 +1,6 @@
+for resize your VM:
+1. remove vdi from virtualbox settings>storage>right click>Storage devices>remove attachment
+2. open powershell in C:\Program Files\Oracle\VirtualBox
+3. runthis with any size:
+.\VBoxManage.exe modifymedium disk "D:\madoodia\VirtualBox_VMs\Win10_ready\Win10_ready.vdi" --resize 130000
+4. add hard disk from your vdi file in virtualbox settings>storage>right click>Storage devices>remove attachment

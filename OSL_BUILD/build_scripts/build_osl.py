@@ -268,7 +268,7 @@ def Run(cmd, logCommandOutput=True):
             while True:
                 l = p.stdout.readline().decode(GetLocale(), "replace")
                 if l:
-                    print("--=", l)
+                    # print("--=", l)
                     logfile.write(l)
                     PrintCommandOutput(l)
                 elif p.poll() is not None:
@@ -923,6 +923,8 @@ TBB = Dependency("TBB", InstallTBB, "include/tbb/tbb.h")
 JPEGTurbo_URL = (
     "https://github.com/libJPEGTurbo-turbo/libJPEGTurbo-turbo/archive/2.0.5.zip"
 )
+if Windows():
+    JPEGTurbo_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
 
 
 def InstallJPEGTurbo(context, force, buildArgs):
@@ -1197,7 +1199,8 @@ GLUT = Dependency("GLUT", InstallGLUT, "include/GL/freeglut.h")
 ############################################################
 # Partio (for OSL)
 
-Partio_URL = "https://github.com/wdas/partio/archive/v1.13.0.zip"
+# Partio_URL = "https://github.com/wdas/partio/archive/v1.13.0.zip"
+Partio_URL = "https://github.com/wdas/partio/archive/b1163a94261cb43d05966c5075edcdacfe4af52d.zip"
 
 
 def InstallPartio(context, force, buildArgs):
@@ -1236,17 +1239,21 @@ PUGIXML = Dependency("PugiXML", InstallPugiXML, "include/pugixml.hpp")
 ############################################################
 # LLVM (for OSL)
 
-# LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-11.0.0.zip"
+LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-11.0.0.zip"
 # LLVM_URL = "https://github.com/llvm/llvm-project/releases/tag/llvmorg-10.0.1"
 # LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-8.0.1.zip"
 # LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-9.0.1.zip"
-LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-7.1.0.zip"
+# LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-7.1.0.zip"
 # LLVM_URL = "https://github.com/llvm/llvm-project/archive/llvmorg-7.0.1.zip"
 
 
 def InstallLLVM(context, force, buildArgs):
     with CurrentWorkingDirectory(DownloadURL(LLVM_URL, context, force)):
-        RunCMake(context, force, buildArgs, extraSrcDir="llvm")
+        extraArgs = []
+        if Windows():
+            extraArgs.append("-Thost=x64")
+        extraArgs += buildArgs
+        RunCMake(context, force, extraArgs, extraSrcDir="llvm")
 
 
 LLVM = Dependency("LLVM", InstallLLVM, "include/llvm/LTO/LTO.h")
@@ -1303,21 +1310,27 @@ def InstallOSL(context, force, buildArgs):
 
         extraArgs.append("-DOSL_BUILD_TESTS=1")
         # if you are using LLVM 10 or higher C++ should be set on 14
-        # extraArgs.append("-DCMAKE_CXX_STANDARD=14")
+        extraArgs.append("-DCMAKE_CXX_STANDARD=14")
 
         # if you are using LLVM 10 or higher C++ should be set on 11
-        extraArgs.append("-DCMAKE_CXX_STANDARD=11")
+        # extraArgs.append("-DCMAKE_CXX_STANDARD=11")
 
         # if you used windows installer for llvm you should add the path like this
         delimeter = ":"
         if Windows():
             delimeter = ";"
-        # if Windows():
-        #     context.instDir += delimeter + "C:/LLVM"
+        if Windows():
+            # context.instDir += delimeter + "C:/LLVM"
+            extraArgs.append(
+                '-DCMAKE_PREFIX_PATH=C:/LLVM/lib/cmake;"{instDir}"'.format(
+                    instDir=context.instDir
+                )
+            )
+            extraArgs.append('-DLLVM_ROOT="{instDir}"'.format(instDir=context.instDir))
         # if Linux():
         #     extraArgs.append(
         #         '-DLLVM_ROOT="/opt/rh/llvm-toolset-7.0/root/usr"'
-        #     )  # does not work
+        #     )  # does not work, should set an env var befor running this py file
         #     context.instDir += delimeter + "/opt/rh/llvm-toolset-7.0/root/usr"
 
         # if Linux():
@@ -1344,22 +1357,39 @@ OSL = Dependency("OSL", InstallOSL, "include/OSL/oslversion.h")
 # ############################################################
 # LibRaw (for OpenImageIO)
 
-# LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.tar.gz"
-LibRaw_URL = "https://github.com/LibRaw/LibRaw/archive/0.20.0.zip"
+# LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2-Win64.zip"
+LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.zip"
+
+if Linux():
+    # LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.tar.gz"
+    LibRaw_URL = "https://github.com/LibRaw/LibRaw/archive/0.20.0.zip"
 
 
 def InstallLibRaw(context, force, buildArgs):
     with CurrentWorkingDirectory(DownloadURL(LibRaw_URL, context, force)):
-        print("--=", os.getcwd())
-        Run("autoreconf --install")
-        Run('./configure --prefix="{instDir}"'.format(instDir=context.instDir))
-        # Run("automake --version > {0}/output.log".format(instDir))
-        Run("make")
-        Run("make install")
+        if Linux():
+            # print("--=", os.getcwd())
+            Run("autoreconf --install")
+            Run('./configure --prefix="{instDir}"'.format(instDir=context.instDir))
+            # Run("automake --version > {0}/output.log".format(instDir))
+            Run("make")
+            Run("make install")
+        if Windows():
+            Run("nmake Makefile.msvc")
+            # Run("mkdir {instDir}\\bin".format(instDir=context.instDir))
+            # Run("mkdir {instDir}\\include\\libraw".format(instDir=context.instDir))
+            # Run("mkdir {instDir}\\lib".format(instDir=context.instDir))
+            Run('xcopy /E /I /Y bin "{instDir}\\bin"'.format(instDir=context.instDir))
+            Run(
+                'xcopy /E /I /Y libraw "{instDir}\\include\\libraw"'.format(
+                    instDir=context.instDir
+                )
+            )
+            Run('xcopy /E /I /Y lib "{instDir}\\lib"'.format(instDir=context.instDir))
 
 
 if Windows():
-    LIBRAW = Dependency("LibRaw", InstallLibRaw, "include/libraw.h")
+    LIBRAW = Dependency("LibRaw", InstallLibRaw, "include/libraw/libraw.h")
 
 # ############################################################
 # # BLOSC (Compression used by OpenVDB)
@@ -2447,22 +2477,29 @@ if context.buildImaging:
     # if context.enableOpenVDB:
     #     requiredDependencies += [BLOSC, OPENEXR, OPENVDB, ]
 
-    if context.buildOSL:
-        # requiredDependencies += [GLUT, WINFLEXBISON, PUGIXML, PYBIND11]
-        requiredDependencies += [GLUT, PUGIXML, PYBIND11]
+if context.buildOSL:
+    # requiredDependencies += [GLUT, WINFLEXBISON, PUGIXML, PYBIND11]
+    requiredDependencies += [GLUT, PUGIXML, PYBIND11]
 
-        if Windows():
-            requiredDependencies += [LLVM, CLANG]
-        requiredDependencies += [PARTIO]
+    if Windows():
+        requiredDependencies += [LLVM, CLANG]
+    # if Windows():
+    #     requiredDependencies += [PARTIO]
 
-        if Windows():
-            requiredDependencies += [WINFLEXBISON]
+    if Windows():
+        requiredDependencies += [WINFLEXBISON]
 
-    if context.buildOIIO:
-        requiredDependencies += [JPEGTURBO, TIFF, PNG, OPENEXR, OPENIMAGEIO]
+if context.buildOCIO:
+    requiredDependencies += [OPENCOLORIO]
 
-    if context.buildOCIO:
-        requiredDependencies += [OPENCOLORIO]
+
+# commented becasue had problem with manual build
+# prefer to install LibRaw package
+if Windows():
+    requiredDependencies += [LIBRAW]
+
+if context.buildOIIO:
+    requiredDependencies += [JPEGTURBO, TIFF, PNG, OPENEXR, OPENIMAGEIO]
 
     # if context.buildEmbree:
     #     requiredDependencies += [EMBREE]
@@ -2477,10 +2514,6 @@ if context.buildImaging:
 if Linux():
     requiredDependencies.remove(ZLIB)
 
-# commented becasue had problem with manual build
-# prefer to install LibRaw package
-if Windows():
-    requiredDependencies += [LIBRAW]
 
 # Error out if user is building monolithic library on windows with draco plugin
 # enabled. This currently results in missing symbols.
@@ -2728,7 +2761,7 @@ for dir in [context.oslInstDir, context.instDir, context.srcDir, context.buildDi
 try:
     # Download and install 3rd-party dependencies, followed by OSL.
     for dep in dependenciesToBuild + [OSL]:
-        PrintStatus("Installing {dep}...".format(dep=dep.name))
+        PrintStatus("\nInstalling {dep}...\n".format(dep=dep.name))
         dep.installer(
             context,
             buildArgs=context.GetBuildArguments(dep),
