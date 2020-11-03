@@ -1321,12 +1321,23 @@ def InstallOSL(context, force, buildArgs):
             delimeter = ";"
         if Windows():
             # context.instDir += delimeter + "C:/LLVM"
-            extraArgs.append(
-                '-DCMAKE_PREFIX_PATH=C:/LLVM/lib/cmake;"{instDir}"'.format(
-                    instDir=context.instDir
-                )
-            )
+            # extraArgs.append(
+            #     '-DCMAKE_PREFIX_PATH=C:/LLVM/lib/cmake;"{instDir}"'.format(
+            #         instDir=context.instDir
+            #     )
+            # )
+            # extraArgs.append(
+            #     '-DCMAKE_PREFIX_PATH="{instDir}\lib\cmake"'.format(
+            #         instDir=context.instDir
+            #     )
+            # )
             extraArgs.append('-DLLVM_ROOT="{instDir}"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBoost_ROOT="{instDir}\lib\cmake"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBOOST_INCLUDEDIR="{instDir}\include"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBoost_INCLUDE_DIRS="{instDir}\include"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBOOST_LIBRARYDIR="{instDir}\lib"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBoost_LIBRARY_DIRS="{instDir}\lib"'.format(instDir=context.instDir))
+
         # if Linux():
         #     extraArgs.append(
         #         '-DLLVM_ROOT="/opt/rh/llvm-toolset-7.0/root/usr"'
