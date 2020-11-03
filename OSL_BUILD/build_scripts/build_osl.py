@@ -1306,9 +1306,9 @@ def InstallOSL(context, force, buildArgs):
 
         if context.buildPython:
             if Python3():
-                extraArgs.append("-DUSE_PYTHON=ON")
+                extraArgs.append("-DUSE_PYTHON=0")
 
-        extraArgs.append("-DOSL_BUILD_TESTS=1")
+        extraArgs.append("-DOSL_BUILD_TESTS=0")
         # if you are using LLVM 10 or higher C++ should be set on 14
         extraArgs.append("-DCMAKE_CXX_STANDARD=14")
 
@@ -1355,6 +1355,9 @@ def InstallOSL(context, force, buildArgs):
 
         extraArgs.append("-DENABLE_PRECOMPILED_HEADERS=OFF")
         extraArgs.append("-DUSE_Package=OFF")
+        # if context.buildDebug:
+        #     extraArgs.append('-DCMAKE_CXX_FLAGS="/NODEFAULTLIB"')
+        #     extraArgs.append('-DCMAKE_CXX_FLAGS="/MD"')
 
         extraArgs += buildArgs
 
