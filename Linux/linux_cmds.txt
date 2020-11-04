@@ -973,7 +973,7 @@ sudo make install
 ==================================
 kill process in centos7
 # find the process
-ps aux | grep chrome
+ps aux | grep substance
 # kill by ID
 kill -9 <ID>
 

@@ -363,6 +363,7 @@ def RunCMake(context, force, extraArgs=None, extraSrcDir="", extraInstDir=""):
     # On Windows, we need to explicitly specify the generator to ensure we're
     # building a 64-bit project. (Surely there is a better way to do this?)
     # TODO: figure out exactly what "vcvarsall.bat x64" sets to force x64
+    
     if generator is None and Windows():
         if IsVisualStudio2019OrGreater():
             generator = "Visual Studio 16 2019"
@@ -374,8 +375,9 @@ def RunCMake(context, force, extraArgs=None, extraSrcDir="", extraInstDir=""):
     if generator is not None:
         generator = '-G "{gen}"'.format(gen=generator)
 
-    if IsVisualStudio2019OrGreater():
-        generator = generator + " -A x64"
+    if generator != '-G "NMake Makefiles"':
+        if IsVisualStudio2019OrGreater():
+            generator = generator + " -A x64"
 
     toolset = context.cmakeToolset
     if toolset is not None:
@@ -413,11 +415,16 @@ def RunCMake(context, force, extraArgs=None, extraSrcDir="", extraInstDir=""):
                 extraArgs=(" ".join(extraArgs) if extraArgs else ""),
             )
         )
-        Run(
-            "cmake --build . --config {config} --target install -- {multiproc}".format(
-                config=config, multiproc=FormatMultiProcs(context.numJobs, generator)
+        if generator == '-G "NMake Makefiles"':
+            Run("nmake")
+            # Run("nmake /I /K")
+            Run("cmake --install .")
+        else:
+            Run(
+                "cmake --build . --config {config} --target install -- {multiproc}".format(
+                    config=config, multiproc=FormatMultiProcs(context.numJobs, generator)
+                )
             )
-        )
 
 
 def GetCMakeVersion():
@@ -1352,17 +1359,17 @@ def InstallOSL(context, force, buildArgs):
             extraArgs.append('-DCMAKE_CXX_FLAGS="/Zm150"')
             extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
             extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+            if context.buildDebug:
+                extraArgs.append('-DCMAKE_CXX_FLAGS="/NODEFAULTLIB /MD /EHsc"')
+                # extraArgs.append('-DCMAKE_PREFIX_PATH="{instDir}";"{buildDir}/OpenShadingLanguage/bin"'.format(instDir=context.instDir,buildDir=context.buildDir))
 
         extraArgs.append("-DENABLE_PRECOMPILED_HEADERS=OFF")
         extraArgs.append("-DUSE_Package=OFF")
-        # if context.buildDebug:
-        #     extraArgs.append('-DCMAKE_CXX_FLAGS="/NODEFAULTLIB"')
-        #     extraArgs.append('-DCMAKE_CXX_FLAGS="/MD"')
 
         extraArgs += buildArgs
 
         # Run("gmake --version") # debug
-
+        # context.cmakeGenerator = "NMake Makefiles"
         RunCMake(context, force, extraArgs)
 
 
@@ -1757,166 +1764,6 @@ ALEMBIC = Dependency("Alembic", InstallAlembic, "include/Alembic/Abc/Base.h")
 #         RunCMake(context, force, extraArgs)
 
 # EMBREE = Dependency("Embree", InstallEmbree, "include/embree3/rtcore.h")
-
-# ############################################################
-# # OSL
-
-# def InstallUSD(context, force, buildArgs):
-#     with CurrentWorkingDirectory(context.oslSrcDir):
-#         extraArgs = []
-
-#         extraArgs.append('-DPXR_PREFER_SAFETY_OVER_SPEED=' +
-#                          'ON' if context.safetyFirst else 'OFF')
-
-#         if context.buildPython:
-#             extraArgs.append('-DPXR_ENABLE_PYTHON_SUPPORT=ON')
-#             if Python3():
-#                 extraArgs.append('-DPXR_USE_PYTHON_3=ON')
-
-#             # CMake has trouble finding the executable, library, and include
-#             # directories when there are multiple versions of Python installed.
-#             # This can lead to crashes due to OSL being linked against one
-#             # version of Python but running through some other Python
-#             # interpreter version. This primarily shows up on macOS, as it's
-#             # common to have a Python install that's separate from the one
-#             # included with the system.
-#             #
-#             # To avoid this, we try to determine these paths from Python
-#             # itself rather than rely on CMake's heuristics.
-#             pythonInfo = GetPythonInfo()
-#             if pythonInfo:
-#                 extraArgs.append('-DPYTHON_EXECUTABLE="{pyExecPath}"'
-#                                  .format(pyExecPath=pythonInfo[0]))
-#                 extraArgs.append('-DPYTHON_LIBRARY="{pyLibPath}"'
-#                                  .format(pyLibPath=pythonInfo[1]))
-#                 extraArgs.append('-DPYTHON_INCLUDE_DIR="{pyIncPath}"'
-#                                  .format(pyIncPath=pythonInfo[2]))
-#         else:
-#             extraArgs.append('-DPXR_ENABLE_PYTHON_SUPPORT=OFF')
-
-#         if context.buildShared:
-#             extraArgs.append('-DBUILD_SHARED_LIBS=ON')
-#         elif context.buildMonolithic:
-#             extraArgs.append('-DPXR_BUILD_MONOLITHIC=ON')
-
-#         if context.buildDebug:
-#             extraArgs.append('-DTBB_USE_DEBUG_BUILD=ON')
-#         else:
-#             extraArgs.append('-DTBB_USE_DEBUG_BUILD=OFF')
-
-#         if context.buildDocs:
-#             extraArgs.append('-DPXR_BUILD_DOCUMENTATION=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_DOCUMENTATION=OFF')
-
-#         if context.buildTests:
-#             extraArgs.append('-DPXR_BUILD_TESTS=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_TESTS=OFF')
-
-#         if context.buildExamples:
-#             extraArgs.append('-DPXR_BUILD_EXAMPLES=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_EXAMPLES=OFF')
-
-#         if context.buildTutorials:
-#             extraArgs.append('-DPXR_BUILD_TUTORIALS=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_TUTORIALS=OFF')
-
-#         if context.buildTools:
-#             extraArgs.append('-DPXR_BUILD_USD_TOOLS=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_USD_TOOLS=OFF')
-
-#         if context.buildImaging:
-#             extraArgs.append('-DPXR_BUILD_IMAGING=ON')
-#             if context.enablePtex:
-#                 extraArgs.append('-DPXR_ENABLE_PTEX_SUPPORT=ON')
-#             else:
-#                 extraArgs.append('-DPXR_ENABLE_PTEX_SUPPORT=OFF')
-
-#             if context.enableOpenVDB:
-#                 extraArgs.append('-DPXR_ENABLE_OPENVDB_SUPPORT=ON')
-#             else:
-#                 extraArgs.append('-DPXR_ENABLE_OPENVDB_SUPPORT=OFF')
-
-#             if context.buildEmbree:
-#                 extraArgs.append('-DPXR_BUILD_EMBREE_PLUGIN=ON')
-#             else:
-#                 extraArgs.append('-DPXR_BUILD_EMBREE_PLUGIN=OFF')
-
-#             if context.buildPrman:
-#                 if context.prmanLocation:
-#                     extraArgs.append('-DRENDERMAN_LOCATION="{location}"'
-#                                      .format(location=context.prmanLocation))
-#                 extraArgs.append('-DPXR_BUILD_PRMAN_PLUGIN=ON')
-#             else:
-#                 extraArgs.append('-DPXR_BUILD_PRMAN_PLUGIN=OFF')
-
-#             if context.buildOIIO:
-#                 extraArgs.append('-DPXR_BUILD_OPENIMAGEIO_PLUGIN=ON')
-#             else:
-#                 extraArgs.append('-DPXR_BUILD_OPENIMAGEIO_PLUGIN=OFF')
-
-#             if context.buildOCIO:
-#                 extraArgs.append('-DPXR_BUILD_OPENCOLORIO_PLUGIN=ON')
-#             else:
-#                 extraArgs.append('-DPXR_BUILD_OPENCOLORIO_PLUGIN=OFF')
-
-#         else:
-#             extraArgs.append('-DPXR_BUILD_IMAGING=OFF')
-
-#         if context.buildUsdImaging:
-#             extraArgs.append('-DPXR_BUILD_OSL_IMAGING=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_OSL_IMAGING=OFF')
-
-#         if context.buildUsdview:
-#             extraArgs.append('-DPXR_BUILD_USDVIEW=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_USDVIEW=OFF')
-
-#         if context.buildAlembic:
-#             extraArgs.append('-DPXR_BUILD_ALEMBIC_PLUGIN=ON')
-#             if context.enableHDF5:
-#                 extraArgs.append('-DPXR_ENABLE_HDF5_SUPPORT=ON')
-
-#                 # CMAKE_PREFIX_PATH isn't sufficient for the FindHDF5 module
-#                 # to find the HDF5 we've built, so provide an extra hint.
-#                 extraArgs.append('-DHDF5_ROOT="{instDir}"'
-#                                  .format(instDir=context.instDir))
-#             else:
-#                 extraArgs.append('-DPXR_ENABLE_HDF5_SUPPORT=OFF')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_ALEMBIC_PLUGIN=OFF')
-
-#         if context.buildDraco:
-#             extraArgs.append('-DPXR_BUILD_DRACO_PLUGIN=ON')
-#             draco_root = (context.dracoLocation
-#                           if context.dracoLocation else context.instDir)
-#             extraArgs.append('-DDRACO_ROOT="{}"'.format(draco_root))
-#         else:
-#             extraArgs.append('-DPXR_BUILD_DRACO_PLUGIN=OFF')
-
-#         if context.buildMaterialX:
-#             extraArgs.append('-DPXR_BUILD_MATERIALX_PLUGIN=ON')
-#         else:
-#             extraArgs.append('-DPXR_BUILD_MATERIALX_PLUGIN=OFF')
-
-#         if Windows():
-#             # Increase the precompiled header buffer limit.
-#             extraArgs.append('-DCMAKE_CXX_FLAGS="/Zm150"')
-
-#         # Make sure to use boost installed by the build script and not any
-#         # system installed boost
-#         extraArgs.append('-DBoost_NO_BOOST_CMAKE=On')
-#         extraArgs.append('-DBoost_NO_SYSTEM_PATHS=True')
-#         extraArgs += buildArgs
-
-#         RunCMake(context, force, extraArgs)
-
-# OSL = Dependency("OSL", InstallUSD, "include/pxr/pxr.h")
 
 ############################################################
 # Install script
