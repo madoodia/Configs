@@ -26,6 +26,15 @@ cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/partio -DCMAK
 nmake
 cmake --build . --target INSTALL
 
+
+
+new try for partio building------------------
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:/madoodia/sdks/partio -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=D:\madoodia\sdks\osl_release -DGLUT_INCLUDE_DIR=D:\madoodia\sdks\osl_release/include -DGLUT_glut_LIBRARY=D:\madoodia\sdks\osl_release/lib ..
+
+cmake --build . --config Release --target install
+
+
+
 ---------------------------------
 Building USD for building osl
 

@@ -927,8 +927,11 @@ TBB = Dependency("TBB", InstallTBB, "include/tbb/tbb.h")
 ############################################################
 # JPEGTurbo
 
+# JPEGTurbo_URL = (
+#     "https://github.com/libJPEGTurbo-turbo/libJPEGTurbo-turbo/archive/2.0.5.zip"
+# )
 JPEGTurbo_URL = (
-    "https://github.com/libJPEGTurbo-turbo/libJPEGTurbo-turbo/archive/2.0.5.zip"
+    "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
 )
 if Windows():
     JPEGTurbo_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
@@ -1276,7 +1279,7 @@ def InstallCLANG(context, force, buildArgs):
         RunCMake(context, force, buildArgs, extraSrcDir="clang")
 
 
-CLANG = Dependency("CLANG", InstallCLANG, "include/clang/basic/version.h")
+CLANG = Dependency("CLANG", InstallCLANG, "include/clang/Basic/Version.h")
 
 ############################################################
 # WinFlexBison (for OSL)
@@ -1354,17 +1357,18 @@ def InstallOSL(context, force, buildArgs):
         # if Linux():
         #     extraArgs.append('-DCMAKE_CXX_FLAGS="-fPIC"')
 
+        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
+        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+
         if Windows():
             # Increase the precompiled header buffer limit.
             extraArgs.append('-DCMAKE_CXX_FLAGS="/Zm150"')
-            extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-            extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
             if context.buildDebug:
                 extraArgs.append('-DCMAKE_CXX_FLAGS="/NODEFAULTLIB /MD /EHsc"')
                 # extraArgs.append('-DCMAKE_PREFIX_PATH="{instDir}";"{buildDir}/OpenShadingLanguage/bin"'.format(instDir=context.instDir,buildDir=context.buildDir))
 
-        extraArgs.append("-DENABLE_PRECOMPILED_HEADERS=OFF")
-        extraArgs.append("-DUSE_Package=OFF")
+            extraArgs.append("-DENABLE_PRECOMPILED_HEADERS=OFF")
+            extraArgs.append("-DUSE_Package=OFF")
 
         extraArgs += buildArgs
 
@@ -1382,15 +1386,14 @@ OSL = Dependency("OSL", InstallOSL, "include/OSL/oslversion.h")
 LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.zip"
 
 if Linux():
-    # LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.tar.gz"
-    LibRaw_URL = "https://github.com/LibRaw/LibRaw/archive/0.20.0.zip"
+    LibRaw_URL = "https://www.libraw.org/data/LibRaw-0.20.2.tar.gz"
 
 
 def InstallLibRaw(context, force, buildArgs):
     with CurrentWorkingDirectory(DownloadURL(LibRaw_URL, context, force)):
         if Linux():
             # print("--=", os.getcwd())
-            Run("autoreconf --install")
+            # Run("autoreconf --install")
             Run('./configure --prefix="{instDir}"'.format(instDir=context.instDir))
             # Run("automake --version > {0}/output.log".format(instDir))
             Run("make")
@@ -1409,8 +1412,8 @@ def InstallLibRaw(context, force, buildArgs):
             Run('xcopy /E /I /Y lib "{instDir}\\lib"'.format(instDir=context.instDir))
 
 
-if Windows():
-    LIBRAW = Dependency("LibRaw", InstallLibRaw, "include/libraw/libraw.h")
+# if Windows():
+LIBRAW = Dependency("LibRaw", InstallLibRaw, "include/libraw/libraw.h")
 
 # ############################################################
 # # BLOSC (Compression used by OpenVDB)
@@ -1494,9 +1497,9 @@ def InstallOpenImageIO(context, force, buildArgs):
 
         # Make sure to use boost installed by the build script and not any
         # system installed boost
-        if Windows():
-            extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-            extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+        # if Windows():
+        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
+        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
 
         # Add on any user-specified extra arguments.
         extraArgs += buildArgs
@@ -2314,14 +2317,14 @@ requiredDependencies = [ZLIB]
 # Determine list of dependencies that are required based on options
 # user has selected.
 # BOOST is deleted becauseI want to use system installed boost
-if Windows():
-    requiredDependencies = [ZLIB, BOOST, TBB]
+# if Windows():
+requiredDependencies = [ZLIB, BOOST, TBB]
 
-if context.buildAlembic:
-    if context.enableHDF5:
-        if Windows():
-            requiredDependencies += [HDF5]
-    requiredDependencies += [OPENEXR, ALEMBIC]
+# if context.buildAlembic:
+#     if context.enableHDF5:
+#         if Windows():
+#             requiredDependencies += [HDF5]
+#     requiredDependencies += [OPENEXR, ALEMBIC]
 
 # if context.buildDraco:
 #     requiredDependencies += [DRACO]
@@ -2329,9 +2332,9 @@ if context.buildAlembic:
 # if context.buildMaterialX:
 #     requiredDependencies += [MATERIALX]
 
-if context.buildImaging:
-    if context.enablePtex:
-        requiredDependencies += [PTEX]
+# if context.buildImaging:
+#     if context.enablePtex:
+#         requiredDependencies += [PTEX]
 
     # requiredDependencies += [GLEW, OPENSUBDIV]
 
@@ -2342,8 +2345,8 @@ if context.buildOSL:
     # requiredDependencies += [GLUT, WINFLEXBISON, PUGIXML, PYBIND11]
     requiredDependencies += [GLUT, PUGIXML, PYBIND11]
 
-    if Windows():
-        requiredDependencies += [LLVM, CLANG]
+    # if Windows():
+    requiredDependencies += [LLVM, CLANG]
     # if Windows():
     #     requiredDependencies += [PARTIO]
 
@@ -2372,8 +2375,8 @@ if context.buildOIIO:
 # our own. This avoids potential issues where a host application
 # loads an older version of zlib than the one we'd build and link
 # our libraries against.
-if Linux():
-    requiredDependencies.remove(ZLIB)
+# if Linux():
+#     requiredDependencies.remove(ZLIB)
 
 
 # Error out if user is building monolithic library on windows with draco plugin
