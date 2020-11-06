@@ -2310,8 +2310,8 @@ except Exception as e:
     sys.exit(1)
 
 # Done. Print out a final status message.
-requiredInPythonPath = set([os.path.join(context.oslInstDir, "lib", "python")])
-requiredInPythonPath.update(extraPythonPaths)
+# requiredInPythonPath = set([os.path.join(context.oslInstDir, "lib", "python")])
+# requiredInPythonPath.update(extraPythonPaths)
 
 requiredInPath = set([os.path.join(context.oslInstDir, "bin")])
 requiredInPath.update(extraPaths)
@@ -2330,14 +2330,14 @@ Print(
 Success! To use OSL, please ensure that you have:"""
 )
 
-if context.buildPython:
-    Print(
-        """
-    The following in your PYTHONPATH environment variable:
-    {requiredInPythonPath}""".format(
-            requiredInPythonPath="\n    ".join(sorted(requiredInPythonPath))
-        )
-    )
+# if context.buildPython:
+#     Print(
+#         """
+#     The following in your PYTHONPATH environment variable:
+#     {requiredInPythonPath}""".format(
+#             requiredInPythonPath="\n    ".join(sorted(requiredInPythonPath))
+#         )
+#     )
 
 Print(
     """
