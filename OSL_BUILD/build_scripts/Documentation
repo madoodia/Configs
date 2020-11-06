@@ -1,4 +1,4 @@
-## Building, Using and Debugging OSL in Windows
+## **Building, Using and Debugging OSL in Windows**
 
 ---
 
@@ -152,7 +152,6 @@ Open **build_scripts/osl_env_vars_setup.bat** in your editor and edit paths' val
 
 ### **2.3 Set Flags based on your needs**
 
-`Under Development`
 
 The main build launcher is here **build_scripts/build_osl.bat**
 
