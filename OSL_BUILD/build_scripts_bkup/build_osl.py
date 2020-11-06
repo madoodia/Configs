@@ -1,11 +1,7 @@
 #
 # 2020 madoodia.com
-# Based on USD build_scripts by Pixar Animation Studio
+# Based on USD build_scripts bt Pixar Animation Studio
 #
-# Code is modified to be compatible for installing OSL and its dependencies
-# ---------------------------------------------------------------------------
-#
-
 from __future__ import print_function
 
 from distutils.spawn import find_executable
@@ -272,6 +268,7 @@ def Run(cmd, logCommandOutput=True):
             while True:
                 l = p.stdout.readline().decode(GetLocale(), "replace")
                 if l:
+                    # print("--=", l)
                     logfile.write(l)
                     PrintCommandOutput(l)
                 elif p.poll() is not None:
@@ -366,7 +363,7 @@ def RunCMake(context, force, extraArgs=None, extraSrcDir="", extraInstDir=""):
     # On Windows, we need to explicitly specify the generator to ensure we're
     # building a 64-bit project. (Surely there is a better way to do this?)
     # TODO: figure out exactly what "vcvarsall.bat x64" sets to force x64
-
+    
     if generator is None and Windows():
         if IsVisualStudio2019OrGreater():
             generator = "Visual Studio 16 2019"
@@ -420,13 +417,12 @@ def RunCMake(context, force, extraArgs=None, extraSrcDir="", extraInstDir=""):
         )
         if generator == '-G "NMake Makefiles"':
             Run("nmake")
-            # Run("nmake /I /K") # for ignoring exit with code 0 error
+            # Run("nmake /I /K")
             Run("cmake --install .")
         else:
             Run(
                 "cmake --build . --config {config} --target install -- {multiproc}".format(
-                    config=config,
-                    multiproc=FormatMultiProcs(context.numJobs, generator),
+                    config=config, multiproc=FormatMultiProcs(context.numJobs, generator)
                 )
             )
 
@@ -797,21 +793,21 @@ def InstallBoost_Helper(context, force, buildArgs):
         # if Linux():
         #     b2_settings.append("toolset=gcc")
 
-        if context.buildOPENVDB:
-            b2_settings.append("--with-iostreams")
+        # if context.enableOpenVDB:
+        #     b2_settings.append("--with-iostreams")
 
-            # b2 with -sNO_COMPRESSION=1 fails with the following error message:
-            #     error: at [...]/boost_1_61_0/tools/build/src/kernel/modules.jam:107
-            #     error: Unable to find file or target named
-            #     error:     '/zlib//zlib'
-            #     error: referred to from project at
-            #     error:     'libs/iostreams/build'
-            #     error: could not resolve project reference '/zlib'
+        #     # b2 with -sNO_COMPRESSION=1 fails with the following error message:
+        #     #     error: at [...]/boost_1_61_0/tools/build/src/kernel/modules.jam:107
+        #     #     error: Unable to find file or target named
+        #     #     error:     '/zlib//zlib'
+        #     #     error: referred to from project at
+        #     #     error:     'libs/iostreams/build'
+        #     #     error: could not resolve project reference '/zlib'
 
-            # But to avoid an extra library dependency, we can still explicitly
-            # exclude the bzip2 compression from boost_iostreams (note that
-            # OpenVDB uses blosc compression).
-            b2_settings.append("-sNO_BZIP2=1")
+        #     # But to avoid an extra library dependency, we can still explicitly
+        #     # exclude the bzip2 compression from boost_iostreams (note that
+        #     # OpenVDB uses blosc compression).
+        #     b2_settings.append("-sNO_BZIP2=1")
 
         if context.buildOIIO:
             b2_settings.append("--with-filesystem")
@@ -867,9 +863,76 @@ def InstallBoost(context, force, buildArgs):
 BOOST = Dependency("boost", InstallBoost, BOOST_VERSION_FILE)
 
 ############################################################
+# Intel TBB
+
+if Windows():
+    TBB_URL = "https://github.com/oneapi-src/oneTBB/releases/download/2017_U6/tbb2017_20170412oss_win.zip"
+else:
+    TBB_URL = "https://github.com/oneapi-src/oneTBB/archive/2017_U6.tar.gz"
+
+
+def InstallTBB(context, force, buildArgs):
+    if Windows():
+        InstallTBB_Windows(context, force, buildArgs)
+    elif Linux() or MacOS():
+        InstallTBB_LinuxOrMacOS(context, force, buildArgs)
+
+
+def InstallTBB_Windows(context, force, buildArgs):
+    with CurrentWorkingDirectory(DownloadURL(TBB_URL, context, force)):
+        # On Windows, we simply copy headers and pre-built DLLs to
+        # the appropriate location.
+
+        if buildArgs:
+            PrintWarning(
+                "Ignoring build arguments {}, TBB is "
+                "not built from source on this platform.".format(buildArgs)
+            )
+
+        CopyFiles(context, "bin\\intel64\\vc14\\*.*", "bin")
+        CopyFiles(context, "lib\\intel64\\vc14\\*.*", "lib")
+        CopyDirectory(context, "include\\serial", "include\\serial")
+        CopyDirectory(context, "include\\tbb", "include\\tbb")
+
+
+def InstallTBB_LinuxOrMacOS(context, force, buildArgs):
+    with CurrentWorkingDirectory(DownloadURL(TBB_URL, context, force)):
+        # Note: TBB installation fails on OSX when cuda is installed, a
+        # suggested fix:
+        # https://github.com/spack/spack/issues/6000#issuecomment-358817701
+        if MacOS():
+            PatchFile(
+                "build/macos.inc", [("shell clang -v ", "shell clang --version ")]
+            )
+        # TBB does not support out-of-source builds in a custom location.
+        Run(
+            "make -j{procs} {buildArgs}".format(
+                procs=context.numJobs, buildArgs=" ".join(buildArgs)
+            )
+        )
+
+        # Install both release and debug builds. OSL requires the debug
+        # libraries when building in debug mode, and installing both
+        # makes it easier for users to install dependencies in some
+        # location that can be shared by both release and debug OSL
+        # builds. Plus, the TBB build system builds both versions anyway.
+        CopyFiles(context, "build/*_release/libtbb*.*", "lib")
+        CopyFiles(context, "build/*_debug/libtbb*.*", "lib")
+        CopyDirectory(context, "include/serial", "include/serial")
+        CopyDirectory(context, "include/tbb", "include/tbb")
+
+
+TBB = Dependency("TBB", InstallTBB, "include/tbb/tbb.h")
+
+############################################################
 # JPEGTurbo
 
-JPEGTurbo_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
+# JPEGTurbo_URL = (
+#     "https://github.com/libJPEGTurbo-turbo/libJPEGTurbo-turbo/archive/2.0.5.zip"
+# )
+JPEGTurbo_URL = (
+    "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
+)
 if Windows():
     JPEGTurbo_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
 
@@ -882,8 +945,44 @@ def InstallJPEGTurbo(context, force, buildArgs):
 JPEGTURBO = Dependency("JPEGTurbo", InstallJPEGTurbo, "include/jpeglib.h")
 
 ############################################################
+# JPEG
+
+# if Windows():
+#     # JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.1.zip"
+#     JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
+# else:
+#     # JPEG_URL = "https://www.ijg.org/files/jpegsrc.v9b.tar.gz"
+#     JPEG_URL = "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.5.zip"
+
+
+# def InstallJPEG(context, force, buildArgs):
+#     if Windows():
+#         InstallJPEG_Turbo(context, force, buildArgs)
+#     else:
+#         InstallJPEG_Lib(context, force, buildArgs)
+
+
+# def InstallJPEG_Turbo(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(JPEG_URL, context, force)):
+#         RunCMake(context, force, buildArgs)
+
+
+# def InstallJPEG_Lib(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(JPEG_URL, context, force)):
+#         Run(
+#             './configure --prefix="{instDir}" '
+#             "--disable-static --enable-shared "
+#             "{buildArgs}".format(instDir=context.instDir, buildArgs=" ".join(buildArgs))
+#         )
+#         Run("make -j{procs} install".format(procs=context.numJobs))
+
+
+# JPEG = Dependency("JPEG", InstallJPEG, "include/jpeglib.h")
+
+############################################################
 # TIFF
 
+# TIFF_URL = "https://download.osgeo.org/libtiff/tiff-4.0.7.zip"
 TIFF_URL = "http://download.osgeo.org/libtiff/tiff-4.1.0.zip"
 
 
@@ -996,6 +1095,42 @@ def InstallOpenEXR(context, force, buildArgs):
 
 
 OPENEXR = Dependency("OpenEXR", InstallOpenEXR, "include/OpenEXR/ImfVersion.h")
+
+# ############################################################
+# # GLEW
+
+# if Windows():
+#     GLEW_URL = "https://downloads.sourceforge.net/project/glew/glew/2.0.0/glew-2.0.0-win32.zip"
+# else:
+#     # Important to get source package from this URL and NOT github. This package
+#     # contains pre-generated code that the github repo does not.
+#     GLEW_URL = "https://downloads.sourceforge.net/project/glew/glew/2.0.0/glew-2.0.0.tgz"
+
+# def InstallGLEW(context, force, buildArgs):
+#     if Windows():
+#         InstallGLEW_Windows(context, force)
+#     elif Linux() or MacOS():
+#         InstallGLEW_LinuxOrMacOS(context, force, buildArgs)
+
+# def InstallGLEW_Windows(context, force):
+#     with CurrentWorkingDirectory(DownloadURL(GLEW_URL, context, force)):
+#         # On Windows, we install headers and pre-built binaries per
+#         # https://glew.sourceforge.net/install.html
+#         # Note that we are installing just the shared library. This is required
+#         # by the OSL build; if the static library is present, that one will be
+#         # used and that causes errors with OSL and OpenSubdiv.
+#         CopyFiles(context, "bin\\Release\\x64\\glew32.dll", "bin")
+#         CopyFiles(context, "lib\\Release\\x64\\glew32.lib", "lib")
+#         CopyDirectory(context, "include\\GL", "include\\GL")
+
+# def InstallGLEW_LinuxOrMacOS(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(GLEW_URL, context, force)):
+#         Run('make GLEW_DEST="{instDir}" -j{procs} {buildArgs} install'
+#             .format(instDir=context.instDir,
+#                     procs=context.numJobs,
+#                     buildArgs=" ".join(buildArgs)))
+
+# GLEW = Dependency("GLEW", InstallGLEW, "include/GL/glew.h")
 
 ############################################################
 # Ptex
@@ -1195,7 +1330,23 @@ def InstallOSL(context, force, buildArgs):
         if Windows():
             delimeter = ";"
         if Windows():
+            # context.instDir += delimeter + "C:/LLVM"
+            # extraArgs.append(
+            #     '-DCMAKE_PREFIX_PATH=C:/LLVM/lib/cmake;"{instDir}"'.format(
+            #         instDir=context.instDir
+            #     )
+            # )
+            # extraArgs.append(
+            #     '-DCMAKE_PREFIX_PATH="{instDir}\lib\cmake"'.format(
+            #         instDir=context.instDir
+            #     )
+            # )
             extraArgs.append('-DLLVM_ROOT="{instDir}"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBoost_ROOT="{instDir}\lib\cmake"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBOOST_INCLUDEDIR="{instDir}\include"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBoost_INCLUDE_DIRS="{instDir}\include"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBOOST_LIBRARYDIR="{instDir}\lib"'.format(instDir=context.instDir))
+            # extraArgs.append('-DBoost_LIBRARY_DIRS="{instDir}\lib"'.format(instDir=context.instDir))
 
         # if Linux():
         #     extraArgs.append(
@@ -1206,11 +1357,10 @@ def InstallOSL(context, force, buildArgs):
         # if Linux():
         #     extraArgs.append('-DCMAKE_CXX_FLAGS="-fPIC"')
 
-        if Windows():
-            # for now have to use manual boost build
-            extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-            extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
+        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
 
+        if Windows():
             # Increase the precompiled header buffer limit.
             extraArgs.append('-DCMAKE_CXX_FLAGS="/Zm150"')
             if context.buildDebug:
@@ -1222,7 +1372,6 @@ def InstallOSL(context, force, buildArgs):
 
         extraArgs += buildArgs
 
-        # there is an error related to make or gmake in linux
         # Run("gmake --version") # debug
         # context.cmakeGenerator = "NMake Makefiles"
         RunCMake(context, force, extraArgs)
@@ -1266,39 +1415,54 @@ def InstallLibRaw(context, force, buildArgs):
 # if Windows():
 LIBRAW = Dependency("LibRaw", InstallLibRaw, "include/libraw/libraw.h")
 
-############################################################
-# OpenVDB
+# ############################################################
+# # BLOSC (Compression used by OpenVDB)
 
-# Using version 6.1.0 since it has reworked its CMake files so that
-# there are better options to not compile the OpenVDB binaries and to
-# not require additional dependencies such as GLFW. Note that version
-# 6.1.0 does require CMake 3.3 though.
+# # Using latest blosc since neither the version OpenVDB recommends
+# # (1.5) nor the version we test against (1.6.1) compile on Mac OS X
+# # Sierra (10.12) or Mojave (10.14).
+# BLOSC_URL = "https://github.com/Blosc/c-blosc/archive/v1.17.0.zip"
 
-OPENVDB_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/v6.1.0.zip"
+# def InstallBLOSC(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(BLOSC_URL, context, force)):
+#         RunCMake(context, force, buildArgs)
 
+# BLOSC = Dependency("Blosc", InstallBLOSC, "include/blosc.h")
 
-def InstallOpenVDB(context, force, buildArgs):
-    with CurrentWorkingDirectory(DownloadURL(OPENVDB_URL, context, force)):
-        extraArgs = [
-            "-DOPENVDB_BUILD_PYTHON_MODULE=OFF",
-            "-DOPENVDB_BUILD_BINARIES=OFF",
-            "-DOPENVDB_BUILD_UNITTESTS=OFF",
-        ]
+# ############################################################
+# # OpenVDB
 
-        # Make sure to use boost installed by the build script and not any
-        # system installed boost
-        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+# # Using version 6.1.0 since it has reworked its CMake files so that
+# # there are better options to not compile the OpenVDB binaries and to
+# # not require additional dependencies such as GLFW. Note that version
+# # 6.1.0 does require CMake 3.3 though.
 
-        extraArgs.append('-DBLOSC_ROOT="{instDir}"'.format(instDir=context.instDir))
-        extraArgs.append('-DTBB_ROOT="{instDir}"'.format(instDir=context.instDir))
-        # OpenVDB needs Half type from IlmBase
-        extraArgs.append('-DILMBASE_ROOT="{instDir}"'.format(instDir=context.instDir))
+# OPENVDB_URL = "https://github.com/AcademySoftwareFoundation/openvdb/archive/v6.1.0.zip"
 
-        RunCMake(context, force, extraArgs)
+# def InstallOpenVDB(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(OPENVDB_URL, context, force)):
+#         extraArgs = [
+#             '-DOPENVDB_BUILD_PYTHON_MODULE=OFF',
+#             '-DOPENVDB_BUILD_BINARIES=OFF',
+#             '-DOPENVDB_BUILD_UNITTESTS=OFF'
+#         ]
 
+#         # Make sure to use boost installed by the build script and not any
+#         # system installed boost
+#         extraArgs.append('-DBoost_NO_BOOST_CMAKE=On')
+#         extraArgs.append('-DBoost_NO_SYSTEM_PATHS=True')
 
-OPENVDB = Dependency("OpenVDB", InstallOpenVDB, "include/openvdb/openvdb.h")
+#         extraArgs.append('-DBLOSC_ROOT="{instDir}"'
+#                          .format(instDir=context.instDir))
+#         extraArgs.append('-DTBB_ROOT="{instDir}"'
+#                          .format(instDir=context.instDir))
+#         # OpenVDB needs Half type from IlmBase
+#         extraArgs.append('-DILMBASE_ROOT="{instDir}"'
+#                          .format(instDir=context.instDir))
+
+#         RunCMake(context, force, extraArgs)
+
+# OPENVDB = Dependency("OpenVDB", InstallOpenVDB, "include/openvdb/openvdb.h")
 
 ############################################################
 # OpenImageIO
@@ -1328,14 +1492,14 @@ def InstallOpenImageIO(context, force, buildArgs):
         # If Ptex support is disabled in OSL, disable support in OpenImageIO
         # as well. This ensures OIIO doesn't accidentally pick up a Ptex
         # library outside of our build.
-        if not context.buildPTEX:
+        if not context.enablePtex:
             extraArgs.append("-DUSE_PTEX=OFF")
 
         # Make sure to use boost installed by the build script and not any
         # system installed boost
-        if Windows():
-            extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
-            extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
+        # if Windows():
+        extraArgs.append("-DBoost_NO_BOOST_CMAKE=On")
+        extraArgs.append("-DBoost_NO_SYSTEM_PATHS=True")
 
         # Add on any user-specified extra arguments.
         extraArgs += buildArgs
@@ -1399,6 +1563,211 @@ OPENCOLORIO = Dependency(
     "OpenColorIO", InstallOpenColorIO, "include/OpenColorIO/OpenColorABI.h"
 )
 
+# ############################################################
+# # OpenSubdiv
+
+# OPENSUBDIV_URL = "https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v3_4_3.zip"
+
+# def InstallOpenSubdiv(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(OPENSUBDIV_URL, context, force)):
+#         extraArgs = [
+#             '-DNO_EXAMPLES=ON',
+#             '-DNO_TUTORIALS=ON',
+#             '-DNO_REGRESSION=ON',
+#             '-DNO_DOC=ON',
+#             '-DNO_OMP=ON',
+#             '-DNO_CUDA=ON',
+#             '-DNO_OPENCL=ON',
+#             '-DNO_DX=ON',
+#             '-DNO_TESTS=ON',
+#             '-DNO_GLEW=ON',
+#             '-DNO_GLFW=ON',
+#         ]
+
+#         # If Ptex support is disabled in OSL, disable support in OpenSubdiv
+#         # as well. This ensures OSD doesn't accidentally pick up a Ptex
+#         # library outside of our build.
+#         if not context.enablePtex:
+#             extraArgs.append('-DNO_PTEX=ON')
+
+#         # NOTE: For now, we disable TBB in our OpenSubdiv build.
+#         # This avoids an issue where OpenSubdiv will link against
+#         # all TBB libraries it finds, including libtbbmalloc and
+#         # libtbbmalloc_proxy. On Linux and MacOS, this has the
+#         # unwanted effect of replacing the system allocator with
+#         # tbbmalloc.
+#         extraArgs.append('-DNO_TBB=ON')
+
+#         # Add on any user-specified extra arguments.
+#         extraArgs += buildArgs
+
+#         # OpenSubdiv seems to error when building on windows w/ Ninja...
+#         # ...so just use the default generator (ie, Visual Studio on Windows)
+#         # until someone can sort it out
+#         oldGenerator = context.cmakeGenerator
+#         if oldGenerator == "Ninja" and Windows():
+#             context.cmakeGenerator = None
+
+#         # OpenSubdiv 3.3 and later on MacOS occasionally runs into build
+#         # failures with multiple build jobs. Workaround this by using
+#         # just 1 job for now. See:
+#         # https://github.com/PixarAnimationStudios/OpenSubdiv/issues/1194
+#         oldNumJobs = context.numJobs
+#         if MacOS():
+#             context.numJobs = 1
+
+#         try:
+#             RunCMake(context, force, extraArgs)
+#         finally:
+#             context.cmakeGenerator = oldGenerator
+#             context.numJobs = oldNumJobs
+
+# OPENSUBDIV = Dependency("OpenSubdiv", InstallOpenSubdiv,
+#                         "include/opensubdiv/version.h")
+
+# ############################################################
+# # PyOpenGL
+
+# def GetPyOpenGLInstructions():
+#     return ('PyOpenGL is not installed. If you have pip '
+#             'installed, run "pip install PyOpenGL" to '
+#             'install it, then re-run this script.\n'
+#             'If PyOpenGL is already installed, you may need to '
+#             'update your PYTHONPATH to indicate where it is '
+#             'located.')
+
+# PYOPENGL = PythonDependency("PyOpenGL", GetPyOpenGLInstructions,
+#                             moduleNames=["OpenGL"])
+
+# ############################################################
+# # PySide
+
+# def GetPySideInstructions():
+#     # For licensing reasons, this script cannot install PySide itself.
+#     if Windows():
+#         # There is no distribution of PySide2 for Windows for Python 2.7.
+#         # So use PySide instead. See the following for more details:
+#         # https://wiki.qt.io/Qt_for_Python/Considerations#Missing_Windows_.2F_Python_2.7_release
+#         return ('PySide is not installed. If you have pip '
+#                 'installed, run "pip install PySide" '
+#                 'to install it, then re-run this script.\n'
+#                 'If PySide is already installed, you may need to '
+#                 'update your PYTHONPATH to indicate where it is '
+#                 'located.')
+#     else:
+#         return ('PySide2 is not installed. If you have pip '
+#                 'installed, run "pip install PySide2" '
+#                 'to install it, then re-run this script.\n'
+#                 'If PySide2 is already installed, you may need to '
+#                 'update your PYTHONPATH to indicate where it is '
+#                 'located.')
+
+# PYSIDE = PythonDependency("PySide", GetPySideInstructions,
+#                           moduleNames=["PySide", "PySide2"])
+
+############################################################
+# HDF5
+
+HDF5_URL = "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.0-patch1/src/hdf5-1.10.0-patch1.zip"
+
+
+def InstallHDF5(context, force, buildArgs):
+    with CurrentWorkingDirectory(DownloadURL(HDF5_URL, context, force)):
+        RunCMake(
+            context,
+            force,
+            [
+                "-DBUILD_TESTING=OFF",
+                "-DHDF5_BUILD_TOOLS=OFF",
+                "-DHDF5_BUILD_EXAMPLES=OFF",
+            ]
+            + buildArgs,
+        )
+
+
+HDF5 = Dependency("HDF5", InstallHDF5, "include/hdf5.h")
+
+############################################################
+# Alembic
+
+ALEMBIC_URL = "https://github.com/alembic/alembic/archive/1.7.10.zip"
+
+
+def InstallAlembic(context, force, buildArgs):
+    with CurrentWorkingDirectory(DownloadURL(ALEMBIC_URL, context, force)):
+        cmakeOptions = ["-DUSE_BINARIES=OFF", "-DUSE_TESTS=OFF"]
+        if context.enableHDF5:
+            # HDF5 requires the H5_BUILT_AS_DYNAMIC_LIB macro be defined if
+            # it was built with CMake as a dynamic library.
+            cmakeOptions += [
+                "-DUSE_HDF5=ON",
+                '-DHDF5_ROOT="{instDir}"'.format(instDir=context.instDir),
+                '-DCMAKE_CXX_FLAGS="-D H5_BUILT_AS_DYNAMIC_LIB"',
+            ]
+        else:
+            cmakeOptions += ["-DUSE_HDF5=OFF"]
+
+        cmakeOptions += buildArgs
+
+        RunCMake(context, force, cmakeOptions)
+
+
+ALEMBIC = Dependency("Alembic", InstallAlembic, "include/Alembic/Abc/Base.h")
+
+# ############################################################
+# # Draco
+
+# DRACO_URL = "https://github.com/google/draco/archive/master.zip"
+
+# def InstallDraco(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(DRACO_URL, context, force)):
+#         cmakeOptions = ['-DBUILD_USD_PLUGIN=ON']
+#         cmakeOptions += buildArgs
+#         RunCMake(context, force, cmakeOptions)
+
+# DRACO = Dependency("Draco", InstallDraco, "include/draco/compression/decode.h")
+
+# ############################################################
+# # MaterialX
+
+# MATERIALX_URL = "https://github.com/materialx/MaterialX/archive/v1.37.1.zip"
+
+# def InstallMaterialX(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(MATERIALX_URL, context, force)):
+#         RunCMake(context, force, buildArgs)
+
+# MATERIALX = Dependency("MaterialX", InstallMaterialX, "include/MaterialXCore/Library.h")
+
+# ############################################################
+# # Embree
+# # For MacOS we use version 3.7.0 to include a fix from Intel
+# # to build on Catalina.
+# if MacOS():
+#     EMBREE_URL = "https://github.com/embree/embree/archive/v3.7.0.tar.gz"
+# else:
+#     EMBREE_URL = "https://github.com/embree/embree/archive/v3.2.2.tar.gz"
+
+# def InstallEmbree(context, force, buildArgs):
+#     with CurrentWorkingDirectory(DownloadURL(EMBREE_URL, context, force)):
+#         extraArgs = [
+#             '-DTBB_ROOT={instDir}'.format(instDir=context.instDir),
+#             '-DEMBREE_TUTORIALS=OFF',
+#             '-DEMBREE_ISPC_SUPPORT=OFF'
+#         ]
+
+#         # By default Embree fails to build on Visual Studio 2015 due
+#         # to an internal compiler issue that is worked around via the
+#         # following flag. For more details see:
+#         # https://github.com/embree/embree/issues/157
+#         if IsVisualStudio2015OrGreater() and not IsVisualStudio2017OrGreater():
+#             extraArgs.append('-DCMAKE_CXX_FLAGS=/d2SSAOptimizer-')
+
+#         extraArgs += buildArgs
+
+#         RunCMake(context, force, extraArgs)
+
+# EMBREE = Dependency("Embree", InstallEmbree, "include/embree3/rtcore.h")
+
 ############################################################
 # Install script
 
@@ -1424,7 +1793,8 @@ Users may specify custom build arguments for libraries using the --build-args
 option. This values for this option must take the form <library name>,<option>. 
 For example:
 
-%(prog)s --build-args boost,cxxflags=... OSL,-DCMAKE_CXX_STANDARD=14 ...
+%(prog)s --build-args boost,cxxflags=... OSL,-DPXR_STRICT_BUILD_MODE=ON ...
+%(prog)s --build-args OSL,"-DPXR_STRICT_BUILD_MODE=ON -DPXR_HEADLESS_TEST_MODE=ON" ...
 
 These arguments will be passed directly to the build system for the specified 
 library. Multiple quotes may be needed to ensure arguments are passed on 
@@ -1432,6 +1802,20 @@ exactly as desired. Users must ensure these arguments are suitable for the
 specified library and do not conflict with other options, otherwise build 
 errors may occur.
 
+- Python Versions and DCC Plugins:
+Some DCCs (most notably, Maya) may ship with and run using their own version of
+Python. In that case, it is important that OSL and the plugins for that DCC are
+built using the DCC's version of Python and not the system version. This can be
+done by running %(prog)s using the DCC's version of Python.
+
+For example, to build OSL on macOS for use in Maya 2019, run:
+
+/Applications/Autodesk/maya2019/Maya.app/Contents/bin/mayapy %(prog)s --no-usdview ...
+
+Note that this is primarily an issue on macOS, where a DCC's version of Python
+is likely to conflict with the version provided by the system. On other
+platforms, %(prog)s *should* be run using the system Python and *should not*
+be run using the DCC's Python.
 """.format(
     libraryList=" ".join(sorted([d.name for d in AllDependencies]))
 )
@@ -1565,124 +1949,79 @@ group.add_argument(
 # subgroup = group.add_mutually_exclusive_group()
 # subgroup.add_argument("--tests", dest="build_tests", action="store_true",
 #                       default=False, help="Build unit tests")
-
+# subgroup.add_argument("--no-tests", dest="build_tests", action="store_false",
+#                       help="Do not build unit tests (default)")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--examples", dest="build_examples", action="store_true",
+#                       default=True, help="Build examples (default)")
+# subgroup.add_argument("--no-examples", dest="build_examples", action="store_false",
+#                       help="Do not build examples")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--tutorials", dest="build_tutorials", action="store_true",
+#                       default=True, help="Build tutorials (default)")
+# subgroup.add_argument("--no-tutorials", dest="build_tutorials", action="store_false",
+#                       help="Do not build tutorials")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--tools", dest="build_tools", action="store_true",
+#                      default=True, help="Build OSL tools (default)")
+# subgroup.add_argument("--no-tools", dest="build_tools", action="store_false",
+#                       help="Do not build OSL tools")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--docs", dest="build_docs", action="store_true",
+#                       default=False, help="Build documentation")
+# subgroup.add_argument("--no-docs", dest="build_docs", action="store_false",
+#                       help="Do not build documentation (default)")
 subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
     "--python",
     dest="build_python",
     action="store_true",
-    default=False,
+    default=True,
     help="Build python based components " "(default)",
 )
-subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
-    "--prefer-safety-over-speed",
-    dest="safety_first",
-    action="store_true",
-    default=True,
-    help="Enable extra safety checks (which may negatively "
-    "impact performance) against malformed input files "
-    "(default)",
-)
-subgroup.add_argument(
-    "--prefer-speed-over-safety",
-    dest="safety_first",
+    "--no-python",
+    dest="build_python",
     action="store_false",
-    help="Disable performance-impacting safety checks against " "malformed input files",
+    help="Do not build python based components",
 )
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--prefer-safety-over-speed", dest="safety_first",
+#                       action="store_true", default=True, help=
+#                       "Enable extra safety checks (which may negatively "
+#                       "impact performance) against malformed input files "
+#                       "(default)")
+# subgroup.add_argument("--prefer-speed-over-safety", dest="safety_first",
+#                       action="store_false", help=
+#                       "Disable performance-impacting safety checks against "
+#                       "malformed input files")
 
-#
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--zlib",
-    dest="build_zlib",
-    action="store_true",
-    default=False,
-    help="Build zlib for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--boost",
-    dest="build_boost",
-    action="store_true",
-    default=False,
-    help="Build boost for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--llvm",
-    dest="build_llvm",
-    action="store_true",
-    default=False,
-    help="Build llvm for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--clang",
-    dest="build_clang",
-    action="store_true",
-    default=False,
-    help="Build clang for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--pugixml",
-    dest="build_pugixml",
-    action="store_true",
-    default=False,
-    help="Build pugixml for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--openexr",
-    dest="build_openexr",
-    action="store_true",
-    default=False,
-    help="Build openexr for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--tiff",
-    dest="build_tiff",
-    action="store_true",
-    default=False,
-    help="Build tiff for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--jpeg",
-    dest="build_jpeg",
-    action="store_true",
-    default=False,
-    help="Build jpeg for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--png",
-    dest="build_png",
-    action="store_true",
-    default=False,
-    help="Build png for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--flex",
-    dest="build_flex",
-    action="store_true",
-    default=False,
-    help="Build flex for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--bison",
-    dest="build_bison",
-    action="store_true",
-    default=False,
-    help="Build bison for OSL",
-)
+(NO_IMAGING, IMAGING, OSL_IMAGING) = (0, 1, 2)
 
-#
-
+group = parser.add_argument_group(title="Imaging and OSL Imaging Options")
+subgroup = group.add_mutually_exclusive_group()
+subgroup.add_argument(
+    "--imaging",
+    dest="build_imaging",
+    action="store_const",
+    const=IMAGING,
+    default=OSL_IMAGING,
+    help="Build imaging component",
+)
+subgroup.add_argument(
+    "--osl-imaging",
+    dest="build_imaging",
+    action="store_const",
+    const=OSL_IMAGING,
+    help="Build imaging and OSL imaging components (default)",
+)
+subgroup.add_argument(
+    "--no-imaging",
+    dest="build_imaging",
+    action="store_const",
+    const=NO_IMAGING,
+    help="Do not build imaging or OSL imaging components",
+)
 subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
     "--ptex",
@@ -1691,21 +2030,55 @@ subgroup.add_argument(
     default=False,
     help="Enable Ptex support in imaging",
 )
-subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
-    "--openvdb",
-    dest="enable_openvdb",
-    action="store_true",
-    default=False,
-    help="Enable OpenVDB support in imaging",
+    "--no-ptex",
+    dest="enable_ptex",
+    action="store_false",
+    help="Disable Ptex support in imaging (default)",
 )
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--openvdb", dest="enable_openvdb", action="store_true",
+#                       default=False,
+#                       help="Enable OpenVDB support in imaging")
+# subgroup.add_argument("--no-openvdb", dest="enable_openvdb",
+#                       action="store_false",
+#                       help="Disable OpenVDB support in imaging (default)")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--usdview", dest="build_usdview",
+#                       action="store_true", default=True,
+#                       help="Build usdview (default)")
+# subgroup.add_argument("--no-usdview", dest="build_usdview",
+#                       action="store_false",
+#                       help="Do not build usdview")
+
+# group = parser.add_argument_group(title="Imaging Plugin Options")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--embree", dest="build_embree", action="store_true",
+#                       default=False,
+#                       help="Build Embree sample imaging plugin")
+# subgroup.add_argument("--no-embree", dest="build_embree", action="store_false",
+#                       help="Do not build Embree sample imaging plugin (default)")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--prman", dest="build_prman", action="store_true",
+#                       default=False,
+#                       help="Build Pixar's RenderMan imaging plugin")
+# subgroup.add_argument("--no-prman", dest="build_prman", action="store_false",
+#                       help="Do not build Pixar's RenderMan imaging plugin (default)")
+# group.add_argument("--prman-location", type=str,
+#                    help="Directory where Pixar's RenderMan is installed.")
 subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
-    "--libraw",
-    dest="build_libraw",
+    "--osl",
+    dest="build_osl",
     action="store_true",
     default=False,
-    help="Build libraw for OSL",
+    help="Build OpenShadingLanguage plugin for OSL",
+)
+subgroup.add_argument(
+    "--no-osl",
+    dest="build_osl",
+    action="store_false",
+    help="Do not build OpenShadingLanguage plugin for OSL (default)",
 )
 subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
@@ -1713,116 +2086,82 @@ subgroup.add_argument(
     dest="build_oiio",
     action="store_true",
     default=False,
-    help="Build OpenImageIO for OSL",
+    help="Build OpenImageIO plugin for OSL",
 )
-
+subgroup.add_argument(
+    "--no-openimageio",
+    dest="build_oiio",
+    action="store_false",
+    help="Do not build OpenImageIO plugin for OSL (default)",
+)
 subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
     "--opencolorio",
     dest="build_ocio",
     action="store_true",
     default=False,
-    help="Build OpenColorIO for OSL",
+    help="Build OpenColorIO plugin for OSL",
 )
-# --------------------------------------
-subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
-    "--partio",
-    dest="build_partio",
-    action="store_true",
-    default=False,
-    help="Build partio for OSL",
+    "--no-opencolorio",
+    dest="build_ocio",
+    action="store_false",
+    help="Do not build OpenColorIO plugin for OSL (default)",
 )
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--pybind11",
-    dest="build_pybind11",
-    action="store_true",
-    default=False,
-    help="Build pybind11 for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--ffmpeg",
-    dest="build_ffmpeg",
-    action="store_true",
-    default=False,
-    help="Build ffmpeg for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--field3d",
-    dest="build_field3d",
-    action="store_true",
-    default=False,
-    help="Build field3d for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--opencv",
-    dest="build_opencv",
-    action="store_true",
-    default=False,
-    help="Build opencv for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--gif",
-    dest="build_gif",
-    action="store_true",
-    default=False,
-    help="Build gif for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--heif",
-    dest="build_heif",
-    action="store_true",
-    default=False,
-    help="Build heif for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--squish",
-    dest="build_squish",
-    action="store_true",
-    default=False,
-    help="Build squish for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--dcmtk",
-    dest="build_dcmtk",
-    action="store_true",
-    default=False,
-    help="Build dcmtk for OSL",
-)
-subgroup = group.add_mutually_exclusive_group()
-subgroup.add_argument(
-    "--webp",
-    dest="build_webp",
-    action="store_true",
-    default=False,
-    help="Build webp for OSL",
-)
-# --------------------------------------
 
-#
+group = parser.add_argument_group(title="Alembic Plugin Options")
 subgroup = group.add_mutually_exclusive_group()
 subgroup.add_argument(
-    "--osl",
-    dest="build_osl",
+    "--alembic",
+    dest="build_alembic",
     action="store_true",
     default=False,
-    help="Build OpenShadingLanguage for OSL",
+    help="Build Alembic plugin for OSL",
 )
+subgroup.add_argument(
+    "--no-alembic",
+    dest="build_alembic",
+    action="store_false",
+    help="Do not build Alembic plugin for OSL (default)",
+)
+subgroup = group.add_mutually_exclusive_group()
+subgroup.add_argument(
+    "--hdf5",
+    dest="enable_hdf5",
+    action="store_true",
+    default=False,
+    help="Enable HDF5 support in the Alembic plugin",
+)
+subgroup.add_argument(
+    "--no-hdf5",
+    dest="enable_hdf5",
+    action="store_false",
+    help="Disable HDF5 support in the Alembic plugin (default)",
+)
+
+# group = parser.add_argument_group(title="Draco Plugin Options")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--draco", dest="build_draco", action="store_true",
+#                       default=False,
+#                       help="Build Draco plugin for OSL")
+# subgroup.add_argument("--no-draco", dest="build_draco", action="store_false",
+#                       help="Do not build Draco plugin for OSL (default)")
+# group.add_argument("--draco-location", type=str,
+#                    help="Directory where Draco is installed.")
+
+# group = parser.add_argument_group(title="MaterialX Plugin Options")
+# subgroup = group.add_mutually_exclusive_group()
+# subgroup.add_argument("--materialx", dest="build_materialx", action="store_true",
+#                       default=False,
+#                       help="Build MaterialX plugin for OSL")
+# subgroup.add_argument("--no-materialx", dest="build_materialx", action="store_false",
+#                       help="Do not build MaterialX plugin for OSL (default)")
 
 args = parser.parse_args()
 
 
 class InstallContext:
     def __init__(self, args):
-
         # Assume the OSL source directory is in the parent directory
         self.oslSrcDir = os.path.normpath(
             os.path.join(os.path.abspath(os.path.dirname(__file__)), "..")
@@ -1847,14 +2186,6 @@ class InstallContext:
             if args.build
             else os.path.join(self.oslInstDir, "build")
         )
-
-        # Prerequisites
-        self.pythonInstallDir = os.path.normpath(os.environ["PYTHON_LOCATION"])
-        self.qtInstallDir = os.path.normpath(os.environ["QT_LOCATION"])
-        self.nasmInstallDir = os.path.normpath(os.environ["NASM_LOCATION"])
-        self.gitInstallDir = os.path.normpath(os.environ["GIT_LOCATION"])
-        self.cmakeInstallDir = os.path.normpath(os.environ["CMAKE_LOCATION"])
-        self.vcInstallDir = os.path.normpath(os.environ["VCVARS_LOCATION"])
 
         # Determine which downloader to use.  The reason we don't simply
         # use urllib2 all the time is that some older versions of Python
@@ -1896,44 +2227,55 @@ class InstallContext:
         self.buildMonolithic = args.build_type == MONOLITHIC_LIB
 
         # Build options
-        self.safetyFirst = args.safety_first
+        # self.safetyFirst = args.safety_first
 
         # Dependencies that are forced to be built
         self.forceBuildAll = args.force_all
         self.forceBuild = [dep.lower() for dep in args.force_build]
 
         # Optional components
+        # self.buildTests = args.build_tests
+        # self.buildDocs = args.build_docs
         self.buildPython = args.build_python
+        # self.buildExamples = args.build_examples
+        # self.buildTutorials = args.build_tutorials
+        # self.buildTools = args.build_tools
 
+        # - Imaging
+        self.buildImaging = (
+            args.build_imaging == IMAGING or args.build_imaging == OSL_IMAGING
+        )
+        self.enablePtex = self.buildImaging and args.enable_ptex
+        # self.enableOpenVDB = self.buildImaging and args.enable_openvdb
+
+        # - OSL Imaging
+        # self.buildUsdImaging = (args.build_imaging == OSL_IMAGING)
+
+        # - usdview
+        # self.buildUsdview = (self.buildUsdImaging and
+        #                      self.buildPython and
+        #                      args.build_usdview)
+
+        # - Imaging plugins
+        # self.buildEmbree = self.buildImaging and args.build_embree
+        # self.buildPrman = self.buildImaging and args.build_prman
+        # self.prmanLocation = (os.path.abspath(args.prman_location)
+        #                        if args.prman_location else None)
         self.buildOIIO = args.build_oiio
-        self.buildZLIB = args.build_zlib
-        self.buildBOOST = args.build_boost
-        self.buildLLVM = args.build_llvm
-        self.buildCLANG = args.build_clang
-        self.buildPUGIXML = args.build_pugixml
-        self.buildOPENEXR = args.build_openexr
-        self.buildTIFF = args.build_tiff
-        self.buildJPEG = args.build_jpeg
-        self.buildPNG = args.build_png
-        self.buildFLEX = args.build_flex
-        self.buildBISON = args.build_bison
-
-        self.buildLIBRAW = args.build_libraw
-        self.buildPTEX = args.enable_ptex
-        self.buildOPENVDB = args.enable_openvdb
-        self.buildOCIO = args.build_ocio
-        self.buildPARTIO = args.build_partio
-        self.buildPYBIND11 = args.build_pybind11
-        self.buildFFMPEG = args.build_ffmpeg
-        self.buildFIELD3D = args.build_field3d
-        self.buildOPENCV = args.build_opencv
-        self.buildGIF = args.build_gif
-        self.buildHEIF = args.build_heif
-        self.buildSQUISH = args.build_squish
-        self.buildDCMTK = args.build_dcmtk
-        self.buildWEBP = args.build_webp
-
         self.buildOSL = args.build_osl
+        self.buildOCIO = args.build_ocio
+
+        # - Alembic Plugin
+        self.buildAlembic = args.build_alembic
+        self.enableHDF5 = self.buildAlembic and args.enable_hdf5
+
+        # - Draco Plugin
+        # self.buildDraco = args.build_draco
+        # self.dracoLocation = (os.path.abspath(args.draco_location)
+        #                         if args.draco_location else None)
+
+        # - MaterialX Plugin
+        # self.buildMaterialX = args.build_materialx
 
     def GetBuildArguments(self, dep):
         return self.buildArgs.get(dep.name.lower(), [])
@@ -1970,90 +2312,106 @@ if extraPythonPaths:
     paths = os.environ.get("PYTHONPATH", "").split(os.pathsep) + extraPythonPaths
     os.environ["PYTHONPATH"] = os.pathsep.join(paths)
 
-
-requiredDependencies = []
+requiredDependencies = [ZLIB]
 
 # Determine list of dependencies that are required based on options
 # user has selected.
 # BOOST is deleted becauseI want to use system installed boost
-if Windows():
-    if context.buildZLIB:
-        requiredDependencies += [ZLIB]
-    if context.buildBOOST:
-        requiredDependencies += [BOOST]
+# if Windows():
+requiredDependencies = [ZLIB, BOOST, TBB]
 
-if Windows():
-    if context.buildLLVM:
-        requiredDependencies += [LLVM]
-    if context.buildCLANG:
-        requiredDependencies += [CLANG]
+# if context.buildAlembic:
+#     if context.enableHDF5:
+#         if Windows():
+#             requiredDependencies += [HDF5]
+#     requiredDependencies += [OPENEXR, ALEMBIC]
 
+# if context.buildDraco:
+#     requiredDependencies += [DRACO]
+
+# if context.buildMaterialX:
+#     requiredDependencies += [MATERIALX]
+
+# if context.buildImaging:
+#     if context.enablePtex:
+#         requiredDependencies += [PTEX]
+
+    # requiredDependencies += [GLEW, OPENSUBDIV]
+
+    # if context.enableOpenVDB:
+    #     requiredDependencies += [BLOSC, OPENEXR, OPENVDB, ]
 
 if context.buildOSL:
-    if context.buildPUGIXML:
-        requiredDependencies += [PUGIXML]
-    if context.buildPYBIND11:
-        requiredDependencies += [PYBIND11]
+    # requiredDependencies += [GLUT, WINFLEXBISON, PUGIXML, PYBIND11]
+    requiredDependencies += [GLUT, PUGIXML, PYBIND11]
+
+    # if Windows():
+    requiredDependencies += [LLVM, CLANG]
+    # if Windows():
+    #     requiredDependencies += [PARTIO]
+
     if Windows():
-        if context.buildPARTIO:
-            requiredDependencies += [GLUT, PARTIO]
-        if context.buildFLEX:  # this is for both flex and bison
-            requiredDependencies += [WINFLEXBISON]
-    if context.buildOPENEXR:
-        requiredDependencies += [OPENEXR]
-
-if context.buildOIIO:
-    if context.buildJPEG:
-        requiredDependencies += [JPEGTURBO]
-    if context.buildTIFF:
-        requiredDependencies += [TIFF]
-    if context.buildPNG:
-        requiredDependencies += [PNG]
-    if context.buildOPENEXR:
-        requiredDependencies += [OPENEXR]
-    requiredDependencies += [OPENIMAGEIO]
-
-if context.buildPTEX:
-    requiredDependencies += [PTEX]
+        requiredDependencies += [WINFLEXBISON]
 
 if context.buildOCIO:
     requiredDependencies += [OPENCOLORIO]
 
-if context.buildOPENVDB:
-    requiredDependencies += [
-        OPENEXR,
-        OPENVDB,
-    ]
 
+# commented becasue had problem with manual build
+# prefer to install LibRaw package
 if Windows():
-    if context.buildLIBRAW:
-        requiredDependencies += [LIBRAW]
-    if context.buildFFMPEG:
-        requiredDependencies += [FFMPEG]
-    if context.buildFIELD3D:
-        requiredDependencies += [FIELD3D]
-    if context.buildOPENCV:
-        requiredDependencies += [OPENCV]
-    if context.buildGIF:
-        requiredDependencies += [GIF]
-    if context.buildHEIF:
-        requiredDependencies += [HEIF]
-    if context.buildHEIF:
-        requiredDependencies += [HEIF]
-    if context.buildSQUISH:
-        requiredDependencies += [SQUISH]
-    if context.buildDCMTK:
-        requiredDependencies += [DCMTK]
-    if context.buildWEBP:
-        requiredDependencies += [WEBP]
+    requiredDependencies += [LIBRAW]
 
+if context.buildOIIO:
+    requiredDependencies += [JPEGTURBO, TIFF, PNG, OPENEXR, OPENIMAGEIO]
+
+    # if context.buildEmbree:
+    #     requiredDependencies += [EMBREE]
+
+# if context.buildUsdview:
+#     requiredDependencies += [PYOPENGL, PYSIDE]
+
+# Assume zlib already exists on Linux platforms and don't build
+# our own. This avoids potential issues where a host application
+# loads an older version of zlib than the one we'd build and link
+# our libraries against.
+# if Linux():
+#     requiredDependencies.remove(ZLIB)
+
+
+# Error out if user is building monolithic library on windows with draco plugin
+# enabled. This currently results in missing symbols.
+# if context.buildDraco and context.buildMonolithic and Windows():
+#     PrintError("Draco plugin can not be enabled for monolithic build on Windows")
+#     sys.exit(1)
+
+# Error out if user explicitly specified building usdview without required
+# components. Otherwise, usdview will be silently disabled. This lets users
+# specify "--no-python" without explicitly having to specify "--no-usdview",
+# for instance.
+# if "--usdview" in sys.argv:
+#     if not context.buildUsdImaging:
+#         PrintError("Cannot build usdview when usdImaging is disabled.")
+#         sys.exit(1)
+#     if not context.buildPython:
+#         PrintError("Cannot build usdview when Python support is disabled.")
+#         sys.exit(1)
+
+# Error out if running Maya's version of Python and attempting to build
+# usdview.
+# if IsMayaPython():
+#     if context.buildUsdview:
+#         PrintError("Cannot build usdview when building against Maya's version "
+#                    "of Python. Maya does not provide access to the 'OpenGL' "
+#                    "Python module. Use '--no-usdview' to disable building "
+#                    "usdview.")
+#         sys.exit(1)
 
 dependenciesToBuild = []
 for dep in requiredDependencies:
     if context.ForceBuildDependency(dep) or not dep.Exists(context):
         if dep not in dependenciesToBuild:
             dependenciesToBuild.append(dep)
-
 
 # Verify toolchain needed to build required dependencies
 if (
@@ -2117,24 +2475,47 @@ else:
     PrintError("CMake not found -- please install it and adjust your PATH")
     sys.exit(1)
 
+# if context.buildDocs:
+#     if not find_executable("doxygen"):
+#         PrintError("doxygen not found -- please install it and adjust your PATH")
+#         sys.exit(1)
+
+#     if not find_executable("dot"):
+#         PrintError("dot not found -- please install graphviz and adjust your "
+#                    "PATH")
+#         sys.exit(1)
+
+# if PYSIDE in requiredDependencies:
+#     # The OSL build will skip building usdview if pyside2-uic or pyside-uic is
+#     # not found, so check for it here to avoid confusing users. This list of
+#     # PySide executable names comes from cmake/modules/FindPySide.cmake
+#     pyside2Uic = ["pyside2-uic", "python2-pyside2-uic", "pyside2-uic-2.7"]
+#     found_pyside2Uic = any([find_executable(p) for p in pyside2Uic])
+#     pysideUic = ["pyside-uic", "python2-pyside-uic", "pyside-uic-2.7"]
+#     found_pysideUic = any([find_executable(p) for p in pysideUic])
+#     if not found_pyside2Uic and not found_pysideUic:
+#         if Windows():
+#             # Windows does not support PySide2 with Python2.7
+#             PrintError("pyside-uic not found -- please install PySide and"
+#                        " adjust your PATH. (Note that this program may be named"
+#                        " {0} depending on your platform)"
+#                    .format(" or ".join(pysideUic)))
+#         else:
+#             PrintError("pyside2-uic not found -- please install PySide2 and"
+#                        " adjust your PATH. (Note that this program may be"
+#                        " named {0} depending on your platform)"
+#                        .format(" or ".join(pyside2Uic)))
+#         sys.exit(1)
+
 if JPEGTURBO in requiredDependencies:
     # NASM is required to build libjpeg-turbo
     if Windows() and not find_executable("nasm"):
         PrintError("nasm not found -- please install it and adjust your PATH")
         sys.exit(1)
 
-dependenciesToBuild.append(OSL)
-
 # Summarize
 summaryMsg = """
-Building with settings:         ------------
-  Python Install directory      {pythonInstallDir}
-  Qt Install Directory          {qtInstallDir}
-  Nasm Install directory        {nasmInstallDir}
-  Git Install directory         {gitInstallDir}
-  Cmake Install directory       {cmakeInstallDir}
-  VC Install directory          {vcInstallDir}
-                                ------------
+Building with settings:
   OSL source directory          {oslSrcDir}
   OSL install directory         {oslInstDir}
   3rd-party source directory    {srcDir}
@@ -2144,48 +2525,19 @@ Building with settings:         ------------
   CMake toolset                 {cmakeToolset}
   Downloader                    {downloader}
 
-  Python support                {buildPython}
-    Python 3:                   {enablePython3}
-
   Building                      {buildType}
     Config                      {buildConfig}
+    Imaging                     {buildImaging}
+      Ptex support:             {enablePtex}
+      OpenImageIO support:      {buildOIIO} 
+      OpenColorIO support:      {buildOCIO} 
+    Python support              {buildPython}
+      Python 3:                 {enablePython3}
+    Alembic Plugin              {buildAlembic}
+      HDF5 support:             {enableHDF5}
+    OSL                         {buildOSL}
 
-  Mandatory Dependencies:       ------------ 
-    Zlib:                       {buildZLIB}
-    Boost:                      {buildBOOST}
-    LLVM:                       {buildLLVM}
-    CLANG:                      {buildCLANG}
-    PugiXML:                    {buildPUGIXML}
-    OpenEXR/IlmBase:            {buildOPENEXR}
-    OpenImageIO:                {buildOIIO}
-    TIFF:                       {buildTIFF}
-    JPEG:                       {buildJPEG}
-    PNG:                        {buildPNG}
-    Flex:                       {buildFLEX}
-    Bison:                      {buildBISON}
-
-  Optional Dependencies:        ------------     
-    Ptex:                       {buildPTEX}
-    OpenColorIO:                {buildOCIO}
-    LibRaw:                     {buildLIBRAW}
-    OpenvVDB:                   {buildOPENVDB}
-    Partio:                     {buildPARTIO}
-    PyBind11:                   {buildPYBIND11}
-    ffmpeg:                     {buildFFMPEG}
-    Field3D:                    {buildFIELD3D}
-    OpenCV:                     {buildOPENCV}
-    Gif:                        {buildGIF}
-    Heif:                       {buildHEIF}
-    Squish:                     {buildSQUISH}
-    DCMTK:                      {buildDCMTK}
-    Webp:                       {buildWEBP}
-
-                                ------------
-  OSL                           {buildOSL}
-  ------------------------------------------
-  Dependencies                  {dependencies}
-  ------------------------------------------
-  """
+  Dependencies                  {dependencies}"""
 
 if context.buildArgs:
     summaryMsg += """
@@ -2227,42 +2579,16 @@ summaryMsg = summaryMsg.format(
         if context.buildMonolithic
         else ""
     ),
-    pythonInstallDir=context.pythonInstallDir,
-    qtInstallDir=context.qtInstallDir,
-    nasmInstallDir=context.nasmInstallDir,
-    gitInstallDir=context.gitInstallDir,
-    cmakeInstallDir=context.cmakeInstallDir,
-    vcInstallDir=context.vcInstallDir,
     buildConfig=("Debug" if context.buildDebug else "Release"),
-    buildPTEX=("On" if context.buildPTEX else "Off"),
+    buildImaging=("On" if context.buildImaging else "Off"),
+    enablePtex=("On" if context.enablePtex else "Off"),
     buildOIIO=("On" if context.buildOIIO else "Off"),
-    buildZLIB=("On" if context.buildZLIB else "Off"),
-    buildBOOST=("On" if context.buildBOOST else "Off"),
-    buildLLVM=("On" if context.buildLLVM else "Off"),
-    buildCLANG=("On" if context.buildCLANG else "Off"),
-    buildPUGIXML=("On" if context.buildPUGIXML else "Off"),
-    buildOPENEXR=("On" if context.buildOPENEXR else "Off"),
-    buildTIFF=("On" if context.buildTIFF else "Off"),
-    buildJPEG=("On" if context.buildJPEG else "Off"),
-    buildPNG=("On" if context.buildPNG else "Off"),
-    buildFLEX=("On" if context.buildFLEX else "Off"),
-    buildBISON=("On" if context.buildBISON else "Off"),
-    buildLIBRAW=("On" if context.buildLIBRAW else "Off"),
     buildOSL=("On" if context.buildOSL else "On"),
     buildOCIO=("On" if context.buildOCIO else "Off"),
-    buildOPENVDB=("On" if context.buildOPENVDB else "Off"),
-    buildPARTIO=("On" if context.buildPARTIO else "Off"),
-    buildPYBIND11=("On" if context.buildPYBIND11 else "Off"),
-    buildFFMPEG=("On" if context.buildFFMPEG else "Off"),
-    buildFIELD3D=("On" if context.buildFIELD3D else "Off"),
-    buildOPENCV=("On" if context.buildOPENCV else "Off"),
-    buildGIF=("On" if context.buildGIF else "Off"),
-    buildHEIF=("On" if context.buildHEIF else "Off"),
-    buildSQUISH=("On" if context.buildSQUISH else "Off"),
-    buildDCMTK=("On" if context.buildDCMTK else "Off"),
-    buildWEBP=("On" if context.buildWEBP else "Off"),
     buildPython=("On" if context.buildPython else "Off"),
     enablePython3=("On" if Python3() else "Off"),
+    buildAlembic=("On" if context.buildAlembic else "Off"),
+    enableHDF5=("On" if context.enableHDF5 else "Off"),
 )
 
 Print(summaryMsg)
@@ -2298,7 +2624,7 @@ for dir in [context.oslInstDir, context.instDir, context.srcDir, context.buildDi
 
 try:
     # Download and install 3rd-party dependencies, followed by OSL.
-    for dep in dependenciesToBuild:
+    for dep in dependenciesToBuild + [OSL]:
         PrintStatus("\nInstalling {dep}...\n".format(dep=dep.name))
         dep.installer(
             context,
