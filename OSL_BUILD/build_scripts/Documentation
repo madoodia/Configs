@@ -261,6 +261,8 @@ So just need to rebuild it in release mode.
 - cd build_script
 - run build_osl.bat release
 - run osl_release_sln.bat
+- example: set osltoy as default project
+    - run it in release x64 mode
 
 **Debug mode**:
 - open powershell
@@ -268,6 +270,8 @@ So just need to rebuild it in release mode.
 - cd build_script
 - run build_osl.bat debug
 - run osl_debug_sln.bat
+- example: set osltoy as default project
+    - run it in debug x64 mode
 
 If you open Visual Studio solution (sln) from release or debug, you can build it from inside it after your code editing
 
