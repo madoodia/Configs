@@ -2123,7 +2123,8 @@ if JPEGTURBO in requiredDependencies:
         PrintError("nasm not found -- please install it and adjust your PATH")
         sys.exit(1)
 
-dependenciesToBuild.append(OSL)
+if context.buildOSL:
+    dependenciesToBuild.append(OSL)
 
 # Summarize
 summaryMsg = """
