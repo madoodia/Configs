@@ -6,7 +6,7 @@
 @echo off
 
 
-call osl_env_var_setup.bat
+call osl_env_vars_setup.bat
 
 cls
 
