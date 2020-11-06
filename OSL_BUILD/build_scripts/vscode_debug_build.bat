@@ -2,6 +2,6 @@
 
 cd ./build_scripts
 
-call build_osl_debug.bat
+call build_osl.bat debug
 
 call osl_debug_launcher.bat

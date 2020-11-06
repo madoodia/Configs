@@ -278,8 +278,10 @@ It is mandatory to have one **Cout** output Variable in any shader, Otherwise os
 in **Powershell** (in your local OpenShadingLanguage repo)
 
 - cd build_scripts
-- .\build_osl.bat release (or .\build_osl.bat debug)
-- 
+- .\build_osl.bat release       (or .\build_osl.bat debug)
+- .\osl_release_launcher.bat    (or .\osl_debug_launcher.bat)
+- or open Visual Studio Solution with
+    - .\osl_release_sln.bat     (or .\osl_debug_sln.bat)
 ---
 
 
