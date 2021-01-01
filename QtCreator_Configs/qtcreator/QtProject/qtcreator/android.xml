@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorAndroid>
+<!-- Written by sdktool 4.13.2.0, 2020-12-08T11:17:39. -->
+<qtcreator>
+ <data>
+  <variable>MakeExtraSearchDirectory</variable>
+  <value type="QString">C:/Qt/Tools/mingw810_64/bin</value>
+ </data>
+</qtcreator>

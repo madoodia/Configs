@@ -1,0 +1,5 @@
+put QtProject Folder at:
+C:\Users\madoo\AppData\Roaming
+
+put qtcreator folder at:
+C:\Qt\Tools\QtCreator\share

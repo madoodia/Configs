@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorDebuggers>
+<!-- Written by QtDesignStudio 1.6.1, 2020-12-31T15:08:26. -->
+<qtcreator>
+ <data>
+  <variable>DebuggerItem.0</variable>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="Abis">
+    <value type="QString">x86-windows-msvc2017-pe-32bit</value>
+   </valuelist>
+   <value type="bool" key="AutoDetected">true</value>
+   <value type="QString" key="Binary">C:/Program Files (x86)/Windows Kits/10/Debuggers/x86/cdb.exe</value>
+   <value type="QString" key="DisplayName">Auto-detected CDB at C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\cdb.exe</value>
+   <value type="int" key="EngineType">4</value>
+   <value type="QString" key="Id">{ab4a7c28-fd5a-4f89-a301-ec4e574b5722}</value>
+   <value type="QDateTime" key="LastModified">2018-10-23T01:41:18.000</value>
+   <value type="QString" key="Version">10.0.17763.132</value>
+   <value type="QString" key="WorkingDirectory"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>DebuggerItem.1</variable>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="Abis">
+    <value type="QString">x86-windows-msvc2017-pe-64bit</value>
+   </valuelist>
+   <value type="bool" key="AutoDetected">true</value>
+   <value type="QString" key="Binary">C:/Program Files (x86)/Windows Kits/10/Debuggers/x64/cdb.exe</value>
+   <value type="QString" key="DisplayName">Auto-detected CDB at C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\cdb.exe</value>
+   <value type="int" key="EngineType">4</value>
+   <value type="QString" key="Id">{ac8c3022-145a-4580-8116-bb6b43958e11}</value>
+   <value type="QDateTime" key="LastModified">2018-10-23T02:10:58.000</value>
+   <value type="QString" key="Version">10.0.17763.132</value>
+   <value type="QString" key="WorkingDirectory"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>DebuggerItem.Count</variable>
+  <value type="int">2</value>
+ </data>
+ <data>
+  <variable>Version</variable>
+  <value type="int">1</value>
+ </data>
+</qtcreator>

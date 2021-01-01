@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorDebuggers>
+<!-- Written by QtCreator 4.13.2, 2020-12-31T17:28:33. -->
+<qtcreator>
+ <data>
+  <variable>DebuggerItem.0</variable>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="Abis">
+    <value type="QString">x86-windows-msys-pe-32bit</value>
+   </valuelist>
+   <value type="bool" key="AutoDetected">true</value>
+   <value type="QString" key="Binary">C:/Qt/Tools/mingw810_32/bin/gdb.exe</value>
+   <value type="QString" key="DisplayName">GNU gdb 8.1 for MinGW 8.1.0 32-bit</value>
+   <value type="int" key="EngineType">1</value>
+   <value type="QString" key="Id">Debugger.qt.tools.win32_mingw810</value>
+   <value type="QDateTime" key="LastModified">2018-05-11T19:35:10.000</value>
+   <value type="QString" key="Version">8.1.0</value>
+   <value type="QString" key="WorkingDirectory"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>DebuggerItem.1</variable>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="Abis">
+    <value type="QString">x86-windows-msvc2017-pe-32bit</value>
+   </valuelist>
+   <value type="bool" key="AutoDetected">true</value>
+   <value type="QString" key="Binary">C:/Program Files (x86)/Windows Kits/10/Debuggers/x86/cdb.exe</value>
+   <value type="QString" key="DisplayName">Auto-detected CDB at C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\cdb.exe</value>
+   <value type="int" key="EngineType">4</value>
+   <value type="QString" key="Id">{323003b0-1490-4b20-b82f-46e0d59e0951}</value>
+   <value type="QDateTime" key="LastModified">2018-10-23T01:41:18.000</value>
+   <value type="QString" key="Version">10.0.17763.132</value>
+   <value type="QString" key="WorkingDirectory"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>DebuggerItem.2</variable>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="Abis">
+    <value type="QString">x86-windows-msvc2017-pe-64bit</value>
+   </valuelist>
+   <value type="bool" key="AutoDetected">true</value>
+   <value type="QString" key="Binary">C:/Program Files (x86)/Windows Kits/10/Debuggers/x64/cdb.exe</value>
+   <value type="QString" key="DisplayName">Auto-detected CDB at C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\cdb.exe</value>
+   <value type="int" key="EngineType">4</value>
+   <value type="QString" key="Id">{7688d771-694f-49b6-962a-70f6aeb8cc79}</value>
+   <value type="QDateTime" key="LastModified">2018-10-23T02:10:58.000</value>
+   <value type="QString" key="Version">10.0.17763.132</value>
+   <value type="QString" key="WorkingDirectory"></value>
+  </valuemap>
+ </data>
+ <data>
+  <variable>DebuggerItem.Count</variable>
+  <value type="int">3</value>
+ </data>
+ <data>
+  <variable>Version</variable>
+  <value type="int">1</value>
+ </data>
+</qtcreator>
