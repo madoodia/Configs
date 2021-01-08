@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProfiles>
-<!-- Written by QtCreator 4.13.2, 2020-12-31T17:28:33. -->
+<!-- Written by QtCreator 4.14.0, 2021-01-07T23:30:07. -->
 <qtcreator>
  <data>
   <variable>Kit.IrrelevantAspects</variable>
@@ -95,53 +95,8 @@
   </valuemap>
  </data>
  <data>
-  <variable>Profile.2</variable>
-  <valuemap type="QVariantMap">
-   <value type="bool" key="PE.Profile.AutoDetected">true</value>
-   <value type="QString" key="PE.Profile.AutoDetectionSource"></value>
-   <valuemap type="QVariantMap" key="PE.Profile.Data">
-    <valuelist type="QVariantList" key="CMake.ConfigurationKitInformation">
-     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
-     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
-     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
-     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
-    </valuelist>
-    <valuemap type="QVariantMap" key="CMake.GeneratorKitInformation">
-     <value type="QString" key="ExtraGenerator"></value>
-     <value type="QString" key="Generator">MinGW Makefiles</value>
-     <value type="QString" key="Platform"></value>
-     <value type="QString" key="Toolset"></value>
-    </valuemap>
-    <value type="QString" key="CMakeProjectManager.CMakeKitInformation">qt.tools.cmake.win64</value>
-    <value type="QString" key="Debugger.Information">Debugger.qt.tools.win32_mingw810</value>
-    <value type="QString" key="PE.Profile.Device">Desktop Device</value>
-    <value type="QString" key="PE.Profile.DeviceType">Desktop</value>
-    <valuemap type="QVariantMap" key="PE.Profile.ToolChains">
-     <value type="QString" key="C">ProjectExplorer.ToolChain.Mingw:qt.tools.win32_mingw810.gcc</value>
-     <value type="QString" key="Cxx">ProjectExplorer.ToolChain.Mingw:qt.tools.win32_mingw810.g++</value>
-    </valuemap>
-    <valuemap type="QVariantMap" key="PE.Profile.ToolChainsV3">
-     <value type="QString" key="C">ProjectExplorer.ToolChain.Mingw:qt.tools.win32_mingw810.gcc</value>
-     <value type="QString" key="Cxx">ProjectExplorer.ToolChain.Mingw:qt.tools.win32_mingw810.g++</value>
-    </valuemap>
-    <value type="QString" key="QtSupport.QtInformation">SDK.qt.qt5.5152.win32_mingw81</value>
-   </valuemap>
-   <value type="QString" key="PE.Profile.DeviceTypeForIcon"></value>
-   <value type="QString" key="PE.Profile.Icon"></value>
-   <value type="QString" key="PE.Profile.Id">qt.qt5.5152.win32_mingw81_kit</value>
-   <valuelist type="QVariantList" key="PE.Profile.MutableInfo"/>
-   <value type="QString" key="PE.Profile.Name">Desktop Qt %{Qt:Version} MinGW 32-bit</value>
-   <value type="bool" key="PE.Profile.SDK">true</value>
-   <valuelist type="QVariantList" key="PE.Profile.StickyInfo">
-    <value type="QString">QtSupport.QtInformation</value>
-    <value type="QString">Debugger.Information</value>
-    <value type="QString">PE.Profile.DeviceType</value>
-   </valuelist>
-  </valuemap>
- </data>
- <data>
   <variable>Profile.Count</variable>
-  <value type="int">3</value>
+  <value type="int">2</value>
  </data>
  <data>
   <variable>Profile.Default</variable>

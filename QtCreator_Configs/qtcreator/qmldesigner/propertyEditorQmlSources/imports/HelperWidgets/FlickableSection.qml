@@ -59,7 +59,7 @@ Section {
 
         Label {
             text: qsTr("Behavior")
-            tooltip: qsTr("Determines whether the surface may be dragged beyond the Flickable's boundaries, or overshoot the Flickable's boundaries when flicked.")
+            tooltip: qsTr("Whether the surface may be dragged beyond the Flickable's boundaries, or overshoot the Flickable's boundaries when flicked.")
             disabledState: !backendValues.boundsBehavior.isAvailable
         }
 
@@ -78,7 +78,7 @@ Section {
 
         Label {
             text: qsTr("Movement")
-            tooltip: qsTr("Determines whether the Flickable will give a feeling that the edges of the view are soft, rather than a hard physical boundary.")
+            tooltip: qsTr("Whether the Flickable will give a feeling that the edges of the view are soft, rather than a hard physical boundary.")
             disabledState: !backendValues.boundsMovement.isAvailable
         }
 
@@ -96,7 +96,7 @@ Section {
 
         Label {
             text: qsTr("Interactive")
-            tooltip: qsTr("Describes whether the user can interact with the Flickable. A user cannot drag or flick a Flickable that is not interactive.")
+            tooltip: qsTr("Allows users to drag or flick a flickable item.")
         }
 
         SecondColumnLayout {
@@ -111,7 +111,7 @@ Section {
 
         Label {
             text: qsTr("Max. velocity")
-            tooltip: qsTr("Maximum flick velocity")
+            tooltip: qsTr("Maximum flick velocity.")
         }
 
         SecondColumnLayout {
@@ -127,7 +127,7 @@ Section {
 
         Label {
             text: qsTr("Deceleration")
-            tooltip: qsTr("Flick deceleration")
+            tooltip: qsTr("Flick deceleration.")
             disabledState: !backendValues.flickDeceleration.isAvailable
         }
 
@@ -145,7 +145,7 @@ Section {
 
         Label {
             text: qsTr("Press delay")
-            tooltip: qsTr("Holds the time to delay (ms) delivering a press to children of the Flickable.")
+            tooltip: qsTr("Time to delay delivering a press to children of the Flickable in milliseconds.")
             disabledState: !backendValues.pressDelay.isAvailable
         }
 

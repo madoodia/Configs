@@ -707,8 +707,7 @@ def qdumpHelper_std__string(d, value, charType, format):
     # We can't lookup the std::string::_Rep type without crashing LLDB,
     # so hard-code assumption on member position
     # struct { size_type _M_length, size_type _M_capacity, int _M_refcount; }
-    (size, alloc, refcount) = d.split("ppp", data - 3 * d.ptrSize())
-    refcount = refcount & 0xffffffff
+    (size, alloc, refcount) = d.split("ppi", data - 3 * d.ptrSize())
     d.check(refcount >= -1)  # Can be -1 according to docs.
     d.check(0 <= size and size <= alloc and alloc <= 100 * 1000 * 1000)
     d.putCharArrayHelper(data, size, charType, format)
@@ -730,13 +729,24 @@ def qdumpHelper__std__string__QNX(d, value, charType, format):
 
 
 def qdumpHelper__std__string__MSVC(d, value, charType, format):
-    (proxy, buffer, size, alloc) = value.split("p16spp")
+    try:
+        (proxy, buffer, size, alloc) = value.split("p16spp")
+        d.check(0 <= size and size <= alloc and alloc <= 100 * 1000 * 1000)
+    except RuntimeError:
+        proxy = None
+        (buffer, size, alloc) = value.split("16spp")
+        d.check(0 <= size and size <= alloc and alloc <= 100 * 1000 * 1000)
     _BUF_SIZE = int(16 / charType.size())
-    d.check(0 <= size and size <= alloc and alloc <= 100 * 1000 * 1000)
     if _BUF_SIZE <= alloc:
-        (proxy, data) = value.split("pp")
+        if proxy is None:
+            data = value.extractPointer()
+        else:
+            (proxy, data) = value.split("pp")
     else:
-        data = value.address() + d.ptrSize()
+        if proxy is None:
+            data = value.address()
+        else:
+            data = value.address() + d.ptrSize()
     d.putCharArrayHelper(data, size, charType, format)
 
 
@@ -1050,7 +1060,7 @@ def qdumpHelper__std__vector(d, value, isLibCpp):
     if isBool:
         if isLibCpp:
             start = value["__begin_"].pointer()
-            size = value["__size_"]
+            size = value["__size_"].integer()
             alloc = size
         else:
             start = value["_M_start"]["_M_p"].pointer()
@@ -1099,8 +1109,18 @@ def qdumpHelper__std__vector__QNX(d, value):
         (proxy, start, last, end) = value.split("pppp")
         size = (last - start) // innerType.size()
 
-    d.check(0 <= size and size <= 1000 * 1000 * 1000)
-    d.check(last <= end)
+    try:
+        d.check(0 <= size and size <= 1000 * 1000 * 1000)
+        d.check(last <= end)
+    except RuntimeError:
+        if isBool:
+            (start, last, end, size) = value.split("pppi")
+        else:
+            (start, last, end) = value.split("ppp")
+            size = (last - start) // innerType.size()
+        d.check(0 <= size and size <= 1000 * 1000 * 1000)
+        d.check(last <= end)
+
     if size > 0:
         d.checkPointer(start)
         d.checkPointer(last)

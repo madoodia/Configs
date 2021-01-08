@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProfiles>
-<!-- Written by sdktool 4.13.2.0, 2020-12-31T14:21:39. -->
+<!-- Written by sdktool 4.13.2.0, 2021-01-05T00:17:30. -->
 <qtcreator>
  <data>
   <variable>Profile.0</variable>
@@ -39,31 +39,12 @@
   </valuemap>
  </data>
  <data>
-  <variable>Profile.2</variable>
-  <valuemap type="QVariantMap">
-   <value type="bool" key="PE.Profile.AutoDetected">true</value>
-   <valuemap type="QVariantMap" key="PE.Profile.Data">
-    <value type="QString" key="Debugger.Information">Debugger.qt.tools.win32_mingw810</value>
-    <value type="QString" key="PE.Profile.DeviceType">Desktop</value>
-    <valuemap type="QVariantMap" key="PE.Profile.ToolChains">
-     <value type="QString" key="C">ProjectExplorer.ToolChain.Mingw:qt.tools.win32_mingw810.gcc</value>
-     <value type="QString" key="Cxx">ProjectExplorer.ToolChain.Mingw:qt.tools.win32_mingw810.g++</value>
-    </valuemap>
-    <value type="QString" key="QtSupport.QtInformation">SDK.qt.qt5.5152.win32_mingw81</value>
-   </valuemap>
-   <value type="QString" key="PE.Profile.Icon"></value>
-   <value type="QString" key="PE.Profile.Id">qt.qt5.5152.win32_mingw81_kit</value>
-   <value type="QString" key="PE.Profile.Name">Desktop Qt %{Qt:Version} MinGW 32-bit</value>
-   <value type="bool" key="PE.Profile.SDK">true</value>
-  </valuemap>
- </data>
- <data>
   <variable>Profile.Count</variable>
-  <value type="int">3</value>
+  <value type="int">2</value>
  </data>
  <data>
   <variable>Profile.Default</variable>
-  <value type="QString">0</value>
+  <value type="int">0</value>
  </data>
  <data>
   <variable>Version</variable>

@@ -64,7 +64,7 @@ Column {
 
             Label {
                 text: qsTr("Navigation wraps")
-                tooltip: qsTr("Determines whether the grid wraps key navigation.")
+                tooltip: qsTr("Whether the grid wraps key navigation.")
                 disabledState: !backendValues.keyNavigationWraps.isAvailable
             }
 
@@ -96,7 +96,7 @@ Column {
             }
 
             Label {
-                text: qsTr("Layout Direction")
+                text: qsTr("Layout direction")
                 disabledState: !backendValues.layoutDirection.isAvailable
             }
 
@@ -285,7 +285,7 @@ Column {
 
             Label {
                 text: qsTr("Follows current")
-                tooltip: qsTr("Determines whether the highlight is managed by the view.")
+                tooltip: qsTr("Whether the highlight is managed by the view.")
                 disabledState: !backendValues.highlightFollowsCurrentItem.isAvailable
             }
 

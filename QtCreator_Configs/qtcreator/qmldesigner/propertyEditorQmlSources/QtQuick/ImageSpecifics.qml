@@ -147,7 +147,7 @@ Column {
 
             Label {
                 text: qsTr("Asynchronous")
-                tooltip: qsTr("Specifies that images on the local filesystem should be loaded asynchronously in a separate thread.")
+                tooltip: qsTr("Loads images on the local filesystem asynchronously in a separate thread.")
                 disabledState: !backendValues.asynchronous.isAvailable
             }
 
@@ -163,7 +163,7 @@ Column {
 
             Label {
                 text: qsTr("Auto transform")
-                tooltip: qsTr("Specifies whether the image should automatically apply image transformation metadata such as EXIF orientation.")
+                tooltip: qsTr("Automatically applies image transformation metadata such as EXIF orientation.")
                 disabledState: !backendValues.autoTransform.isAvailable
             }
 
@@ -179,7 +179,7 @@ Column {
 
             Label {
                 text: qsTr("Cache")
-                tooltip: qsTr("Specifies whether the image should be cached.")
+                tooltip: qsTr("Caches the image.")
                 disabledState: !backendValues.cache.isAvailable
             }
 
@@ -195,7 +195,7 @@ Column {
 
             Label {
                 text: qsTr("Mipmap")
-                tooltip: qsTr("Specifies whether the image uses mipmap filtering when scaled or transformed.")
+                tooltip: qsTr("Uses mipmap filtering when the image is scaled or transformed.")
                 disabledState: !backendValues.mipmap.isAvailable
             }
 
@@ -211,7 +211,7 @@ Column {
 
             Label {
                 text: qsTr("Mirror")
-                tooltip: qsTr("Specifies whether the image should be horizontally inverted.")
+                tooltip: qsTr("Inverts the image horizontally.")
                 disabledState: !backendValues.mirror.isAvailable
             }
 
@@ -227,7 +227,7 @@ Column {
 
             Label {
                 text: qsTr("Smooth")
-                tooltip: qsTr("Specifies whether the image is smoothly filtered when scaled or transformed.")
+                tooltip: qsTr("Smoothly filters the image when it is scaled or transformed.")
                 disabledState: !backendValues.smooth.isAvailable
             }
 

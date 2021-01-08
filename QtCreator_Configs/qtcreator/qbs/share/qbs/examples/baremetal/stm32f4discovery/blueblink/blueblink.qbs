@@ -69,6 +69,11 @@ CppApplication {
 
     Properties {
         condition: qbs.toolchain.contains("gcc")
+        cpp.assemblerFlags: [
+            "-mcpu=cortex-m4",
+            "-mfloat-abi=hard",
+            "-mfpu=fpv4-sp-d16",
+        ]
         cpp.driverFlags: [
             "-mcpu=cortex-m4",
             "-mfloat-abi=hard",
@@ -99,6 +104,10 @@ CppApplication {
 
     Properties {
         condition: qbs.toolchain.contains("iar")
+        cpp.assemblerFlags: [
+            "--cpu", "cortex-m4",
+            "--fpu", "vfpv4_sp"
+        ]
         cpp.driverFlags: [
             "--cpu", "cortex-m4",
             "--fpu", "vfpv4_sp"
@@ -127,10 +136,10 @@ CppApplication {
 
     Properties {
         condition: qbs.toolchain.contains("keil")
-        cpp.driverFlags: [
+        cpp.assemblerFlags: [
             "--cpu", "cortex-m4.fp"
         ]
-        cpp.assemblerFlags: [
+        cpp.driverFlags: [
             "--cpu", "cortex-m4.fp"
         ]
     }

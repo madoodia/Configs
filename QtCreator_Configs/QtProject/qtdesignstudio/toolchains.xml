@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorToolChains>
-<!-- Written by QtDesignStudio 1.6.1, 2020-12-31T15:08:26. -->
+<!-- Written by QtDesignStudio 1.6.1, 2021-01-07T03:12:40. -->
 <qtcreator>
  <data>
   <variable>ToolChain.0</variable>
@@ -77,7 +77,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;D:\madoodia\sdks\osl_release\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -212,7 +212,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;D:\madoodia\sdks\osl_release\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -302,7 +302,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -437,7 +437,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -464,8 +464,8 @@
     <value type="QString">x86-windows-msvc2019-pe-64bit</value>
    </valuelist>
    <value type="QString" key="ProjectExplorer.GccToolChain.TargetAbi">x86-windows-msvc2019-pe-64bit</value>
-   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">true</value>
-   <value type="QString" key="ProjectExplorer.ToolChain.DisplayName">Clang (C++, x86 64bit in )</value>
+   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">false</value>
+   <value type="QString" key="ProjectExplorer.ToolChain.DisplayName">Clang (C++, x86 64bit in D:\madoodia\sdks\osl_release\bin)</value>
    <value type="QString" key="ProjectExplorer.ToolChain.Id">ProjectExplorer.ToolChain.Clang:{2311b70d-5167-476f-b1de-4615c0af2480}</value>
    <value type="int" key="ProjectExplorer.ToolChain.Language">2</value>
    <value type="QString" key="ProjectExplorer.ToolChain.LanguageV2">Cxx</value>
@@ -483,8 +483,8 @@
     <value type="QString">x86-windows-msvc2019-pe-64bit</value>
    </valuelist>
    <value type="QString" key="ProjectExplorer.GccToolChain.TargetAbi">x86-windows-msvc2019-pe-64bit</value>
-   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">true</value>
-   <value type="QString" key="ProjectExplorer.ToolChain.DisplayName">Clang (C, x86 64bit in )</value>
+   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">false</value>
+   <value type="QString" key="ProjectExplorer.ToolChain.DisplayName">Clang (C, x86 64bit in D:\madoodia\sdks\osl_release\bin)</value>
    <value type="QString" key="ProjectExplorer.ToolChain.Id">ProjectExplorer.ToolChain.Clang:{4c3f75da-e8ca-4087-96ca-4a32622839ac}</value>
    <value type="int" key="ProjectExplorer.ToolChain.Language">1</value>
    <value type="QString" key="ProjectExplorer.ToolChain.LanguageV2">C</value>
@@ -575,7 +575,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -720,7 +720,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -820,7 +820,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -965,7 +965,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -1055,7 +1055,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -1190,7 +1190,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -1280,7 +1280,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -1415,7 +1415,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -1515,7 +1515,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -1655,7 +1655,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -1755,7 +1755,7 @@
     <valuelist type="QVariantList">
      <value type="QString">Path</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX86\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86;C:\Program Files (x86)\Windows Kits\10\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">Platform</value>
@@ -1895,7 +1895,7 @@
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_PREINIT_PATH</value>
      <value type="int">0</value>
-     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
     </valuelist>
     <valuelist type="QVariantList">
      <value type="QString">__VSCMD_script_err_count</value>
@@ -1917,8 +1917,219 @@
    <value type="QString" key="ProjectExplorer.MsvcToolChain.SupportedAbi">x86-windows-msvc2019-pe-64bit</value>
    <value type="QString" key="ProjectExplorer.MsvcToolChain.VarsBat">C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat</value>
    <value type="QString" key="ProjectExplorer.MsvcToolChain.VarsBatArg">amd64</value>
-   <valuelist type="QVariantList" key="ProjectExplorer.MsvcToolChain.environmentModifications"/>
-   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">true</value>
+   <valuelist type="QVariantList" key="ProjectExplorer.MsvcToolChain.environmentModifications">
+    <valuelist type="QVariantList">
+     <value type="QString">CommandPromptType</value>
+     <value type="int">0</value>
+     <value type="QString">Native</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">DevEnvDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">ExtensionSdkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">Framework40Version</value>
+     <value type="int">0</value>
+     <value type="QString">v4.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Windows\Microsoft.NET\Framework64\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkDir64</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Windows\Microsoft.NET\Framework64\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkVersion</value>
+     <value type="int">0</value>
+     <value type="QString">v4.0.30319</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkVersion64</value>
+     <value type="int">0</value>
+     <value type="QString">v4.0.30319</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">INCLUDE</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">LIB</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">LIBPATH</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\x86\store\references;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.18362.0;C:\Windows\Microsoft.NET\Framework64\v4.0.30319</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">NETFXSDKDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">PROMPT</value>
+     <value type="int">0</value>
+     <value type="QString">$P$G</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">Path</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">Platform</value>
+     <value type="int">0</value>
+     <value type="QString">x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">UCRTVersion</value>
+     <value type="int">0</value>
+     <value type="QString">10.0.18362.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">UniversalCRTSdkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCIDEInstallDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCINSTALLDIR</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCToolsInstallDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCToolsRedistDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Redist\MSVC\14.27.29016\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCToolsVersion</value>
+     <value type="int">0</value>
+     <value type="QString">14.27.29110</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VS160COMNTOOLS</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_ARG_HOST_ARCH</value>
+     <value type="int">0</value>
+     <value type="QString">x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_ARG_TGT_ARCH</value>
+     <value type="int">0</value>
+     <value type="QString">x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_ARG_app_plat</value>
+     <value type="int">0</value>
+     <value type="QString">Desktop</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_SKIP_SENDTELEMETRY</value>
+     <value type="int">0</value>
+     <value type="QString">1</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_VER</value>
+     <value type="int">0</value>
+     <value type="QString">16.7.6</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSINSTALLDIR</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VisualStudioVersion</value>
+     <value type="int">0</value>
+     <value type="QString">16.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsLibPath</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.18362.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDKLibVersion</value>
+     <value type="int">0</value>
+     <value type="QString">10.0.18362.0\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDKVersion</value>
+     <value type="int">0</value>
+     <value type="QString">10.0.18362.0\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDK_ExecutablePath_x64</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDK_ExecutablePath_x86</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSdkBinPath</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\bin\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSdkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSdkVerBinPath</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__DOTNET_ADD_64BIT</value>
+     <value type="int">0</value>
+     <value type="QString">1</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__DOTNET_PREFERRED_BITNESS</value>
+     <value type="int">0</value>
+     <value type="QString">64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__VSCMD_PREINIT_PATH</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__VSCMD_script_err_count</value>
+     <value type="int">0</value>
+     <value type="QString">0</value>
+    </valuelist>
+   </valuelist>
+   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">false</value>
    <value type="QString" key="ProjectExplorer.ToolChain.DisplayName">LLVM 64 bit based on MSVC2019</value>
    <value type="QString" key="ProjectExplorer.ToolChain.Id">ProjectExplorer.ToolChain.ClangCl:{02192066-39c5-4a26-ad3d-5fe21363b700}</value>
    <value type="int" key="ProjectExplorer.ToolChain.Language">1</value>
@@ -1932,8 +2143,219 @@
    <value type="QString" key="ProjectExplorer.MsvcToolChain.SupportedAbi">x86-windows-msvc2019-pe-64bit</value>
    <value type="QString" key="ProjectExplorer.MsvcToolChain.VarsBat">C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat</value>
    <value type="QString" key="ProjectExplorer.MsvcToolChain.VarsBatArg">amd64</value>
-   <valuelist type="QVariantList" key="ProjectExplorer.MsvcToolChain.environmentModifications"/>
-   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">true</value>
+   <valuelist type="QVariantList" key="ProjectExplorer.MsvcToolChain.environmentModifications">
+    <valuelist type="QVariantList">
+     <value type="QString">CommandPromptType</value>
+     <value type="int">0</value>
+     <value type="QString">Native</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">DevEnvDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">ExtensionSdkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">Framework40Version</value>
+     <value type="int">0</value>
+     <value type="QString">v4.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Windows\Microsoft.NET\Framework64\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkDir64</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Windows\Microsoft.NET\Framework64\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkVersion</value>
+     <value type="int">0</value>
+     <value type="QString">v4.0.30319</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">FrameworkVersion64</value>
+     <value type="int">0</value>
+     <value type="QString">v4.0.30319</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">INCLUDE</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">LIB</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\x64;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x64;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">LIBPATH</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\x86\store\references;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.18362.0;C:\Windows\Microsoft.NET\Framework64\v4.0.30319</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">NETFXSDKDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">PROMPT</value>
+     <value type="int">0</value>
+     <value type="QString">$P$G</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">Path</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\\x64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">Platform</value>
+     <value type="int">0</value>
+     <value type="QString">x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">UCRTVersion</value>
+     <value type="int">0</value>
+     <value type="QString">10.0.18362.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">UniversalCRTSdkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCIDEInstallDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCINSTALLDIR</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCToolsInstallDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCToolsRedistDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Redist\MSVC\14.27.29016\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VCToolsVersion</value>
+     <value type="int">0</value>
+     <value type="QString">14.27.29110</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VS160COMNTOOLS</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_ARG_HOST_ARCH</value>
+     <value type="int">0</value>
+     <value type="QString">x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_ARG_TGT_ARCH</value>
+     <value type="int">0</value>
+     <value type="QString">x64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_ARG_app_plat</value>
+     <value type="int">0</value>
+     <value type="QString">Desktop</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_SKIP_SENDTELEMETRY</value>
+     <value type="int">0</value>
+     <value type="QString">1</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSCMD_VER</value>
+     <value type="int">0</value>
+     <value type="QString">16.7.6</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VSINSTALLDIR</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">VisualStudioVersion</value>
+     <value type="int">0</value>
+     <value type="QString">16.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsLibPath</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0;C:\Program Files (x86)\Windows Kits\10\References\10.0.18362.0</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDKLibVersion</value>
+     <value type="int">0</value>
+     <value type="QString">10.0.18362.0\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDKVersion</value>
+     <value type="int">0</value>
+     <value type="QString">10.0.18362.0\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDK_ExecutablePath_x64</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSDK_ExecutablePath_x86</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSdkBinPath</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\bin\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSdkDir</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">WindowsSdkVerBinPath</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__DOTNET_ADD_64BIT</value>
+     <value type="int">0</value>
+     <value type="QString">1</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__DOTNET_PREFERRED_BITNESS</value>
+     <value type="int">0</value>
+     <value type="QString">64</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__VSCMD_PREINIT_PATH</value>
+     <value type="int">0</value>
+     <value type="QString">C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\madoo\AppData\Local\Microsoft\WindowsApps;C:\Users\madoo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE;C:\Program Files\Java\jre1.8.0_271\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64;C:\Program Files\CMake\bin;D:\madoodia\sdks\Qt5\bin;C:\Users\madoo\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python37;C:\Python37\Scripts;C:\MinGW\msys\1.0\bin;</value>
+    </valuelist>
+    <valuelist type="QVariantList">
+     <value type="QString">__VSCMD_script_err_count</value>
+     <value type="int">0</value>
+     <value type="QString">0</value>
+    </valuelist>
+   </valuelist>
+   <value type="bool" key="ProjectExplorer.ToolChain.Autodetect">false</value>
    <value type="QString" key="ProjectExplorer.ToolChain.DisplayName">LLVM 64 bit based on MSVC2019</value>
    <value type="QString" key="ProjectExplorer.ToolChain.Id">ProjectExplorer.ToolChain.ClangCl:{c2f031bd-5497-46ed-a9ed-8aab76a8655d}</value>
    <value type="int" key="ProjectExplorer.ToolChain.Language">2</value>

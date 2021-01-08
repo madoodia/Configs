@@ -15,12 +15,21 @@ Module {
     property stringList extraLibs // qmake: ANDROID_EXTRA_LIBS
     property bool verboseAndroidDeployQt: false
 
-    property string _androidDeployQtFilePath: FileInfo.joinPaths(_qtInstallDir, "bin",
+    property string _androidDeployQtFilePath: FileInfo.joinPaths(_qtBinaryDir, "bin",
                                                                  "androiddeployqt")
+    property string _qtBinaryDir
     property string _qtInstallDir
-    property bool _enableSdkSupport: product.type && product.type.contains("android.package")
+    // TODO: Remove in 1.20
+    // From 1.20 product property used from an export item will point to the
+    // importingProduct property. So using the importingProduct property will be useless
+    // and the change will be reverted
+    property var _importingProduct: (typeof importingProduct !== "undefined") ? importingProduct :
+                                                                                product
+    property bool _enableSdkSupport: _importingProduct.type
+                                     && _importingProduct.type.contains("android.package")
                                      && !consoleApplication
-    property bool _enableNdkSupport: !product.aggregate || product.multiplexConfigurationId
+    property bool _enableNdkSupport: !_importingProduct.aggregate
+                                     || _importingProduct.multiplexConfigurationId
     property string _templatesBaseDir: FileInfo.joinPaths(_qtInstallDir, "src", "android")
     property string _deployQtOutDir: FileInfo.joinPaths(product.buildDirectory, "deployqt_out")
 
@@ -45,19 +54,36 @@ Module {
         java._tagJniHeaders: false // prevent rule cycle
     }
     Properties {
+        condition: _enableSdkSupport && Utilities.versionCompare(version, "5.15") >= 0
+                   && Utilities.versionCompare(version, "6.0") < 0
+        java.additionalClassPaths: [FileInfo.joinPaths(_qtInstallDir, "jar", "QtAndroid.jar")]
+    }
+    Properties {
+        condition: _enableSdkSupport && Utilities.versionCompare(version, "6.0") >= 0
+        java.additionalClassPaths: [FileInfo.joinPaths(_qtInstallDir, "jar", "Qt6Android.jar")]
+    }
+    Properties {
         condition: _enableNdkSupport && (Android.ndk.abi === "armeabi-v7a" || Android.ndk.abi === "x86")
         cpp.defines: "ANDROID_HAS_WSTRING"
     }
     Properties {
         condition: _enableSdkSupport
-        Android.sdk._archInName: _multiAbi
         Android.sdk._bundledInAssets: _multiAbi
     }
+    Properties {
+        condition: _enableSdkSupport && Utilities.versionCompare(version, "6.0") < 0
+        Android.sdk.minimumVersion: "21"
+    }
+    Properties {
+        condition: _enableSdkSupport && Utilities.versionCompare(version, "6.0") >= 0
+        Android.sdk.minimumVersion: "23"
+    }
+    cpp.archSuffix: _multiAbi ? "_" + Android.ndk.abi : ""
 
     Rule {
         condition: _enableSdkSupport
         multiplex: true
-        property stringList inputTags: "android.nativelibrary"
+        property stringList inputTags: ["android.nativelibrary", "qrc"]
         inputsFromDependencies: inputTags
         inputs: product.aggregate ? [] : inputTags
         Artifact {
@@ -168,6 +194,21 @@ Module {
                 if (Array.isArray(product.qmlImportPaths) && product.qmlImportPaths.length > 0)
                     f.writeLine('"qml-import-paths": "' + product.qmlImportPaths.join(',') + '",');
 
+                if (Utilities.versionCompare(product.Qt.android_support.version, "6.0") >= 0) {
+                    f.writeLine('"qml-importscanner-binary": "' +
+                                product.Qt.core.qmlImportScannerFilePath + '",');
+                    f.writeLine('"rcc-binary": "' + product.Qt.core.binPath + '/rcc' + '",');
+
+                    if (inputs["qrc"] && inputs["qrc"].length > 0) {
+                        var qrcFiles = [];
+                        var qrcInputs = inputs["qrc"];
+                        for (i = 0; i < qrcInputs.length; ++i) {
+                            qrcFiles.push(qrcInputs[i].filePath);
+                        }
+                        f.writeLine('"qrcFiles": "' + qrcFiles.join(',') + '",');
+                    }
+                }
+
                 // QBS-1429
                 if (!product.Qt.android_support._multiAbi) {
                     f.writeLine('"stdcpp-path": "' + (product.cpp.sharedStlFilePath
@@ -177,8 +218,9 @@ Module {
                 } else {
                     f.writeLine('"stdcpp-path": "' + product.Android.sdk.ndkDir +
                                 '/toolchains/llvm/prebuilt/' + hostArch + '/sysroot/usr/lib/",');
-                    f.writeLine('"application-binary": "' + theBinary.product.name + '"');
+                    f.writeLine('"application-binary": "' + theBinary.product.targetName + '"');
                 }
+
                 f.writeLine("}");
                 f.close();
             };
@@ -282,8 +324,7 @@ Module {
                         var input = inputs["android.nativelibrary"][i];
                         File.copy(input.filePath,
                                   FileInfo.joinPaths(product.Qt.android_support._deployQtOutDir,
-                                                     "libs",
-                                                     input.Android.ndk.abi,
+                                                     "libs", input.Android.ndk.abi,
                                                      input.fileName));
                     }
                 }
@@ -353,31 +394,7 @@ Module {
                         File.remove(oldLibs[i]);
                 }
             };
-
-            // androiddeployqt doesn't strip the deployed libraries anymore so it has to done here
-            var stripLibsCmd = new JavaScriptCommand();
-            stripLibsCmd.description = "Stripping unneeded symbols from deployed qt libraries";
-            stripLibsCmd.sourceCode = function() {
-                var stripArgs = ["--strip-all"];
-                var architectures = [];
-                for (var i in inputs["android.nativelibrary"])
-                    architectures.push(inputs["android.nativelibrary"][i].Android.ndk.abi);
-                for (var i in architectures) {
-                    var abiDirPath = FileInfo.joinPaths(product.Android.sdk.packageContentsDir,
-                                                        "lib", architectures[i]);
-                    var files = File.directoryEntries(abiDirPath, File.Files);
-                    for (var i = 0; i < files.length; ++i) {
-                        var filePath = FileInfo.joinPaths(abiDirPath, files[i]);
-                        if (FileInfo.suffix(filePath) == "so") {
-                            stripArgs.push(filePath);
-                        }
-                    }
-                }
-                var process = new Process();
-                process.exec(product.cpp.stripPath, stripArgs, false);
-            }
-
-            return [copyCmd, androidDeployQtCmd, moveCmd, stripLibsCmd];
+            return [copyCmd, androidDeployQtCmd, moveCmd];
         }
     }
 

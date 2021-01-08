@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorCMakeTools>
-<!-- Written by QtCreator 4.13.2, 2020-12-31T17:28:30. -->
+<!-- Written by QtCreator 4.14.0, 2021-01-07T23:27:51. -->
 <qtcreator>
  <data>
   <variable>CMakeTools.0</variable>
@@ -27,8 +27,20 @@
   </valuemap>
  </data>
  <data>
+  <variable>CMakeTools.2</variable>
+  <valuemap type="QVariantMap">
+   <value type="bool" key="AutoCreateBuildDirectory">false</value>
+   <value type="bool" key="AutoDetected">true</value>
+   <value type="bool" key="AutoRun">true</value>
+   <value type="QString" key="Binary">C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe</value>
+   <value type="QString" key="DisplayName">System CMake at C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe</value>
+   <value type="QString" key="Id">{ec15e78e-aeba-4653-90f0-9b6174ce2849}</value>
+   <value type="QString" key="QchFile"></value>
+  </valuemap>
+ </data>
+ <data>
   <variable>CMakeTools.Count</variable>
-  <value type="int">2</value>
+  <value type="int">3</value>
  </data>
  <data>
   <variable>CMakeTools.Default</variable>

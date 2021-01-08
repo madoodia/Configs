@@ -95,19 +95,15 @@ function guessVersion(macros) {
             && "__SDCC_VERSION_PATCH" in macros) {
         return { major: parseInt(macros["__SDCC_VERSION_MAJOR"], 10),
             minor: parseInt(macros["__SDCC_VERSION_MINOR"], 10),
-            patch: parseInt(macros["__SDCC_VERSION_PATCH"], 10),
-            found: macros["SDCC"] }
+            patch: parseInt(macros["__SDCC_VERSION_PATCH"], 10) }
     } else if ("__SDCC" in macros) {
         var versions = macros["__SDCC"].split("_");
         if (versions.length === 3) {
-            return {
-                major: parseInt(versions[0], 10),
+            return { major: parseInt(versions[0], 10),
                 minor: parseInt(versions[1], 10),
-                patch: parseInt(versions[2], 10),
-                found: macros["SDCC"] };
+                patch: parseInt(versions[2], 10) };
         }
     }
-    return { found: false };
 }
 
 function dumpMacros(compilerFilePath, architecture) {
@@ -121,12 +117,7 @@ function dumpMacros(compilerFilePath, architecture) {
 
     var p = new Process();
     p.exec(compilerFilePath, args, true);
-    var map = {};
-    p.readStdOut().trim().split(/\r?\n/g).map(function (line) {
-        var parts = line.split(" ", 3);
-        map[parts[1]] = parts[2];
-    });
-    return map;
+    return ModUtils.extractMacros(p.readStdOut());
 }
 
 function dumpDefaultPaths(compilerFilePath, architecture) {
@@ -413,6 +404,7 @@ function compilerFlags(project, product, input, outputs, explicitlyDependsOn) {
     }
 
     // Misc flags.
+    escapablePreprocessorFlags = escapablePreprocessorFlags.uniqueConcat(input.cpp.cppFlags);
     var escapedPreprocessorFlags = escapePreprocessorFlags(escapablePreprocessorFlags);
     if (escapedPreprocessorFlags)
         Array.prototype.push.apply(args, escapedPreprocessorFlags);
@@ -562,6 +554,7 @@ function prepareCompiler(project, product, inputs, outputs, input, output, expli
     if (isWindows) {
         cmd = new JavaScriptCommand();
         cmd.objectPath = outputs.obj[0].filePath;
+        cmd.silent = true;
         cmd.sourceCode = function() {
             var lines = [];
             var file = new TextFile(objectPath, TextFile.ReadWrite);
@@ -588,11 +581,11 @@ function prepareAssembler(project, product, inputs, outputs, input, output, expl
 
 function prepareLinker(project, product, inputs, outputs, input, output) {
     var cmds = [];
-    var primaryOutput = outputs.application[0];
+    var target = outputs.application[0];
     var args = linkerFlags(project, product, inputs, outputs);
     var linkerPath = effectiveLinkerPath(product);
     var cmd = new Command(linkerPath, args);
-    cmd.description = "linking " + primaryOutput.fileName;
+    cmd.description = "linking " + target.fileName;
     cmd.highlight = "linker";
     cmds.push(cmd);
 
@@ -606,6 +599,7 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
         cmd = new JavaScriptCommand();
         cmd.objectPaths = inputs.obj.map(function(a) { return a.filePath; });
         cmd.objectSuffix = product.cpp.objectSuffix;
+        cmd.silent = true;
         cmd.sourceCode = function() {
             objectPaths.forEach(function(objectPath) {
                 if (!objectPath.endsWith(".c" + objectSuffix))
@@ -618,6 +612,22 @@ function prepareLinker(project, product, inputs, outputs, input, output) {
         };
         cmds.push(cmd);
     }
+    // It is a workaround which removes the generated linker map file
+    // if it is disabled by cpp.generateLinkerMapFile property.
+    // Reason is that the SDCC compiler always generates this file,
+    // and does not have an option to disable generation for a linker
+    // map file. So, we can to remove a listing files only after the
+    // linking completes.
+    if (!product.cpp.generateLinkerMapFile) {
+        cmd = new JavaScriptCommand();
+        cmd.mapFilePath = FileInfo.joinPaths(
+            FileInfo.path(target.filePath),
+            FileInfo.completeBaseName(target.fileName) + ".map");
+        cmd.silent = true;
+        cmd.sourceCode = function() { File.remove(mapFilePath); };
+        cmds.push(cmd);
+    }
+
     return cmds;
 }
 

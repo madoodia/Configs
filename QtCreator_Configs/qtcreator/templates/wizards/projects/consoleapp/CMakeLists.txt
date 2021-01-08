@@ -17,7 +17,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core LinguistTools REQUIRED)
 
 set(TS_FILES %{TsFileName})
 @else
-find_package(Qt5Core)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 @endif
 
 add_executable(%{ProjectName}
@@ -29,5 +30,9 @@ add_executable(%{ProjectName}
 target_link_libraries(%{ProjectName} Qt${QT_VERSION_MAJOR}::Core)
 @if %{HasTranslation}
 
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+if(COMMAND qt_create_translation)
+    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+else()
+    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+endif()
 @endif

@@ -26,6 +26,7 @@
 import os
 import codecs
 import collections
+import glob
 import struct
 import sys
 import base64
@@ -207,13 +208,8 @@ class DumperBase():
         self.childrenSuffix = '],'
 
         self.dumpermodules = [
-            'qttypes',
-            'stdtypes',
-            'misctypes',
-            'boosttypes',
-            'opencvtypes',
-            'creatortypes',
-            'personaltypes',
+            os.path.splitext(os.path.basename(p))[0] for p in
+            glob.glob(os.path.join(os.path.dirname(__file__), '*types.py'))
         ]
 
         # These values are never used, but the variables need to have
@@ -559,9 +555,11 @@ class DumperBase():
             return 0, size
         return size, limit
 
-    def vectorDataHelper(self, vector_data_ptr):
-        # vector_data_ptr is what is e.g. stored in a QVector's d_ptr.
-        if self.qtVersion() >= 0x050000:
+    def vectorData(self, value):
+        if self.qtVersion() >= 0x060000:
+            data, size, alloc = self.qArrayData(value)
+        elif self.qtVersion() >= 0x050000:
+            vector_data_ptr = self.extractPointer(value)
             if self.ptrSize() == 4:
                 (ref, size, alloc, offset) = self.split('IIIp', vector_data_ptr)
             else:
@@ -569,22 +567,33 @@ class DumperBase():
             alloc = alloc & 0x7ffffff
             data = vector_data_ptr + offset
         else:
+            vector_data_ptr = self.extractPointer(value)
             (ref, alloc, size) = self.split('III', vector_data_ptr)
             data = vector_data_ptr + 16
         self.check(0 <= size and size <= alloc and alloc <= 1000 * 1000 * 1000)
-        return data, size, alloc
+        return data, size
 
-    def byteArrayDataHelper(self, bytearray_data_ptr):
-        # bytearray_data_ptr is what is e.g. stored in a QByteArray's d_ptr.
+    def qArrayData(self, value):
+        if self.qtVersion() >= 0x60000:
+            dd, data, size = self.split('ppp', value)
+            if dd:
+                _, _, alloc = self.split('iip', dd)
+            else: # fromRawData
+                alloc = size
+            return data, size, alloc
+        return self.qArrayDataHelper(self.extractPointer(value))
+
+    def qArrayDataHelper(self, array_data_ptr):
+        # array_data_ptr is what is e.g. stored in a QByteArray's d_ptr.
         if self.qtVersion() >= 0x050000:
             # QTypedArray:
             # - QtPrivate::RefCount ref
             # - int size
             # - uint alloc : 31, capacityReserved : 1
             # - qptrdiff offset
-            (ref, size, alloc, offset) = self.split('IIpp', bytearray_data_ptr)
+            (ref, size, alloc, offset) = self.split('IIpp', array_data_ptr)
             alloc = alloc & 0x7ffffff
-            data = bytearray_data_ptr + offset
+            data = array_data_ptr + offset
             if self.ptrSize() == 4:
                 data = data & 0xffffffff
             else:
@@ -596,35 +605,30 @@ class DumperBase():
             # - [padding]
             # - char *data;
             if self.ptrSize() == 4:
-                (ref, alloc, size, data) = self.split('IIIp', bytearray_data_ptr)
+                (ref, alloc, size, data) = self.split('IIIp', array_data_ptr)
             else:
-                (ref, alloc, size, pad, data) = self.split('IIIIp', bytearray_data_ptr)
+                (ref, alloc, size, pad, data) = self.split('IIIIp', array_data_ptr)
         else:
             # Data:
             # - QShared count;
             # - QChar *unicode
             # - char *ascii
             # - uint len: 30
-            (dummy, dummy, dummy, size) = self.split('IIIp', bytearray_data_ptr)
-            size = self.extractInt(bytearray_data_ptr + 3 * self.ptrSize()) & 0x3ffffff
+            (dummy, dummy, dummy, size) = self.split('IIIp', array_data_ptr)
+            size = self.extractInt(array_data_ptr + 3 * self.ptrSize()) & 0x3ffffff
             alloc = size  # pretend.
-            data = self.extractPointer(bytearray_data_ptr + self.ptrSize())
+            data = self.extractPointer(array_data_ptr + self.ptrSize())
         return data, size, alloc
 
-    # addr is the begin of a QByteArrayData structure
-    def encodeStringHelper(self, addr, limit):
-        # Should not happen, but we get it with LLDB as result
-        # of inferior calls
-        if addr == 0:
-            return 0, ''
-        data, size, alloc = self.byteArrayDataHelper(addr)
+    def encodeStringHelper(self, value, limit):
+        data, size, alloc = self.qArrayData(value)
         if alloc != 0:
             self.check(0 <= size and size <= alloc and alloc <= 100 * 1000 * 1000)
-        elided, shown = self.computeLimit(size, limit)
-        return elided, self.readMemory(data, 2 * shown)
+        elided, shown = self.computeLimit(2 * size, 2 * limit)
+        return elided, self.readMemory(data, shown)
 
-    def encodeByteArrayHelper(self, addr, limit):
-        data, size, alloc = self.byteArrayDataHelper(addr)
+    def encodeByteArrayHelper(self, value, limit):
+        data, size, alloc = self.qArrayData(value)
         if alloc != 0:
             self.check(0 <= size and size <= alloc and alloc <= 100 * 1000 * 1000)
         elided, shown = self.computeLimit(size, limit)
@@ -674,19 +678,15 @@ class DumperBase():
         return self.hexencode(bytes(self.readRawMemory(addr, size)))
 
     def encodeByteArray(self, value, limit=0):
-        elided, data = self.encodeByteArrayHelper(self.extractPointer(value), limit)
+        elided, data = self.encodeByteArrayHelper(value, limit)
         return data
 
-    def byteArrayData(self, value):
-        return self.byteArrayDataHelper(self.extractPointer(value))
-
     def putByteArrayValue(self, value):
-        elided, data = self.encodeByteArrayHelper(
-            self.extractPointer(value), self.displayStringLimit)
+        elided, data = self.encodeByteArrayHelper(value, self.displayStringLimit)
         self.putValue(data, 'latin1', elided=elided)
 
     def encodeString(self, value, limit=0):
-        elided, data = self.encodeStringHelper(self.extractPointer(value), limit)
+        elided, data = self.encodeStringHelper(value, limit)
         return data
 
     def encodedUtf16ToUtf8(self, s):
@@ -695,8 +695,8 @@ class DumperBase():
     def encodeStringUtf8(self, value, limit=0):
         return self.encodedUtf16ToUtf8(self.encodeString(value, limit))
 
-    def stringData(self, value):
-        return self.byteArrayDataHelper(self.extractPointer(value))
+    def stringData(self, value): # -> (data, size, alloc)
+        return self.qArrayData(value)
 
     def extractTemplateArgument(self, typename, position):
         level = 0
@@ -732,8 +732,7 @@ class DumperBase():
         return inner
 
     def putStringValue(self, value):
-        addr = self.extractPointer(value)
-        elided, data = self.encodeStringHelper(addr, self.displayStringLimit)
+        elided, data = self.encodeStringHelper(value, self.displayStringLimit)
         self.putValue(data, 'utf16', elided=elided)
 
     def putPtrItem(self, name, value):
@@ -1069,7 +1068,7 @@ class DumperBase():
         if isinstance(typish, ReportItem):
             self.currentType.value = typish.value
         elif isinstance(typish, str):
-            self.currentType.value = typish
+            self.currentType.value = typish.replace('@', self.qtNamespace())
         else:
             self.currentType.value = typish.name
         self.currentType.priority += 1
@@ -1187,6 +1186,10 @@ class DumperBase():
             nsStrippedType = self.stripNamespaceFromType(typeName)\
                 .replace('::', '__')
 
+            # Strip leading 'struct' for C structs
+            if nsStrippedType.startswith('struct '):
+                nsStrippedType = nsStrippedType[7:]
+
             #DumperBase.warn('STRIPPED: %s' % nsStrippedType)
             # The following block is only needed for D.
             if nsStrippedType.startswith('_A'):
@@ -1228,7 +1231,11 @@ class DumperBase():
     # This is shared by pointer and array formatting.
     def tryPutSimpleFormattedPointer(self, ptr, typeName, innerType, displayFormat, limit):
         if displayFormat == DisplayFormat.Automatic:
-            if innerType.name in ('char', 'signed char', 'unsigned char', 'CHAR'):
+            targetType = innerType
+            if innerType.code == TypeCode.Typedef:
+                targetType = innerType.ltarget
+
+            if targetType.name in ('char', 'signed char', 'unsigned char', 'CHAR'):
                 # Use UTF-8 as default for char *.
                 self.putType(typeName)
                 (elided, shown, data) = self.readToFirstZero(ptr, 1, limit)
@@ -1237,7 +1244,7 @@ class DumperBase():
                     self.putArrayData(ptr, shown, innerType)
                 return True
 
-            if innerType.name in ('wchar_t', 'WCHAR'):
+            if targetType.name in ('wchar_t', 'WCHAR'):
                 self.putType(typeName)
                 charSize = self.lookupType('wchar_t').size()
                 (elided, data) = self.encodeCArray(ptr, charSize, limit)
@@ -1336,10 +1343,7 @@ class DumperBase():
             return
 
         displayFormat = self.currentItemFormat(value.type.name)
-
         innerType = value.type.target()  # .unqualified()
-        if innerType.code == TypeCode.Typedef:
-            innerType = innerType.ltarget
 
         if innerType.name == 'void':
             #DumperBase.warn('VOID POINTER: %s' % displayFormat)
@@ -1419,22 +1423,27 @@ class DumperBase():
 
             intSize = 4
             ptrSize = self.ptrSize()
-            if self.qtVersion() < 0x050000:
-                # Size of QObjectData: 5 pointer + 2 int
-                #  - vtable
+            if self.qtVersion() >= 0x060000:
+                # Size of QObjectData: 7 pointer + 2 int
+                #   - vtable
                 #   - QObject *q_ptr;
                 #   - QObject *parent;
                 #   - QObjectList children;
-                #   - uint isWidget : 1; etc..
+                #   - uint isWidget : 1; etc...
                 #   - int postedEvents;
-                #   - QMetaObject *metaObject;
+                #   - QDynamicMetaObjectData *metaObject;
+                extra = self.extractPointer(dd + 7 * ptrSize + 2 * intSize)
+                if extra == 0:
+                    return False
 
-                # Offset of objectName in QObjectPrivate: 5 pointer + 2 int
-                #   - [QObjectData base]
+                # Offset of objectName in ExtraData: 12 pointer
+                #   - QList<QByteArray> propertyNames;
+                #   - QList<QVariant> propertyValues;
+                #   - QVector<int> runningTimers;
+                #   - QList<QPointer<QObject> > eventFilters;
                 #   - QString objectName
-                objectName = self.extractPointer(dd + 5 * ptrSize + 2 * intSize)
-
-            else:
+                objectNameAddress = extra + 12 * ptrSize
+            elif self.qtVersion() >= 0x050000:
                 # Size of QObjectData: 5 pointer + 2 int
                 #   - vtable
                 #   - QObject *q_ptr;
@@ -1454,9 +1463,24 @@ class DumperBase():
                 #   - QVector<int> runningTimers;
                 #   - QList<QPointer<QObject> > eventFilters;
                 #   - QString objectName
-                objectName = self.extractPointer(extra + 5 * ptrSize)
+                objectNameAddress = extra + 5 * ptrSize
+            else:
+                # Size of QObjectData: 5 pointer + 2 int
+                #  - vtable
+                #   - QObject *q_ptr;
+                #   - QObject *parent;
+                #   - QObjectList children;
+                #   - uint isWidget : 1; etc..
+                #   - int postedEvents;
+                #   - QMetaObject *metaObject;
 
-            data, size, alloc = self.byteArrayDataHelper(objectName)
+                # Offset of objectName in QObjectPrivate: 5 pointer + 2 int
+                #   - [QObjectData base]
+                #   - QString objectName
+                objectNameAddress = dd + 5 * ptrSize + 2 * intSize
+
+
+            data, size, alloc = self.qArrayData(objectNameAddress)
 
             # Object names are short, and GDB can crash on to big chunks.
             # Since this here is a convenience feature only, limit it.
@@ -1612,10 +1636,16 @@ class DumperBase():
             # a Q_OBJECT SMO has a non-null superdata (unless it's QObject itself),
             # a Q_GADGET SMO has a null superdata (hopefully)
             if result and not isQObjectProper:
-                superdata = self.extractPointer(result)
-                if superdata == 0:
-                    # This looks like a Q_GADGET
-                    return 0
+                if self.qtVersion() >= 0x60000 and self.isWindowsTarget():
+                    (direct, indirect) = self.split('pp', result)
+                    # since Qt 6 there is an additional indirect super data getter on windows
+                    if direct == 0 and indirect == 0:
+                        # This looks like a Q_GADGET
+                        return 0
+                else:
+                    if self.extractPointer(result) == 0:
+                        # This looks like a Q_GADGET
+                        return 0
 
             return result
 
@@ -1698,24 +1728,26 @@ class DumperBase():
             addr += 1
         return result
 
-    def listChildrenGenerator(self, addr, innerType):
-        base = self.extractPointer(addr)
+    def listData(self, value, check=True):
+        if self.qtVersion() >= 0x60000:
+            dd, data, size = self.split('ppi', value)
+            return data, size
+
+        base = self.extractPointer(value)
         (ref, alloc, begin, end) = self.split('IIII', base)
         array = base + 16
         if self.qtVersion() < 0x50000:
             array += self.ptrSize()
         size = end - begin
+
+        if check:
+            self.check(begin >= 0 and end >= 0 and end <= 1000 * 1000 * 1000)
+            size = end - begin
+            self.check(size >= 0)
+
         stepSize = self.ptrSize()
         data = array + begin * stepSize
-        for i in range(size):
-            yield self.createValue(data + i * stepSize, innerType)
-            #yield self.createValue(data + i * stepSize, 'void*')
-
-    def vectorChildrenGenerator(self, addr, innerType):
-        base = self.extractPointer(addr)
-        data, size, alloc = self.vectorDataHelper(base)
-        for i in range(size):
-            yield self.createValue(data + i * innerType.size(), innerType)
+        return data, size
 
     def putTypedPointer(self, name, addr, typeName):
         """ Prints a typed pointer, expandable if the type can be resolved,
@@ -1743,29 +1775,53 @@ class DumperBase():
     def metaString(self, metaObjectPtr, index, revision):
         ptrSize = self.ptrSize()
         stringdata = self.extractPointer(toInteger(metaObjectPtr) + ptrSize)
-        if revision >= 7:  # Qt 5.
-            byteArrayDataSize = 24 if ptrSize == 8 else 16
-            literal = stringdata + toInteger(index) * byteArrayDataSize
-            ldata, lsize, lalloc = self.byteArrayDataHelper(literal)
+
+        def unpackString(base, size):
             try:
-                s = struct.unpack_from('%ds' % lsize, self.readRawMemory(ldata, lsize))[0]
+                s = struct.unpack_from('%ds' % size, self.readRawMemory(base, size))[0]
                 return s if sys.version_info[0] == 2 else s.decode('utf8')
             except:
                 return '<not available>'
-        else:  # Qt 4.
-            ldata = stringdata + index
-            return self.extractCString(ldata).decode('utf8')
+
+        if revision >= 9:  # Qt 6.
+            pos, size = self.split('II', stringdata + 8 * index)
+            return unpackString(stringdata + pos, size)
+
+        if revision >= 7:  # Qt 5.
+            byteArrayDataSize = 24 if ptrSize == 8 else 16
+            literal = stringdata + toInteger(index) * byteArrayDataSize
+            base, size, _ = self.qArrayDataHelper(literal)
+            return unpackString(base, size)
+
+        ldata = stringdata + index
+        return self.extractCString(ldata).decode('utf8')
 
     def putSortGroup(self, sortorder):
         if not self.isCli:
             self.putField('sortgroup', sortorder)
 
     def putQMetaStuff(self, value, origType):
-        (metaObjectPtr, handle) = value.split('pI')
+        if self.qtVersion() >= 0x060000:
+            metaObjectPtr, handle = value.split('pp')
+        else:
+            metaObjectPtr, handle = value.split('pI')
         if metaObjectPtr != 0:
-            dataPtr = self.extractPointer(metaObjectPtr + 2 * self.ptrSize())
-            index = self.extractInt(dataPtr + 4 * handle)
-            revision = 7 if self.qtVersion() >= 0x050000 else 6
+            if self.qtVersion() >= 0x060000:
+                if handle == 0:
+                    self.putEmptyValue()
+                    return
+                revision = 9
+                name, alias, flags, keyCount, data = self.split('IIIII', handle)
+                index = name
+            elif self.qtVersion() >= 0x050000:
+                revision = 7
+                dataPtr = self.extractPointer(metaObjectPtr + 2 * self.ptrSize())
+                index = self.extractInt(dataPtr + 4 * handle)
+            else:
+                revision = 6
+                dataPtr = self.extractPointer(metaObjectPtr + 2 * self.ptrSize())
+                index = self.extractInt(dataPtr + 4 * handle)
+            #self.putValue("index: %s rev: %s" % (index, revision))
             name = self.metaString(metaObjectPtr, index, revision)
             self.putValue(name)
             self.putExpandable()
@@ -1786,7 +1842,6 @@ class DumperBase():
     # handle is what's store in QMetaMethod etc, pass -1 for QObject/QMetaObject
     # itself metaObjectPtr needs to point to a valid QMetaObject.
     def putQObjectGutsHelper(self, qobject, qobjectPtr, handle, metaObjectPtr, origType):
-        intSize = 4
         ptrSize = self.ptrSize()
 
         def putt(name, value, typeName=' '):
@@ -1800,7 +1855,11 @@ class DumperBase():
 
         def extractDataPtr(someMetaObjectPtr):
             # dataPtr = metaObjectPtr['d']['data']
-            return self.extractPointer(someMetaObjectPtr + 2 * ptrSize)
+            if self.qtVersion() >= 0x60000 and self.isWindowsTarget():
+                offset = 3
+            else:
+                offset = 2
+            return self.extractPointer(someMetaObjectPtr + offset * ptrSize)
 
         isQMetaObject = origType == 'QMetaObject'
         isQObject = origType == 'QObject'
@@ -1827,50 +1886,29 @@ class DumperBase():
         if qobjectPtr:
             dd = self.extractPointer(qobjectPtr + ptrSize)
             if self.qtVersion() >= 0x50000:
-                (dvtablePtr, qptr, parentPtr, childrenDPtr, flags, postedEvents,
+                (dvtablePtr, qptr, parent, children, flags, postedEvents,
                     dynMetaObjectPtr,  # Up to here QObjectData.
                     extraData, threadDataPtr, connectionListsPtr,
                     sendersPtr, currentSenderPtr) \
-                    = self.split('ppppIIp' + 'ppppp', dd)
+                    = self.split('pp{@QObject*}{@QList<@QObject *>}IIp' + 'ppppp', dd)
             else:
-                (dvtablePtr, qptr, parentPtr, childrenDPtr, flags, postedEvents,
+                (dvtablePtr, qptr, parent, children, flags, postedEvents,
                     dynMetaObjectPtr,  # Up to here QObjectData
                     objectName, extraData, threadDataPtr, connectionListsPtr,
                     sendersPtr, currentSenderPtr) \
-                    = self.split('ppppIIp' + 'pppppp', dd)
+                    = self.split('pp{@QObject*}{@QList<@QObject *>}IIp' + 'pppppp', dd)
 
-        if qobjectPtr:
-            qobjectType = self.createType('QObject')
             with SubItem(self, '[parent]'):
                 if not self.isCli:
                     self.putSortGroup(9)
-                if parentPtr:
-                    self.putItem(self.createValue(parentPtr, qobjectType))
-                else:
-                    self.putValue('0x0')
-                    self.putType('QObject *')
+                self.putItem(parent)
+
             with SubItem(self, '[children]'):
                 if not self.isCli:
                     self.putSortGroup(8)
-                base = self.extractPointer(dd + 3 * ptrSize)  # It's a QList<QObject *>
-                begin = self.extractInt(base + 8)
-                end = self.extractInt(base + 12)
-                array = base + 16
-                if self.qtVersion() < 0x50000:
-                    array += ptrSize
-                self.check(begin >= 0 and end >= 0 and end <= 1000 * 1000 * 1000)
-                size = end - begin
-                self.check(size >= 0)
-                self.putItemCount(size)
-                if size > 0:
-                    self.putExpandable()
-                if self.isExpanded():
-                    addrBase = array + begin * ptrSize
-                    with Children(self, size):
-                        for i in self.childRange():
-                            with SubItem(self, i):
-                                childPtr = self.extractPointer(addrBase + i * ptrSize)
-                                self.putItem(self.createValue(childPtr, qobjectType))
+
+                dvtablePtr, qptr, parentPtr, children = self.split('ppp{QList<QObject *>}', dd)
+                self.putItem(children)
 
         if isQMetaObject:
             with SubItem(self, '[strings]'):
@@ -1972,7 +2010,10 @@ class DumperBase():
                     with Children(self):
                         # Static properties.
                         for i in range(propertyCount):
-                            t = self.split('III', dataPtr + properties * 4 + 12 * i)
+                            if self.qtVersion() >= 0x60000:
+                                t = self.split('IIIII', dataPtr + properties * 4 + 20 * i)
+                            else:
+                                t = self.split('III', dataPtr + properties * 4 + 12 * i)
                             name = self.metaString(metaObjectPtr, t[0], revision)
                             if qobject and self.qtPropertyFunc:
                                     # LLDB doesn't like calling it on a derived class, possibly
@@ -2001,19 +2042,38 @@ class DumperBase():
 
                         # Dynamic properties.
                         if extraData:
-                            byteArrayType = self.createType('QByteArray')
-                            variantType = self.createType('QVariant')
-                            if self.qtVersion() >= 0x50600:
-                                values = self.vectorChildrenGenerator(
-                                    extraData + 2 * ptrSize, variantType)
+                            def list6Generator(addr, innerType):
+                                data, size = self.listData(addr)
+                                for i in range(size):
+                                    yield self.createValue(data + i * innerType.size(), innerType)
+
+                            def list5Generator(addr, innerType):
+                                data, size = self.listData(addr)
+                                for i in range(size):
+                                    yield self.createValue(data + i * ptrSize, innerType)
+
+                            def vectorGenerator(addr, innerType):
+                                data, size = self.vectorData(addr)
+                                for i in range(size):
+                                    yield self.createValue(data + i * innerType.size(), innerType)
+
+                            byteArrayType = self.createType('@QByteArray')
+                            variantType = self.createType('@QVariant')
+                            if self.qtVersion() >= 0x60000:
+                                values = vectorGenerator(extraData + 3 * ptrSize, variantType)
+                            elif self.qtVersion() >= 0x50600:
+                                values = vectorGenerator(extraData + 2 * ptrSize, variantType)
                             elif self.qtVersion() >= 0x50000:
-                                values = self.listChildrenGenerator(
-                                    extraData + 2 * ptrSize, variantType)
+                                values = list5Generator(extraData + 2 * ptrSize, variantType)
                             else:
-                                values = self.listChildrenGenerator(
-                                    extraData + 2 * ptrSize, variantType.pointer())
-                            names = self.listChildrenGenerator(
-                                extraData + ptrSize, byteArrayType)
+                                values = list5Generator(extraData + 2 * ptrSize,
+                                                        variantType.pointer())
+
+                            if self.qtVersion() >= 0x60000:
+                                names = list6Generator(extraData, byteArrayType)
+                            else:
+                                names = list5Generator(extraData + ptrSize, byteArrayType)
+
                             for (k, v) in zip(names, values):
                                 with SubItem(self, propertyCount + dynamicPropertyCount):
                                     if not self.isCli:
@@ -2119,8 +2179,7 @@ class DumperBase():
                 with Children(self):
                     innerType = connections.type[0]
                     # Should check:  innerType == ns::QObjectPrivate::ConnectionList
-                    base = self.extractPointer(connections)
-                    data, size, alloc = self.vectorDataHelper(base)
+                    data, size = self.vectorData(connections)
                     connectionType = self.createType('@QObjectPrivate::Connection')
                     for i in range(size):
                         first = self.extractPointer(data + i * 2 * ptrSize)
@@ -2851,6 +2910,7 @@ class DumperBase():
             self.type = None
             self.ldata = None        # Target address in case of references and pointers.
             self.laddress = None     # Own address.
+            self.lvalue = None
             self.lIsInScope = True
             self.ldisplay = None
             self.summary = None      # Always hexencoded UTF-8.
@@ -2924,7 +2984,7 @@ class DumperBase():
         def integer(self, bitsize=None):
             if self.type.code == TypeCode.Typedef:
                 return self.detypedef().integer()
-            elif self.type.code == TypeCode.Bitfield:
+            elif isinstance(self.lvalue, int):
                 return self.lvalue
             # Could be something like 'short unsigned int'
             unsigned = self.type.name == 'unsigned' \
@@ -3109,10 +3169,13 @@ class DumperBase():
                 for i in range(fieldSize):
                     data = data << 8
                     if self.dumper.isBigEndian:
-                        byte = ldata[i]
+                        lbyte = ldata[i]
                     else:
-                        byte = ldata[fieldOffset + fieldSize - 1 - i]
-                    data += ord(byte)
+                        lbyte = ldata[fieldOffset + fieldSize - 1 - i]
+                    if sys.version_info[0] >= 3:
+                        data += lbyte
+                    else:
+                        data += ord(lbyte)
                 data = data >> fieldBitpos
                 data = data & ((1 << fieldBitsize) - 1)
                 val.lvalue = data
@@ -3539,7 +3602,8 @@ class DumperBase():
                 'long long': 'int:8',
                 'unsigned long long': 'uint:8',
                 'float': 'float:4',
-                'double': 'float:8'
+                'double': 'float:8',
+                'QChar': 'uint:2'
             }.get(self.name, None)
             return res
 
@@ -3786,48 +3850,49 @@ class DumperBase():
         self.registerType(typeId, tdata)
         return self.Type(self, typeId)
 
+    def knownArrayTypeSize(self):
+        return 3 * self.ptrSize() if self.qtVersion() >= 0x060000 else self.ptrSize()
+
+    def knownTypeSize(self, typish):
+        if typish[0] == 'Q':
+            if typish.startswith('QList<') or typish.startswith('QVector<'):
+                return self.knownArrayTypeSize()
+            if typish == 'QObject':
+                return 2 * self.ptrSize()
+            if typish == 'Qt::ItemDataRole':
+                return 4
+            if typish == 'QChar':
+                return 2
+        if typish in ('quint32', 'qint32'):
+            return 4
+        return None
+
     def createType(self, typish, size=None):
         if isinstance(typish, self.Type):
             #typish.check()
-            return typish
-        if isinstance(typish, str):
-            def knownSize(tn):
-                if tn[0] == 'Q':
-                    if tn in ('QByteArray', 'QString', 'QList', 'QStringList',
-                              'QStringDataPtr'):
-                        return self.ptrSize()
-                    if tn == 'QStandardItemData':
-                        return 8 + 2 * self.ptrSize()
-                    if tn in ('QImage', 'QObject'):
-                        return 2 * self.ptrSize()
-                    if tn == 'QVariant':
-                        return 8 + self.ptrSize()
-                    if typish in ('QPointF', 'QDateTime', 'QRect'):
-                        return 16
-                    if typish == 'QPoint':
-                        return 8
-                    if typish == 'Qt::ItemDataRole':
-                        return 4
-                    if typish == 'QChar':
-                        return 2
-                if typish in ('quint32', 'qint32'):
-                    return 4
-                return None
+            if hasattr(typish, 'lbitsize') and typish.lbitsize is not None and typish.lbitsize > 0:
+                return typish
+            # Size 0 is sometimes reported by GDB but doesn't help at all.
+            # Force using the fallback:
+            typish = typish.name
 
+        if isinstance(typish, str):
             ns = self.qtNamespace()
             typish = typish.replace('@', ns)
             if typish.startswith(ns):
                 if size is None:
-                    size = knownSize(typish[len(ns):])
+                    size = self.knownTypeSize(typish[len(ns):])
             else:
                 if size is None:
-                    size = knownSize(typish)
+                    size = self.knownTypeSize(typish)
                 if size is not None:
                     typish = ns + typish
 
             tdata = self.typeData.get(typish, None)
             if tdata is not None:
-                return self.Type(self, typish)
+                if tdata.lbitsize is not None:
+                    if tdata.lbitsize > 0:
+                        return self.Type(self, typish)
 
             knownType = self.lookupType(typish)
             #DumperBase.warn('KNOWN: %s' % knownType)
@@ -3839,9 +3904,14 @@ class DumperBase():
             tdata = self.TypeData(self)
             tdata.name = typish
             tdata.typeId = typish
-
+            tdata.templateArguments = self.listTemplateParameters(typish)
             if size is not None:
                 tdata.lbitsize = 8 * size
+            if typish.endswith('*'):
+                tdata.code = TypeCode.Pointer
+                tdata.lbitsize = 8 * self.ptrSize()
+                tdata.ltarget = self.createType(typish[:-1].strip())
+
             self.registerType(typish, tdata)
             typeobj = self.Type(self, typish)
             #DumperBase.warn('CREATE TYPE: %s' % typeobj.stringify())
@@ -3875,27 +3945,6 @@ class DumperBase():
         val.type = self.Type(self, type_name)
         val.ldata = proxy_data
         return val
-
-    def createContainerItem(self, data, innerTypish, container):
-        innerType = self.createType(innerTypish)
-        name = self.qtNamespace() + '%s<%s>' % (container, innerType.name)
-        typeId = name
-        tdata = self.TypeData(self)
-        tdata.typeId = typeId
-        tdata.name = name
-        tdata.templateArguments = [innerType]
-        tdata.lbitsize = 8 * self.ptrSize()
-        self.registerType(typeId, tdata)
-        val = self.Value(self)
-        val.ldata = data
-        val.type = self.Type(self, typeId)
-        return val
-
-    def createListItem(self, data, innerTypish):
-        return self.createContainerItem(data, innerTypish, 'QList')
-
-    def createVectorItem(self, data, innerTypish):
-        return self.createContainerItem(data, innerTypish, 'QVector')
 
     class StructBuilder():
         def __init__(self, dumper):

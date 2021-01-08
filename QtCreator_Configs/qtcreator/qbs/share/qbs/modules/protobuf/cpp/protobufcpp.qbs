@@ -15,6 +15,13 @@ ProtobufBase {
     property string grpcIncludePath: grpcIncludeProbe.path
     property string grpcLibraryPath: grpcLibraryProbe.path
 
+    readonly property string _libraryName: {
+        var libraryName = FileInfo.baseName(libraryProbe.fileName);
+        if (libraryName.startsWith("lib"))
+            libraryName = libraryName.substring(3);
+        return libraryName;
+    }
+
     Depends { name: "cpp" }
 
     property path grpcPluginPath: grpcPluginProbe.filePath
@@ -34,7 +41,9 @@ ProtobufBase {
         return result;
     }
     cpp.dynamicLibraries: {
-        var result = ["protobuf"];
+        var result = [];
+        if (_libraryName)
+            result.push(_libraryName)
         if (qbs.targetOS.contains("unix"))
             result.push("pthread");
         if (useGrpc)
@@ -42,7 +51,7 @@ ProtobufBase {
         return result;
     }
     cpp.includePaths: {
-        var result = [_outputDir];
+        var result = [outputDir];
         if (includePath)
             result.push(includePath);
         if (useGrpc && grpcIncludePath)
@@ -52,17 +61,19 @@ ProtobufBase {
 
     Rule {
         inputs: ["protobuf.input", "protobuf.grpc"]
-        outputFileTags: ["hpp", "cpp"]
+        outputFileTags: ["hpp", "protobuf.hpp", "cpp"]
         outputArtifacts: {
             var outputDir = HelperFunctions.getOutputDir(input.protobuf.cpp, input);
             var result = [
-                        HelperFunctions.cppArtifact(outputDir, input, "hpp", ".pb.h"),
+                        HelperFunctions.cppArtifact(outputDir, input, ["hpp", "protobuf.hpp"],
+                                                    ".pb.h"),
                         HelperFunctions.cppArtifact(outputDir, input, "cpp", ".pb.cc")
                     ];
             if (input.fileTags.contains("protobuf.grpc")) {
                 result.push(
-                        HelperFunctions.cppArtifact(outputDir, input, "hpp", ".grpc.pb.h"),
-                        HelperFunctions.cppArtifact(outputDir, input, "cpp", ".grpc.pb.cc"));
+                        HelperFunctions.cppArtifact(outputDir, input, ["hpp", "protobuf.hpp"],
+                                                    ".grpc.pb.h"),
+                        HelperFunctions.cppArtifact(outputDir, input, ["cpp"], ".grpc.pb.cc"));
             }
 
             return result;
@@ -72,8 +83,9 @@ ProtobufBase {
             var result = HelperFunctions.doPrepare(
                         input.protobuf.cpp, product, input, outputs, "cpp");
             if (input.fileTags.contains("protobuf.grpc")) {
-                result = ModUtils.concatAll(result, HelperFunctions.doPrepareGrpc(
-                                input.protobuf.cpp, product, input, outputs, "cpp"));
+                result = ModUtils.concatAll(result, HelperFunctions.doPrepare(
+                                input.protobuf.cpp, product, input, outputs, "grpc",
+                                "protoc-gen-grpc=" + input.protobuf.cpp.grpcPluginPath));
             }
             return result;
         }
@@ -86,7 +98,10 @@ ProtobufBase {
 
     Probes.LibraryProbe {
         id: libraryProbe
-        names: "protobuf"
+        names: [
+            "protobuf",
+            "protobufd",
+        ]
     }
 
     Probes.IncludeProbe {

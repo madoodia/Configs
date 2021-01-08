@@ -54,7 +54,7 @@ function toCamelCase(str){
 }
 
 function getOutputDir(module, input)  {
-    var outputDir = module._outputDir;
+    var outputDir = module.outputDir;
     var importPaths = module.importPaths;
     if (importPaths.length !== 0) {
         var canonicalInput = File.canonicalFilePath(FileInfo.path(input.filePath));
@@ -69,9 +69,9 @@ function getOutputDir(module, input)  {
     return outputDir;
 }
 
-function cppArtifact(outputDir, input, tag, suffix) {
+function cppArtifact(outputDir, input, tags, suffix) {
     return {
-        fileTags: [tag],
+        fileTags: tags,
         filePath: FileInfo.joinPaths(outputDir, FileInfo.baseName(input.fileName) + suffix),
         cpp: {
             includePaths: [].concat(input.cpp.includePaths, outputDir),
@@ -80,24 +80,32 @@ function cppArtifact(outputDir, input, tag, suffix) {
     };
 }
 
-function objcArtifact(outputDir, input, tag, suffix) {
+function objcArtifact(outputDir, input, tags, suffix) {
     return {
-        fileTags: [tag],
+        fileTags: tags,
         filePath: FileInfo.joinPaths(
                       outputDir, toCamelCase(FileInfo.baseName(input.fileName)) + suffix),
         cpp: {
+            automaticReferenceCounting: false,
             includePaths: [].concat(input.cpp.includePaths, outputDir),
             warningLevel: "none",
         }
     }
 }
 
-function doPrepare(module, product, input, outputs, lang)
+function doPrepare(module, product, input, outputs, generator, plugin, generatorOptions)
 {
-    var outputDir = module._outputDir;
+    var outputDir = module.outputDir;
     var args = [];
 
-    args.push("--" + lang + "_out", outputDir);
+    if (!!plugin)
+        args.push("--plugin=" + plugin)
+
+    args.push("--" + generator + "_out", outputDir);
+    if (!!generatorOptions) {
+        for (var i = 0; i < generatorOptions.length; ++i)
+            args.push("--" + generator + "_opt=" + generatorOptions[i])
+    }
 
     var importPaths = module.importPaths;
     if (importPaths.length === 0)
@@ -110,33 +118,8 @@ function doPrepare(module, product, input, outputs, lang)
 
     args.push(input.filePath);
 
-    var cmd = new Command(module._compilerPath, args);
+    var cmd = new Command(module.compilerPath, args);
     cmd.highlight = "codegen";
-    cmd.description = "generating " + lang + " files for " + input.fileName;
-    return [cmd];
-}
-
-function doPrepareGrpc(module, product, input, outputs, lang)
-{
-    var outputDir = module._outputDir;
-    var args = [];
-
-    args.push("--grpc_out", outputDir);
-    args.push("--plugin=protoc-gen-grpc=" + module.grpcPluginPath);
-
-    var importPaths = module.importPaths;
-    if (importPaths.length === 0)
-        importPaths = [FileInfo.path(input.filePath)];
-    importPaths.forEach(function(path) {
-        if (!FileInfo.isAbsolutePath(path))
-            path = FileInfo.joinPaths(product.sourceDirectory, path);
-        args.push("--proto_path", path);
-    });
-
-    args.push(input.filePath);
-
-    var cmd = new Command(module._compilerPath, args);
-    cmd.highlight = "codegen";
-    cmd.description = "generating " + lang + " files for " + input.fileName;
+    cmd.description = "generating " + generator + " files for " + input.fileName;
     return [cmd];
 }

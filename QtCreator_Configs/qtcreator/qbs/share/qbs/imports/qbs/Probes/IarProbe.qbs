@@ -33,19 +33,19 @@ import "../../../modules/cpp/iar.js" as IAR
 
 PathProbe {
     // Inputs
-    property string compilerFilePath;
-    property stringList enableDefinesByLanguage;
+    property string compilerFilePath
+    property stringList enableDefinesByLanguage
 
     property string _nullDevice: qbs.nullDevice
 
     // Outputs
-    property string architecture;
-    property string endianness;
-    property int versionMajor;
-    property int versionMinor;
-    property int versionPatch;
-    property stringList includePaths;
-    property var compilerDefinesByLanguage;
+    property string architecture
+    property string endianness
+    property int versionMajor
+    property int versionMinor
+    property int versionPatch
+    property stringList includePaths
+    property var compilerDefinesByLanguage
 
     configure: {
         compilerDefinesByLanguage = {};
@@ -59,10 +59,13 @@ PathProbe {
         if (!languages || languages.length === 0)
             languages = ["c"];
 
+        var defaultPathsByLanguage = {};
         for (var i = 0; i < languages.length; ++i) {
             var tag = languages[i];
             compilerDefinesByLanguage[tag] = IAR.dumpMacros(
                 compilerFilePath, tag);
+            var paths = IAR.dumpDefaultPaths(compilerFilePath, tag);
+            defaultPathsByLanguage[tag] = paths;
         }
 
         var macros = compilerDefinesByLanguage["c"]
@@ -71,10 +74,8 @@ PathProbe {
         architecture = IAR.guessArchitecture(macros);
         endianness = IAR.guessEndianness(macros);
 
-        // FIXME: Do we need dump the default paths for both C
-        // and C++ languages?
-        var defaultPaths = IAR.dumpDefaultPaths(
-            compilerFilePath, languages[0]);
+        var defaultPaths = defaultPathsByLanguage["cpp"]
+            || defaultPathsByLanguage["c"];
 
         includePaths = defaultPaths.includePaths;
 
@@ -83,7 +84,7 @@ PathProbe {
             versionMajor = version.major;
             versionMinor = version.minor;
             versionPatch = version.patch;
-            found = version && architecture && endianness;
+            found = !!architecture && !!endianness;
         }
    }
 }

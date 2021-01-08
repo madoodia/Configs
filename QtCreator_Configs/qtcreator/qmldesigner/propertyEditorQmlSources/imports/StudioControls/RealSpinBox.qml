@@ -55,6 +55,7 @@ T.SpinBox {
 
     property bool dirty: false // user modification flag
 
+    // TODO Not used anymore. Will be removed when all dependencies were removed.
     property real realDragRange: mySpinBox.realTo - mySpinBox.realFrom
 
     property alias actionIndicatorVisible: actionIndicator.visible
@@ -77,6 +78,7 @@ T.SpinBox {
     signal compressedRealValueModified
     signal dragStarted
     signal dragEnded
+    signal dragging
 
     // Use custom wheel handling due to bugs
     property bool __wheelEnabled: false
@@ -274,6 +276,7 @@ T.SpinBox {
     }
 
     onRealValueChanged: {
+        mySpinBox.setRealValue(mySpinBox.realValue) // sanitize and clamp realValue
         spinBoxInput.text = mySpinBox.textFromValue(mySpinBox.realValue, mySpinBox.locale)
         mySpinBox.value = 0 // Without setting value back to 0, it can happen that one of
                             // the indicator will be disabled due to range logic.

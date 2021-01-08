@@ -88,7 +88,7 @@ void Qt5CapturePreviewNodeInstanceServer::collectItemChangesAndSendChangeCommand
     if (!inFunction) {
         inFunction = true;
 
-        DesignerSupport::polishItems(quickView());
+        DesignerSupport::polishItems(quickWindow());
 
         QVector<CapturedDataCommand::StateData> stateDatas;
         stateDatas.push_back(collectStateData(rootNodeInstance(), nodeInstances(), 0));
@@ -100,7 +100,7 @@ void Qt5CapturePreviewNodeInstanceServer::collectItemChangesAndSendChangeCommand
             stateInstance.deactivateState();
         }
 
-        nodeInstanceClient()->capturedData(CapturedDataCommand{stateDatas});
+        nodeInstanceClient()->capturedData(CapturedDataCommand{std::move(stateDatas)});
 
         slowDownRenderTimer();
         inFunction = false;

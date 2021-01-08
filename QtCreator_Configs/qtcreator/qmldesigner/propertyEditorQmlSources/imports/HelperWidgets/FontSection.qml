@@ -158,7 +158,7 @@ Section {
 
         Label {
             text: qsTr("Font capitalization")
-            toolTip: qsTr("Sets the capitalization for the text.")
+            toolTip: qsTr("Capitalization for the text.")
             disabledState: !getBackendValue("capitalization").isAvailable
         }
 
@@ -172,7 +172,7 @@ Section {
 
         Label {
             text: qsTr("Font weight")
-            toolTip: qsTr("Sets the font's weight.")
+            toolTip: qsTr("Font's weight.")
         }
 
         ComboBox {
@@ -185,7 +185,7 @@ Section {
 
         Label {
             text: qsTr("Style name")
-            toolTip: qsTr("Sets the font's style.")
+            toolTip: qsTr("Font's style.")
             disabledState: !styleNameComboBox.enabled
         }
 
@@ -235,7 +235,7 @@ Section {
             }
             Label {
                 text: qsTr("Word")
-                tooltip: qsTr("Sets the word spacing for the font.")
+                tooltip: qsTr("Word spacing for the font.")
                 width: 42
                 disabledStateSoft: !getBackendValue("wordSpacing").isAvailable
             }
@@ -256,7 +256,7 @@ Section {
             }
             Label {
                 text: qsTr("Letter")
-                tooltip: qsTr("Sets the letter spacing for the font.")
+                tooltip: qsTr("Letter spacing for the font.")
                 width: 42
                 disabledStateSoft: !getBackendValue("letterSpacing").isAvailable
             }
@@ -277,7 +277,7 @@ Section {
                 Layout.fillWidth: true
                 backendValue: getBackendValue("kerning")
                 tooltip: qsTr("Enables or disables the kerning OpenType feature when shaping the text. Disabling this may " +
-                              "improve performance when creating or changing the text, at the expense of some cosmetic features. The default value is true.")
+                              "improve performance when creating or changing the text, at the expense of some cosmetic features.")
                 enabled: backendValue.isAvailable
             }
 
@@ -294,7 +294,7 @@ Section {
 
         Label {
             text: qsTr("Hinting preference")
-            toolTip: qsTr("Sets the preferred hinting on the text.")
+            toolTip: qsTr("Preferred hinting on the text.")
             disabledState: !getBackendValue("hintingPreference").isAvailable
         }
 

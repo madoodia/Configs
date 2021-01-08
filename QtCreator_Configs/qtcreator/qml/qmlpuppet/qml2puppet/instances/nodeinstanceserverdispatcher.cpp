@@ -25,6 +25,7 @@
 
 #include "nodeinstanceserverdispatcher.h"
 
+#include "qt5captureimagenodeinstanceserver.h"
 #include "qt5capturepreviewnodeinstanceserver.h"
 #include "qt5informationnodeinstanceserver.h"
 #include "qt5rendernodeinstanceserver.h"
@@ -158,6 +159,12 @@ void NodeInstanceServerDispatcher::view3DAction(const View3DActionCommand &comma
         server->view3DAction(command);
 }
 
+void NodeInstanceServerDispatcher::requestModelNodePreviewImage(const RequestModelNodePreviewImageCommand &command)
+{
+    for (std::unique_ptr<NodeInstanceServer> &server : m_servers)
+        server->requestModelNodePreviewImage(command);
+}
+
 void NodeInstanceServerDispatcher::changeLanguage(const ChangeLanguageCommand &command)
 {
     for (std::unique_ptr<NodeInstanceServer> &server : m_servers)
@@ -177,6 +184,8 @@ std::unique_ptr<NodeInstanceServer> createNodeInstanceServer(
 {
     if (serverName == "capturemode")
         return std::make_unique<Qt5CapturePreviewNodeInstanceServer>(nodeInstanceClient);
+    else if (serverName == "captureiconmode")
+        return std::make_unique<Qt5CaptureImageNodeInstanceServer>(nodeInstanceClient);
     else if (serverName == "rendermode")
         return std::make_unique<Qt5RenderNodeInstanceServer>(nodeInstanceClient);
     else if (serverName == "editormode")

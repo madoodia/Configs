@@ -33,17 +33,18 @@ import "../../../modules/cpp/sdcc.js" as SDCC
 
 PathProbe {
     // Inputs
-    property string compilerFilePath;
-    property string preferredArchitecture;
+    property string compilerFilePath
+    property stringList enableDefinesByLanguage
+    property string preferredArchitecture
 
     // Outputs
-    property string architecture;
-    property string endianness;
-    property int versionMajor;
-    property int versionMinor;
-    property int versionPatch;
-    property stringList includePaths;
-    property var compilerDefinesByLanguage;
+    property string architecture
+    property string endianness
+    property int versionMajor
+    property int versionMinor
+    property int versionPatch
+    property stringList includePaths
+    property var compilerDefinesByLanguage
 
     configure: {
         compilerDefinesByLanguage = {};
@@ -53,9 +54,22 @@ PathProbe {
             return;
         }
 
-        var macros = SDCC.dumpMacros(compilerFilePath, preferredArchitecture);
+        var languages = enableDefinesByLanguage;
+        if (!languages || languages.length === 0)
+            languages = ["c"];
 
-        // SDCC it is only the C language compiler.
+        // SDCC compiler support only the C-language.
+        if (!languages.contains("c")) {
+            found = false;
+            return;
+        }
+
+        var macros = SDCC.dumpMacros(compilerFilePath, preferredArchitecture);
+        if (!macros) {
+            found = false;
+            return;
+        }
+
         compilerDefinesByLanguage["c"] = macros;
 
         architecture = SDCC.guessArchitecture(macros);
@@ -65,9 +79,11 @@ PathProbe {
         includePaths = defaultPaths.includePaths;
 
         var version = SDCC.guessVersion(macros);
-        versionMajor = version.major;
-        versionMinor = version.minor;
-        versionPatch = version.patch;
-        found = version.found;
+        if (version) {
+            versionMajor = version.major;
+            versionMinor = version.minor;
+            versionPatch = version.patch;
+            found = !!architecture && !!endianness;
+        }
    }
 }

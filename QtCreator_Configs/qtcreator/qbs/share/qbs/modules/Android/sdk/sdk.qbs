@@ -55,7 +55,7 @@ Module {
         platformSearchPaths: [Android.sdk.sdkDir]
         names: ["bundletool-all"]
         nameSuffixes: ["-0.11.0.jar", "-0.12.0.jar", "-0.13.0.jar", "-0.13.3.jar", "-0.13.4.jar",
-            "-0.14.0.jar", "-0.15.0.jar"]
+            "-0.14.0.jar", "-0.15.0.jar", "-1.0.0.jar", "-1.1.0.jar", "-1.2.0.jar", "-1.3.0.jar"]
     }
 
     property path sdkDir: sdkProbe.path
@@ -67,6 +67,8 @@ Module {
     property int buildToolsVersionMinor: buildToolsVersionParts[1]
     property int buildToolsVersionPatch: buildToolsVersionParts[2]
     property string platform: sdkProbe.platform
+    property string minimumVersion: "21"
+    property string targetVersion: platformVersion.toString()
 
     property path bundletoolFilePath: bundletoolProbe.filePath
 
@@ -94,7 +96,6 @@ Module {
 
     property bool _enableRules: !product.multiplexConfigurationId && !!packageName
 
-    property bool _archInName: false
     property bool _bundledInAssets: true
 
     Group {
@@ -337,6 +338,20 @@ Module {
                     }
                 }
 
+                var usedSdkElem = rootElem.firstChild("uses-sdk");
+                if (!usedSdkElem || !usedSdkElem.isElement()) {
+                    usedSdkElem = manifestData.createElement("uses-sdk");
+                    rootElem.appendChild(usedSdkElem);
+                } else {
+                    if (!usedSdkElem.isElement())
+                        throw "Tag uses-sdk is not an element in '" + input.filePath + "'.";
+                }
+                usedSdkElem.setAttribute("android:minSdkVersion",
+                                         product.Android.sdk.minimumVersion);
+                usedSdkElem.setAttribute("android:targetSdkVersion",
+                                         product.Android.sdk.targetVersion);
+
+                rootElem.appendChild(usedSdkElem);
                 manifestData.save(output.filePath, 4);
             }
             return cmd;
@@ -460,7 +475,9 @@ Module {
         inputs: product.aggregate ? [] : inputTags
         Artifact {
             filePath: FileInfo.joinPaths(product.Android.sdk.packageContentsDir, "lib",
-                                         input.Android.ndk.abi, input.fileName)
+                                         input.Android.ndk.abi, product.Android.sdk._archInName ?
+                                             input.baseName + "_" + input.Android.ndk.abi + ".so" :
+                                             input.fileName)
             fileTags: "android.nativelibrary_deployed"
         }
         prepare: {

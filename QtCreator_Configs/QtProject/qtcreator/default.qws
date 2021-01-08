@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorSession>
-<!-- Written by QtCreator 4.13.2, 2020-12-31T17:28:32. -->
+<!-- Written by QtCreator 4.14.0, 2021-01-07T23:35:06. -->
 <qtcreator>
  <data>
   <variable>CascadeSetActive</variable>
@@ -12,7 +12,7 @@
  </data>
  <data>
   <variable>EditorSettings</variable>
-  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAEAAABEAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8ATwBTAEwAVgBpAGUAdwBlAHIALwBtAGEAaQBuAC4AcQBtAGwAAAAMAAAAACAAAAACAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAANwAAAAEAAABEAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8ATwBTAEwAVgBpAGUAdwBlAHIALwBtAGEAaQBuAC4AcQBtAGwAAAAQAG0AYQBpAG4ALgBxAG0AbAAAABdRbWxKU0VkaXRvci5RTUxKU0VkaXRvcgAAAACvAAAADWN1cnJlbnRlZGl0b3IAAABEAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8ATwBTAEwAVgBpAGUAdwBlAHIALwBtAGEAaQBuAC4AcQBtAGwAAAAuAFEAbQBsAEoAUwBFAGQAaQB0AG8AcgAuAFEATQBMAEoAUwBFAGQAaQB0AG8AcgAAACAAAAACAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAANwAAAAA=</value>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAIAAABaAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHQAaABpAHIAZABwAGEAcgB0AHkALwBzAHQAYgBfAGkAbQBhAGcAZQAuAGMAcABwAAAADAAAAAAgAAAAAgAAAAAAAAAAAAAABgAAAAEAAAAAAAAAAAAAAAUAAABEAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHEAbQBsAC8AdABlAHMAdAAzAC4AcQBtAGwAAAAMAAAAACAAAAACAAAAAAAAAAAAAAAxAAAAAQAAAAAAAAAAAAAANwAAAAEAAABEAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHEAbQBsAC8AdABlAHMAdAAzAC4AcQBtAGwAAAASAHQAZQBzAHQAMwAuAHEAbQBsAAAAF1FtbEpTRWRpdG9yLlFNTEpTRWRpdG9yAAAAAK8AAAANY3VycmVudGVkaXRvcgAAAEQARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AcQBtAGwALwB0AGUAcwB0ADMALgBxAG0AbAAAAC4AUQBtAGwASgBTAEUAZABpAHQAbwByAC4AUQBNAEwASgBTAEUAZABpAHQAbwByAAAAIAAAAAIAAAAAAAAAAAAAADEAAAABAAAAAAAAAAAAAAA3AAAAAA==</value>
  </data>
  <data>
   <variable>ProjectDependencies</variable>
@@ -21,12 +21,12 @@
  <data>
   <variable>ProjectList</variable>
   <valuelist type="QVariantList">
-   <value type="QString">D:/madoodia/dev/OSLViewer/CMakeLists.txt</value>
+   <value type="QString">D:/madoodia/dev/Zolf/CMakeLists.txt</value>
   </valuelist>
  </data>
  <data>
   <variable>StartupProject</variable>
-  <value type="QString">D:/madoodia/dev/OSLViewer/CMakeLists.txt</value>
+  <value type="QString">D:/madoodia/dev/Zolf/CMakeLists.txt</value>
  </data>
  <data>
   <variable>value-ActiveMode</variable>
@@ -37,13 +37,84 @@
   <valuelist type="QVariantList"/>
  </data>
  <data>
+  <variable>value-PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Build</variable>
+  <value type="QByteArray">000000ff0000000100000002000004a20000016b0000000001010000000100</value>
+ </data>
+ <data>
+  <variable>value-PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Run</variable>
+  <value type="QByteArray">000000ff000000010000000200000506000001070000000001010000000100</value>
+ </data>
+ <data>
   <variable>value-ProjectTree.ExpandData</variable>
-  <valuelist type="QVariantList"/>
+  <valuelist type="QVariantList">
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf</value>
+    <value type="QString">Zolf</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf</value>
+    <value type="QString">Source Files</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/main.qrc</value>
+    <value type="QString">main.qrc</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/main.qrc//</value>
+    <value type="QString">/</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf</value>
+    <value type="QString">Zolf [dev5-new-development-phase]</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/thirdparty</value>
+    <value type="QString">thirdparty</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/qml</value>
+    <value type="QString">qml</value>
+   </valuelist>
+  </valuelist>
  </data>
  <data>
   <variable>value-TaskWindow.Categories</variable>
   <valuelist type="QVariantList">
    <value type="QString">Task.Category.QmlAnalysis</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
   </valuelist>
  </data>
  <data>
@@ -55,6 +126,8 @@
   <valuelist type="QVariantList">
    <value type="QString">ActiveMode</value>
    <value type="QString">Breakpoints</value>
+   <value type="QString">PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Build</value>
+   <value type="QString">PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Run</value>
    <value type="QString">ProjectTree.ExpandData</value>
    <value type="QString">TaskWindow.Categories</value>
    <value type="QString">TaskWindow.IncludeWarnings</value>

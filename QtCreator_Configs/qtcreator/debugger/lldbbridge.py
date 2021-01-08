@@ -219,16 +219,14 @@ class Dumper(DumperBase):
 
             if code == lldb.eTypeClassEnumeration:
                 intval = nativeValue.GetValueAsSigned()
-                if hasattr(nativeType, 'get_enum_members_array'):
-                    for enumMember in nativeType.get_enum_members_array():
-                        # Even when asking for signed we get unsigned with LLDB 3.8.
-                        diff = enumMember.GetValueAsSigned() - intval
-                        mask = (1 << nativeType.GetByteSize() * 8) - 1
-                        if diff & mask == 0:
-                            path = nativeType.GetName().split('::')
-                            path[-1] = enumMember.GetName()
-                            val.ldisplay = '%s (%d)' % ('::'.join(path), intval)
-                val.ldisplay = '%d' % intval
+                display = str(nativeValue).split(' = ')
+                if len(display) == 2:
+                    verbose = display[1]
+                    if '|' in verbose and not verbose.startswith('('):
+                        verbose = '(' + verbose + ')'
+                else:
+                    verbose = intval
+                val.ldisplay = '%s (%d)' % (verbose, intval)
             elif code in (lldb.eTypeClassComplexInteger, lldb.eTypeClassComplexFloat):
                 val.ldisplay = str(nativeValue.GetValue())
             #elif code == lldb.eTypeClassArray:
@@ -421,7 +419,8 @@ class Dumper(DumperBase):
             if hasattr(nativeTargetType, 'GetCanonicalType'):
                 nativeTargetType = nativeTargetType.GetCanonicalType()
             targetType = self.fromNativeType(nativeTargetType)
-            return self.createTypedefedType(targetType, nativeType.GetName())
+            return self.createTypedefedType(targetType, nativeType.GetName(),
+                                            self.nativeTypeId(nativeType))
 
         nativeType = nativeType.GetUnqualifiedType()
         typeName = self.typeName(nativeType)
@@ -471,6 +470,8 @@ class Dumper(DumperBase):
                     tdata.code = TypeCode.Integral
                 elif typeName == 'void':
                     tdata.code = TypeCode.Void
+                elif typeName == 'wchar_t':
+                    tdata.code = TypeCode.Integral
                 else:
                     self.warn('UNKNOWN TYPE KEY: %s: %s' % (typeName, code))
             elif code == lldb.eTypeClassEnumeration:
@@ -546,11 +547,16 @@ class Dumper(DumperBase):
         return targs
 
     def typeName(self, nativeType):
-        if hasattr(nativeType, 'GetDisplayTypeName'):
-            return nativeType.GetDisplayTypeName()  # Xcode 6 (lldb-320)
-        return nativeType.GetName()             # Xcode 5 (lldb-310)
+        # Don't use GetDisplayTypeName since LLDB removed the inline namespace __1
+        # https://reviews.llvm.org/D74478
+        return nativeType.GetName()
 
     def nativeTypeId(self, nativeType):
+        if nativeType and (nativeType.GetTypeClass() == lldb.eTypeClassTypedef):
+            nativeTargetType = nativeType.GetUnqualifiedType()
+            if hasattr(nativeTargetType, 'GetCanonicalType'):
+                nativeTargetType = nativeTargetType.GetCanonicalType()
+            return '%s{%s}' % (nativeType.name, nativeTargetType.name)
         name = self.typeName(nativeType)
         if name is None or len(name) == 0:
             c = '0'
@@ -804,7 +810,7 @@ class Dumper(DumperBase):
         typeobjlist = self.target.FindTypes(nonPrefixedName)
         if typeobjlist.IsValid():
             for typeobj in typeobjlist:
-                n = self.canonicalTypeName(self.removeTypePrefix(typeobj.GetDisplayTypeName()))
+                n = self.canonicalTypeName(self.removeTypePrefix(typeobj.GetName()))
                 if n == nonPrefixedName:
                     #DumperBase.warn('FOUND TYPE USING FindTypes : %s' % typeobj)
                     self.typeCache[name] = typeobj
@@ -1309,7 +1315,11 @@ class Dumper(DumperBase):
         result = 'registers=['
         for group in frame.GetRegisters():
             for reg in group:
-                value = ''.join(["%02x" % x for x in reg.GetData().uint8s])
+                data = reg.GetData()
+                if data.GetByteOrder() == lldb.eByteOrderLittle:
+                    value = ''.join(["%02x" % x for x in reversed(data.uint8s)])
+                else:
+                    value = ''.join(["%02x" % x for x in data.uint8s])
                 result += '{name="%s"' % reg.GetName()
                 result += ',value="0x%s"' % value
                 result += ',size="%s"' % reg.GetByteSize()

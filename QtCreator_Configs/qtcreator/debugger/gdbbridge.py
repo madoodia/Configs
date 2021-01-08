@@ -307,6 +307,13 @@ class Dumper(DumperBase):
                 val.ldisplay += ' (%s)' % intval
         elif code == gdb.TYPE_CODE_COMPLEX:
             val.ldisplay = str(nativeValue)
+        elif code in [gdb.TYPE_CODE_BOOL, gdb.TYPE_CODE_INT]:
+            try:
+                # extract int presentation from native value and remember it
+                val.lvalue = int(nativeValue)
+            except:
+                # GDB only support converting integers of max. 64 bits to Python int as of now
+                pass
         #elif code == gdb.TYPE_CODE_ARRAY:
         #    val.type.ltarget = nativeValue[0].type.unqualified()
         return val
@@ -1040,9 +1047,9 @@ class Dumper(DumperBase):
     def handleNewObjectFile(self, objfile):
         name = objfile.filename
         if self.isWindowsTarget():
-            qtCoreMatch = re.match(r'.*Qt5?Core[^/.]*d?\.dll', name)
+            qtCoreMatch = re.match(r'.*Qt[56]?Core[^/.]*d?\.dll', name)
         else:
-            qtCoreMatch = re.match(r'.*/libQt5?Core[^/.]*\.so', name)
+            qtCoreMatch = re.match(r'.*/libQt[56]?Core[^/.]*\.so', name)
 
         if qtCoreMatch is not None:
             self.addDebugLibs(objfile)
@@ -1110,7 +1117,8 @@ class Dumper(DumperBase):
         self.qtCustomEventPltFunc = self.findSymbol(sym)
 
         sym = '_ZNK%s7QObject8propertyEPKc' % strns
-        self.qtPropertyFunc = self.findSymbol(sym)
+        if not self.isWindowsTarget(): # prevent calling the property function on windows
+            self.qtPropertyFunc = self.findSymbol(sym)
 
     def assignValue(self, args):
         typeName = self.hexdecode(args['type'])

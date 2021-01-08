@@ -55,6 +55,7 @@ CppApplication {
         if (!qbs.architecture.startsWith("arm"))
             return false;
         return (qbs.toolchain.contains("gcc")
+                || qbs.toolchain.contains("iar")
                 || qbs.toolchain.contains("keil"))
                 && !qbs.toolchain.contains("xcode")
     }
@@ -68,6 +69,9 @@ CppApplication {
 
     Properties {
         condition: qbs.toolchain.contains("gcc")
+        cpp.assemblerFlags: [
+            "-mcpu=cortex-m3"
+        ]
         cpp.driverFlags: [
             "-mcpu=cortex-m3",
             "-specs=nosys.specs"
@@ -91,15 +95,47 @@ CppApplication {
     }
 
     //
+    // IAR-specific properties and sources.
+    //
+
+    Properties {
+        condition: qbs.toolchain.contains("iar")
+        cpp.assemblerFlags: [
+            "--cpu", "cortex-m3",
+            "--fpu", "none"
+        ]
+        cpp.driverFlags: [
+            "--cpu", "cortex-m3",
+            "--fpu", "none"
+        ]
+    }
+
+    Group {
+        condition: qbs.toolchain.contains("iar")
+        name: "IAR"
+        prefix: "iar/"
+        Group {
+            name: "Startup"
+            fileTags: ["asm"]
+            files: ["startup.s"]
+        }
+        Group {
+            name: "Linker Script"
+            fileTags: ["linkerscript"]
+            files: ["flash.icf"]
+        }
+    }
+
+    //
     // KEIL-specific properties and sources.
     //
 
     Properties {
         condition: qbs.toolchain.contains("keil")
-        cpp.driverFlags: [
+        cpp.assemblerFlags: [
             "--cpu", "cortex-m3"
         ]
-        cpp.assemblerFlags: [
+        cpp.driverFlags: [
             "--cpu", "cortex-m3"
         ]
     }

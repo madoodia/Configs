@@ -408,7 +408,7 @@ var PropertyValidator = (function () {
             errorMessage += "The following properties have invalid values:\n";
             lines = [];
             for (i in invalidProperties) {
-                for (j in invalidProperties[i]) {
+                for (j = 0; j < invalidProperties[i].length; ++j) {
                     lines.push(this.moduleName + "." + i + ": " + invalidProperties[i][j]);
                 }
             }
@@ -633,4 +633,17 @@ function toJSLiteral(v) {
     if (v === undefined)
         return "undefined";
     return JSON.stringify(v);
+}
+
+function extractMacros(output) {
+    var m = {};
+    output.trim().split(/\r?\n/g).map(function (line) {
+        var prefix = "#define ";
+        if (!line.startsWith(prefix))
+            return;
+        var index = line.indexOf(" ", prefix.length);
+        if (index !== -1)
+            m[line.substr(prefix.length, index - prefix.length)] = line.substr(index + 1);
+    });
+    return m;
 }

@@ -61,5 +61,7 @@ Project {
         "cy7c68013a/cy7c68013a.qbs",
         "stm32f103/stm32f103.qbs",
         "pca10040/pca10040.qbs",
+        "pca10001/pca10001.qbs",
+        "esp8266/esp8266.qbs",
     ]
 }

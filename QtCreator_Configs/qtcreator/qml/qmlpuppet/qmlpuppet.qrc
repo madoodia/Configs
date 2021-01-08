@@ -3,6 +3,8 @@
         <file>images/template_image.png</file>
         <file>html/welcome.html</file>
         <file>images/webkit.png</file>
+        <file>images/non-visual-component.png</file>
+        <file>images/non-visual-component@2x.png</file>
         <file>mockfiles/Window.qml</file>
         <file>mockfiles/SwipeView.qml</file>
         <file>mockfiles/GenericBackend.qml</file>
@@ -40,6 +42,11 @@
         <file>mockfiles/AxisHelper.qml</file>
         <file>mockfiles/AxisHelperArm.qml</file>
         <file>mockfiles/Line3D.qml</file>
+        <file>mockfiles/ModelNode3DImageView.qml</file>
+        <file>mockfiles/ModelNode2DImageView.qml</file>
+        <file>mockfiles/MaterialNodeView.qml</file>
+        <file>mockfiles/ModelNodeView.qml</file>
+        <file>mockfiles/NodeNodeView.qml</file>
         <file>mockfiles/meshes/arrow.mesh</file>
         <file>mockfiles/meshes/scalerod.mesh</file>
         <file>mockfiles/meshes/ring.mesh</file>

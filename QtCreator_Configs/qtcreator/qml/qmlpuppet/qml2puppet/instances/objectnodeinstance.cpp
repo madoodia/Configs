@@ -392,8 +392,24 @@ PropertyNameList ObjectNodeInstance::ignoredProperties() const
     return PropertyNameList();
 }
 
-void ObjectNodeInstance::setHideInEditor(bool)
+void ObjectNodeInstance::setHiddenInEditor(bool b)
 {
+    m_isHiddenInEditor = b;
+}
+
+bool ObjectNodeInstance::isHiddenInEditor() const
+{
+    return m_isHiddenInEditor;
+}
+
+void ObjectNodeInstance::setLockedInEditor(bool b)
+{
+    m_isLockedInEditor = b;
+}
+
+bool ObjectNodeInstance::isLockedInEditor() const
+{
+    return m_isLockedInEditor;
 }
 
 void ObjectNodeInstance::setModifiedFlag(bool b)
@@ -906,6 +922,11 @@ QImage ObjectNodeInstance::renderImage() const
 QImage ObjectNodeInstance::renderPreviewImage(const QSize & /*previewImageSize*/) const
 {
     return QImage();
+}
+
+QSharedPointer<QQuickItemGrabResult> ObjectNodeInstance::createGrabResult() const
+{
+    return {};
 }
 
 QObject *ObjectNodeInstance::parent() const

@@ -69,25 +69,25 @@
 #include <changeselectioncommand.h>
 #include <inputeventcommand.h>
 #include <view3dactioncommand.h>
+#include <requestmodelnodepreviewimagecommand.h>
 #include <changelanguagecommand.h>
 
+#include <designersupportdelegate.h>
+#include <QAbstractAnimation>
 #include <QDebug>
-#include <QQmlEngine>
-#include <QQmlApplicationEngine>
-#include <QFileSystemWatcher>
-#include <QUrl>
-#include <QSet>
 #include <QDir>
-#include <QVariant>
+#include <QFileSystemWatcher>
 #include <QMetaType>
+#include <QQmlApplicationEngine>
 #include <QQmlComponent>
 #include <QQmlContext>
-#include <qqmllist.h>
-#include <QAbstractAnimation>
-#include <QMutableVectorIterator>
+#include <QQmlEngine>
+#include <QQuickItemGrabResult>
 #include <QQuickView>
 #include <QSet>
-#include <designersupportdelegate.h>
+#include <QUrl>
+#include <QVariant>
+#include <qqmllist.h>
 
 #include <algorithm>
 
@@ -189,9 +189,14 @@ NodeInstanceServer::NodeInstanceServer(NodeInstanceClientInterface *nodeInstance
     Internal::QmlPrivateGate::registerFixResourcePathsForObjectCallBack();
 }
 
+NodeInstanceServer::~NodeInstanceServer()
+{
+    m_objectInstanceHash.clear();
+}
+
 QList<ServerNodeInstance> NodeInstanceServer::createInstances(const QVector<InstanceContainer> &containerVector)
 {
-    Q_ASSERT(declarativeView() || quickView());
+    Q_ASSERT(declarativeView() || quickWindow());
     QList<ServerNodeInstance> instanceList;
     for (const InstanceContainer &instanceContainer : containerVector) {
         ServerNodeInstance instance;
@@ -207,7 +212,6 @@ QList<ServerNodeInstance> NodeInstanceServer::createInstances(const QVector<Inst
             m_rootNodeInstance = instance;
             if (quickView())
                 quickView()->setContent(fileUrl(), m_importComponent, m_rootNodeInstance.rootQuickItem());
-            resizeCanvasSizeToRootItemSize();
         }
 
         foreach (QQmlContext* context, allSubContextsForObject(instance.internalObject()))
@@ -318,12 +322,13 @@ void NodeInstanceServer::stopRenderTimer()
 
 void NodeInstanceServer::createScene(const CreateSceneCommand &command)
 {
-    setTranslationLanguage(command.language());
+    setTranslationLanguage(command.language);
     initializeView();
 
     Internal::QmlPrivateGate::stopUnifiedTimer();
 
     setupScene(command);
+    setupState(command.stateInstanceId);
     refreshBindings();
     startRenderTimer();
 }
@@ -399,15 +404,7 @@ void NodeInstanceServer::reparentInstances(const ReparentInstancesCommand &comma
 
 void NodeInstanceServer::changeState(const ChangeStateCommand &command)
 {
-    if (hasInstanceForId(command.stateInstanceId())) {
-        if (activeStateInstance().isValid())
-            activeStateInstance().deactivateState();
-        ServerNodeInstance instance = instanceForId(command.stateInstanceId());
-        instance.activateState();
-    } else {
-        if (activeStateInstance().isValid())
-            activeStateInstance().deactivateState();
-    }
+    setupState(command.stateInstanceId());
 
     startRenderTimer();
 }
@@ -449,7 +446,7 @@ void NodeInstanceServer::removeSharedMemory(const RemoveSharedMemoryCommand &/*c
 
 void NodeInstanceServer::setupImports(const QVector<AddImportContainer> &containerVector)
 {
-    Q_ASSERT(quickView());
+    Q_ASSERT(quickWindow());
     QSet<QString> importStatementSet;
     QString qtQuickImport;
 
@@ -504,8 +501,9 @@ void NodeInstanceServer::setupOnlyWorkingImports(const QStringList &workingImpor
     QByteArray componentCode = workingImportStatementList.join("\n").toUtf8().append("\n");
     m_importCode = componentCode;
 
-    m_importComponent = new QQmlComponent(engine(), quickView());
-    quickView()->setContent(fileUrl(), m_importComponent, quickView()->rootObject());
+    m_importComponent = new QQmlComponent(engine(), quickWindow());
+    if (quickView())
+        quickView()->setContent(fileUrl(), m_importComponent, quickView()->rootObject());
 
     m_importComponent->setData(componentCode.append("\nItem {}\n"), fileUrl());
     m_importComponentObject = m_importComponent->create();
@@ -569,38 +567,37 @@ void NodeInstanceServer::setupDefaultDummyData()
 
 QList<ServerNodeInstance> NodeInstanceServer::setupInstances(const CreateSceneCommand &command)
 {
-    QList<ServerNodeInstance> instanceList = createInstances(command.instances());
+    QList<ServerNodeInstance> instanceList = createInstances(command.instances);
 
-    foreach (const IdContainer &container, command.ids()) {
+    for (const IdContainer &container : std::as_const(command.ids)) {
         if (hasInstanceForId(container.instanceId()))
             instanceForId(container.instanceId()).setId(container.id());
     }
 
-    foreach (const PropertyValueContainer &container, command.valueChanges()) {
+    for (const PropertyValueContainer &container : std::as_const(command.valueChanges)) {
         if (container.isDynamic())
             setInstancePropertyVariant(container);
     }
 
-    foreach (const PropertyValueContainer &container, command.valueChanges()) {
+    for (const PropertyValueContainer &container : std::as_const(command.valueChanges)) {
         if (!container.isDynamic())
             setInstancePropertyVariant(container);
     }
 
-    reparentInstances(command.reparentInstances());
+    reparentInstances(command.reparentInstances);
 
-    foreach (const PropertyBindingContainer &container, command.bindingChanges()) {
+    for (const PropertyBindingContainer &container : std::as_const(command.bindingChanges)) {
         if (container.isDynamic())
             setInstancePropertyBinding(container);
     }
 
-    foreach (const PropertyBindingContainer &container, command.bindingChanges()) {
+    for (const PropertyBindingContainer &container : std::as_const(command.bindingChanges)) {
         if (!container.isDynamic())
             setInstancePropertyBinding(container);
     }
 
-    foreach (const PropertyValueContainer &container, command.auxiliaryChanges()) {
+    for (const PropertyValueContainer &container : std::as_const(command.auxiliaryChanges))
         setInstanceAuxiliaryData(container);
-    }
 
     for (int i = instanceList.size(); --i >= 0; )
         instanceList[i].doComponentComplete();
@@ -950,10 +947,8 @@ void NodeInstanceServer::setInstancePropertyVariant(const PropertyValueContainer
     if (hasInstanceForId(valueContainer.instanceId())) {
         ServerNodeInstance instance = instanceForId(valueContainer.instanceId());
 
-
         const PropertyName name = valueContainer.name();
         const QVariant value = valueContainer.value();
-
 
         if (activeStateInstance().isValid() && !instance.isSubclassOf("QtQuick/PropertyChanges")) {
             bool stateValueWasUpdated = activeStateInstance().updateStateVariant(instance, name, value);
@@ -970,6 +965,9 @@ void NodeInstanceServer::setInstancePropertyVariant(const PropertyValueContainer
 
         if (valueContainer.isDynamic() && valueContainer.instanceId() == 0 && engine())
             rootContext()->setContextProperty(QString::fromUtf8(name), Internal::QmlPrivateGate::fixResourcePaths(value));
+
+        if (valueContainer.instanceId() == 0 && (name == "width" || name == "height" || name == "x" || name == "y"))
+            resizeCanvasToRootItem();
     }
 }
 
@@ -998,9 +996,17 @@ void NodeInstanceServer::setInstanceAuxiliaryData(const PropertyValueContainer &
         if (hasInstanceForId(auxiliaryContainer.instanceId())) {
             ServerNodeInstance instance = instanceForId(auxiliaryContainer.instanceId());
             if (!auxiliaryContainer.value().isNull())
-                instance.setHideInEditor(auxiliaryContainer.value().toBool());
+                instance.setHiddenInEditor(auxiliaryContainer.value().toBool());
             else
-                instance.setHideInEditor(false);
+                instance.setHiddenInEditor(false);
+        }
+    } else if (auxiliaryContainer.name() == "locked") {
+        if (hasInstanceForId(auxiliaryContainer.instanceId())) {
+            ServerNodeInstance instance = instanceForId(auxiliaryContainer.instanceId());
+            if (!auxiliaryContainer.value().isNull())
+                instance.setLockedInEditor(auxiliaryContainer.value().toBool());
+            else
+                instance.setLockedInEditor(false);
         }
     }
 }
@@ -1418,6 +1424,11 @@ void NodeInstanceServer::view3DAction(const View3DActionCommand &command)
     Q_UNUSED(command)
 }
 
+void NodeInstanceServer::requestModelNodePreviewImage(const RequestModelNodePreviewImageCommand &command)
+{
+    Q_UNUSED(command)
+}
+
 void NodeInstanceServer::changeLanguage(const ChangeLanguageCommand &command)
 {
     setTranslationLanguage(command.language);
@@ -1454,6 +1465,48 @@ void NodeInstanceServer::handleExtraRender()
 void NodeInstanceServer::disableTimer()
 {
     m_timerMode = TimerMode::DisableTimer;
+}
+
+void NodeInstanceServer::sheduleRootItemRender()
+{
+    QSharedPointer<QQuickItemGrabResult> result = m_rootNodeInstance.createGrabResult();
+    qint32 instanceId = m_rootNodeInstance.instanceId();
+
+    if (result) {
+        connect(result.data(), &QQuickItemGrabResult::ready, [this, result, instanceId] {
+            QVector<ImageContainer> imageVector;
+            ImageContainer container(instanceId, result->image(), instanceId);
+            imageVector.append(container);
+            nodeInstanceClient()->pixmapChanged(PixmapChangedCommand(imageVector));
+        });
+    }
+}
+
+void NodeInstanceServer::initializeAuxiliaryViews()
+{
+}
+
+void NodeInstanceServer::handleInstanceLocked(const ServerNodeInstance &/*instance*/, bool /*enable*/,
+                                              bool /*checkAncestors*/)
+{
+}
+
+void NodeInstanceServer::handleInstanceHidden(const ServerNodeInstance &/*instance*/, bool /*enable*/,
+                                              bool /*checkAncestors*/)
+{
+}
+
+void NodeInstanceServer::setupState(qint32 stateInstanceId)
+{
+    if (hasInstanceForId(stateInstanceId)) {
+        if (activeStateInstance().isValid())
+            activeStateInstance().deactivateState();
+        ServerNodeInstance instance = instanceForId(stateInstanceId);
+        instance.activateState();
+    } else {
+        if (activeStateInstance().isValid())
+            activeStateInstance().deactivateState();
+    }
 }
 
 } // namespace QmlDesigner
