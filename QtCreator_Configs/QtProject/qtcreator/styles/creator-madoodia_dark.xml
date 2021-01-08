@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <style-scheme version="1.0" name="madoodia_dark">
-  <style name="Text" foreground="#eeeeec" background="#1e1e1e"/>
+  <style name="Text" foreground="#fff9e1" background="#1e1e1e"/>
   <style name="Link" foreground="#d6c540"/>
   <style name="Selection" foreground="#bec0c2" background="#1d545c"/>
   <style name="LineNumber" foreground="#bec0c2" background="#2f2f2f"/>
   <style name="SearchResult" background="#8a7f2c"/>
+  <style name="SearchResultAlt1" foreground="#000033" background="#b6ccff"/>
+  <style name="SearchResultAlt2" foreground="#330000" background="#ffb6cc"/>
   <style name="SearchScope" background="#8a602c"/>
   <style name="Parentheses" foreground="#d4d4d4" background="#1e1e1e"/>
   <style name="ParenthesesMismatch" background="#ff6aad"/>
@@ -15,7 +17,7 @@
   <style name="Occurrences.Unused" foreground="#8a7f2c"/>
   <style name="Occurrences.Rename" foreground="#ffaaaa" background="#553636"/>
   <style name="Number" foreground="#ff8080"/>
-  <style name="String" foreground="#d77f2b"/>
+  <style name="String" foreground="#f3a561"/>
   <style name="Type" foreground="#1eb8b0" bold="true"/>
   <style name="Local" foreground="#8f8f8f"/>
   <style name="Global" foreground="#f5f5f5"/>
