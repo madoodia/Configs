@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorSession>
-<!-- Written by QtCreator 4.14.0, 2021-01-07T23:58:42. -->
+<!-- Written by QtCreator 4.14.0, 2021-01-08T01:14:52. -->
 <qtcreator>
  <data>
   <variable>CascadeSetActive</variable>
@@ -12,7 +12,7 @@
  </data>
  <data>
   <variable>EditorSettings</variable>
-  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAUAAABaAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHQAaABpAHIAZABwAGEAcgB0AHkALwBzAHQAYgBfAGkAbQBhAGcAZQAuAGMAcABwAAAADAAAAAAgAAAAAgAAAAAAAAAAAAAABgAAAAEAAAAAAAAAAAAAAAUAAABEAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHEAbQBsAC8AdABlAHMAdAAzAC4AcQBtAGwAAAAMAAAAACAAAAACAAAAAAAAAAAAAAABAAAADQAAAAAAAAAAAAAAPgAAAEQARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AcQBtAGwALwB0AGUAcwB0ADIALgBxAG0AbAAAAAwAAAAAIAAAAAIAAAAAAAAAAAAAABMAAAAEAAAAAAAAAAAAAAA+AAAAQgBEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFoAbwBsAGYALwBxAG0AbAAvAHQAZQBzAHQALgBxAG0AbAAAAAwAAAAAIAAAAAIAAAAAAAAAAAAAABcAAAABAAAAAAAAAAAAAAA+AAAAOgBEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFoAbwBsAGYALwBtAGEAaQBuAC4AYwBwAHAAAAAMAAAAACAAAAACAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAPgAAAAQAAAA6AEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAG0AYQBpAG4ALgBjAHAAcAAAABAAbQBhAGkAbgAuAGMAcABwAAAAE0NwcEVkaXRvci5DKytFZGl0b3IAAAAAQgBEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFoAbwBsAGYALwBxAG0AbAAvAHQAZQBzAHQALgBxAG0AbAAAABAAdABlAHMAdAAuAHEAbQBsAAAAF1FtbEpTRWRpdG9yLlFNTEpTRWRpdG9yAAAAAEQARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AcQBtAGwALwB0AGUAcwB0ADIALgBxAG0AbAAAABIAdABlAHMAdAAyAC4AcQBtAGwAAAAXUW1sSlNFZGl0b3IuUU1MSlNFZGl0b3IAAAAARABEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFoAbwBsAGYALwBxAG0AbAAvAHQAZQBzAHQAMwAuAHEAbQBsAAAAEgB0AGUAcwB0ADMALgBxAG0AbAAAABdRbWxKU0VkaXRvci5RTUxKU0VkaXRvcgAAAACdAAAADWN1cnJlbnRlZGl0b3IAAAA6AEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAG0AYQBpAG4ALgBjAHAAcAAAACYAQwBwAHAARQBkAGkAdABvAHIALgBDACsAKwBFAGQAaQB0AG8AcgAAACAAAAACAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAPgAAAAA=</value>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAAAAAAAAAAACQAAAAVlbXB0eQAAAAA=</value>
  </data>
  <data>
   <variable>ProjectDependencies</variable>
@@ -46,41 +46,14 @@
  </data>
  <data>
   <variable>value-ProjectTree.ExpandData</variable>
-  <valuelist type="QVariantList">
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf</value>
-    <value type="QString">Zolf</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf</value>
-    <value type="QString">Source Files</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf/main.qrc</value>
-    <value type="QString">main.qrc</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf/main.qrc//</value>
-    <value type="QString">/</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf</value>
-    <value type="QString">Zolf [dev5-new-development-phase]</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf/thirdparty</value>
-    <value type="QString">thirdparty</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/Zolf/qml</value>
-    <value type="QString">qml</value>
-   </valuelist>
-  </valuelist>
+  <valuelist type="QVariantList"/>
  </data>
  <data>
   <variable>value-TaskWindow.Categories</variable>
   <valuelist type="QVariantList">
    <value type="QString">Task.Category.QmlAnalysis</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
