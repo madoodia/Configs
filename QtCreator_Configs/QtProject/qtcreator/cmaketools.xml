@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorCMakeTools>
-<!-- Written by QtCreator 4.14.0, 2021-01-08T01:14:45. -->
+<!-- Written by QtCreator 4.14.0, 2021-01-09T22:32:10. -->
 <qtcreator>
  <data>
   <variable>CMakeTools.0</variable>
@@ -34,7 +34,7 @@
    <value type="bool" key="AutoRun">true</value>
    <value type="QString" key="Binary">C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe</value>
    <value type="QString" key="DisplayName">System CMake at C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe</value>
-   <value type="QString" key="Id">{ec15e78e-aeba-4653-90f0-9b6174ce2849}</value>
+   <value type="QString" key="Id">{32201c51-7458-4416-8c6d-144d1d571d08}</value>
    <value type="QString" key="QchFile"></value>
   </valuemap>
  </data>
@@ -44,7 +44,7 @@
  </data>
  <data>
   <variable>CMakeTools.Default</variable>
-  <value type="QString">qt.tools.cmake.win64</value>
+  <value type="QString">{df284e33-f18e-46f9-b06b-f5334d26ffa8}</value>
  </data>
  <data>
   <variable>Version</variable>

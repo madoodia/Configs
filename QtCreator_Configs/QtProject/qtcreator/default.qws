@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorSession>
-<!-- Written by QtCreator 4.14.0, 2021-01-08T01:14:52. -->
+<!-- Written by QtCreator 4.14.0, 2021-01-09T22:59:49. -->
 <qtcreator>
  <data>
   <variable>CascadeSetActive</variable>
@@ -12,7 +12,7 @@
  </data>
  <data>
   <variable>EditorSettings</variable>
-  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAAAAAAAAAAACQAAAAVlbXB0eQAAAAA=</value>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAQAAABeAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHEAbQBsAC8AdwBvAHIAawBzAHAAYQBjAGUALwBTAGMAcgBlAGUAbgAwADEALgBxAG0AbAAAAAwAAAAAIAAAAAIAAAAAAAAAAAAAABUAAAADAAAAAAAAAAAAAAAwAAAAXABEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFoAbwBsAGYALwBxAG0AbAAvAHcAbwByAGsAcwBwAGEAYwBlAC8AQQByAGMASQB0AGUAbQAuAHEAbQBsAAAADAAAAAAkAAAAAgAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAgAAAAAAAABLAAAAOgBEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFoAbwBsAGYALwBtAGEAaQBuAC4AcQBtAGwAAAAMAAAAACAAAAACAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAMAAAADoARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AbQBhAGkAbgAuAGMAcABwAAAADAAAAAAkAAAAAgAAAA4AAAAAAAAAvwAAABUAAAABAAAAGQAAAA4AAADPAAAABAAAAFwARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AcQBtAGwALwB3AG8AcgBrAHMAcABhAGMAZQAvAEEAcgBjAEkAdABlAG0ALgBxAG0AbAAAABYAQQByAGMASQB0AGUAbQAuAHEAbQBsAAAAF1FtbEpTRWRpdG9yLlFNTEpTRWRpdG9yAAAAADoARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AbQBhAGkAbgAuAGMAcABwAAAAEABtAGEAaQBuAC4AYwBwAHAAAAATQ3BwRWRpdG9yLkMrK0VkaXRvcgAAAAA6AEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAG0AYQBpAG4ALgBxAG0AbAAAABAAbQBhAGkAbgAuAHEAbQBsAAAAF1FtbEpTRWRpdG9yLlFNTEpTRWRpdG9yAAAAAF4ARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBaAG8AbABmAC8AcQBtAGwALwB3AG8AcgBrAHMAcABhAGMAZQAvAFMAYwByAGUAZQBuADAAMQAuAHEAbQBsAAAAGABTAGMAcgBlAGUAbgAwADEALgBxAG0AbAAAABdRbWxKU0VkaXRvci5RTUxKU0VkaXRvcgAAAADJAAAADWN1cnJlbnRlZGl0b3IAAABeAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AWgBvAGwAZgAvAHEAbQBsAC8AdwBvAHIAawBzAHAAYQBjAGUALwBTAGMAcgBlAGUAbgAwADEALgBxAG0AbAAAAC4AUQBtAGwASgBTAEUAZABpAHQAbwByAC4AUQBNAEwASgBTAEUAZABpAHQAbwByAAAAIAAAAAIAAAAAAAAAAAAAABUAAAADAAAAAAAAAAAAAAAwAAAAAA==</value>
  </data>
  <data>
   <variable>ProjectDependencies</variable>
@@ -37,6 +37,18 @@
   <valuelist type="QVariantList"/>
  </data>
  <data>
+  <variable>value-DebuggerSeparateWidgetGeometry</variable>
+  <value type="QRect">100x30+0+0</value>
+ </data>
+ <data>
+  <variable>value-DefaultFormats</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>value-IndividualFormats</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
   <variable>value-PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Build</variable>
   <value type="QByteArray">000000ff0000000100000002000004a20000016b0000000001010000000100</value>
  </data>
@@ -46,12 +58,55 @@
  </data>
  <data>
   <variable>value-ProjectTree.ExpandData</variable>
-  <valuelist type="QVariantList"/>
+  <valuelist type="QVariantList">
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf</value>
+    <value type="QString">Source Files</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/main.qrc//</value>
+    <value type="QString">/</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/main.qrc</value>
+    <value type="QString">main.qrc</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/qml/workspace</value>
+    <value type="QString">workspace</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf</value>
+    <value type="QString">Zolf</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf/qml</value>
+    <value type="QString">qml</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">D:/madoodia/dev/Zolf</value>
+    <value type="QString">Zolf [dev5-new-development-phase]</value>
+   </valuelist>
+  </valuelist>
  </data>
  <data>
   <variable>value-TaskWindow.Categories</variable>
   <valuelist type="QVariantList">
    <value type="QString">Task.Category.QmlAnalysis</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
@@ -95,15 +150,23 @@
   <value type="bool">true</value>
  </data>
  <data>
+  <variable>value-Watchers</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
   <variable>valueKeys</variable>
   <valuelist type="QVariantList">
    <value type="QString">ActiveMode</value>
    <value type="QString">Breakpoints</value>
+   <value type="QString">DebuggerSeparateWidgetGeometry</value>
+   <value type="QString">DefaultFormats</value>
+   <value type="QString">IndividualFormats</value>
    <value type="QString">PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Build</value>
    <value type="QString">PanelSplitterState:D:/madoodia/dev/Zolf/CMakeLists.txt:Run</value>
    <value type="QString">ProjectTree.ExpandData</value>
    <value type="QString">TaskWindow.Categories</value>
    <value type="QString">TaskWindow.IncludeWarnings</value>
+   <value type="QString">Watchers</value>
   </valuelist>
  </data>
 </qtcreator>

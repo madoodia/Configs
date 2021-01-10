@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <style-scheme version="1.0" name="madoodia_dark">
-  <style name="Text" foreground="#fff9e1" background="#1e1e1e"/>
+  <style name="Text" foreground="#ffe97d" background="#2f2f2f"/>
   <style name="Link" foreground="#d6c540"/>
-  <style name="Selection" foreground="#bec0c2" background="#1d545c"/>
+  <style name="Selection" foreground="#dbdddf" background="#3777c5"/>
   <style name="LineNumber" foreground="#bec0c2" background="#2f2f2f"/>
   <style name="SearchResult" background="#8a7f2c"/>
   <style name="SearchResultAlt1" foreground="#000033" background="#b6ccff"/>
