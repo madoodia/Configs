@@ -10,6 +10,6 @@ Config of Linux
 
 Config in VSCode
 
-[Cheese](./images/cheese.jpg)
+![Cheese](./images/cheese.jpg)
 
 <To Be Updated>
