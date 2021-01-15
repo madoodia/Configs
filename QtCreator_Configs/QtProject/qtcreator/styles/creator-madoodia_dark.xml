@@ -13,7 +13,7 @@
   <style name="AutoComplete" foreground="#2c408a" background="#9aa7d6"/>
   <style name="CurrentLine" background="#555753"/>
   <style name="CurrentLineNumber" foreground="#f5ff33" bold="true"/>
-  <style name="Occurrences" background="#c2c2c2"/>
+  <style name="Occurrences" background="#fdf500"/>
   <style name="Occurrences.Unused" foreground="#8a7f2c"/>
   <style name="Occurrences.Rename" foreground="#ffaaaa" background="#553636"/>
   <style name="Number" foreground="#ff8080"/>
@@ -25,7 +25,7 @@
   <style name="Static" foreground="#8ae234" bold="true"/>
   <style name="VirtualMethod" foreground="#dcdcaa" bold="true" italic="true"/>
   <style name="Function" foreground="#fdf4d8"/>
-  <style name="Keyword" foreground="#569cd6"/>
+  <style name="Keyword" foreground="#d371d6"/>
   <style name="PrimitiveType" foreground="#569cd6" bold="true"/>
   <style name="Operator" foreground="#c1fa3c"/>
   <style name="Overloaded Operator" foreground="#dcdcaa"/>
@@ -38,15 +38,15 @@
   <style name="VisualWhitespace" foreground="#bec0c2"/>
   <style name="QmlLocalId" foreground="#fcaf3e" italic="true"/>
   <style name="QmlExternalId" foreground="#ff6aad" italic="true"/>
-  <style name="QmlTypeId" foreground="#1eb8b0" bold="true"/>
+  <style name="QmlTypeId" foreground="#1ed1c5" bold="true"/>
   <style name="QmlRootObjectProperty" foreground="#eeeeec" italic="true"/>
-  <style name="QmlScopeObjectProperty" foreground="#eeeeec" italic="true"/>
+  <style name="QmlScopeObjectProperty" foreground="#c8ff00" italic="true"/>
   <style name="QmlExternalObjectProperty" foreground="#edd400" italic="true"/>
   <style name="JsScopeVar" foreground="#9acfd6" italic="true"/>
   <style name="JsImportVar" foreground="#ef2929" italic="true"/>
   <style name="JsGlobalVar" foreground="#73d216" bold="true" italic="true"/>
   <style name="QmlStateName" foreground="#45c6d6" italic="true"/>
-  <style name="Binding" foreground="#729fcf"/>
+  <style name="Binding" foreground="#87dfff"/>
   <style name="DisabledCode" foreground="#969696" background="#474747"/>
   <style name="AddedLine" foreground="#45c6d6"/>
   <style name="RemovedLine" foreground="#d65645"/>
