@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorSession>
-<!-- Written by QtDesignStudio 1.6.1, 2021-01-07T03:12:40. -->
+<!-- Written by QtDesignStudio 2.0.0, 2021-01-11T00:02:40. -->
 <qtcreator>
  <data>
   <variable>CascadeSetActive</variable>
@@ -12,7 +12,7 @@
  </data>
  <data>
   <variable>EditorSettings</variable>
-  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAEAAABQAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AVQBJAEQAZQBzAGkAZwBuAC8AdABlAHMAdAAxAC8AdABlAHMAdAAxAC4AcQBtAGwAAAAMAAAAACQAAAACAAAAAAAAAAAAAAABAAAAAQAAAAEAAAAwAAAAAAAAACUAAAABAAAAUABEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFUASQBEAGUAcwBpAGcAbgAvAHQAZQBzAHQAMQAvAHQAZQBzAHQAMQAuAHEAbQBsAAAAEgB0AGUAcwB0ADEALgBxAG0AbAAAABdRbWxKU0VkaXRvci5RTUxKU0VkaXRvcgAAAAC/AAAADWN1cnJlbnRlZGl0b3IAAABQAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AVQBJAEQAZQBzAGkAZwBuAC8AdABlAHMAdAAxAC8AdABlAHMAdAAxAC4AcQBtAGwAAAAuAFEAbQBsAEoAUwBFAGQAaQB0AG8AcgAuAFEATQBMAEoAUwBFAGQAaQB0AG8AcgAAACQAAAACAAAAAAAAAAAAAAABAAAAAQAAAAEAAAAwAAAAAAAAACUAAAAA</value>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAMAAACAAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AVQBJAEQAZQBzAGkAZwBuAC8AWgBvAGwAZgBCAHUAdAB0AG8AbgBDAHIAZQBhAHQAbwByAC8AWgBvAGwAZgBCAHUAdAB0AG8AbgBDAHIAZQBhAHQAbwByAC4AcQBtAGwAAAAMAAAAACAAAAACAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAACgAAAGgARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBVAEkARABlAHMAaQBnAG4ALwBaAG8AbABmAEIAdQB0AHQAbwBuAEMAcgBlAGEAdABvAHIALwBUAGUAcwB0ADEALgBxAG0AbAAAAAwAAAAAIAAAAAIAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAQAAAAdABEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFUASQBEAGUAcwBpAGcAbgAvAFoAbwBsAGYAQgB1AHQAdABvAG4AQwByAGUAYQB0AG8AcgAvAFMAYwByAGUAZQBuADAAMQAuAHUAaQAuAHEAbQBsAAAADAAAAAAgAAAAAgAAAAAAAAAAAAAAEQAAAAEAAAAAAAAAAAAAABAAAAADAAAAdABEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFUASQBEAGUAcwBpAGcAbgAvAFoAbwBsAGYAQgB1AHQAdABvAG4AQwByAGUAYQB0AG8AcgAvAFMAYwByAGUAZQBuADAAMQAuAHUAaQAuAHEAbQBsAAAAHgBTAGMAcgBlAGUAbgAwADEALgB1AGkALgBxAG0AbAAAACFRbWxKU0VkaXRvci5RdFF1aWNrRGVzaWduZXJFZGl0b3IAAAAAaABEADoALwBtAGEAZABvAG8AZABpAGEALwBkAGUAdgAvAFUASQBEAGUAcwBpAGcAbgAvAFoAbwBsAGYAQgB1AHQAdABvAG4AQwByAGUAYQB0AG8AcgAvAFQAZQBzAHQAMQAuAHEAbQBsAAAAEgBUAGUAcwB0ADEALgBxAG0AbAAAABdRbWxKU0VkaXRvci5RTUxKU0VkaXRvcgAAAACAAEQAOgAvAG0AYQBkAG8AbwBkAGkAYQAvAGQAZQB2AC8AVQBJAEQAZQBzAGkAZwBuAC8AWgBvAGwAZgBCAHUAdAB0AG8AbgBDAHIAZQBhAHQAbwByAC8AWgBvAGwAZgBCAHUAdAB0AG8AbgBDAHIAZQBhAHQAbwByAC4AcQBtAGwAAAAqAFoAbwBsAGYAQgB1AHQAdABvAG4AQwByAGUAYQB0AG8AcgAuAHEAbQBsAAAAF1FtbEpTRWRpdG9yLlFNTEpTRWRpdG9yAAAAANMAAAANY3VycmVudGVkaXRvcgAAAGgARAA6AC8AbQBhAGQAbwBvAGQAaQBhAC8AZABlAHYALwBVAEkARABlAHMAaQBnAG4ALwBaAG8AbABmAEIAdQB0AHQAbwBuAEMAcgBlAGEAdABvAHIALwBUAGUAcwB0ADEALgBxAG0AbAAAAC4AUQBtAGwASgBTAEUAZABpAHQAbwByAC4AUQBNAEwASgBTAEUAZABpAHQAbwByAAAAIAAAAAIAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAQAAAAAA==</value>
  </data>
  <data>
   <variable>ProjectDependencies</variable>
@@ -21,12 +21,12 @@
  <data>
   <variable>ProjectList</variable>
   <valuelist type="QVariantList">
-   <value type="QString">D:/madoodia/dev/UIDesign/test1/test1.qmlproject</value>
+   <value type="QString">D:/madoodia/dev/UIDesign/ZolfButtonCreator/ZolfButtonCreator.qmlproject</value>
   </valuelist>
  </data>
  <data>
   <variable>StartupProject</variable>
-  <value type="QString">D:/madoodia/dev/UIDesign/test1/test1.qmlproject</value>
+  <value type="QString">D:/madoodia/dev/UIDesign/ZolfButtonCreator/ZolfButtonCreator.qmlproject</value>
  </data>
  <data>
   <variable>value-ActiveMode</variable>
@@ -37,11 +37,19 @@
   <valuelist type="QVariantList"/>
  </data>
  <data>
+  <variable>value-PanelSplitterState:D:/madoodia/dev/UIDesign/ZolfButtonCreator/ZolfButtonCreator.qmlproject:Run</variable>
+  <value type="QByteArray">000000ff0000000100000002000002b20000fa000000000001010000000100</value>
+ </data>
+ <data>
+  <variable>value-PanelSplitterState:D:/madoodia/dev/UIDesign/test1/test1.qmlproject:Run</variable>
+  <value type="QByteArray">000000ff0000000100000002000002b20000fa000000000001010000000100</value>
+ </data>
+ <data>
   <variable>value-ProjectTree.ExpandData</variable>
   <valuelist type="QVariantList">
    <valuelist type="QVariantList">
-    <value type="QString">D:/madoodia/dev/UIDesign/test1</value>
-    <value type="QString">test1 [main]</value>
+    <value type="QString">D:/madoodia/dev/UIDesign/ZolfButtonCreator</value>
+    <value type="QString">ZolfButtonCreator [main]</value>
    </valuelist>
   </valuelist>
  </data>
@@ -49,6 +57,9 @@
   <variable>value-TaskWindow.Categories</variable>
   <valuelist type="QVariantList">
    <value type="QString">Task.Category.QmlAnalysis</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
+   <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
    <value type="QString">AssetExporter.Export</value>
@@ -64,6 +75,8 @@
   <valuelist type="QVariantList">
    <value type="QString">ActiveMode</value>
    <value type="QString">Breakpoints</value>
+   <value type="QString">PanelSplitterState:D:/madoodia/dev/UIDesign/ZolfButtonCreator/ZolfButtonCreator.qmlproject:Run</value>
+   <value type="QString">PanelSplitterState:D:/madoodia/dev/UIDesign/test1/test1.qmlproject:Run</value>
    <value type="QString">ProjectTree.ExpandData</value>
    <value type="QString">TaskWindow.Categories</value>
    <value type="QString">TaskWindow.IncludeWarnings</value>
