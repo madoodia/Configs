@@ -30,3 +30,13 @@ write whatever you want in the editor
 $ git commit --amend
 $ git tag Ep_1
 
+....................
+remove remote
+$ git remote -v
+$ git remote rm <name>
+
+....................
+add remote upstream to a repo
+$ git remote add upstream git@github.com:AcademySoftwareFoundation/OpenShadingLanguage.git
+$ git fetch upstream
+$ git pull upstream master
