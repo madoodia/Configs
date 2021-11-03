@@ -40,6 +40,11 @@
     "args": "build_vs"
   },
   {
+    "key": "ctrl+shift+q",
+    "command": "workbench.action.tasks.runTask",
+    "args": "qtcreator"
+  },
+  {
     "key": "ctrl+u",
     "command": "editor.action.transformToUppercase"
   },
