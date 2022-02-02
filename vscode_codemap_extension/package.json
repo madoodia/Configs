@@ -1,0 +1,133 @@
+{
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "zenMode.silentNotifications": false,
+  "C_Cpp.configurationWarnings": "Disabled",
+  "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": true,
+  "python.formatting.provider": "black",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "C_Cpp.intelliSenseCacheSize": 51200,
+  "diffEditor.renderSideBySide": true,
+  "remote.SSH.remotePlatform": {
+    "pd-ws-ge08": "linux"
+  },
+  "remote.SSH.showLoginTerminal": true,
+  "remote.SSH.useLocalServer": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "python.envFile": "${workspaceFolder}/.env",
+  "files.associations": {
+    "*.creatortheme": "plaintext",
+    "*.qmltypes": "qml",
+    ".tcshrc.user": "shellscript",
+    "*.vssettings": "xml",
+    "*.qrc": "xml",
+    "*.linux": "makefile",
+    "*.cl": "cpp",
+    "*.nmake": "makefile",
+    "*.gnu": "makefile",
+    "*.win": "makefile",
+    "qpaintevent": "cpp",
+    "qpainter": "cpp",
+    "*.tcc": "cpp",
+    "fstream": "cpp",
+    "qquickview": "cpp",
+    "qsgrendererinterface": "cpp",
+    "qquickwindow": "cpp",
+    "atomic": "cpp",
+    "chrono": "cpp",
+    "string": "cpp",
+    "functional": "cpp",
+    "sstream": "cpp",
+    "iosfwd": "cpp",
+    "qqmlapplicationengine": "cpp",
+    "qtime": "cpp",
+    "qrunnable": "cpp",
+    "qquickitem": "cpp",
+    "qapplication": "cpp"
+  },
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "C_Cpp.dimInactiveRegions": true,
+  "C_Cpp.errorSquiggles": "Enabled",
+  "C_Cpp.autocomplete": "Default",
+  "C_Cpp.intelliSenseEngine": "Default",
+  "[cpp]": {
+    "editor.quickSuggestions": true
+  },
+  "[c]": {
+    "editor.quickSuggestions": true
+  },
+  "C_Cpp.clang_format_path": "",
+  "[qml]": {
+    "editor.formatOnSave": true,
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "codemap.qml": [
+    // {
+    //   "pattern": "( *)(![//]+)( *)|import ([A-Z])\\w+((|.([A-Z])\\w+)+) ([0-9]).([0-9]+)",
+    //   "clear": "import ",
+    //   "prefix": "",
+    //   "icon": "interface"
+    // },
+    {
+      "pattern": "^((?!\/\/).)*[a-z][a-z0-9\\_]*\\s*{",
+      "clear": "{",
+      "prefix": "",
+      "icon": "class"
+    },
+    {
+      "pattern": "( *)function( +)([A-Z]|[a-z])\\w+",
+      "clear": "function( +)",
+      "prefix": "",
+      "icon": "function"
+    },
+    {
+      "pattern": "([A-Z])\\w+\\.on([A-Z]|[a-z])\\w+:( *)({*)",
+      "clear": "([A-Z])\\w+\\.|:|{",
+      "prefix": "",
+      "icon": "interface"
+    },
+    {
+      "pattern": "^((?!\/\/).)*on\\w+ed:*\\s*{",
+      "clear": ":|{",
+      "prefix": "",
+      "icon": "interface"
+    },
+    {
+      "pattern": "^((?!\/\/).)*property( +)[a-z][a-z0-9\\_](\\w+( *))*:",
+      "clear": "property( *)\\w+|:",
+      "prefix": "",
+      "icon": "property"
+    },
+  ],
+  "codemap.h": [
+    {
+      "pattern": "\\bclass\\b\\s([a-z]|[A-Z])\\w+|\\s(;|:\\s\\bpublic\\b\\s([A-Z])\\w+)",
+      "clear": "\\bclass\\b\\s|;|: public ([A-Z])\\w+",
+      "prefix": "",
+      "icon": "class"
+    },
+    {
+      "pattern": "( *)((![//]+)|(([a-z]|[A-Z])\\w+)\\s([~]?([a-z]|[A-Z])\\w+)( ?)\\()",
+      "clear": "( ?)([a-z])\\w+ |\\(",
+      "prefix": "",
+      "icon": "function"
+    },
+    {
+      "pattern": "![}]|( ?)(|(([a-z]|[A-Z])\\w+))( *)(|(([a-z]|[A-Z])\\w+));$",
+      "clear": "",
+      "prefix": "",
+      "icon": "property"
+    }
+  ],
+}

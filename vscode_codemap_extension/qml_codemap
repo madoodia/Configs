@@ -1,0 +1,15 @@
+1. install this extension
+https://marketplace.visualstudio.com/items?itemName=oleg-shilo.codemap
+
+2. add "codemap.qml" to the C:\Users\madoo\.vscode\extensions\oleg-shilo.codemap-1.16.2\package.json
+
+3. in user settings.json add your regex fields like:
+
+"codemap.qml": [
+  {
+    "pattern": "\\s\\[\\w.-]* \\s{",
+    "clear": "",
+    "prefix": "",
+    "icon": "level2"
+  },
+]
