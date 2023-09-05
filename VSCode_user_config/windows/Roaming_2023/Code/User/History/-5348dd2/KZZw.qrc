@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qmldir</file>
+        <file>qml/images/about.png</file>
+        <file>qml/images/auto.png</file>
+        <file>qml/images/flame.png</file>
+        <file>qml/images/gear.png</file>
+        <file>qml/images/schedule.png</file>
+        <file>qml/images/snow.png</file>
+        <file>qml/images/temprature.png</file>
+        <file>qml/images/wifi.png</file>
+    </qresource>
+</RCC>

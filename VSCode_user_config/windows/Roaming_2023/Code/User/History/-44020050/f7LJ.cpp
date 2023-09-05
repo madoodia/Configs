@@ -1,0 +1,50 @@
+/*
+# -------------------- #
+# (C)2022 madoodia.com #
+# -------------------- #
+*/
+
+// Standard Libraries
+#include <iostream>
+
+// Third Party Libraries
+
+// Application Libraries
+#include "Person.h"
+
+// Main Function
+int main()
+{
+    std::cout << "Family Blood Tree!" << std::endl;
+
+    Person* ryan = new Person(Person::MALE, "Ryan");
+    Person* reza = new Person(Person::MALE, "Reza");
+    Person* negar = new Person(Person::MALE, "Negar");
+
+    ryan->setFather(reza);
+    ryan->setMother(negar);
+
+    std::cout << ryan->getFather()->getName() << std::endl;
+    std::cout << ryan->getMother()->getName() << std::endl;
+
+    std::cout << reza->hasChild(ryan) << std::endl;
+
+    Person* dyan = new Person(Person::MALE, "Dyan");
+    std::cout << reza->addChild(dyan) << std::endl;
+
+    std::cout << reza->removeChild(dyan) << std::endl;
+
+    std::cout << reza->getNumChildren() << std::endl;
+    std::cout << reza->getChild(0) << std::endl;
+
+    reza->removeAllChildren();
+    std::cout << reza->getNumChildren() << std::endl;
+
+    People ancesstors;
+    reza->getAncestors(ancesstors);
+
+    People descendants;
+    reza->getAncestors(descendants);
+
+    return 0;
+}

@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 2,
+		"editor.useTabStops": false,
+		"C_Cpp.clang_format_path": "",
+		"C_Cpp.clang_format_style": "file",
+		"files.associations": {
+			"atomic": "cpp",
+			"cmath": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cstring": "cpp",
+			"exception": "cpp",
+			"initializer_list": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"ostream": "cpp",
+			"vector": "cpp",
+			"xstring": "cpp"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools"
+		]
+	}
+}

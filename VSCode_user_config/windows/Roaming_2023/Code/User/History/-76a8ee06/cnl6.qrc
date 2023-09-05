@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>UI/HomeScreen/HomeScreen.qml</file>
+        <file>qmldir</file>
+        <file>UI/images/about.png</file>
+        <file>UI/images/auto.png</file>
+        <file>UI/images/flame.png</file>
+        <file>UI/images/gear.png</file>
+        <file>UI/images/schedule.png</file>
+        <file>UI/images/snow.png</file>
+        <file>UI/images/temprature.png</file>
+        <file>UI/images/wifi.png</file>
+    </qresource>
+</RCC>

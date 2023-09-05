@@ -1,0 +1,57 @@
+{
+	"folders": [
+		{
+			"name": "UE5",
+			"path": "C:/Program Files/Epic Games/UE_5.1"
+		},
+		{
+			"name": "UE5_Plugins",
+			"path": "."
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
+		"editor.useTabStops": true,
+		"editor.detectIndentation": true,
+		"C_Cpp.clang_format_fallbackStyle": "Chromium",
+		"C_Cpp.intelliSenseCacheSize": 51200,
+		"C_Cpp.intelliSenseEngineFallback": "enabled",
+		"C_Cpp.intelliSenseEngine": "default",
+		"C_Cpp.clang_format_path": "",
+		"C_Cpp.clang_format_style": "file"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "packaging",
+				"windows": {
+				  "command": "D:\\madoodia\\dev\\UE_Projects\\__Plugins__Dev__Packaging__\\UE_51_build.bat"
+				},
+				"type": "shell",
+				"args": [
+					"${file}",
+					"${fileExtname}",
+					"D:\\madoodia\\dev\\UE_Projects\\__Plugins__Dev__Packaging__",
+					"${fileBasenameNoExtension}",
+
+				],
+				"problemMatcher": [
+					"$tsc"
+				],
+				"presentation": {
+					"reveal": "always"
+				},
+				"group": "build"
+			}
+		]
+	}
+}

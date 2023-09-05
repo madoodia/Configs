@@ -1,0 +1,55 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/**",
+        "${SDKS_LOCATION}/googletest/include/**",
+        "${SDKS_LOCATION}/OpenGL/GLEW/include",
+        "${SDKS_LOCATION}/Qt5/include/**",
+        "${SDKS_LOCATION}/OpenGL/STB/**",
+        "${SDKS_LOCATION}/OpenCL/include/**",
+        "${SDKS_LOCATION}/CUDA10.2/include/**"
+      ],
+      "defines": [],
+      "windowsSdkVersion": "10.0.18362.0",
+      "compilerPath": "cl.exe",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "msvc-x64"
+    },
+    {
+      "name": "Linux",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/opt/rh/devtoolset-9/root/bin/**",
+        "${DEV_LOCATION}/madAPI/include/**",
+        "${SDKS_LOCATION}/glew/include/**",
+        "${SDKS_LOCATION}/Qt5/include/**",
+        "${SDKS_LOCATION}/stb",
+        "${SDKS_LOCATION}/googletest/include/**",
+        "${SDKS_LOCATION}/OpenCL/include/**",
+        "${SDKS_LOCATION}/glfw/include/**",
+        "${SDKS_LOCATION}/CUDA/include/**"
+      ],
+      "defines": [],
+      "compilerPath": "/opt/rh/devtoolset-9/root/bin/gcc",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "clang-x64"
+    },
+    {
+      "name": "Mac",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [],
+      "compilerPath": "",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "clang-x64"
+    }
+  ],
+  "version": 4
+}

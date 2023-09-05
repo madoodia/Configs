@@ -1,0 +1,23 @@
+/*
+# -------------------- #
+# (C)2023 madoodia.com #
+# -------------------- #
+*/
+
+#include <iostream>
+
+class MyString
+{
+public:
+  MyString(const char* str = "")
+  {
+    m_size = strlen(str);
+    m_data = new char[m_size + 1];
+    memcpy(m_data, str, m_size);
+    m_data[m_size] = '\0';
+  }
+
+private:
+  char* m_data;
+  size_t m_size;
+};

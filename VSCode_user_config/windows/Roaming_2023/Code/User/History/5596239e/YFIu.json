@@ -1,0 +1,9 @@
+{
+    "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "cmake.configureOnOpen": false,
+    "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "window.zoomLevel": -1,
+}

@@ -1,0 +1,7 @@
+[submodule "Walnut"]
+	path = Walnut
+	url = https://github.com/TheCherno/Walnut
+	
+[submodule "src/ext/stb"]
+	path = src/ext/stb
+	url = https://github.com/nothings/stb.git

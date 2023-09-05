@@ -1,0 +1,59 @@
+{
+    "telemetry.machineId": "a97c04e566c8b9116803f9a96aa03971c54e947b6fd3b9d9e5b930231dd36ba2",
+    "backupWorkspaces": {
+        "workspaces": [
+            {
+                "id": "56e920b3f05f50a06f05a904f2c89cda",
+                "configURIPath": "file:///d%3A/madoodia/dev/UE_Projects/UE5_UI/UE5_UI.code-workspace"
+            },
+            {
+                "id": "c71cd3611c514693cd6472ede12f3676",
+                "configURIPath": "file:///d%3A/madoodia/dev/ComputerGraphics/ComputerGraphics.code-workspace"
+            }
+        ],
+        "folders": [],
+        "emptyWindows": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1e1e1e",
+    "windowSplash": {
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#cccccc",
+            "background": "#1e1e1e",
+            "editorBackground": "#1e1e1e",
+            "titleBarBackground": "#3c3c3c",
+            "activityBarBackground": "#333333",
+            "sideBarBackground": "#252526",
+            "statusBarBackground": "#007acc",
+            "statusBarNoFolderBackground": "#68217a"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 30,
+            "activityBarWidth": 48,
+            "sideBarWidth": 313,
+            "statusBarHeight": 22,
+            "windowBorder": false
+        }
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "workspaceIdentifier": {
+                "id": "c71cd3611c514693cd6472ede12f3676",
+                "configURIPath": "file:///d%3A/madoodia/dev/ComputerGraphics/ComputerGraphics.code-workspace"
+            },
+            "backupPath": "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\Backups\\c71cd3611c514693cd6472ede12f3676",
+            "uiState": {
+                "mode": 0,
+                "x": 0,
+                "y": 216,
+                "width": 1024,
+                "height": 768
+            }
+        },
+        "openedWindows": []
+    },
+    "windowControlHeight": 30
+}

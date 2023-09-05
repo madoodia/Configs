@@ -1,0 +1,15 @@
+{
+    "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "cmake.configureOnOpen": false,
+    "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+      "*": true,
+      "yaml": false,
+      "plaintext": false,
+      "markdown": false
+    },
+}

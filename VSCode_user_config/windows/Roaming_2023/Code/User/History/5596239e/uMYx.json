@@ -1,0 +1,13 @@
+{
+    "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "ppm-pgm-viewer-for-vscode.imagepreview.autoScalingMode": true,
+    "ppm-pgm-viewer-for-vscode.imagepreview.defaultPreviewScale": 1,
+    "ppm-pgm-viewer-for-vscode.imagepreview.panelBackgroundColor": "#ec5340",
+    "ppm-pgm-viewer-for-vscode.imagepreview.panelButtonColor": "#dd4535",
+    "ppm-pgm-viewer-for-vscode.imagepreview.uiPosition": "right",
+    "workbench.editorAssociations": {
+        "*.ppm": "ppm-pgm-viewer-for-vscode.imagepreview"
+    }
+}

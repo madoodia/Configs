@@ -1,0 +1,70 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+		"editor.useTabStops": false,
+		"C_Cpp.clang_format_path": "",
+		"C_Cpp.clang_format_style": "file",
+		"files.associations": {
+			"atomic": "cpp",
+			"cmath": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cstring": "cpp",
+			"exception": "cpp",
+			"initializer_list": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"ostream": "cpp",
+			"vector": "cpp",
+			"xstring": "cpp",
+			"bit": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"compare": "cpp",
+			"concepts": "cpp",
+			"cstddef": "cpp",
+			"ctime": "cpp",
+			"cwchar": "cpp",
+			"ios": "cpp",
+			"iosfwd": "cpp",
+			"iterator": "cpp",
+			"limits": "cpp",
+			"memory": "cpp",
+			"new": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"string": "cpp",
+			"system_error": "cpp",
+			"tuple": "cpp",
+			"type_traits": "cpp",
+			"typeinfo": "cpp",
+			"utility": "cpp",
+			"xfacet": "cpp",
+			"xiosbase": "cpp",
+			"xlocale": "cpp",
+			"xlocinfo": "cpp",
+			"xlocnum": "cpp",
+			"xmemory": "cpp",
+			"xstddef": "cpp",
+			"xtr1common": "cpp",
+			"xutility": "cpp",
+			"functional": "cpp",
+			"algorithm": "cpp",
+			"list": "cpp",
+			"unordered_map": "cpp",
+			"xhash": "cpp"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools"
+		]
+	}
+}

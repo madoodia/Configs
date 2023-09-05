@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Blank",
+	"Description": "This is just a blank plugin",
+	"Category": "Other",
+	"CreatedBy": "madoodia.com",
+	"CreatedByURL": "madoodia.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "madoodia.com",
+	"CanContainContent": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Blank",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

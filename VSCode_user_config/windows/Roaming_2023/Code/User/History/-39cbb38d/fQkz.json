@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "build",
+      "windows": {
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": [
+              "/C",
+              "\"C:/Program Files (x86)/Microsoft Visual Studio/2020/Community/VC/Auxiliary/Build/vcvarsall.bat\" x64",
+              "&&"
+            ]
+          }
+        },
+        "command": "cl.exe",
+        "args": [
+          "/Zi",
+          "/EHsc",
+          "/Fe:",
+          "${fileDirname}\\${fileBasenameNoExtension}.exe",
+          "${file}",
+          "user32.lib"
+        ],
+        "problemMatcher": [
+          "$msCompile"
+        ]
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "[madoodia.com]"
+    },
+    {
+      "type": "shell",
+      "label": "clean",
+      "windows": {
+        "command": "cmd.exe",
+        "args": [
+          "/C",
+          "del *.obj && del *.ilk && del *.pdb"
+        ]
+      },
+      "detail": "[madoodia.com]",
+      "problemMatcher": []
+    }
+  ]
+}

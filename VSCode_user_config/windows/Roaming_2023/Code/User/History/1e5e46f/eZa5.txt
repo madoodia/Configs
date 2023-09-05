@@ -1,0 +1,109 @@
+# -------------------------------------- #
+#          (C) 2020 madoodia.com         #
+#           All Rights Reserved!         #
+# -------------------------------------- #
+
+cmake_minimum_required(VERSION 3.20)
+# project(Zolf LANGUAGES CXX) # this line will try to find wrong path of vs2019 builder even if we have it installed in vs2022 as a second build system
+project(Zolf)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# if (MSVC)
+# 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX")
+# endif ()
+
+include_directories(
+  src
+  src/core
+  src/viewport
+  src/quick
+  src/utils
+  src/common
+  refs
+  shaders
+  textures
+  thirdparty
+)
+
+set(SOURCES
+  main.cpp
+  src/core/application.cpp
+  src/core/shader.cpp
+  src/templates/template.cpp
+  src/viewport/glviewport.cpp
+  src/viewport/glrenderer.cpp
+  thirdparty/stb_image.cpp
+)
+
+set(RESOURCES
+  main.qrc
+  resources/fonts.qrc
+  resources/icons.qrc
+  resources/shaders.qrc
+  resources/textures.qrc
+)
+
+set(FORMATTING
+  .clang-format
+)
+
+add_executable(Zolf 
+      ${SOURCES}
+      ${RESOURCES}
+      ${FORMATTING}
+)
+
+if (MSVC)
+  add_definitions("-D_WIN32"
+                  "-D_WIN64"
+  )
+endif ()
+
+# --------------------------------------------------
+# OpenGL
+find_package(OpenGL REQUIRED)
+
+# GLEW
+# include_directories($ENV{GLEW_LOCATION})
+find_package(GLEW REQUIRED) # if you install GLEW on linux
+include_directories(${GLEW_INCLUDE_DIRS})
+
+# Qt
+find_package(QT NAMES Qt5 COMPONENTS Core Widgets Gui Quick QuickControls2 Qml REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets Gui Quick QuickControls2 Qml REQUIRED)
+# target_compile_definitions(Zolf
+#   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+
+# OpenCL
+set(OpenCL_INCLUDE_DIR $ENV{OPENCL_LOCATION}/include)
+
+if (MSVC)
+  find_package(OpenCL REQUIRED)
+  include_directories($ENV{OPENCL_LOCATION}/include)
+else ()
+  include_directories($ENV{OPENCL_LOCATION}/include)
+  # target_link_libraries(ZOlf $ENV{OPENCL_LOCATION}/lib OpenCL)
+endif ()
+
+target_link_libraries(Zolf
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+          Qt${QT_VERSION_MAJOR}::Widgets
+          Qt${QT_VERSION_MAJOR}::Gui
+          Qt${QT_VERSION_MAJOR}::Quick
+          Qt${QT_VERSION_MAJOR}::QuickControls2
+          Qt${QT_VERSION_MAJOR}::Qml
+  PUBLIC  ${OPENGL_LIBRARIES}
+  PUBLIC  ${GLEW_LIBRARIES}
+  PUBLIC  OpenCL
+)
+
+# STB_IMAGE
+include_directories($ENV{STB_LOCATION})

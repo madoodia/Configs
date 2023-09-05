@@ -1,0 +1,7 @@
+*build
+*build-*
+!.buildSystem
+# vscode
+!.vscode
+.vscode/ipch
+*deploy

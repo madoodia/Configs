@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "name": "UE5_PluginsEditor Editor Win64 Development (UE5_Plugins)",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "D:/madoodia/dev/UE_Projects/UE5_Plugins/.vscode/compileCommands_UE5_Plugins.json"
+        },
+        {
+            "name": "Win32",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            // "compileCommands": "D:/madoodia/dev/UE_Projects/UE5_Plugins/.vscode/compileCommands_Default.json",
+            "compileCommands": "",
+            "includePath": [
+                "${workspaceFolder}/Source/**",
+                "${workspaceFolder}/Plugins/**",
+                "${workspaceFolder}/Intermediate/**",
+                "C:/Program Files/Epic Games/UE_5.1/Engine/**"
+                // "C:/Program Files/Epic Games/UE_5.1/Engine/Source/**",
+                // "C:/Program Files/Epic Games/UE_5.1/Engine/Source/Developer/**",
+                // "C:/Program Files/Epic Games/UE_5.1/Engine/Source/Editor/**",
+                // "C:/Program Files/Epic Games/UE_5.1/Engine/Source/Runtime/**",
+                // "C:/Program Files/Epic Games/UE_5.1/Engine/Plugins/**",
+                // "C:/Program Files/Epic Games/UE_5.1/Engine/Intermediate/**"
+            ],
+            "defines": [
+                "UNICODE",
+                "_UNICODE",
+                "__UNREAL__",
+                "UBT_COMPILED_PLATFORM=Windows",
+                "WITH_ENGINE=1",
+                "WITH_UNREAL_DEVELOPER_TOOLS=1",
+                "WITH_APPLICATION_CORE=1",
+                "WITH_COREUOBJECT=1"
+            ]
+        }
+    ],
+    "version": 4
+}

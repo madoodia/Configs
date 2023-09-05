@@ -1,0 +1,7 @@
+[core]
+	editor = \"C:\\Program Files\\Microsoft VS Code\\Code.exe\" --wait
+[user]
+	name = Reza Aarabi
+	email = madoodia@gmail.com
+[safe]
+	directory = *

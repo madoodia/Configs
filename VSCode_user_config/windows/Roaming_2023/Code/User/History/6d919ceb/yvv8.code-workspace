@@ -1,0 +1,162 @@
+{
+  "folders": [
+    {
+      "path": "C:/Qt/5.15.2/Src/qtdeclarative/src",
+      "name": "QtDeclarative"
+    },
+    {
+      "path": "C:/Qt/5.15.2/msvc2019_64/qml",
+      "name": "QML"
+    },
+    {
+      "path": "D:/madoodia/sdks/Qt5"
+    },
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.useTabStops": false,
+    "C_Cpp.clang_format_path": "",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.configurationWarnings": "Disabled",
+    "C_Cpp.dimInactiveRegions": true,
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.autocomplete": "Default",
+    "C_Cpp.intelliSenseEngine": "Default",
+    "[cpp]": {
+      "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on",
+        "other": "on"
+      }
+    },
+    "[c]": {
+      "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on",
+        "other": "on"
+      }
+    },
+    "[qml]": {
+      "editor.formatOnSave": true,
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+    "files.associations": {
+      "*.creatortheme": "plaintext",
+      "*.qmltypes": "qml",
+      ".tcshrc.user": "shellscript",
+      "*.vssettings": "xml",
+      "*.qrc": "xml",
+      "*.linux": "makefile",
+      "*.cl": "cpp",
+      "*.nmake": "makefile",
+      "*.gnu": "makefile",
+      "*.win": "makefile",
+      "qpaintevent": "cpp",
+      "qpainter": "cpp",
+      "*.tcc": "cpp",
+      "fstream": "cpp",
+      "qquickview": "cpp",
+      "qsgrendererinterface": "cpp",
+      "qquickwindow": "cpp",
+      "atomic": "cpp",
+      "chrono": "cpp",
+      "string": "cpp",
+      "functional": "cpp",
+      "sstream": "cpp",
+      "iosfwd": "cpp",
+      "qqmlapplicationengine": "cpp",
+      "qtime": "cpp",
+      "qrunnable": "cpp",
+      "qquickitem": "cpp",
+      "qapplication": "cpp",
+      "qsurfaceformat": "cpp",
+      "algorithm": "cpp",
+      "xxatomic": "cpp",
+      "memory": "cpp"
+    },
+    "files.autoSave": "onFocusChange",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.formatting.provider": "black",
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      // "**/Src": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.cpptools",
+      "oleg-shilo.codemap"
+    ]
+  },
+  "codemap.qml": [
+    // {
+    //   "pattern": "( *)(![//]+)( *)|import ([A-Z])//w+((|.([A-Z])//w+)+) ([0-9]).([0-9]+)",
+    //   "clear": "import ",
+    //   "prefix": "",
+    //   "icon": "interface"
+    // },
+    {
+      "pattern": "^((?!////).)*[a-z][a-z0-9//_]*//s*{",
+      "clear": "{",
+      "prefix": "",
+      "icon": "class"
+    },
+    {
+      "pattern": "( *)function( +)([A-Z]|[a-z])//w+",
+      "clear": "function( +)",
+      "prefix": "",
+      "icon": "function"
+    },
+    {
+      "pattern": "([A-Z])//w+//.on([A-Z]|[a-z])//w+:( *)({*)",
+      "clear": "([A-Z])//w+//.|:|{",
+      "prefix": "",
+      "icon": "interface"
+    },
+    {
+      "pattern": "^((?!////).)*on//w+ed:*//s*{*",
+      "clear": ":|{",
+      "prefix": "",
+      "icon": "interface"
+    },
+    {
+      "pattern": "^((?!////).)*property( +)[a-z][a-z0-9//_](//w+( *))*:",
+      "clear": "property( *)//w+|:",
+      "prefix": "",
+      "icon": "property"
+    },
+  ],
+  "codemap.h": [
+    {
+      "pattern": "//bclass//b//s([a-z]|[A-Z])//w+|//s(;|://s//bpublic//b//s([A-Z])//w+)",
+      "clear": "//bclass//b//s|;|: public ([A-Z])//w+",
+      "prefix": "",
+      "icon": "class"
+    },
+    {
+      "pattern": "( *)((![//]+)|(([a-z]|[A-Z])//w+)//s([~]?([a-z]|[A-Z])//w+)( ?)//()",
+      "clear": "( ?)([a-z])//w+ |//(",
+      "prefix": "",
+      "icon": "function"
+    },
+    {
+      "pattern": "![}]|( ?)(|(([a-z]|[A-Z])//w+))( *)(|(([a-z]|[A-Z])//w+));$",
+      "clear": "",
+      "prefix": "",
+      "icon": "property"
+    }
+  ]
+}
