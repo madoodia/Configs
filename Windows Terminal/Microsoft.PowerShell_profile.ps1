@@ -65,6 +65,6 @@ function -h {
     echo 'pro: Open $PROFILE in VSCode'
     echo 'ghp: Open GHP_Beta in VSCode'
     echo 'conf: Open Configs in VSCode'
-    echo 'stc: Copy $PROFILE into config and push changes'
+    echo 'stc: Copy $PROFILE into config and push changes into github'
     echo -----------------------
 }
