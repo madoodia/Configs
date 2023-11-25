@@ -41,6 +41,10 @@ function ghp {
     & 'D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.code-workspace'
 }
 
+function lyra {
+    & 'D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.code-workspace'
+}
+
 function conf {
     code "D:\\madoodia\\dev\\Configs"
 }
@@ -66,5 +70,6 @@ function -h {
     echo 'ghp: Open GHP_Beta in VSCode'
     echo 'conf: Open Configs in VSCode'
     echo 'stc: Copy $PROFILE into config and push changes into github'
+    echo 'lyra: Open LyraStarterGame in VSCode'
     echo -----------------------
 }
