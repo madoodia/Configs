@@ -30,7 +30,7 @@ function ~ {
 }
 
 function mci {
-    code "D:\\madoodia\\dev\\madoodia_info"
+    cd "D:\\madoodia\\dev\\madoodia_info";code .;
 }
 
 function pro {
@@ -46,7 +46,7 @@ function lyra {
 }
 
 function conf {
-    code "D:\\madoodia\\dev\\Configs"
+    cd "D:\\madoodia\\dev\\Configs";code .;
 }
 
 function stc {
