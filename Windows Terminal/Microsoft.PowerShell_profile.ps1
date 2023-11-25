@@ -30,7 +30,7 @@ function ~ {
 }
 
 function mci {
-    code "D:\\madoodia\\dev\\madoodia_info;"
+    code "D:\\madoodia\\dev\\madoodia_info"
 }
 
 function pro {
