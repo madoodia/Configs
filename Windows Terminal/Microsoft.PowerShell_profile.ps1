@@ -52,6 +52,10 @@ function conf {
     cd "D:\\madoodia\\dev\\Configs";code .;
 }
 
+function idea {
+    ii "D:\\madoodia\\dev\\__Games_Ideation__"
+}
+
 function stc {
     Copy-Item $PROFILE -Destination "D:\\madoodia\\dev\\Configs\\Windows Terminal\\Microsoft.PowerShell_profile.ps1" -Recurse -force;
     cd "D:\\madoodia\\dev\\Configs"; git add .;git commit -m "Update PROFILE Command";git push;
@@ -75,5 +79,6 @@ function -h {
     echo 'conf: Open Configs in VSCode'
     echo 'stc: Copy $PROFILE into config and push changes into github'
     echo 'lyra: Open LyraStarterGame in VSCode'
+    echo 'idea: Open __Games_Ideation__ Folder'
     echo -----------------------
 }
