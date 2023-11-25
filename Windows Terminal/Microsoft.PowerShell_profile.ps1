@@ -13,8 +13,8 @@ function UE {
     cd D:\madoodia\dev\UnrealEngine
 }
 
-function pl {
-    cd D:\madoodia\dev\UE_Projects\UE5_PluginDev
+function upd {
+    & 'D:\madoodia\dev\UE_Projects\UE5_PluginDev\UE5_PluginDev.code-workspace'
 }
 
 function u {
@@ -23,4 +23,37 @@ function u {
 
 function ~ {
     cd $home
+}
+
+function mci {
+    code D:\madoodia\dev\madoodia_info;
+}
+
+function pro {
+    code $PROFILE
+}
+
+function ghp {
+    & 'D:\__GAME_PROJECTS__\RetroPixelDigital\Green-Hawk-Platoon.Game\GHP_Beta.code-workspace'
+}
+
+function conf {
+    code D:\madoodia\dev\Configs
+}
+
+# ------------------------------------- HELP ---------------------------------------
+function -h {
+    echo -----------------------
+    echo 'dev: Open dev folder'
+    echo 'sdks : Open sdks folder'
+    echo 'UE: Open dev\UnrealEngine'
+    echo 'upd: Open UE5_PluginDev in VSCode'
+    echo 'u: cd ..'
+    echo '~: cd $home'
+    echo 'mci: Open madoodia_info in VSCode'
+    echo '-h: Help of custom commands'
+    echo 'pro: Open $PROFILE in VSCode'
+    echo 'ghp: Open GHP_Beta in VSCode'
+    echo 'conf: Open Configs in VSCode'
+    echo -----------------------
 }
