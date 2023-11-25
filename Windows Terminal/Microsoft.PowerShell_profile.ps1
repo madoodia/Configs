@@ -40,6 +40,9 @@ function pro {
 function ghp {
     & 'D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.code-workspace'
 }
+function ghp-p {
+    & 'D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.uproject'
+}
 
 function lyra {
     & 'D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.code-workspace'
@@ -68,6 +71,7 @@ function -h {
     echo '-h: Help of custom commands'
     echo 'pro: Open $PROFILE in VSCode'
     echo 'ghp: Open GHP_Beta in VSCode'
+    echo 'ghp-p: Open GHP_Beta UE5 Project'
     echo 'conf: Open Configs in VSCode'
     echo 'stc: Copy $PROFILE into config and push changes into github'
     echo 'lyra: Open LyraStarterGame in VSCode'
