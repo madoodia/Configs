@@ -48,6 +48,10 @@ function lyra {
     & 'D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.code-workspace'
 }
 
+function lyra-p {
+    & 'D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.uproject'
+}
+
 function conf {
     cd "D:\\madoodia\\dev\\Configs";code .;
 }
@@ -79,6 +83,7 @@ function -h {
     echo 'conf: Open Configs in VSCode'
     echo 'stc: Copy $PROFILE into config and push changes into github'
     echo 'lyra: Open LyraStarterGame in VSCode'
+    echo 'lyra-p: Open LyraStarterGame UE5 Project'
     echo 'idea: Open __Games_Ideation__ Folder'
     echo -----------------------
 }
