@@ -65,6 +65,22 @@ function stc {
     cd "D:\\madoodia\\dev\\Configs"; git add .;git commit -m "Update PROFILE Command";git push;
 }
 
+function cppp {
+    & 'D:\\madoodia\\dev\\UE_Projects\\UE5_CPP\\UE5_CPP.code-workspace'
+}
+
+function cppp-p {
+    & 'D:\\madoodia\\dev\\UE_Projects\\UE5_CPP\\UE5_CPP.uproject'
+}
+
+function usd {
+    & 'D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.code-workspace'
+}
+
+function usd-p {
+    & 'D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.uproject'
+}
+
 # ------------------------------------- HELP ---------------------------------------
 function -h {
     echo -----------------------
