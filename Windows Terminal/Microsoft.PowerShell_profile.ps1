@@ -97,7 +97,6 @@ function cs {
     & 'D:\\madoodia\\dev\\VSCodeForCpp\\VSCodeForCpp.code-workspace'
     & 'D:\\madoodia\\dev\\vscode-qml\\vscode-qml.code-workspace'
     & 'D:\\madoodia\\dev\\xstudio\\xstudio.code-workspace'
-    code 'D:\\madoodia\\pkgs\\krita'
     code 'D:\\madoodia\\pkgs\\QML'
 }
 
