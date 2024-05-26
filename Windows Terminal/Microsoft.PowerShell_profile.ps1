@@ -30,7 +30,7 @@ function ~ {
 }
 
 function mci {
-    cd "D:\\madoodia\\dev\\madoodia_info";code .;
+    cd "D:\\madoodia\\dev\\madoodia_info"; code .;
 }
 
 function pro {
@@ -53,16 +53,17 @@ function lyra-p {
 }
 
 function conf {
-    cd "D:\\madoodia\\dev\\Configs";code .;
+    cd "D:\\madoodia\\dev\\Configs"; code .;
+    code $PROFILE;
 }
 
 function idea {
-    ii "D:\\madoodia\\dev\\__Games_Ideation__"
+    II "D:\\__LiftOff__"
 }
 
 function stc {
     Copy-Item $PROFILE -Destination "D:\\madoodia\\dev\\Configs\\Windows Terminal\\Microsoft.PowerShell_profile.ps1" -Recurse -force;
-    cd "D:\\madoodia\\dev\\Configs"; git add .;git commit -m "Update PROFILE Command";git push;
+    cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;
 }
 
 function cppp {
@@ -81,9 +82,23 @@ function usd-p {
     & 'D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.uproject'
 }
 
+function CS {
+    II 'D:\\madoodia\\dev\\Zolf'
+    II 'D:\\madoodia\\dev\\ComputerGraphics'
+    & 'D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace'
+    & 'D:\\madoodia\\dev\\ComputerGraphics\\ComputerGraphics.code-workspace'
+    & 'D:\\madoodia\\dev\\RiveCppBuilder\\RiveCppBuilder.code-workspace'
+    & 'D:\\madoodia\\dev\\Zolf\\Zolf.code-workspace'
+    & 'D:\\madoodia\\dev\\Zolf\\Zolf.code-workspace'
+}
+
 # ------------------------------------- HELP ---------------------------------------
 function -h {
     echo -----------------------
+    echo $PROFILE
+    echo 'D:\madoodia\dev\Configs\Windows Terminal\Microsoft.PowerShell_profile.ps1'
+    echo 'Commands ------------------------------------------'
+    echo '-h: Help of custom commands'
     echo 'dev: Open dev folder'
     echo 'pkgs : Open pkgs folder'
     echo 'sdks : Open sdks folder'
@@ -92,14 +107,13 @@ function -h {
     echo 'u: cd ..'
     echo '~: cd $home'
     echo 'mci: Open madoodia_info in VSCode'
-    echo '-h: Help of custom commands'
-    echo 'pro: Open $PROFILE in VSCode'
     echo 'ghp: Open GHP_Beta in VSCode'
     echo 'ghp-p: Open GHP_Beta UE5 Project'
-    echo 'conf: Open Configs in VSCode'
+    echo 'conf: Open Configs and "$PROFILE" in VSCode'
     echo 'stc: Copy $PROFILE into config and push changes into github'
     echo 'lyra: Open LyraStarterGame in VSCode'
     echo 'lyra-p: Open LyraStarterGame UE5 Project'
     echo 'idea: Open __Games_Ideation__ Folder'
+    echo 'CS: Open __Games_Ideation__ Folder'
     echo -----------------------
 }
