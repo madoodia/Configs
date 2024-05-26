@@ -110,12 +110,12 @@ function pyt {
 }
 
 # ------------------------------------- HELP ---------------------------------------
-function -h {
+function hhh {
     echo -----------------------
     echo $PROFILE
     echo 'D:\madoodia\dev\Configs\Windows Terminal\Microsoft.PowerShell_profile.ps1'
     echo 'Commands ------------------------------------------'
-    echo '-h: Help of custom commands'
+    echo 'hhh: Help of custom commands'
     echo 'dev: Open dev folder'
     echo 'pkgs : Open pkgs folder'
     echo 'sdks : Open sdks folder'
