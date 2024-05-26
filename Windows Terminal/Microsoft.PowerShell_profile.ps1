@@ -19,6 +19,7 @@ function UE {
 
 function upd {
     & 'D:\\madoodia\\dev\\UE_Projects\\UE5_PluginDev\\UE5_PluginDev.code-workspace'
+    & 'D:\\madoodia\\dev\\RiveCppBuilder\\RiveCppBuilder.code-workspace'
 }
 
 function u {
@@ -87,7 +88,6 @@ function CS {
     II 'D:\\madoodia\\dev\\ComputerGraphics'
     & 'D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace'
     & 'D:\\madoodia\\dev\\ComputerGraphics\\ComputerGraphics.code-workspace'
-    & 'D:\\madoodia\\dev\\RiveCppBuilder\\RiveCppBuilder.code-workspace'
     & 'D:\\madoodia\\dev\\Zolf\\Zolf.code-workspace'
     & 'D:\\madoodia\\dev\\Zolf\\Zolf.code-workspace'
 }
@@ -103,7 +103,7 @@ function -h {
     echo 'pkgs : Open pkgs folder'
     echo 'sdks : Open sdks folder'
     echo 'UE: Open dev\\UnrealEngine'
-    echo 'upd: Open UE5_PluginDev in VSCode'
+    echo 'upd: Open UE5_PluginDev and Rive in VSCode'
     echo 'u: cd ..'
     echo '~: cd $home'
     echo 'mci: Open madoodia_info in VSCode'
