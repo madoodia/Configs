@@ -111,7 +111,10 @@ function hmh {
 
 function shell {
     drvp "D:\madoodia\dev\CPP\HandmadeHero"
+    # & "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+
     $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
+
     Set-Location "W:\";
 }
 
@@ -130,6 +133,9 @@ function drvp {
 function drvp-r {
     SUBST /D "W:"
 }
+
+# ------------------------------------- CALLS ---------------------------------------
+shell
 
 # ------------------------------------- HELP ---------------------------------------
 function hhh {
