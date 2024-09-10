@@ -5,14 +5,14 @@
     "args": "packaging"
   },
   {
-    "key": "ctrl+alt+d",
+    "key": "ctrl+alt+p",
     "command": "workbench.action.tasks.runTask",
     "args": "deploy"
   },
   {
-    "key": "ctrl+alt+w",
+    "key": "ctrl+alt+d",
     "command": "workbench.action.tasks.runTask",
-    "args": "qmlscene6"
+    "args": "deb"
   },
   {
     "key": "ctrl+alt+q",
@@ -127,12 +127,12 @@
     "key": "ctrl+alt+-",
     "command": "editor.unfoldAll"
   },
-  {
-    "key": "ctrl+s",
-    "command": "workbench.action.tasks.runTask",
-    "args": "format_qml",
-    "when": "editorTextFocus && !editorReadonly && resourceExtname == .qml"
-  },
+  // {
+  //   "key": "ctrl+s",
+  //   "command": "workbench.action.tasks.runTask",
+  //   "args": "format_qml",
+  //   "when": "editorTextFocus && !editorReadonly && resourceExtname == .qml"
+  // },
   {
     "key": "shift+alt+f",
     "command": "editor.action.formatDocument",
@@ -160,5 +160,5 @@
     "key": "ctrl+;",
     "command": "workbench.action.quickOpen",
     "args": "@:"
-  }
+  },
 ]
