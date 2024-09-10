@@ -106,7 +106,12 @@ function pyt {
 }
 
 function shell {
-    & "D:\\madoodia\\dev\\CPP\\handmadehero\\bin\\shell.bat"
+    drvp "D:\\madoodia\\dev\\HandmadeHero"
+    & "D:\\madoodia\\dev\\CPP\\CPP.code-workspace"
+
+    clear
+    $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
+    cd "W:\";
 }
 
 function ppp {
@@ -114,15 +119,30 @@ function ppp {
 }
 
 function drvp {
-    param(
-        [string]$drive = "W:",
-        [string]$path = ""
+    param(        
+        [string]$project_path = "",
+        [string]$drive = "W"
     )
-    if($path -ne "") {
-        subst "${drive}:" $path
+    if($drive -eq "W") {
+        SUBST /D $drive
+    }
+    # if($drive -eq "") {
+    #     $drive = "W"
+    # }
+    if($project_path -ne "") {
+        SUBST "${drive}:" $project_path
     }
     else {
         "Please provide a path!"
+    }
+}
+
+function drvp-r {
+    param(
+        [string]$drive = "W"
+    )
+    if($drive -ne "C" -and $drive -ne "D") {
+        SUBST /D "${drive}:"
     }
 }
 
@@ -153,6 +173,7 @@ function hhh {
     echo 'PYT: Open Python Related Projects in VSCode'
     echo 'shell: Run handmadehero project shell'
     echo 'ppp: Print $env:path'
-    echo 'drvp: Create a virtual drive'
+    echo 'drvp: Create a virtual drive From your path'
+    echo 'drvp-r: Remove the virtual drive'
     echo -----------------------
 }
