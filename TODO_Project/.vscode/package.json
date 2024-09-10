@@ -1,0 +1,17 @@
+{
+    "name": "todo-tm-grammar",
+    "version": "1.0.0",
+    "contributes": {
+      "grammars": [
+        {
+          "language": "cpp",
+          "scopeName": "source.cpp",
+          "path": "./todo-highlight.tmLanguage.json"
+        }
+      ]
+    },
+    "engines": {
+      "vscode": "^1.0.0"
+    }
+  }
+  

@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"todohighlight.isCaseSensitive": true,
+		"todohighlight.keywords": [
+			{
+				"text": "TODO:",
+				"color": "red",
+				"backgroundColor": "transparent",
+
+			},
+			{
+				"text": "FIXME:",
+				"color": "lightgreen",
+				"backgroundColor": "transparent",
+			},
+			{
+				"text": "IMPORTANT:",
+				"color": "yellow",
+				"backgroundColor": "transparent",
+			},
+		],
+		"editor.tokenColorCustomizations": {
+			"textMateRules": [
+				{
+					"scope": "comment.line.double-slash",  // This matches all comments
+					"settings": {
+						"foreground": "#6A9955"  // Set default comment color (green)
+					}
+				},
+			]
+		}
+	}	  
+}

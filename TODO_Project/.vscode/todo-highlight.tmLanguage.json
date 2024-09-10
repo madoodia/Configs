@@ -1,0 +1,12 @@
+{
+  "scopeName": "source.cpp",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.todo",
+      "match": "//\\s*TODO:"
+    },
+    {
+      "include": "#source"
+    }
+  ],
+}

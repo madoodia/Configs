@@ -161,4 +161,8 @@
     "command": "workbench.action.quickOpen",
     "args": "@:"
   },
+  {
+    "key": "ctrl+alt+shift+i",
+    "command": "editor.action.inspectTMScopes"
+  },
 ]
