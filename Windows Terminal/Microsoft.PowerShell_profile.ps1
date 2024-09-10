@@ -105,13 +105,14 @@ function pyt {
     # & 'D:\\madoodia\\dev\\HoudiniPlugins\\HoudiniPlugins.code-workspace'
 }
 
-function shell {
-    drvp "D:\\madoodia\\dev\\HandmadeHero"
-    & "D:\\madoodia\\dev\\CPP\\CPP.code-workspace"
+function hmh {
+    & "D:\madoodia\dev\CPP\CPP.code-workspace"
+}
 
-    clear
+function shell {
+    drvp "D:\madoodia\dev\CPP\HandmadeHero"
     $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
-    cd "W:\";
+    Set-Location "W:\";
 }
 
 function ppp {
@@ -120,30 +121,14 @@ function ppp {
 
 function drvp {
     param(        
-        [string]$project_path = "",
-        [string]$drive = "W"
+        [string]$project_path = ""
     )
-    if($drive -eq "W") {
-        SUBST /D $drive
-    }
-    # if($drive -eq "") {
-    #     $drive = "W"
-    # }
-    if($project_path -ne "") {
-        SUBST "${drive}:" $project_path
-    }
-    else {
-        "Please provide a path!"
-    }
+    SUBST /D "W:"
+    SUBST "W:" $project_path
 }
 
 function drvp-r {
-    param(
-        [string]$drive = "W"
-    )
-    if($drive -ne "C" -and $drive -ne "D") {
-        SUBST /D "${drive}:"
-    }
+    SUBST /D "W:"
 }
 
 # ------------------------------------- HELP ---------------------------------------
@@ -175,5 +160,6 @@ function hhh {
     echo 'ppp: Print $env:path'
     echo 'drvp: Create a virtual drive From your path'
     echo 'drvp-r: Remove the virtual drive'
+    echo 'hmh: Open handmadehero project in VSCode'
     echo -----------------------
 }
