@@ -34,10 +34,6 @@ function mci {
     cd "D:\\madoodia\\dev\\madoodia_info"; code .;
 }
 
-function pro {
-    code $PROFILE
-}
-
 function ghp {
     & 'D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.code-workspace'
 }
@@ -56,6 +52,7 @@ function lyra-p {
 function conf {
     cd "D:\\madoodia\\dev\\Configs"; code .;
     code $PROFILE;
+    code "C:\\Users\\Chapool\\AppData\\Local\\Programs\\oh-my-posh\\themes\\madoodia.omp.json";
 }
 
 function idea {
@@ -108,6 +105,27 @@ function pyt {
     # & 'D:\\madoodia\\dev\\HoudiniPlugins\\HoudiniPlugins.code-workspace'
 }
 
+function shell {
+    & "D:\\madoodia\\dev\\CPP\\handmadehero\\bin\\shell.bat"
+}
+
+function ppp {
+    $env:path -split ';'
+}
+
+function drvp {
+    param(
+        [string]$drive = "W:",
+        [string]$path = ""
+    )
+    if($path -ne "") {
+        subst "${drive}:" $path
+    }
+    else {
+        "Please provide a path!"
+    }
+}
+
 # ------------------------------------- HELP ---------------------------------------
 function hhh {
     echo -----------------------
@@ -133,5 +151,8 @@ function hhh {
     echo 'CS: Open Zolf Project and OpenGL Project in VSCode'
     echo 'HOU: Open HoudiniPlugin Project in VSCode'
     echo 'PYT: Open Python Related Projects in VSCode'
+    echo 'shell: Run handmadehero project shell'
+    echo 'ppp: Print $env:path'
+    echo 'drvp: Create a virtual drive'
     echo -----------------------
 }
