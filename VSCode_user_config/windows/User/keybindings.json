@@ -115,11 +115,6 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "shift+alt+down",
-    "command": "-editor.action.copyLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
     "key": "ctrl+alt+=",
     "command": "editor.foldAll"
   },
@@ -164,5 +159,35 @@
   {
     "key": "ctrl+alt+shift+i",
     "command": "editor.action.inspectTMScopes"
+  },
+  {
+    "key": "ctrl+down",            // Shortcut to jump down 5 lines (customize this)
+    "command": "cursorMove",
+    "when": "editorTextFocus",
+    "args": {
+        "to": "down",
+        "by": "line",
+        "value": 10              // Number of lines to jump
+    }
+  },
+  {
+      "key": "ctrl+up",            // Shortcut to jump up 5 lines (customize this)
+      "command": "cursorMove",
+      "when": "editorTextFocus",
+      "args": {
+          "to": "up",
+          "by": "line",
+          "value": 10              // Number of lines to jump
+      }
+  },
+  {
+    "key": "ctrl+alt+right",   // Customize this shortcut
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+left",   // Customize this shortcut
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus"
   },
 ]

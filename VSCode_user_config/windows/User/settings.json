@@ -1,23 +1,83 @@
 {
-  "files.autoSave": "onFocusChange",
-  "editor.formatOnSave": true,
-  "files.associations": {
-    "*.vssettings": "xml"
-  },
-  "git.confirmSync": false,
-  "git.enableSmartCommit": true,
-  "zenMode.silentNotifications": false,
-  "C_Cpp.configurationWarnings": "Disabled",
   "workbench.colorTheme": "madoodia (Visual Studio Dark)",
-  "editor.insertSpaces": true,
-  "editor.tabSize": 2,
-  "editor.detectIndentation": true,
-  "python.formatting.provider": "black",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
+  "files.autoSave": "onFocusChange",
+  "cmake.configureOnOpen": false,
+  "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+  "C_Cpp.intelliSenseEngineFallback": "enabled",
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false,
+    "jsonc": false
+  },
+  "hexeditor.columnWidth": 16,
+  "hexeditor.showDecodedText": true,
+  "hexeditor.defaultEndianness": "little",
+  "hexeditor.inspectorType": "aside",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "terminal.integrated.scrollback": 10000,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "C_Cpp.intelliSenseCacheSize": 51200,
+  "gitlens.hovers.currentLine.over": "line",
+  "debug.onTaskErrors": "abort",
+  "git.enableSmartCommit": true,
+  "cmake.showOptionsMovedNotification": false,
+  "terminal.integrated.fontSize": 16,
+  "editor.fontFamily": "LiberationMono, Consolas, 'Courier New', monospace",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
   ],
-  "C_Cpp.intelliSenseCacheSize": 51200
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "qmldir": "perl"
+  },
+  "todohighlight.isCaseSensitive": true,
+		"todohighlight.keywords": [
+			{
+				"text": "TODO:",
+				"color": "red",
+				"backgroundColor": "transparent",
+
+			},
+			{
+				"text": "FIXME:",
+				"color": "lightgreen",
+				"backgroundColor": "transparent",
+			},
+			{
+				"text": "IMPORTANT:",
+				"color": "yellow",
+				"backgroundColor": "transparent",
+			},
+		],
+		"editor.tokenColorCustomizations": {
+			"textMateRules": [
+				{
+					"scope": "comment.line",  // This matches all comments
+					"settings": {
+						"foreground": "#6A9955"  // Set default comment color (green)
+					}
+				},
+			]
+		},
+		"editor.cursorStyle": "block",
+		"editor.cursorBlinking": "blink",
+		"workbench.colorCustomizations": {
+			"editorCursor.foreground": "#0dc900"
+		},
+		"terminal.integrated.defaultProfile.windows": "PowerShell",
+		"terminal.integrated.profiles.windows": {
+			"PowerShell": {
+				"source": "PowerShell",
+				"icon": "terminal-powershell"
+			},
+		},
 }
