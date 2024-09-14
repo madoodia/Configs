@@ -133,7 +133,6 @@ function run {
     else {
         $env:myExeFile = ""
     }
-    echo $command $env:myExeFile
     & $command $env:myExeFile
 }
 
