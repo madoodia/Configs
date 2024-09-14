@@ -116,8 +116,8 @@ function setup {
     )
     drvp-r
     drvp $directory
-    $env:VCVARS_LOCATION = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
-    & "${env:VCVARS_LOCATION}\vcvarsall.bat" x64
+    # $env:VCVARS_LOCATION = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
+    # & "${env:VCVARS_LOCATION}\vcvarsall.bat" x64
 }
 
 function run {
@@ -144,7 +144,6 @@ function drvp {
     param(        
         [string]$project_path = ""
     )
-    SUBST /D "W:"
     SUBST "W:" $project_path
 }
 
