@@ -109,13 +109,32 @@ function hmh {
     & "D:\madoodia\dev\CPP\CPP.code-workspace"
 }
 
-function shell {
-    drvp "D:\madoodia\dev\CPP\HandmadeHero"
-    # & "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+# Setup the environment for the project
+function setup {
+    param(        
+        [string]$directory = ""
+    )
+    drvp-r
+    drvp $directory
+    $env:VCVARS_LOCATION = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
+    & "${env:VCVARS_LOCATION}\vcvarsall.bat" x64
+}
 
+function run {
+    param(
+        [string]$command= "",
+        [string]$arg= ""
+
+    )
     $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
-
-    Set-Location "W:\";
+    if ($arg -ne "") {
+        $env:myExeFile = "W:\bin\${arg}"
+    }
+    else {
+        $env:myExeFile = ""
+    }
+    echo $command $env:myExeFile
+    & $command $env:myExeFile
 }
 
 function ppp {
@@ -135,7 +154,7 @@ function drvp-r {
 }
 
 # ------------------------------------- CALLS ---------------------------------------
-shell
+# setup
 
 # ------------------------------------- HELP ---------------------------------------
 function hhh {
@@ -162,10 +181,11 @@ function hhh {
     echo 'CS: Open Zolf Project and OpenGL Project in VSCode'
     echo 'HOU: Open HoudiniPlugin Project in VSCode'
     echo 'PYT: Open Python Related Projects in VSCode'
-    echo 'shell: Run handmadehero project shell'
+    echo 'setup: Setup the environment for the project'
     echo 'ppp: Print $env:path'
     echo 'drvp: Create a virtual drive From your path'
     echo 'drvp-r: Remove the virtual drive'
     echo 'hmh: Open handmadehero project in VSCode'
+    echo "run: Run the project's executable"
     echo -----------------------
 }

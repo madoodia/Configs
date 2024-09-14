@@ -12,7 +12,7 @@
   {
     "key": "ctrl+alt+d",
     "command": "workbench.action.tasks.runTask",
-    "args": "deb"
+    "args": "debug"
   },
   {
     "key": "ctrl+alt+q",
