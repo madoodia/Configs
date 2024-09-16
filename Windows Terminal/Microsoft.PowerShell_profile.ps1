@@ -151,6 +151,10 @@ function drvp-r {
     SUBST /D "W:"
 }
 
+function rnr {
+    code 'D:\\madoodia\\pkgs\\Renderers'
+}
+
 # ------------------------------------- CALLS ---------------------------------------
 # setup
 
@@ -185,5 +189,6 @@ function hhh {
     echo 'drvp-r: Remove the virtual drive'
     echo 'hmh: Open handmadehero project in VSCode'
     echo "run: Run the project's executable"
+    echo "rnr: Open Renderers folder in VSCode"
     echo -----------------------
 }
