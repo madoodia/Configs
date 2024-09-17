@@ -156,7 +156,7 @@ function rnr {
 }
 
 function rtr {
-    code 'D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace'
+    & 'D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace'
 }
 
 # ------------------------------------- CALLS ---------------------------------------
