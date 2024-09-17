@@ -155,6 +155,10 @@ function rnr {
     code 'D:\\madoodia\\pkgs\\Renderers'
 }
 
+function rtr {
+    code 'D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace'
+}
+
 # ------------------------------------- CALLS ---------------------------------------
 # setup
 
@@ -190,5 +194,6 @@ function hhh {
     echo 'hmh: Open handmadehero project in VSCode'
     echo "run: Run the project's executable"
     echo "rnr: Open Renderers folder in VSCode"
+    echo "rtr: Open Realtime_Rendering folder in VSCode"
     echo -----------------------
 }
