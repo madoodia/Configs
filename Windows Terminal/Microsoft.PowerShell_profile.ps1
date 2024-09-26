@@ -159,6 +159,10 @@ function rtr {
     & 'D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace'
 }
 
+function gc {
+    git clone $args[0]
+}
+
 # ------------------------------------- CALLS ---------------------------------------
 # setup
 
@@ -166,34 +170,35 @@ function rtr {
 function hhh {
     echo -----------------------
     echo $PROFILE
-    echo 'D:\madoodia\dev\Configs\Windows Terminal\Microsoft.PowerShell_profile.ps1'
-    echo 'Commands ------------------------------------------'
-    echo 'hhh: Help of custom commands'
-    echo 'dev: Open dev folder'
-    echo 'pkgs : Open pkgs folder'
-    echo 'sdks : Open sdks folder'
-    echo 'UE: Open dev\\UnrealEngine'
-    echo 'upd: Open UE5_PluginDev and Rive in VSCode'
-    echo 'u: cd ..'
-    echo '~: cd $home'
-    echo 'mci: Open madoodia_info in VSCode'
-    echo 'ghp: Open GHP_Beta in VSCode'
-    echo 'ghp-p: Open GHP_Beta UE5 Project'
-    echo 'conf: Open Configs and "$PROFILE" in VSCode'
-    echo 'stc: Copy $PROFILE into config and push changes into github'
-    echo 'lyra: Open LyraStarterGame in VSCode'
-    echo 'lyra-p: Open LyraStarterGame UE5 Project'
-    echo 'idea: Open __Games_Ideation__ Folder'
-    echo 'CS: Open Zolf Project and OpenGL Project in VSCode'
-    echo 'HOU: Open HoudiniPlugin Project in VSCode'
-    echo 'PYT: Open Python Related Projects in VSCode'
-    echo 'setup: Setup the environment for the project'
-    echo 'ppp: Print $env:path'
-    echo 'drvp: Create a virtual drive From your path'
-    echo 'drvp-r: Remove the virtual drive'
-    echo 'hmh: Open handmadehero project in VSCode'
-    echo "run: Run the project's executable"
-    echo "rnr: Open Renderers folder in VSCode"
-    echo "rtr: Open Realtime_Rendering folder in VSCode"
+    echo "D:\madoodia\dev\Configs\Windows Terminal\Microsoft.PowerShell_profile.ps1"
+    echo "Commands -----------------------------------------"
+    echo "hhh:`tHelp of custom commands"
+    echo "dev:`tOpen dev folder"
+    echo "pkgs:`tOpen pkgs folder"
+    echo "sdks:`tOpen sdks folder"
+    echo "gc:`tgit clone <YOUR REPO>"
+    echo "UE:`tOpen dev\\UnrealEngine"
+    echo "upd:`tOpen UE5_PluginDev and Rive in VSCode"
+    echo "u:`tcd .."
+    echo "~: `tcd $home"
+    echo "mci:`tOpen madoodia_info in VSCode"
+    echo "ghp:`tOpen GHP_Beta in VSCode"
+    echo "ghp-p:`tOpen GHP_Beta UE5 Project"
+    echo "conf:`tOpen Configs and PROFILE in VSCode"
+    echo "stc:`tCopy PROFILE into config and push changes into github"
+    echo "lyra:`tOpen LyraStarterGame in VSCode"
+    echo "lyra-p:`tOpen LyraStarterGame UE5 Project"
+    echo "idea:`tOpen __Games_Ideation__ Folder"
+    echo "CS:`tOpen Zolf Project and OpenGL Project in VSCode"
+    echo "HOU:`tOpen HoudiniPlugin Project in VSCode"
+    echo "PYT:`tOpen Python Related Projects in VSCode"
+    echo "setup:`tSetup the environment for the project"
+    echo "ppp:`tPrint env:path"
+    echo "drvp:`tCreate a virtual drive From your path"
+    echo "drvp-r:`tRemove the virtual drive"
+    echo "hmh:`tOpen handmadehero project in VSCode"
+    echo "run:`tRun the project's executable"
+    echo "rnr:`tOpen Renderers folder in VSCode"
+    echo "rtr:`tOpen Realtime_Rendering folder in VSCode"
     echo -----------------------
 }
