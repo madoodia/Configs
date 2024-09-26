@@ -122,8 +122,8 @@ function setup {
 
 function run {
     param(
-        [string]$command= "",
-        [string]$arg= ""
+        [string]$command = "",
+        [string]$arg = ""
 
     )
     $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
@@ -159,9 +159,7 @@ function rtr {
     & 'D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace'
 }
 
-function gc {
-    git clone $args[0]
-}
+
 
 # ------------------------------------- CALLS ---------------------------------------
 # setup
@@ -176,7 +174,6 @@ function hhh {
     echo "dev:`tOpen dev folder"
     echo "pkgs:`tOpen pkgs folder"
     echo "sdks:`tOpen sdks folder"
-    echo "gc:`tgit clone <YOUR REPO>"
     echo "UE:`tOpen dev\\UnrealEngine"
     echo "upd:`tOpen UE5_PluginDev and Rive in VSCode"
     echo "u:`tcd .."
