@@ -1,5 +1,7 @@
 {
   "workbench.colorTheme": "madoodia (Visual Studio Dark)",
+  "workbench.panel.opensMaximized": "always",
+  "window.newWindowDimensions": "maximized",
   "files.autoSave": "onFocusChange",
   "cmake.configureOnOpen": false,
   "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
