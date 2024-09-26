@@ -217,10 +217,10 @@ function hhh {
     # echo "run:`tRun the project's executable"
     echo "rnr:`tOpen Renderers folder in VSCode"
     echo "rtr:`tOpen Realtime_Rendering folder in VSCode"
-    echo "zlf: `tOpen [Zolf] Project (C++, Qt, OpenGL, OpenCL) in VSCode"
-    echo "brv: `tOpen [Bravo] Project (OpenGL, GLSL [PBR Renderer]) in VSCode"
-    echo "rnd: `tOpen [Rend] Project (C++, DOD, CUDA, OPENGL, GLSL [Raytracing Renderer]) in VSCode"
-    echo "spd: `tOpen [Speed] Project (DirectX12, DXR, HLSL [Real-Time Renderer]) in VSCode"
-    echo "smt: `tOpen [Smart] Project (Vulkan, SPIRV [Real-Time Renderer]) in VSCode"
+    echo "zlf:`tOpen [Zolf] Project (C++, Qt, OpenGL, OpenCL) in VSCode"
+    echo "brv:`tOpen [Bravo] Project (OpenGL, GLSL [PBR Renderer]) in VSCode"
+    echo "rnd:`tOpen [Rend] Project (C++, DOD, CUDA, OPENGL, GLSL [Raytracing Renderer]) in VSCode"
+    echo "spd:`tOpen [Speed] Project (DirectX12, DXR, HLSL [Real-Time Renderer]) in VSCode"
+    echo "smt:`tOpen [Smart] Project (Vulkan, SPIRV [Real-Time Renderer]) in VSCode"
     echo -----------------------
 }
