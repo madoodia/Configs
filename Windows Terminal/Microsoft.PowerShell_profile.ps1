@@ -2,24 +2,24 @@ oh-my-posh init pwsh --config "C:\\Users\\Chapool\\AppData\\Local\\Programs\\oh-
 
 #  custom commands
 function dev {
-    cd "D:\\madoodia\\dev"
+    cd "D:\\madoodia\\dev";
 }
 
 function pkgs {
-    cd "D:\\madoodia\\pkgs"
+    cd "D:\\madoodia\\pkgs";
 }
 
 function sdks {
-    cd "D:\\madoodia\\sdks"
+    cd "D:\\madoodia\\sdks";
 }
 
 function UE {
-    cd "D:\\madoodia\\dev\\UnrealEngine"
+    cd "D:\\madoodia\\dev\\UnrealEngine";
 }
 
 function upd {
-    & "D:\\madoodia\\dev\\UE_Projects\\UE5_PluginDev\\UE5_PluginDev.code-workspace"
-    & "D:\\madoodia\\dev\\RiveCppBuilder\\RiveCppBuilder.code-workspace"
+    & "D:\\madoodia\\dev\\UE_Projects\\UE5_PluginDev\\UE5_PluginDev.code-workspace";
+    & "D:\\madoodia\\dev\\RiveCppBuilder\\RiveCppBuilder.code-workspace";
 }
 
 function u {
@@ -35,67 +35,67 @@ function mci {
 }
 
 function ghp {
-    & "D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.code-workspace"
+    & "D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.code-workspace";
 }
 function ghp-p {
-    & "D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.uproject"
+    & "D:\\__GAME_PROJECTS__\\RetroPixelDigital\\Green-Hawk-Platoon.Game\\GHP_Beta.uproject";
 }
 
 function lyra {
-    & "D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.code-workspace"
+    & "D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.code-workspace";
 }
 
 function lyra-p {
-    & "D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.uproject"
+    & "D:\\madoodia\\dev\\UE_Projects\\LyraStarterGame\\LyraStarterGame.uproject";
 }
 
 function conf {
-    code  "D:\\madoodia\\dev\\Configs"
-    code $PROFILE
-    # code "C:\\Users\\Chapool\\AppData\\Local\\Programs\\oh-my-posh\\themes\\madoodia.omp.json"
+    code  "D:\\madoodia\\dev\\Configs";
+    code $PROFILE;
+    # code "C:\\Users\\Chapool\\AppData\\Local\\Programs\\oh-my-posh\\themes\\madoodia.omp.json";
 }
 
 function idea {
-    II "D:\\__LiftOff__"
+    II "D:\\__LiftOff__";
 }
 
 function stc {
-    Copy-Item $PROFILE -Destination "D:\\madoodia\\dev\\Configs\\Windows Terminal\\Microsoft.PowerShell_profile.ps1" -Recurse -force;
-    cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;
+    Copy-Item $PROFILE -Destination "D:\\madoodia\\dev\\Configs\\Windows Terminal\\Microsoft.PowerShell_profile.ps1" -Recurse -force;;
+    cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;;
 }
 
 function cppp {
-    & "D:\\madoodia\\dev\\UE_Projects\\UE5_CPP\\UE5_CPP.code-workspace"
+    & "D:\\madoodia\\dev\\UE_Projects\\UE5_CPP\\UE5_CPP.code-workspace";
 }
 
 function cppp-p {
-    & "D:\\madoodia\\dev\\UE_Projects\\UE5_CPP\\UE5_CPP.uproject"
+    & "D:\\madoodia\\dev\\UE_Projects\\UE5_CPP\\UE5_CPP.uproject";
 }
 
 function usd {
-    & "D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.code-workspace"
+    & "D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.code-workspace";
 }
 
 function usd-p {
-    & "D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.uproject"
+    & "D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.uproject";
 }
 
 function cg {
-    & "D:\\madoodia\\dev\\ComputerGraphics\\ComputerGraphics.code-workspace"
-    & "D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace"
-    & "D:\\madoodia\\dev\\Learning\\Learning.code-workspace"
+    & "D:\\madoodia\\dev\\ComputerGraphics\\ComputerGraphics.code-workspace";
+    & "D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace";
+    & "D:\\madoodia\\dev\\Learning\\Learning.code-workspace";
 }
 
 function hou {
-    & "D:\\madoodia\\dev\\HoudiniPlugins\\HoudiniPlugins.code-workspace"
+    & "D:\\madoodia\\dev\\HoudiniPlugins\\HoudiniPlugins.code-workspace";
 }
 
 function pyt {
-    # & "D:\\madoodia\\dev\\HoudiniPlugins\\HoudiniPlugins.code-workspace"
+    # & "D:\\madoodia\\dev\\HoudiniPlugins\\HoudiniPlugins.code-workspace";
 }
 
 function hmh {
-    & "D:\madoodia\dev\CPP\CPP.code-workspace"
+    & "D:\madoodia\dev\CPP\CPP.code-workspace";
 }
 
 # Setup the environment for the project
@@ -103,10 +103,10 @@ function setup {
     param(        
         [string]$directory = ""
     )
-    drvp-r
-    drvp $directory
-    # $env:VCVARS_LOCATION = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build"
-    # & "${env:VCVARS_LOCATION}\vcvarsall.bat" x64
+    drvp-r;
+    drvp $directory;
+    # $env:VCVARS_LOCATION = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build";
+    # & "${env:VCVARS_LOCATION}\vcvarsall.bat" x64;
 }
 
 function run {
@@ -115,67 +115,67 @@ function run {
         [string]$arg = ""
 
     )
-    $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
+    $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path;
     if ($arg -ne "") {
         $env:myExeFile = "W:\bin\${arg}"
     }
     else {
         $env:myExeFile = ""
     }
-    & $command $env:myExeFile
+    & $command $env:myExeFile;
 }
 
 function ppp {
-    $env:path -split ";"
+    $env:path -split ";";
 }
 
 function drvp {
     param(        
         [string]$project_path = ""
     )
-    SUBST "W:" $project_path
+    SUBST "W:" $project_path;
 }
 
 function drvp-r {
-    SUBST /D "W:"
+    SUBST /D "W:";
 }
 
 function rnr {
-    code "D:\\madoodia\\pkgs\\Renderers"
+    code "D:\\madoodia\\pkgs\\Renderers";
 }
 
 function rtr {
-    & "D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace"
+    & "D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace";
 }
 
 function zlf {
-    & "D:\madoodia\dev\Zolf\Zolf.code-workspace"
-    & "D:\\madoodia\\dev\\xstudio\\xstudio.code-workspace"
-    & "D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace"
-    & "D:\\madoodia\\dev\\OpenCL\\OpenCL.code-workspace"
-    code "D:\\madoodia\\pkgs\\QML"
+    & "D:\madoodia\dev\Zolf\Zolf.code-workspace";
+    & "D:\\madoodia\\dev\\xstudio\\xstudio.code-workspace";
+    & "D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace";
+    & "D:\\madoodia\\dev\\OpenCL\\OpenCL.code-workspace";
+    code "D:\\madoodia\\pkgs\\QML";
 }
 function rnd {
-    & "D:\madoodia\dev\Rend\Rend.code-workspace"
+    & "D:\madoodia\dev\Rend\Rend.code-workspace";
 }
 
 function spd {
-    & "D:\madoodia\dev\Speed\Speed.code-workspace"
+    & "D:\madoodia\dev\Speed\Speed.code-workspace";
 }
 
 function smt {
-    & "D:\madoodia\dev\Smart\Smart.code-workspace"
+    & "D:\madoodia\dev\Smart\Smart.code-workspace";
 }
 
 function ray {
-    & "D:\madoodia\dev\Raytracing\Raytracing.code-workspace"
+    & "D:\madoodia\dev\Raytracing\Raytracing.code-workspace";
 }
 
 
 function brv {
-    &"D:\madoodia\dev\Bravo\Bravo.code-workspace"
-    ray
-    cg
+    ray;
+    cg;
+    & "D:\madoodia\dev\Bravo\Bravo.code-workspace";
 }
 
 
