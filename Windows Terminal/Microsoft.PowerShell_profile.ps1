@@ -175,6 +175,7 @@ function ray {
 function brv {
     ray;
     cg;
+    rnr;
     & "D:\madoodia\dev\Bravo\Bravo.code-workspace";
 }
 
