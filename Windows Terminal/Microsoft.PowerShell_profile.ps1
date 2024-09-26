@@ -80,21 +80,10 @@ function usd-p {
     & 'D:\\madoodia\\dev\\UE_Projects\\UE5_USD\\UE5_USD.uproject'
 }
 
-function cs {
-    II 'D:\\madoodia\\dev\\Zolf'
-    II 'D:\\madoodia\\dev\\ComputerGraphics'
-    & 'D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace'
-    & 'D:\\madoodia\\dev\\OpenCL\\OpenCL.code-workspace'
+function cg {
     & 'D:\\madoodia\\dev\\ComputerGraphics\\ComputerGraphics.code-workspace'
-    & 'D:\\madoodia\\dev\\Zolf\\Zolf.code-workspace'
-    & 'D:\\madoodia\\dev\\codelab\\codelab.code-workspace'
+    & 'D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace'
     & 'D:\\madoodia\\dev\\Learning\\Learning.code-workspace'
-    & 'D:\\madoodia\\dev\\MoleculeStructureViewer\\MoleculeStructureViewer.code-workspace'
-    & 'D:\\madoodia\\dev\\OSLViewer\\OSLViewer.code-workspace'
-    & 'D:\\madoodia\\dev\\VSCodeForCpp\\VSCodeForCpp.code-workspace'
-    & 'D:\\madoodia\\dev\\vscode-qml\\vscode-qml.code-workspace'
-    & 'D:\\madoodia\\dev\\xstudio\\xstudio.code-workspace'
-    code 'D:\\madoodia\\pkgs\\QML'
 }
 
 function hou {
@@ -161,6 +150,10 @@ function rtr {
 
 function zlf {
     & 'D:\madoodia\dev\Zolf\Zolf.code-workspace'
+    & 'D:\\madoodia\\dev\\xstudio\\xstudio.code-workspace'
+    & 'D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace'
+    & 'D:\\madoodia\\dev\\OpenCL\\OpenCL.code-workspace'
+    code 'D:\\madoodia\\pkgs\\QML'
 }
 
 function brv {
@@ -206,7 +199,7 @@ function hhh {
     # echo "lyra:`tOpen LyraStarterGame in VSCode"
     # echo "lyra-p:`tOpen LyraStarterGame UE5 Project"
     # echo "idea:`tOpen __Games_Ideation__ Folder"
-    # echo "CS:`tOpen Zolf Project and OpenGL Project in VSCode"
+    echo "CG:`tOpen Computer Graphics Projects in VSCode"
     # echo "HOU:`tOpen HoudiniPlugin Project in VSCode"
     # echo "PYT:`tOpen Python Related Projects in VSCode"
     # echo "setup:`tSetup the environment for the project"
