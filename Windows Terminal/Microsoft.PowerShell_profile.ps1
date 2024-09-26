@@ -50,9 +50,9 @@ function lyra-p {
 }
 
 function conf {
-    cd "D:\\madoodia\\dev\\Configs"; code .;
-    code $PROFILE;
-    code "C:\\Users\\Chapool\\AppData\\Local\\Programs\\oh-my-posh\\themes\\madoodia.omp.json";
+    code  "D:\\madoodia\\dev\\Configs"
+    code $PROFILE
+    # code "C:\\Users\\Chapool\\AppData\\Local\\Programs\\oh-my-posh\\themes\\madoodia.omp.json"
 }
 
 function idea {
@@ -159,6 +159,26 @@ function rtr {
     & 'D:\madoodia\dev\Realtime_Rendering\Realtime_Rendering.code-workspace'
 }
 
+function zlf {
+    & 'D:\madoodia\dev\Zolf\Zolf.code-workspace'
+}
+
+function brv {
+    & 'D:\madoodia\dev\Bravo\Bravo.code-workspace'
+}
+
+function frd {
+    & 'D:\madoodia\dev\Freedom\Freedom.code-workspace'
+}
+
+function spd {
+    & 'D:\madoodia\dev\Speed\Speed.code-workspace'
+}
+
+function smt {
+    & 'D:\madoodia\dev\Smart\Smart.code-workspace'
+}
+
 
 
 # ------------------------------------- CALLS ---------------------------------------
@@ -174,28 +194,33 @@ function hhh {
     echo "dev:`tOpen dev folder"
     echo "pkgs:`tOpen pkgs folder"
     echo "sdks:`tOpen sdks folder"
-    echo "UE:`tOpen dev\\UnrealEngine"
-    echo "upd:`tOpen UE5_PluginDev and Rive in VSCode"
+    # echo "UE:`tOpen dev\\UnrealEngine"
+    # echo "upd:`tOpen UE5_PluginDev and Rive in VSCode"
     echo "u:`tcd .."
     echo "~: `tcd $home"
     echo "mci:`tOpen madoodia_info in VSCode"
-    echo "ghp:`tOpen GHP_Beta in VSCode"
-    echo "ghp-p:`tOpen GHP_Beta UE5 Project"
+    # echo "ghp:`tOpen GHP_Beta in VSCode"
+    # echo "ghp-p:`tOpen GHP_Beta UE5 Project"
     echo "conf:`tOpen Configs and PROFILE in VSCode"
     echo "stc:`tCopy PROFILE into config and push changes into github"
-    echo "lyra:`tOpen LyraStarterGame in VSCode"
-    echo "lyra-p:`tOpen LyraStarterGame UE5 Project"
-    echo "idea:`tOpen __Games_Ideation__ Folder"
-    echo "CS:`tOpen Zolf Project and OpenGL Project in VSCode"
-    echo "HOU:`tOpen HoudiniPlugin Project in VSCode"
-    echo "PYT:`tOpen Python Related Projects in VSCode"
-    echo "setup:`tSetup the environment for the project"
+    # echo "lyra:`tOpen LyraStarterGame in VSCode"
+    # echo "lyra-p:`tOpen LyraStarterGame UE5 Project"
+    # echo "idea:`tOpen __Games_Ideation__ Folder"
+    # echo "CS:`tOpen Zolf Project and OpenGL Project in VSCode"
+    # echo "HOU:`tOpen HoudiniPlugin Project in VSCode"
+    # echo "PYT:`tOpen Python Related Projects in VSCode"
+    # echo "setup:`tSetup the environment for the project"
     echo "ppp:`tPrint env:path"
     echo "drvp:`tCreate a virtual drive From your path"
     echo "drvp-r:`tRemove the virtual drive"
     echo "hmh:`tOpen handmadehero project in VSCode"
-    echo "run:`tRun the project's executable"
+    # echo "run:`tRun the project's executable"
     echo "rnr:`tOpen Renderers folder in VSCode"
     echo "rtr:`tOpen Realtime_Rendering folder in VSCode"
+    echo"zlf: `tOpen [Zolf] Project (C++, Qt, OpenGL, OpenCL) in VSCode"
+    echo"brv: `tOpen [Bravo] Project (OpenGL, GLSL [PBR Renderer]) in VSCode"
+    echo"frd: `tOpen [Freedom] Project (C++, DOD, CUDA, OPENGL, GLSL [Raytracing Renderer]) in VSCode"
+    echo"spd: `tOpen [Speed] Project (DirectX12, DXR, HLSL [Real-Time Renderer]) in VSCode"
+    echo"smt: `tOpen [Smart] Project (Vulkan, SPIRV [Real-Time Renderer]) in VSCode"
     echo -----------------------
 }
