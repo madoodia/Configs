@@ -155,11 +155,6 @@ function zlf {
     & 'D:\\madoodia\\dev\\OpenCL\\OpenCL.code-workspace'
     code 'D:\\madoodia\\pkgs\\QML'
 }
-
-function brv {
-    & 'D:\madoodia\dev\Bravo\Bravo.code-workspace'
-}
-
 function rnd {
     & 'D:\madoodia\dev\Rend\Rend.code-workspace'
 }
@@ -174,6 +169,13 @@ function smt {
 
 function ray {
     & 'D:\madoodia\dev\Raytracing\Raytracing.code-workspace'
+}
+
+
+function brv {
+    & 'D:\madoodia\dev\Bravo\Bravo.code-workspace'
+    ray
+    cg
 }
 
 
