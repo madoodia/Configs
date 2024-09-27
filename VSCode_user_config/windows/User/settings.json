@@ -4,9 +4,32 @@
   "window.newWindowDimensions": "maximized",
   "files.autoSave": "onFocusChange",
   "cmake.configureOnOpen": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.detectIndentation": true,
+  "editor.insertSpaces": false,
+  "editor.useTabStops": true,
+  "C_Cpp.clang_format_path": "",
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.autocomplete": "default",
+  "C_Cpp.intelliSenseEngine": "default",
   "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
   "C_Cpp.intelliSenseEngineFallback": "enabled",
-  "editor.inlineSuggest.enabled": true,
+  "C_Cpp.dimInactiveRegions": true,
+  "[cpp]": {
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
+  },
+  "[c]": {
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
+  },
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
@@ -39,7 +62,6 @@
   ],
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
-    "qmldir": "perl",
     "c": "cpp"
   },
   "todohighlight.isCaseSensitive": true,
@@ -96,5 +118,5 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },"
+  }
 }
