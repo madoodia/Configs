@@ -180,7 +180,9 @@ function brv {
     & "D:\madoodia\dev\Bravo\Bravo.code-workspace";
 }
 
-
+function zos {
+    code "D:\madoodia\dev\madoodia_info\@@@Jobs\My_Jobs\Zenimax-EdenIndustries";
+}
 
 # ------------------------------------- CALLS ---------------------------------------
 # setup
@@ -224,5 +226,6 @@ function hhh {
     echo "rnd:`tOpen [Rend] Project (C++, DOD, CUDA, OPENGL, GLSL [Raytracing Renderer]) in VSCode"
     echo "spd:`tOpen [Speed] Project (DirectX12, DXR, HLSL [Real-Time Renderer]) in VSCode"
     echo "smt:`tOpen [Smart] Project (Vulkan, SPIRV [Real-Time Renderer]) in VSCode"
+    echo "zos:`tOpen [Zenimax-Test] Project in VSCode"
     echo -----------------------
 }
