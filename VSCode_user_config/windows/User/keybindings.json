@@ -69,7 +69,7 @@
   },
   {
     "key": "ctrl+t",
-    "command": "editor.action.transformToTitlecase"
+    "command": "editor.action.transformToPascalcase"
   },
   {
     "key": "ctrl+]",
@@ -143,13 +143,13 @@
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
-  { 
-    "key": "ctrl+shift+s", 
-    "command": "workbench.action.files.saveAll" 
-  },  
-  { 
-    "key": "ctrl+alt+shift+r", 
-    "command": "workbench.action.reopenWithEditor" 
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.files.saveAll"
+  },
+  {
+    "key": "ctrl+alt+shift+r",
+    "command": "workbench.action.reopenWithEditor"
   },
   {
     "key": "ctrl+;",
@@ -161,33 +161,33 @@
     "command": "editor.action.inspectTMScopes"
   },
   {
-    "key": "ctrl+down",            // Shortcut to jump down 5 lines (customize this)
+    "key": "ctrl+down", // Shortcut to jump down 5 lines (customize this)
     "command": "cursorMove",
     "when": "editorTextFocus",
     "args": {
-        "to": "down",
-        "by": "line",
-        "value": 10              // Number of lines to jump
+      "to": "down",
+      "by": "line",
+      "value": 10 // Number of lines to jump
     }
   },
   {
-      "key": "ctrl+up",            // Shortcut to jump up 5 lines (customize this)
-      "command": "cursorMove",
-      "when": "editorTextFocus",
-      "args": {
-          "to": "up",
-          "by": "line",
-          "value": 10              // Number of lines to jump
-      }
+    "key": "ctrl+up", // Shortcut to jump up 5 lines (customize this)
+    "command": "cursorMove",
+    "when": "editorTextFocus",
+    "args": {
+      "to": "up",
+      "by": "line",
+      "value": 10 // Number of lines to jump
+    }
   },
   {
-    "key": "ctrl+alt+right",   // Customize this shortcut
+    "key": "ctrl+alt+right", // Customize this shortcut
     "command": "editor.action.jumpToBracket",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+alt+left",   // Customize this shortcut
+    "key": "ctrl+alt+left", // Customize this shortcut
     "command": "editor.action.jumpToBracket",
     "when": "editorTextFocus"
-  },
+  }
 ]

@@ -14,5 +14,12 @@
 			""
 		],
 		"description": "Create madoodia.com Copyright"
+	},
+	"CapitalizeWord": {
+		"prefix": "capWord", // Trigger word for the snippet
+		"body": [
+			"${TM_SELECTED_TEXT/\\b([a-z])(\\w*)\\b/${1:/upcase}${2}/g}"
+		],
+		"description": "Capitalize first letter of selected word"
 	}
 }
