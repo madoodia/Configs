@@ -115,13 +115,14 @@ function run {
         [string]$arg = ""
 
     )
-    $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path;
+    $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
     if ($arg -ne "") {
         $env:myExeFile = "W:\bin\${arg}"
     }
     else {
         $env:myExeFile = ""
     }
+    
     & $command $env:myExeFile;
 }
 
