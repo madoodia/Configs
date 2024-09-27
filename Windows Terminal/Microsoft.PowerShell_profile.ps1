@@ -84,6 +84,7 @@ function cg {
     & "D:\\madoodia\\dev\\ComputerGraphics\\ComputerGraphics.code-workspace";
     & "D:\\madoodia\\dev\\OpenGL\\OpenGL.code-workspace";
     & "D:\\madoodia\\dev\\Learning\\Learning.code-workspace";
+    code "D:\madoodia\pkgs\OpenGL";
 }
 
 function hou {
