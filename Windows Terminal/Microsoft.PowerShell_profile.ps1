@@ -63,7 +63,7 @@ function stc {
     Copy-Item $PROFILE -Destination "D:\\madoodia\\dev\\Configs\\Windows Terminal\\Microsoft.PowerShell_profile.ps1" -Recurse -force;
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\snippets\\cpp.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\snippets\\cpp.json" -Recurse -force;
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\snippets\\python.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\snippets\\python.json" -Recurse -force;
-    cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;;
+    cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;
 }
 
 function cppp {
