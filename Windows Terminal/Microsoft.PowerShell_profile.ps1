@@ -149,6 +149,7 @@ function drvp-r {
 
 function rnr {
     code "D:\\madoodia\\pkgs\\Renderers";
+    code "D:\\madoodia\\dev\\Installer_VS22";
 }
 
 function rtr {
