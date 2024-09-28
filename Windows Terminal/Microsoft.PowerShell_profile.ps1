@@ -64,6 +64,7 @@ function stc {
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\snippets\\cpp.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\snippets\\cpp.json" -Recurse -force;
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\snippets\\python.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\snippets\\python.json" -Recurse -force;
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\keybindings.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\keybindings.json" -Recurse -force;
+    Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\settings.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\settings.json" -Recurse -force;
     cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;
 }
 
@@ -119,7 +120,7 @@ function run {
         [string]$arg = ""
 
     )
-    $env:path = "W:\bin;" + "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;" + $env:path
+    $env:path = "W:\bin;" + $env:path
     if ($arg -ne "") {
         $env:myExeFile = "W:\bin\${arg}"
     }
