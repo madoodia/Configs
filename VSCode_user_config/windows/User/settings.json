@@ -107,7 +107,7 @@
   "editor.cursorBlinking": "blink",
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#0dc900",
-    "editor.lineHighlightBackground": "#26ff1711"
+    "editor.lineHighlightBackground": "#ffffff24"
   },
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.profiles.windows": {
