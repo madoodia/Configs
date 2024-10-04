@@ -90,7 +90,7 @@
       "text": "ERROR:",
       "color": "white",
       "backgroundColor": "#990000ff"
-    },
+    }
   ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
@@ -123,5 +123,20 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "diffEditor.ignoreTrimWhitespace": false
+  },
+  "makefile.configureOnOpen": true,
+  // "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+  //   "cppcoreguidelines-avoid-magic-numbers"
+  // ],
+  "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy.exe",
+  "C_Cpp.codeAnalysis.clangTidy.config": "${workspaceFolder}/.clang-tidy"
 }
