@@ -193,17 +193,24 @@
   {
     "key": "ctrl+shift+t", // Replace with your desired shortcut
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "editorTextFocus",
-  },{
+    "when": "editorTextFocus"
+  },
+  {
     "key": "ctrl+shift+t", // Choose your preferred shortcut
     "command": "workbench.action.terminal.new",
     "when": "editorTextFocus"
-},
-{
+  },
+  {
     "key": "ctrl+shift+t",
     "command": "workbench.action.terminal.sendSequence",
-    "args": { "text": "cd \"${fileDirname}\"; New-Item test.cpp -ItemType File\n" },
+    "args": {
+      "text": "cd \"${fileDirname}\"; New-Item test.cpp -ItemType File\n"
+    },
     "when": "terminalFocus"
-}
-
+  },
+  {
+    "key": "ctrl+shift+alt+c",
+    "command": "workbench.action.tasks.runTask",
+    "args": "clearBin"
+  }
 ]
