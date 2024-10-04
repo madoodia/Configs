@@ -53,7 +53,7 @@
   "git.enableSmartCommit": true,
   "cmake.showOptionsMovedNotification": false,
   "terminal.integrated.fontSize": 16,
-  "editor.fontFamily": "LiberationMono, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Cascadia mono', 'Inconsolata for Powerline', LiberationMono, Consolas, 'Courier New', monospace",
   "github.copilot.editor.enableAutoCompletions": true,
   "security.workspace.trust.untrustedFiles": "open",
   "cmake.pinnedCommands": [
