@@ -85,7 +85,12 @@
       "text": "NOTE:",
       "color": "#00d7dd",
       "backgroundColor": "transparent"
-    }
+    },
+    {
+      "text": "ERROR:",
+      "color": "white",
+      "backgroundColor": "#990000ff"
+    },
   ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
