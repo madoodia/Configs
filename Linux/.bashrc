@@ -1,3 +1,7 @@
+# --------------------- #
+# (C) 2024 madoodia.com #
+# --------------------- #
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

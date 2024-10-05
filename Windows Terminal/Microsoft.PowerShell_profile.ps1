@@ -66,6 +66,7 @@ function stc {
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\snippets\\bat.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\snippets\\bat.json" -Recurse -force;
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\keybindings.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\keybindings.json" -Recurse -force;
     Copy-Item "C:\\Users\\Chapool\\AppData\\Roaming\\Code\\User\\settings.json" -Destination "D:\\madoodia\\dev\\Configs\\VSCode_user_config\\windows\\User\\settings.json" -Recurse -force;
+    Copy-Item "C:\\Users\\Chapool\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json" -Destination "D:\\madoodia\\dev\\Configs\\Windows Terminal\\settings.json" -Recurse -force;
     cd "D:\\madoodia\\dev\\Configs"; git add .; git commit -m "Update PROFILE Command"; git push;
 }
 
