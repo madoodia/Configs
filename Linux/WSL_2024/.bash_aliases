@@ -2,6 +2,8 @@
 # (C) 2024 madoodia.com #
 # --------------------- #
 
+# For reloading this file
+# source ~/.bash_aliases
 
 # Source global definitions
 [[ -f /etc/bashrc ]] && . /etc/bashrc
@@ -10,7 +12,26 @@
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-PS1="\[\033[01;32m\]\u@\h \[\033[34m\][\w]\[\033[01;33m\]\$(parse_git_branch) \[\033[30m\]<\[\$(date +%H:%M)\]>\\n\[\033[01;33m\]\$\[\033[00m\] "
+# Text Styles
+BOLD="\[\033[1m\]"
+RESET="\[\033[0m\]"
+
+# Colors
+BLACK="\[\033[30m\]"
+RED="\[\033[31m\]"
+GREEN="\[\033[32m\]"
+YELLOW="\[\033[33m\]"
+BLUE="\[\033[34m\]"
+MAGENTA="\[\033[35m\]"
+CYAN="\[\033[36m\]"
+WHITE="\[\033[37m\]"
+
+# icons
+CLOCK="\[U+23F1]"
+
+# Your PS1 Prompt using named variables
+PS1="${BOLD}${GREEN}\u@\h ${BOLD}${CYAN}[\w]${BOLD}${YELLOW}\$(parse_git_branch) ${RED}<\$(date +%H:%M)>\\n${YELLOW}\$${RESET} "
+
 
 
 # original
@@ -67,10 +88,10 @@ alias rc='code ~/.bashrc'
 
 # alias tree='tree -DhAN'
 # alias rm='rm -fv'
-alias b='cd ..'
-alias bb='cd ../..'
-alias bbb='cd ../../..'
-alias bbbb='cd ../../../..'
+alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+alias uuuu='cd ../../../..'
 
 alias mad='cd /mnt/d/madoodia'
 alias dev='mad;cd dev'
