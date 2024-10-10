@@ -217,5 +217,9 @@
     "key": "ctrl+shift+alt+c",
     "command": "workbench.action.tasks.runTask",
     "args": "clearBin"
+  },
+  {
+    "key": "shift+alt+r",
+    "command": "revealFileInOS",
   }
 ]

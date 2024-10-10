@@ -9,7 +9,7 @@
         "segments": [
           {
             "type": "session",
-            "foreground": "#757575",
+            "foreground": "#9fffaa",
             "properties": {
               "display_host": true
             },
