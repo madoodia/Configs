@@ -60,15 +60,15 @@
     "args": "qtcreator"
   },
   {
-    "key": "ctrl+shift+alt+u",
+    "key": "ctrl+u",
     "command": "editor.action.transformToUppercase"
   },
   {
-    "key": "ctrl+shift+alt+l",
+    "key": "ctrl+l",
     "command": "editor.action.transformToLowercase"
   },
   {
-    "key": "ctrl+shift+alt+t",
+    "key": "ctrl+t",
     "command": "editor.action.transformToPascalcase"
   },
   {
