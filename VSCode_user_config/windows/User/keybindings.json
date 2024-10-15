@@ -220,6 +220,6 @@
   },
   {
     "key": "shift+alt+r",
-    "command": "revealFileInOS",
+    "command": "revealFileInOS"
   }
 ]
