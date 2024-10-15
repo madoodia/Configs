@@ -221,5 +221,10 @@
   {
     "key": "shift+alt+r",
     "command": "revealFileInOS"
-  }
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.focusPreviousCursor",
+    "when": "editor.hasSelection"
+  },
 ]
