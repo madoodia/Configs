@@ -196,6 +196,10 @@ function psd {
     & "D:\madoodia\dev\Photoshop\Photoshop.code-workspace";
 }
 
+function ani {
+    Code "D:\madoodia\dev\Animate";
+}
+
 # ------------------------------------- CALLS ---------------------------------------
 # setup
 
@@ -240,5 +244,6 @@ function hhh {
     echo "smt:`tOpen [Smart] Project (Vulkan, SPIRV [Real-Time Renderer]) in VSCode"
     echo "zos:`tOpen [Zenimax-Test] Project in VSCode"
     echo "psd:`tOpen [Photoshop] Project in VSCode"
+    echo "ani:`tOpen [Animate] Project in VSCode"
     echo -----------------------
 }
