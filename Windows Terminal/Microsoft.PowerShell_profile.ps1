@@ -197,6 +197,7 @@ function psd {
 }
 
 function ani {
+    cd "D:\madoodia\dev\Animate";
     Code "D:\madoodia\dev\Animate";
 }
 
