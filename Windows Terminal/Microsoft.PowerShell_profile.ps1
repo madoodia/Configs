@@ -192,7 +192,7 @@ function zos {
     code "D:\madoodia\dev\madoodia_info\@@@Jobs\My_Jobs\Zenimax-EdenIndustries";
 }
 
-function ps {
+function psd {
     & "D:\madoodia\dev\Photoshop\Photoshop.code-workspace";
 }
 
@@ -239,6 +239,6 @@ function hhh {
     echo "spd:`tOpen [Speed] Project (DirectX12, DXR, HLSL [Real-Time Renderer]) in VSCode"
     echo "smt:`tOpen [Smart] Project (Vulkan, SPIRV [Real-Time Renderer]) in VSCode"
     echo "zos:`tOpen [Zenimax-Test] Project in VSCode"
-    echo "ps:`tOpen [Photoshop] Project in VSCode"
+    echo "psd:`tOpen [Photoshop] Project in VSCode"
     echo -----------------------
 }
