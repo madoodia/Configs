@@ -1,52 +1,52 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<shortcuts currentFlavour="Photoshop">
+<shortcuts currentFlavour="Photoshop_for_Harmony">
  <shortcut id="SELECT_DEFAULT_PARENT_KEY_WITH_EFFECTS">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="DRAWING_ERASER_TOOL_KEY">
-  <flavour id="Photoshop" key="E"/>
+  <flavour id="Photoshop_for_Harmony" key="E"/>
  </shortcut>
  <shortcut id="DRAWING_BRUSH_TOOL_KEY">
-  <flavour id="Photoshop" key="B"/>
+  <flavour id="Photoshop_for_Harmony" key="B"/>
  </shortcut>
- <flavour id="Photoshop"/>
+ <flavour id="Photoshop_for_Harmony"/>
  <shortcut id="EDIT_PREFERENCES">
-  <flavour id="Photoshop" key="Ctrl+K"/>
+  <flavour id="Photoshop_for_Harmony" key="Ctrl+K"/>
  </shortcut>
  <shortcut id="TL_SET_NON_CONSTANT_KEY_FRAME">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="TL_REMOVE_EXPOSURE">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="SP_SWITCH_PREV_DRAWING_KEY">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="SP_SWITCH_NEXT_DRAWING_KEY">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="TL_SWITCH_PREV_DRAWING_KEY">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="TL_SWITCH_NEXT_DRAWING_KEY">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="DRAWING_INCREMENT_BRUSH_SIZE">
-  <flavour id="Photoshop" key="]"/>
+  <flavour id="Photoshop_for_Harmony" key="]"/>
  </shortcut>
  <shortcut id="DRAWING_DECREMENT_BRUSH_SIZE">
-  <flavour id="Photoshop" key="["/>
+  <flavour id="Photoshop_for_Harmony" key="["/>
  </shortcut>
  <shortcut id="FE_SELECT_LEFT_HANDLE_KEY">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="FE_SELECT_RIGHT_HANDLE_KEY">
-  <flavour id="Photoshop" key=""/>
+  <flavour id="Photoshop_for_Harmony" key=""/>
  </shortcut>
  <shortcut id="ZOOM_OUT_KEY">
-  <flavour id="Photoshop" key="Ctrl+-"/>
+  <flavour id="Photoshop_for_Harmony" key="Ctrl+-"/>
  </shortcut>
  <shortcut id="ZOOM_IN_KEY">
-  <flavour id="Photoshop" key="Ctrl+="/>
+  <flavour id="Photoshop_for_Harmony" key="Ctrl+="/>
  </shortcut>
 </shortcuts>
