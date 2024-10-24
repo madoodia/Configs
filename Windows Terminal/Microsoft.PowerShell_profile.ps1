@@ -165,9 +165,6 @@ function zlf {
     & "D:\\madoodia\\dev\\OpenCL\\OpenCL.code-workspace";
     code "D:\\madoodia\\pkgs\\QML";
 }
-function rnd {
-    & "D:\madoodia\dev\Rend\Rend.code-workspace";
-}
 
 function spd {
     & "D:\madoodia\dev\Speed\Speed.code-workspace";
@@ -179,6 +176,11 @@ function smt {
 
 function ray {
     & "D:\madoodia\dev\Raytracing\Raytracing.code-workspace";
+}
+
+function rnd {
+    ray
+    & "D:\madoodia\dev\Rend\Rend.code-workspace";
 }
 
 
