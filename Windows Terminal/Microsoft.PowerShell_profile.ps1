@@ -175,11 +175,11 @@ function smt {
 }
 
 function ray {
-    & "D:\madoodia\dev\Raytracing\Raytracing.code-workspace";
+    code "D:\madoodia\dev\Raytracing";
 }
 
 function rnd {
-    ray
+    ray;
     & "D:\madoodia\dev\Rend\Rend.code-workspace";
 }
 
